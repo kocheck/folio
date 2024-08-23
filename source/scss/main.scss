@@ -1,0 +1,42 @@
+// Abstracts
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+@import 'abstracts/functions';
+
+// Vendors
+@import 'vendors/normalize';
+
+// Base
+
+@import 'base/typography';
+
+// Components
+@import 'components/buttons';
+
+
+// Layout
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/navigation';
+
+// Pages
+@import 'pages/home';
+
+
+html {
+  background-color: black;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+.container {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+  padding: 20px;
+}
