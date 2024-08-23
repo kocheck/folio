@@ -1,1 +1,57 @@
-// scss variables
+// _variables.scss
+
+// Background
+$dark-color-1: #2c0c36;
+$dark-color-2: #330091;
+$accent-purple: #b300ff; // Bright purple for headlines
+
+
+// Fonts
+$font-display: 'Epicene Display', serif;
+$font-text: 'Epicene Text', sans-serif;
+$font-body: 'Inter', sans-serif;
+
+// Colors
+$surface-default: rgba(28, 28, 28, 1);
+$surface-default-contrast: rgba(239, 239, 239, 1);
+$surface-accent: rgba(172, 147, 236, 1);
+$surface-accent-medium: rgb(58, 35, 128, 1);
+
+$text-default: rgba(239, 239, 239, 1);
+$text-medium: rgba(239, 239, 239, 0.8);
+$text-default-contrast:  rgba(28, 28, 28, 1);
+$text-accent: rgba(172, 147, 236, 1);
+
+// Spacing
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+
+// Breakpoints
+$breakpoint-xs: 320px;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+// Border radius
+$border-radius: 0.25rem;
+
+// Shadows
+$shadow-default: 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-hover: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+// Transitions
+$transition-duration: 0.3s;
+$transition-easing: ease-in-out;
+
+// Z-index
+$z-index-default: 1;
+$z-index-overlay: 10;
+$z-index-modal: 100;
+
+// Other variables
+$placeholder-color: rgba(239, 239, 239, 0.5);
+$placeholder-opacity: 0.5;

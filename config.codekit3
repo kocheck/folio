@@ -42,6 +42,54 @@
       "rFN" : 0,
       "uCM" : 0
     },
+    "\/source\/assets\/fonts\/epicene-display-bold.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/assets\/fonts\/epicene-display-bold.woff2",
+      "oF" : 0
+    },
+    "\/source\/assets\/fonts\/epicene-display-light-italic.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/assets\/fonts\/epicene-display-light-italic.woff2",
+      "oF" : 0
+    },
+    "\/source\/assets\/fonts\/epicene-display-light.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/assets\/fonts\/epicene-display-light.woff2",
+      "oF" : 0
+    },
+    "\/source\/assets\/fonts\/epicene-display-regular.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/assets\/fonts\/epicene-display-regular.woff2",
+      "oF" : 0
+    },
+    "\/source\/assets\/fonts\/epicene-text-bold.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/assets\/fonts\/epicene-text-bold.woff2",
+      "oF" : 0
+    },
+    "\/source\/assets\/fonts\/epicene-text-regular.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/assets\/fonts\/epicene-text-regular.woff2",
+      "oF" : 0
+    },
     "\/source\/components\/footer.kit" : {
       "cB" : 0,
       "ft" : 2048,
@@ -98,6 +146,21 @@
       "ma" : 1,
       "oA" : 1,
       "oAP" : "\/build\/scss\/abstracts\/_variables.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 1,
+      "sct" : 0
+    },
+    "\/source\/scss\/base\/_background.scss" : {
+      "aP" : 1,
+      "bl" : 1,
+      "co" : 1,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 1,
+      "oA" : 1,
+      "oAP" : "\/build\/scss\/base\/_background.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 1,
@@ -236,7 +299,7 @@
     "displayValueWasSetByUser" : 0,
     "iconImageName" : "meme-ariel",
     "iconImageWasSetByUser" : 1,
-    "lastBuiltDate" : 746075265.72817099
+    "lastBuiltDate" : 746112939.22734904
   },
   "projectSettings" : {
     "abortBuildOnError" : 1,

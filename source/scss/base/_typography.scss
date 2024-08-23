@@ -1,1 +1,100 @@
-// typography css
+// _typography.scss
+
+// Import Inter from Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+// Epicene Display
+@font-face {
+  font-family: 'Epicene Display';
+  src: url('../../assets/fonts/epicene-display-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Epicene Display';
+  src: url('../../assets/fonts/epicene-display-bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Epicene Display';
+  src: url('../../assets/fonts/epicene-display-light.woff2') format('woff2');
+  font-weight: 300; // Assuming 300 for light, adjust if different
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Epicene Display';
+  src: url('../../assets/fonts/epicene-display-light-italic.woff2') format('woff2');
+  font-weight: 300; // Assuming 300 for light, adjust if different
+  font-style: italic;
+  font-display: swap;
+}
+
+// Epicene Text
+@font-face {
+  font-family: 'Epicene Text';
+  src: url('../../assets/fonts/epicene-text-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Epicene Text';
+  src: url('../../assets/fonts/epicene-text-bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Font usage examples
+body {
+  font-family: $font-body;
+  font-weight: normal;
+  color: $text-default;
+}
+
+
+// Style for headlines
+h1, h2, h3, h4, h5, h6 {
+  color: $accent-purple;
+  font-family: $font-display; // Using Epicene Display for headlines
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba($accent-purple, 0.3); // Subtle glow effect
+}
+
+// Typography utility classes
+.font-light {
+  font-weight: 300;
+}
+
+.font-normal {
+  font-weight: 400;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-display {
+  font-family: $font-display;
+}
+
+.font-body {
+  font-family: $font-body;
+}
+

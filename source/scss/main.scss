@@ -9,6 +9,7 @@
 // Base
 
 @import 'base/typography';
+@import 'base/background';
 
 // Components
 @import 'components/buttons';
@@ -24,16 +25,10 @@
 
 
 html {
-  background-color: black;
+  // background-color: $surface-default;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-  color: white;
-}
+
 .container {
   width: 80%;
   margin: auto;
