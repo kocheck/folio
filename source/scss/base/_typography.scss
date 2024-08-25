@@ -63,7 +63,6 @@ body {
 
 // Style for headlines
 h1, h2, h3, h4, h5, h6 {
-  color: $accent-purple;
   font-family: $font-display; // Using Epicene Display for headlines
   font-weight: bold;
   text-shadow: 0 0 10px rgba($accent-purple, 0.3); // Subtle glow effect
