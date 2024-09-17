@@ -42,6 +42,22 @@
       "rFN" : 0,
       "uCM" : 0
     },
+    "\/source\/assets\/art\/footer.kit" : {
+      "cB" : 0,
+      "ft" : 2048,
+      "hM" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/assets\/art\/footer.html",
+      "oF" : 0
+    },
+    "\/source\/assets\/art\/header.kit" : {
+      "cB" : 0,
+      "ft" : 2048,
+      "hM" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/assets\/art\/header.html",
+      "oF" : 0
+    },
     "\/source\/assets\/fonts\/epicene-display-bold.woff2" : {
       "cB" : 0,
       "ft" : 8192,
@@ -176,6 +192,21 @@
       "ma" : 1,
       "oA" : 1,
       "oAP" : "\/build\/scss\/base\/_typography.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 1,
+      "sct" : 0
+    },
+    "\/source\/scss\/components\/_art.scss" : {
+      "aP" : 1,
+      "bl" : 1,
+      "co" : 1,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 1,
+      "oA" : 1,
+      "oAP" : "\/build\/scss\/components\/_art.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 1,
