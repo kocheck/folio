@@ -53,53 +53,76 @@
   font-display: swap;
 }
 
-// Font usage examples
+
+// Base font size calculation
+html {
+  font-size: calc(14px + 0.390625vw); // Responsive base font size
+}
+
+// Semantic HTML typography styles
 body {
-  font-family: 'Epicene Text';
-  font-weight: 300;
-  font-size: 36px;
+  font-family: $font-body;
+  font-size: 1rem; // 1rem = base font size
+  line-height: 1.5;
 }
 
+p {
+  margin-bottom: 1.5rem;
+}
 
-// Style for headlines
+// Headings
 h1, h2, h3, h4, h5, h6 {
-  font-family: $font-display; // Using Epicene Display for headlines
-  font-weight: 800;
-  font-style: normal;
-  h1 {
-    font-size: 96px;
-  }
-  h2 {
-    font-size: 48px;
-  }
+  font-family: $font-display;
+  line-height: 1.2;
+  margin-bottom: 1rem;
 }
 
-// Typography utility classes
-.font-light {
-  font-weight: 300;
+h1 {
+  font-size: 2.5rem; // 40px at 1024px viewport width
 }
 
-.font-normal {
-  font-weight: 400;
+h2 {
+  font-size: 2rem; // 32px at 1024px viewport width
 }
 
-.font-medium {
-  font-weight: 500;
+h3 {
+  font-size: 1.75rem; // 28px at 1024px viewport width
 }
 
-.font-semibold {
-  font-weight: 600;
+h4 {
+  font-size: 1.5rem; // 24px at 1024px viewport width
 }
 
-.font-bold {
+h5 {
+  font-size: 1.25rem; // 20px at 1024px viewport width
+}
+
+h6 {
+  font-size: 1rem; // 16px at 1024px viewport width
+}
+
+// Other semantic elements
+blockquote {
+  font-style: italic;
+  font-size: 1.1rem;
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+  border-left: 4px solid $text-default-contrast;
+}
+
+code, pre {
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+small {
+  font-size: 0.8rem;
+}
+
+strong {
   font-weight: 700;
 }
 
-.font-display {
-  font-family: $font-display;
+em {
+  font-style: italic;
 }
-
-.font-body {
-  font-family: $font-body;
-}
-
