@@ -126,3 +126,71 @@ strong {
 em {
   font-style: italic;
 }
+
+// Lists
+ul, ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+// Links
+a {
+  color: $text-accent;
+  text-decoration: none;
+  transition: color $transition-duration $transition-easing;
+
+  &:hover, &:focus {
+    color: mix(white, $text-accent, 10%);
+    text-decoration: underline;
+  }
+}
+
+// Paragraphs
+p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+// Citation
+cite {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: $text-medium;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+// Text sizes
+.text-small {
+  font-size: 0.8rem;
+}
+
+.text-large {
+  font-size: 1.2rem;
+}
+
+.text-xl {
+  font-size: 1.5rem;
+}
+
+
+.italic {
+  font-family: $font-display;
+  font-weight: 300; // Light weight
+  font-style: italic;
+}
+
+// Usage example:
+// <h1 class="italic">This is a light italic header using Epicene Display</h1>
