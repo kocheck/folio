@@ -1,0 +1,79 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        title Kyle Kochanek's Online Space
+        meta(
+            name="description"
+            content="Kyle's online space for his portfolio and different musing on design and craft."
+        )
+        meta(name="author" content="Kyle Kochanek")
+
+        link(rel="stylesheet" href="./scss/main.css")
+
+        //- Favicon
+        link(rel="icon" href="favicon.ico" type="image/x-icon")
+
+    body
+        header
+            .container
+                h1 I am am H1
+                h2 I am an H2
+                h3 I am an H3
+                h4 I am an H4
+                h5 I am an H5
+                h6 I am an H6
+
+        main
+            section.typography-test
+                h2 Typography
+                    span.italic Test
+                    |  Content
+
+                .text-block
+                    p This is a paragraph of text. It demonstrates the body copy style. The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs.
+                    p Here's another paragraph to show spacing between paragraphs. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+                .text-with-heading
+                    h3 Section Heading
+                    p This shows how a heading looks when paired with body text. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+                .list-examples
+                    h4 List Styles
+                    ul
+                        li Unordered list item 1
+                        li Unordered list item 2
+                        li Unordered list item 3
+                    ol
+                        li Ordered list item 1
+                        li Ordered list item 2
+                        li Ordered list item 3
+
+                .quote-block
+                    blockquote "This is a blockquote. It can be used to highlight important text or quotations from other sources."
+                    cite - Citation Example
+
+                .text-emphasis
+                    p This paragraph contains
+                        em emphasized text
+                        |  and
+                        strong strong text
+                        |  to show how inline styles appear.
+
+                .link-styles
+                    p Here's an example of a
+                        a(href="#") link style
+                        |  within a paragraph of text.
+
+                .text-sizes
+                    p.text-small This is small text.
+                    p.text-large This is large text.
+                    p.text-xl This is extra large text.
+
+        //- Include footer
+        include components/footer
+
+        //- JavaScript
+        script.
+            // Add your custom scripts here

@@ -7,7 +7,7 @@
       "uuidString" : "2C7CB754-4FCC-486F-A20F-185B15319EED"
     }
   ],
-  "creatorBuild" : "34592",
+  "creatorBuild" : "34576",
   "files" : {
     "\/.prettierrc" : {
       "cB" : 0,
@@ -114,21 +114,38 @@
       "oAP" : "\/build\/assets\/fonts\/epicene-text-regular.woff2",
       "oF" : 0
     },
-    "\/source\/components\/footer.kit" : {
+    "\/source\/assets\/images\/site-texture.png" : {
+      "ft" : 32768,
+      "iS" : 30696,
+      "oA" : 0,
+      "oAP" : "\/build\/assets\/images\/site-texture.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/source\/components\/footer.pug" : {
       "cB" : 0,
-      "ft" : 2048,
+      "cOD" : 1,
+      "ft" : 512,
       "hM" : 0,
       "oA" : 1,
       "oAP" : "\/build\/components\/footer.html",
-      "oF" : 0
+      "oF" : 0,
+      "oS" : 1
     },
-    "\/source\/index.kit" : {
+    "\/source\/index.pug" : {
       "cB" : 0,
-      "ft" : 2048,
+      "cOD" : 1,
+      "ft" : 512,
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/build\/index.html",
-      "oF" : 0
+      "oF" : 0,
+      "oS" : 1
     },
     "\/source\/scss\/abstracts\/_functions.scss" : {
       "aP" : 1,
@@ -324,6 +341,16 @@
       "oS" : 0,
       "pg" : 1,
       "sct" : 0
+    },
+    "\/source\/test.pug" : {
+      "cB" : 0,
+      "cOD" : 1,
+      "ft" : 512,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/test.html",
+      "oF" : 0,
+      "oS" : 1
     }
   },
   "hooks" : [
@@ -338,7 +365,7 @@
     "displayValueWasSetByUser" : 0,
     "iconImageName" : "meme-ariel",
     "iconImageWasSetByUser" : 1,
-    "lastBuiltDate" : 751580243.93058598
+    "lastBuiltDate" : 752034593.45332599
   },
   "projectSettings" : {
     "abortBuildOnError" : 1,
@@ -838,6 +865,10 @@
         "active" : 0,
         "optionString" : "{'before': true, 'after': true, 'overrides': {}}"
       },
+      "line-comment-position" : {
+        "active" : 0,
+        "optionString" : "{'position': 'above'}"
+      },
       "linebreak-style" : {
         "active" : 0,
         "optionString" : "'unix'"
@@ -889,6 +920,10 @@
       "max-statements-per-line" : {
         "active" : 0,
         "optionString" : "{'max': 1}"
+      },
+      "multiline-comment-style" : {
+        "active" : 0,
+        "optionString" : "'starred-block'"
       },
       "multiline-ternary" : {
         "active" : 0,
@@ -1031,8 +1066,7 @@
         "active" : 0
       },
       "no-extra-boolean-cast" : {
-        "active" : 1,
-        "optionString" : "{'enforceForInnerExpressions': false}"
+        "active" : 1
       },
       "no-extra-label" : {
         "active" : 0
@@ -1117,8 +1151,7 @@
         "optionString" : "{'ignore': [], 'ignoreArrayIndexes': true, 'ignoreDefaultValues': false, 'ignoreClassFieldInitialValues': false, 'enforceConst': false, 'detectObjects': false}"
       },
       "no-misleading-character-class" : {
-        "active" : 1,
-        "optionString" : "{'allowEscape': false}"
+        "active" : 1
       },
       "no-mixed-operators" : {
         "active" : 0,
@@ -1486,8 +1519,7 @@
         "active" : 0
       },
       "require-unicode-regexp" : {
-        "active" : 0,
-        "optionString" : "{'requireFlag': 'u'}"
+        "active" : 0
       },
       "require-yield" : {
         "active" : 1
@@ -1917,7 +1949,6 @@
     "tsImportHelpers" : 0,
     "tsIsolatedModules" : 0,
     "tsJSXFactory" : "React.createElement",
-    "tsJSXFragmentFactory" : "Fragment",
     "tsNoEmitHelpers" : 0,
     "tsNoFallthroughCasesInSwitch" : 0,
     "tsNoImplicitAny" : 0,

@@ -1,1 +1,10 @@
 // Home Page CSS
+
+.heading-group {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    svg {
+        margin-top: 0.8571428571rem;
+    }
+}
