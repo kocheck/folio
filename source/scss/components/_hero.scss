@@ -1,0 +1,64 @@
+.hero {
+    padding: clamp(2rem, 5vw, 4rem) 0;
+
+    .content-wrapper {
+        display: flex;
+        gap: 2rem;
+    }
+
+    &__content {
+        flex: 1;
+        padding-right: 1rem;
+        padding-top: clamp(1rem, 3vw, 3rem);
+    }
+
+    &__media {
+        flex: 1;
+
+        img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 2rem;
+        }
+
+        &-info {
+            display: flex;
+            gap: 2rem;
+
+            &-block {
+                flex: 1;
+
+                h3 {
+                    font-family: $font-body;
+                    text-align: right;
+                    font-size: 1.25rem;
+                    font-style: normal;
+                    font-weight: 479;
+                    line-height: normal;
+                    margin-bottom: 0.75rem;
+                }
+
+                p {
+                    color: $text-medium;
+                    text-align: right;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+
+    @media (max-width: $breakpoint-md) {
+        .content-wrapper {
+            flex-direction: column;
+        }
+
+        &__content {
+            padding-top: 0;
+        }
+
+        &__content,
+        &__media {
+            width: 100%;
+        }
+    }
+}

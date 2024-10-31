@@ -14,12 +14,14 @@
 // Components
 @import 'components/buttons';
 @import 'components/art';
-
+@import 'components/nav';
+@import 'components/hero';
 
 // Layout
 @import 'layout/header';
 @import 'layout/footer';
 @import 'layout/navigation';
+@import 'layout/content';
 
 // Pages
 @import 'pages/home';
@@ -27,8 +29,16 @@
 
 
 .container {
-  width: 80%;
-  margin: auto;
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 0 clamp(1rem, 5vw, 3rem);
+  width: 100%;
   overflow: hidden;
-  padding: 20px;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
 }

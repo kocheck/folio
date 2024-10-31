@@ -1,0 +1,41 @@
+// New content wrapper class
+.content-wrapper {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 5vw, 3rem);
+}
+
+// Nav stays full width
+nav {
+    width: 100%;
+    // ... existing nav styles ...
+}
+
+// Hero section with max-width
+.hero {
+    .content-wrapper {
+        display: flex;
+        gap: 2rem;
+    }
+
+    &__content {
+        flex: 1;
+        max-width: 50%;
+    }
+
+    &__media {
+        flex: 1;
+        // ... existing media styles ...
+    }
+
+    @media (max-width: $breakpoint-md) {
+        .content-wrapper {
+            flex-direction: column;
+        }
+
+        &__content,
+        &__media {
+            max-width: 100%;
+        }
+    }
+}
