@@ -7,8 +7,10 @@ body {
   flex-direction: column;
   align-items: flex-start;
   gap: 96px;
-  background: $background-dark;
-  color: $text-light;
+  background: var(--background);
+  color: var(--text);
+  transition: background-color $transition-duration $transition-easing,
+              color $transition-duration $transition-easing;
 }
 
 // Global texture overlay

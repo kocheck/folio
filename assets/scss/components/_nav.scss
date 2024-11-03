@@ -52,6 +52,18 @@ nav {
                 }
             }
         }
+
+        .nav-logo {
+            a {
+                color: $text-default;
+                text-decoration: none;
+
+                svg {
+                    fill: currentColor;
+                    transition: fill $transition-duration $transition-easing;
+                }
+            }
+        }
     }
 
     .hamburger {
@@ -92,36 +104,68 @@ nav {
             }
         }
     }
-}
 
-@media (min-width: $breakpoint-md) {
-    nav {
+    @media (min-width: $breakpoint-md) {
         position: static;
-        width: auto;
+        width: 100%;
         height: auto;
         background: transparent;
         padding-top: $spacing-xl;
 
         .nav-container {
-            padding: 0 $spacing-xl * 2 0 0;
-            align-items: flex-end;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            max-width: 75rem;
+            margin: 0 auto;
+            padding: 0 clamp(1rem, 5vw, 3rem);
+            height: auto;
+            position: relative;
+
+            .nav-logo {
+                width: 150px;
+                position: absolute;
+                left: clamp(1rem, 5vw, 3rem);
+
+                svg {
+                    width: 100%;
+                    height: auto;
+                    fill: $text-default;
+                    display: block;
+                    transition: fill $transition-duration $transition-easing;
+                }
+            }
 
             ul {
                 display: flex;
                 gap: $spacing-md;
-                justify-content: flex-end;
-                width: 100%;
+                justify-content: center;
+                margin: 0 auto;
+                padding: 0;
 
                 li {
                     margin: 0;
-
-                    .nav-link-wrapper {
-                        a {
-                            font-size: 1rem;
-                            padding: $spacing-sm $spacing-md;
-                            text-align: right;
-                        }
+                    .nav-link-wrapper a {
+                        font-size: 1rem;
+                        padding: $spacing-sm $spacing-md;
                     }
+                }
+            }
+
+            .theme-toggle {
+                position: absolute;
+                right: clamp(1rem, 5vw, 3rem);
+                background: transparent;
+                border: none;
+                cursor: pointer;
+                padding: $spacing-sm;
+                color: $text-default;
+
+                .moon { display: none; }
+
+                &[data-theme="dark"] {
+                    .sun { display: none; }
+                    .moon { display: inline; }
                 }
             }
         }
@@ -129,5 +173,13 @@ nav {
         .hamburger {
             display: none;
         }
+
+        // Use the mixin for section colors
+        @include section-logo-colors;
     }
+}
+
+// Mobile section colors using the same mixin
+nav {
+    @include section-logo-colors;
 }

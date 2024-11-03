@@ -1,0 +1,43 @@
+.page-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9997;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background);
+    opacity: 0;
+    transition: opacity $transition-duration $transition-easing;
+  }
+}
+
+// Main content wrapper
+.content-wrapper {
+  transition: filter $transition-duration $transition-easing,
+              opacity $transition-duration $transition-easing;
+
+  &.transitioning {
+    filter: blur(10px);
+    opacity: 0;
+  }
+}
+
+// Prevent blur on fixed elements
+.hamburger,
+nav,
+.nav-logo {
+  transition: opacity $transition-duration $transition-easing;
+
+  &.transitioning {
+    opacity: 0;
+  }
+}

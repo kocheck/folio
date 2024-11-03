@@ -1,0 +1,17 @@
+@mixin section-logo-colors {
+    &.home .nav-logo a {
+        color: mix($text-default, $text-accent, 85%);
+    }
+
+    &.section-work .nav-logo a {
+        color: mix($text-default, $text-creative, 85%);
+    }
+
+    &.section-about .nav-logo a {
+        color: mix($text-default, $text-personality, 85%);
+    }
+
+    &.section-contact .nav-logo a {
+        color: mix($text-default, $text-logical, 85%);
+    }
+}
