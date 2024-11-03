@@ -1,46 +1,32 @@
-// Abstracts
+// Abstracts (Core utilities - should be first)
 @import 'abstracts/variables';
 @import 'abstracts/mixins';
 @import 'abstracts/functions';
 
-// Vendors
+// Theme (Move this before components)
+@import 'theme-colors';
+
+// Vendors (Third-party styles)
 @import 'vendors/normalize';
 
-// Base
-
+// Base (Global styles)
 @import 'base/typography';
 @import 'base/background';
+@import 'base/global';
 
-// Components
+// Layout (Major structural components)
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/content';
+
+// Components (Reusable UI components)
 @import 'components/buttons';
 @import 'components/art';
 @import 'components/nav';
 @import 'components/hero';
+@import 'components/hamburger';
 
-// Layout
-@import 'layout/header';
-@import 'layout/footer';
-@import 'layout/navigation';
-@import 'layout/content';
-
-// Pages
+// Pages (Page-specific styles)
 @import 'pages/home';
 @import 'pages/work';
 @import 'pages/work-item';
-
-
-
-.container {
-  margin: 0 auto;
-  max-width: 90rem;
-  padding: 0 clamp(1rem, 5vw, 3rem);
-  width: 100%;
-  overflow: hidden;
-}
-
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    overflow-x: hidden;
-}
