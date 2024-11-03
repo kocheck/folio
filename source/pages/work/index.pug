@@ -1,0 +1,16 @@
+extends ../../layouts/main
+
+block variables
+    - var currentPage = 'work'
+    - var workProjects = require('../../data/work.json').workProjects
+
+block content
+    section.work-grid
+        each project in workProjects
+            a.work-card(href=`/work/${project.slug}`)
+                .work-card__media
+                    img(src=project.thumbnail alt=project.title)
+                .work-card__content
+                    h2= project.title
+                    p.company= project.company
+                    p.date= project.date

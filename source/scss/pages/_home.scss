@@ -8,3 +8,69 @@
         margin-top: 0.8571428571rem;
     }
 }
+
+.featured-work {
+    padding: $spacing-xl 0;
+
+    h2 {
+        margin-bottom: $spacing-lg;
+    }
+
+    .work-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: $spacing-lg;
+    }
+
+    .work-card {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        background: $surface-default;
+        border-radius: $border-radius;
+        overflow: hidden;
+        transition: transform $transition-duration $transition-easing;
+
+        &:hover {
+            transform: translateY(-4px);
+        }
+
+        &__media {
+            aspect-ratio: 16/9;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        &__content {
+            padding: $spacing-md;
+
+            h2 {
+                margin: 0 0 $spacing-sm;
+            }
+
+            .company {
+                color: $text-medium;
+                margin-bottom: $spacing-xs;
+            }
+
+            .tags {
+                display: flex;
+                gap: $spacing-xs;
+                flex-wrap: wrap;
+                margin-top: $spacing-sm;
+
+                .tag {
+                    font-size: 0.875rem;
+                    padding: $spacing-xs $spacing-sm;
+                    background: rgba($text-medium, 0.1);
+                    border-radius: $border-radius-sm;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "folio",
+  "version": "1.0.0",
+  "description": "A personal portfolio website showcasing my work and thoughts on design and development.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gray-matter": "^4.0.3"
+  }
+}

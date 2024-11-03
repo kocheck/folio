@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // mixins css
 
 // In _mixins.scss
@@ -233,10 +235,10 @@
     }
 
     &:active {
-        color: darken($color, 15%);
+        color: color.adjust($color, $lightness: -15%);
 
         &::after {
-            background-color: darken($color, 15%);
+            background-color: color.adjust($color, $lightness: -15%);
         }
     }
 }

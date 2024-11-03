@@ -31,6 +31,28 @@
       "oAP" : "\/build\/LICENSE",
       "oF" : 1
     },
+    "\/node_modules" : {
+      "ft" : 65536,
+      "oA" : 2,
+      "oAP" : "\/build\/node_modules",
+      "oF" : 0
+    },
+    "\/package-lock.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/build\/package-lock-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/package.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/build\/package-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
     "\/README.md" : {
       "cB" : 0,
       "cS" : 0,
@@ -137,6 +159,19 @@
       "q" : 90,
       "rq" : 75
     },
+    "\/source\/assets\/images\/work\/project-1-thumb.png" : {
+      "ft" : 32768,
+      "iS" : 123098,
+      "oA" : 0,
+      "oAP" : "\/build\/assets\/images\/work\/project-1-thumb.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
     "\/source\/components\/_footer.pug" : {
       "cB" : 0,
       "cOD" : 1,
@@ -157,6 +192,90 @@
       "oF" : 0,
       "oS" : 1
     },
+    "\/source\/content\/work\/featured-project.md" : {
+      "cB" : 0,
+      "cS" : 0,
+      "eF" : 1,
+      "eL" : 1,
+      "ema" : 1,
+      "eSQ" : 1,
+      "ft" : 4096,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/content\/work\/featured-project.html",
+      "oF" : 0,
+      "oFM" : 0,
+      "oS" : 0,
+      "pHT" : 0,
+      "pME" : 1,
+      "rFN" : 0,
+      "uCM" : 0
+    },
+    "\/source\/content\/work\/project-1.md" : {
+      "cB" : 0,
+      "cS" : 0,
+      "eF" : 1,
+      "eL" : 1,
+      "ema" : 1,
+      "eSQ" : 1,
+      "ft" : 4096,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/content\/work\/project-1.html",
+      "oF" : 1,
+      "oFM" : 0,
+      "oS" : 0,
+      "pHT" : 0,
+      "pME" : 1,
+      "rFN" : 0,
+      "uCM" : 0
+    },
+    "\/source\/content\/work\/project-2.md" : {
+      "cB" : 0,
+      "cS" : 0,
+      "eF" : 1,
+      "eL" : 1,
+      "ema" : 1,
+      "eSQ" : 1,
+      "ft" : 4096,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/content\/work\/project-2.html",
+      "oF" : 1,
+      "oFM" : 0,
+      "oS" : 0,
+      "pHT" : 0,
+      "pME" : 1,
+      "rFN" : 0,
+      "uCM" : 0
+    },
+    "\/source\/content\/work\/project-3.md" : {
+      "cB" : 0,
+      "cS" : 0,
+      "eF" : 1,
+      "eL" : 1,
+      "ema" : 1,
+      "eSQ" : 1,
+      "ft" : 4096,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/content\/work\/project-3.html",
+      "oF" : 0,
+      "oFM" : 0,
+      "oS" : 0,
+      "pHT" : 0,
+      "pME" : 1,
+      "rFN" : 0,
+      "uCM" : 0
+    },
+    "\/source\/data\/work.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/build\/data\/work-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
     "\/source\/js\/nav.js" : {
       "bF" : 0,
       "ft" : 64,
@@ -175,6 +294,16 @@
       "hM" : 0,
       "oA" : 1,
       "oAP" : "\/build\/layouts\/main.html",
+      "oF" : 0,
+      "oS" : 1
+    },
+    "\/source\/layouts\/work-item.pug" : {
+      "cB" : 0,
+      "cOD" : 1,
+      "ft" : 512,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/layouts\/work-item.html",
       "oF" : 0,
       "oS" : 1
     },
@@ -208,15 +337,26 @@
       "oF" : 2,
       "oS" : 1
     },
-    "\/source\/pages\/work.pug" : {
+    "\/source\/pages\/work\/index.pug" : {
       "cB" : 0,
       "cOD" : 1,
       "ft" : 512,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/build\/pages\/work.html",
+      "oAP" : "\/build\/pages\/work\/index.html",
       "oF" : 0,
       "oS" : 1
+    },
+    "\/source\/scripts\/generate-work-data.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/build\/scripts\/generate-work-data.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
     },
     "\/source\/scss\/abstracts\/_functions.scss" : {
       "aP" : 1,
@@ -443,6 +583,21 @@
       "pg" : 1,
       "sct" : 0
     },
+    "\/source\/scss\/pages\/_work.scss" : {
+      "aP" : 1,
+      "bl" : 1,
+      "co" : 1,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 1,
+      "oA" : 1,
+      "oAP" : "\/build\/scss\/pages\/_work.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 1,
+      "sct" : 0
+    },
     "\/source\/scss\/vendors\/_normalize.scss" : {
       "aP" : 1,
       "bl" : 1,
@@ -460,7 +615,15 @@
     }
   },
   "hooks" : [
-
+    {
+      "enabled" : 1,
+      "name" : "Markdow",
+      "predicateDataBase64Encoded" : "YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAGvEB4LDBMZISssLjU5Pj9CRkpPUFNZXWFma29yc3Z3eXtVJG51bGzTDQ4PEBESXxAXTlNDb21wb3VuZFByZWRpY2F0ZVR5cGVfEA9OU1N1YnByZWRpY2F0ZXNWJGNsYXNzEAGAAoAd0hQPFRhaTlMub2JqZWN0c6IWF4ADgBSAHNQPGhscHR4fIF8QEU5TUmlnaHRFeHByZXNzaW9uXxAQTlNMZWZ0RXhwcmVzc2lvbl8QE05TUHJlZGljYXRlT3BlcmF0b3KAE4AOgASAEdUiIyQlDyYnKCkqWU5TT3BlcmFuZF5OU1NlbGVjdG9yTmFtZV8QEE5TRXhwcmVzc2lvblR5cGVbTlNBcmd1bWVudHOABoAFEAOACIANXHZhbHVlRm9yS2V5OtIkDxAtgAfSLzAxMlokY2xhc3NuYW1lWCRjbGFzc2VzXxAQTlNTZWxmRXhwcmVzc2lvbqMxMzRcTlNFeHByZXNzaW9uWE5TT2JqZWN00hQPNjihN4AJgAzTDyQ6Ozw9WU5TS2V5UGF0aIALEAqACl8QFGlucHV0QWJicmV2aWF0ZWRQYXRo0i8wQEFfEBxOU0tleVBhdGhTcGVjaWZpZXJFeHByZXNzaW9uo0AzNNIvMENEXk5TTXV0YWJsZUFycmF5o0NFNFdOU0FycmF50i8wR0hfEBNOU0tleVBhdGhFeHByZXNzaW9upEdJMzRfEBROU0Z1bmN0aW9uRXhwcmVzc2lvbtNLJA9MTU5fEA9OU0NvbnN0YW50VmFsdWWADxAAgBBcY29udGVudC93b3Jr0i8wUVJfEBlOU0NvbnN0YW50VmFsdWVFeHByZXNzaW9uo1EzNNQPVFVWV00oWFpOU01vZGlmaWVyV05TRmxhZ3NeTlNPcGVyYXRvclR5cGWAEhBj0i8wWltfEBVOU0luUHJlZGljYXRlT3BlcmF0b3KjWlw0XxATTlNQcmVkaWNhdGVPcGVyYXRvctIvMF5fXxAVTlNDb21wYXJpc29uUHJlZGljYXRlo15gNFtOU1ByZWRpY2F0ZdQPGhscHWNkZYATgBmAFYAb1SIjJCUPJicoaSqABoAFgBaADdIUD2w4oW2AF4AM0w8kOjs8cYALgBhdaW5wdXRGaWxlbmFtZdNLJA90TU6AGoAQUy5tZNQPVFVWV00oWIAS0i8wRXqiRTTSLzB8fV8QE05TQ29tcG91bmRQcmVkaWNhdGWjfGA0AAgAEQAaACQAKQAyADcASQBMAFEAUwB0AHoAgQCbAK0AtAC2ALgAugC\/AMoAzQDPANEA0wDcAPABAwEZARsBHQEfASEBLAE2AUUBWAFkAWYBaAFqAWwBbgF7AYABggGHAZIBmwGuAbIBvwHIAc0BzwHRAdMB2gHkAeYB6AHqAgECBgIlAikCLgI9AkECSQJOAmQCaQKAAocCmQKbAp0CnwKsArECzQLRAtoC5QLtAvwC\/gMAAwUDHQMhAzcDPANUA1gDZANtA28DcQNzA3UDgAOCA4QDhgOIA40DjwORA5MDmgOcA54DrAOzA7UDtwO7A8QDxgPLA84D0wPpAAAAAAAAAgEAAAAAAAAAfgAAAAAAAAAAAAAAAAAAA+0=",
+      "runOrder" : 0,
+      "scriptSourceString" : "node source\/scripts\/generate-work-data.js",
+      "scriptType" : 1,
+      "uuidString" : "C7710F5C-3650-4A26-94B9-05D3EB270B41"
+    }
   ],
   "manualImportLinks" : {
 
@@ -471,7 +634,7 @@
     "displayValueWasSetByUser" : 0,
     "iconImageName" : "meme-ariel",
     "iconImageWasSetByUser" : 1,
-    "lastBuiltDate" : 752287394.70062804
+    "lastBuiltDate" : 752290120.05438197
   },
   "projectSettings" : {
     "abortBuildOnError" : 1,

@@ -37,7 +37,9 @@ $breakpoint-lg: 992px;
 $breakpoint-xl: 1200px;
 
 // Border radius
-$border-radius: 0.25rem;
+$border-radius: 8px;
+$border-radius-sm: 4px;
+$border-radius-lg: 16px;
 
 // Shadows
 $shadow-default: 0 2px 4px rgba(0, 0, 0, 0.1);

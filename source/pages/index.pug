@@ -2,6 +2,7 @@ extends ../layouts/main
 
 block variables
     - var currentPage = 'home'
+    - var { featuredProjects } = require('../data/work.json')
 
 block content
     header.hero
@@ -69,3 +70,19 @@ block content
                 p.text-small This is small text.
                 p.text-large This is large text.
                 p.text-xl This is extra large text.
+
+    section.featured-work
+        .content-wrapper
+            h2 Featured Work
+            .work-grid
+                each project in featuredProjects
+                    a.work-card(href=`/work/${project.slug}`)
+                        .work-card__media
+                            img(src=project.thumbnail alt=project.title)
+                        .work-card__content
+                            h2= project.title
+                            p.company= project.company
+                            if project.tags
+                                .tags
+                                    each tag in project.tags
+                                        span.tag= tag
