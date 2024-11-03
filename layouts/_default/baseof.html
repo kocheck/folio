@@ -6,13 +6,16 @@
 <body>
     {{ partial "nav.html" . }}
 
-    <main class="content-wrapper">
+    <main class="content-wrapper transitioning">
         {{ block "main" . }}{{ end }}
     </main>
 
     {{ partial "footer.html" . }}
 
     {{ $js := resources.Get "js/nav.js" | resources.Minify }}
+    {{ $transition := resources.Get "js/transition.js" | resources.Minify }}
     <script src="{{ $js.RelPermalink }}"></script>
+    <script src="{{ "js/theme.js" | absURL }}"></script>
+    <script src="{{ $transition.RelPermalink }}"></script>
 </body>
 </html>

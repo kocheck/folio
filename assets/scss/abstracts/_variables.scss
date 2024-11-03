@@ -6,11 +6,6 @@ $dark-color-2: rgb(22, 16, 26);
 $accent-purple: #FF33F5; // Bright purple for headlines
 
 
-// Fonts
-$font-display: 'Epicene Display', serif;
-$font-text: 'Epicene Text', sans-serif;
-$font-body: 'Inter', sans-serif;
-
 // Colors
 $surface-default: rgba(28, 28, 28, 1);
 $surface-default-contrast: rgba(239, 239, 239, 1);
@@ -21,9 +16,64 @@ $text-default: rgba(239, 239, 239, 1);
 $text-medium: rgba(239, 239, 239, 0.8);
 $text-default-contrast:  rgba(28, 28, 28, 1);
 $text-accent: hsl(303, 100%, 60%);
+$text-accent-light: hsl(303, 100%, 45%);
 $text-creative: hsl(180, 100%, 60%);  // Cyan for work section
 $text-personality: hsl(35, 100%, 60%); // Orange for about section
 $text-logical: hsl(140, 100%, 60%);    // Green for contact section
+
+
+// Light theme colors
+$light-background: #ffffff;
+$light-surface: #f5f5f5;
+$light-text: #1a1a1a;
+$light-text-medium: rgba(26, 26, 26, 0.8);
+
+// Dark theme colors (existing)
+$dark-background: #1E1E1E;
+$dark-surface: $surface-default;
+$dark-text: $text-default;
+$dark-text-medium: $text-medium;
+
+// Accent colors light theme versions
+$text-accent-light: hsl(303, 100%, 45%);      // Darker purple
+$text-creative-light: hsl(180, 100%, 30%);     // Darker cyan
+$text-personality-light: hsl(35, 100%, 45%);   // Darker orange
+$text-logical-light: hsl(140, 100%, 30%);      // Darker green
+
+// Surface colors light theme
+$surface-accent-light: rgba(172, 147, 236, 0.3);
+$surface-accent-medium-light: rgba(58, 35, 128, 0.2);
+
+:root {
+    --background: #{$dark-background};
+    --surface: #{$dark-surface};
+    --text: #{$dark-text};
+    --text-medium: #{$dark-text-medium};
+    --text-accent: #{$text-accent};
+    --text-creative: #{$text-creative};
+    --text-personality: #{$text-personality};
+    --text-logical: #{$text-logical};
+    --surface-accent: #{$surface-accent};
+    --surface-accent-medium: #{$surface-accent-medium};
+}
+
+:root[data-theme="light"] {
+    --background: #{$light-background};
+    --surface: #{$light-surface};
+    --text: #{$light-text};
+    --text-medium: #{$light-text-medium};
+    --text-accent: #{$text-accent-light};
+    --text-creative: #{$text-creative-light};
+    --text-personality: #{$text-personality-light};
+    --text-logical: #{$text-logical-light};
+    --surface-accent: #{$surface-accent-light};
+    --surface-accent-medium: #{$surface-accent-medium-light};
+}
+
+// Fonts
+$font-display: 'Epicene Display', serif;
+$font-text: 'Epicene Text', sans-serif;
+$font-body: 'Inter', sans-serif;
 
 // Spacing
 $spacing-xs: 0.25rem;
@@ -31,6 +81,10 @@ $spacing-sm: 0.5rem;
 $spacing-md: 1rem;
 $spacing-lg: 1.5rem;
 $spacing-xl: 2rem;
+
+// Transitions
+$transition-duration: 300ms;
+$transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
 
 // Breakpoints
 $breakpoint-xs: 320px;
@@ -68,3 +122,21 @@ $text-medium: #959C9D;
 $text-creative: #33FF71;
 $text-logical: #33DAFF;
 $text-personality: #C2FF33;
+
+@mixin section-logo-colors {
+    &.home .nav-logo a {
+        color: mix($text-default, $text-accent, 85%);
+    }
+
+    &.section-work .nav-logo a {
+        color: mix($text-default, $text-creative, 85%);
+    }
+
+    &.section-about .nav-logo a {
+        color: mix($text-default, $text-personality, 85%);
+    }
+
+    &.section-contact .nav-logo a {
+        color: mix($text-default, $text-logical, 85%);
+    }
+}
