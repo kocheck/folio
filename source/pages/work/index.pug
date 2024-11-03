@@ -7,10 +7,14 @@ block variables
 block content
     section.work-grid
         each project in workProjects
-            a.work-card(href=`/work/${project.slug}`)
+            a.work-card(href=`/work/${project.slug}.html`)
                 .work-card__media
                     img(src=project.thumbnail alt=project.title)
                 .work-card__content
                     h2= project.title
                     p.company= project.company
                     p.date= project.date
+                    if project.tags
+                        .tags
+                            each tag in project.tags
+                                span.tag= tag
