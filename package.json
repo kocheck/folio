@@ -9,7 +9,7 @@
     "start": "hugo server -D --disableFastRender"
   },
   "author": "Kyle Kochanek",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.21",
