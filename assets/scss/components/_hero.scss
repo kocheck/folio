@@ -1,0 +1,73 @@
+.hero {
+    padding: clamp(2rem, 5vw, 4rem) 0;
+
+    .content-wrapper {
+        display: flex;
+        gap: 2rem;
+    }
+
+    &__content {
+        flex: 1;
+        padding-right: 1rem;
+        padding-top: clamp(1rem, 3vw, 3rem);
+    }
+
+    &__media {
+        flex: 1;
+
+        .hero-image-mask {
+            position: relative;
+            width: 100%;
+            margin-bottom: 0.5rem;
+            border-radius: $border-radius;
+            overflow: hidden;
+
+            .masked-image {
+                display: block;
+                width: 100%;
+                height: auto;
+                aspect-ratio: 528/417;
+                object-fit: cover;
+                object-position: right bottom;
+            }
+        }
+
+        &-info {
+            display: flex;
+            gap: 2rem;
+
+            &-block {
+                flex: 1;
+
+                h3 {
+                    font-family: $font-body;
+                    text-align: right;
+                    font-size: 1.25rem;
+                    font-weight: 479;
+                    margin-bottom: 0.75rem;
+                }
+
+                p {
+                    color: $text-medium;
+                    text-align: right;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+
+    @media (max-width: $breakpoint-md) {
+        .content-wrapper {
+            flex-direction: column;
+        }
+
+        &__content {
+            padding-top: 0;
+        }
+
+        &__content,
+        &__media {
+            width: 100%;
+        }
+    }
+}

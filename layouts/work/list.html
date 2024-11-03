@@ -1,0 +1,23 @@
+{{ define "main" }}
+<section class="work-section">
+    <h1>Work</h1>
+
+    {{ $featured := where .Pages "Params.featured" true }}
+    {{ with $featured }}
+    <div class="featured-work">
+        <h2>Featured Work</h2>
+        <div class="work-grid">
+            {{ range . }}
+                {{ partial "work-card.html" . }}
+            {{ end }}
+        </div>
+    </div>
+    {{ end }}
+
+    <div class="work-grid">
+        {{ range where .Pages "Params.featured" "!=" true }}
+            {{ partial "work-card.html" . }}
+        {{ end }}
+    </div>
+</section>
+{{ end }}

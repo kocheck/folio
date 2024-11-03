@@ -1,0 +1,13 @@
+{{ define "main" }}
+<section class="tag-archive">
+    <header class="tag-header">
+        <h1>Projects tagged "{{ .Title }}"</h1>
+    </header>
+
+    <div class="work-grid">
+        {{ range .Pages }}
+            {{ partial "work-card.html" . }}
+        {{ end }}
+    </div>
+</section>
+{{ end }}

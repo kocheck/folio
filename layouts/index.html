@@ -1,0 +1,85 @@
+{{ define "main" }}
+<header class="hero">
+    <div class="content-wrapper">
+        <div class="hero__content">
+            <div class="heading-group">
+                <svg width="2.5rem" height="2.5rem">
+                    <circle cx="50%" cy="50%" r="50%" fill="currentColor"/>
+                </svg>
+                <h1>I'm Kyle,</h1>
+            </div>
+            <h2 class="h4">
+                I'm what happens when you merge the <span class="text-creative">creative</span> &
+                <span class="text-logical">logical</span> branches without
+                <span class="text-personality">resolving</span> conflicts.
+            </h2>
+            <p>Features include pixel-perfect design, clean code commits, vector illustrations, and an unhealthy obsession with design tokens.</p>
+        </div>
+
+        <div class="hero__media">
+            <div class="hero-image-mask">
+                {{ $heroImage := .Resources.GetMatch "hero.jpg" }}
+                {{ with $heroImage }}
+                    {{ $processed := .Resize "800x webp q90" }}
+                    <img
+                        src="{{ $processed.RelPermalink }}"
+                        alt="Hero image"
+                        class="masked-image"
+                    >
+                {{ end }}
+            </div>
+            <div class="hero__media-info">
+                <div class="hero__media-info-block">
+                    <h3>Previously</h3>
+                    <p>Roadtrippers, Roadpass</p>
+                </div>
+                <div class="hero__media-info-block">
+                    <h3>@ Now</h3>
+                    <p>PokerAtlas</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+{{ $featured := where .Site.RegularPages "Params.featured" true }}
+{{ with $featured }}
+<section class="featured-work">
+    <div class="content-wrapper">
+        <h2>Featured Work</h2>
+        <div class="work-grid">
+            {{ range . }}
+            <a class="work-card" href="{{ .RelPermalink }}">
+                <div class="work-card__media">
+                    {{ if .Params.thumbnail }}
+                        {{ if .Resources }}
+                            {{ $thumbnail := .Resources.GetMatch .Params.thumbnail }}
+                            {{ with $thumbnail }}
+                                {{ $thumb := .Resize "600x webp q90" }}
+                                <img src="{{ $thumb.RelPermalink }}" alt="{{ $.Title }}">
+                            {{ end }}
+                        {{ else }}
+                            <!-- Fallback for static images -->
+                            <img src="{{ .Params.thumbnail }}" alt="{{ $.Title }}">
+                        {{ end }}
+                    {{ end }}
+                </div>
+                <div class="work-card__content">
+                    <h3>{{ .Title }}</h3>
+                    {{ with .Params.company }}<p class="company">{{ . }}</p>{{ end }}
+                    <p class="date">{{ .Date.Format "January 2, 2006" }}</p>
+                    {{ with .Params.tags }}
+                    <div class="tags">
+                        {{ range . }}
+                        <span class="tag">{{ . }}</span>
+                        {{ end }}
+                    </div>
+                    {{ end }}
+                </div>
+            </a>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}
+{{ end }}

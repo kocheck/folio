@@ -2,14 +2,17 @@
   "name": "folio",
   "version": "1.0.0",
   "description": "A personal portfolio website showcasing my work and thoughts on design and development.",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "hugo server -D",
+    "build": "hugo --minify",
+    "clean": "rm -rf public resources",
+    "start": "hugo server -D --disableFastRender"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Kyle Kochanek",
   "license": "ISC",
-  "dependencies": {
-    "gray-matter": "^4.0.3"
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.21",
+    "postcss-cli": "^10.1.0"
   }
 }

@@ -1,0 +1,67 @@
+// _variables.scss
+
+// Background
+$dark-color-1: #360046;
+$dark-color-2: rgb(22, 16, 26);
+$accent-purple: #FF33F5; // Bright purple for headlines
+
+
+// Fonts
+$font-display: 'Epicene Display', serif;
+$font-text: 'Epicene Text', sans-serif;
+$font-body: 'Inter', sans-serif;
+
+// Colors
+$surface-default: rgba(28, 28, 28, 1);
+$surface-default-contrast: rgba(239, 239, 239, 1);
+$surface-accent: rgba(172, 147, 236, 1);
+$surface-accent-medium: rgba(58, 35, 128, 1);
+
+$text-default: rgba(239, 239, 239, 1);
+$text-medium: rgba(239, 239, 239, 0.8);
+$text-default-contrast:  rgba(28, 28, 28, 1);
+$text-accent: hsl(303, 100%, 60%);
+
+// Spacing
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+
+// Breakpoints
+$breakpoint-xs: 320px;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+// Border radius
+$border-radius: 8px;
+$border-radius-sm: 4px;
+$border-radius-lg: 16px;
+
+// Shadows
+$shadow-default: 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-hover: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+// Transitions
+$transition-duration: 0.3s;
+$transition-easing: ease-in-out;
+
+// Z-index
+$z-index-default: 1;
+$z-index-overlay: 10;
+$z-index-modal: 100;
+
+// Other variables
+$placeholder-color: rgba(239, 239, 239, 0.5);
+$placeholder-opacity: 0.5;
+
+// Colors
+$background-dark: #1E1E1E;
+$text-light: #FFF;
+$text-medium: #959C9D;
+$text-creative: #33FF71;
+$text-logical: #33DAFF;
+$text-personality: #C2FF33;

@@ -1,0 +1,29 @@
+{{ $image := .Page.Resources.GetMatch (.Get "src") }}
+{{ $alt := .Get "alt" }}
+{{ $caption := .Get "caption" }}
+
+<figure class="responsive-image">
+    {{ with $image }}
+        {{ $tiny := .Resize "20x webp q90" }}
+        {{ $small := .Resize "600x webp q90" }}
+        {{ $medium := .Resize "1200x webp q90" }}
+        {{ $large := .Resize "1800x webp q90" }}
+
+        <img
+            src="{{ $small.RelPermalink }}"
+            srcset="{{ $tiny.RelPermalink }} 20w,
+                    {{ $small.RelPermalink }} 600w,
+                    {{ $medium.RelPermalink }} 1200w,
+                    {{ $large.RelPermalink }} 1800w"
+            sizes="(max-width: 600px) 100vw,
+                   (max-width: 1200px) 85vw,
+                   1200px"
+            alt="{{ $alt }}"
+            loading="lazy"
+            style="background-size: cover; background-image: url(data:image/jpeg;base64,{{ $tiny.Content | base64Encode }})"
+        >
+    {{ end }}
+    {{ with $caption }}
+        <figcaption>{{ . | markdownify }}</figcaption>
+    {{ end }}
+</figure>

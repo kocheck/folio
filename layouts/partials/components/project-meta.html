@@ -1,0 +1,29 @@
+<div class="project-meta">
+    {{ with .Params.company }}
+    <div class="meta-item">
+        <h3>Company</h3>
+        <p>{{ . }}</p>
+    </div>
+    {{ end }}
+
+    {{ with .Params.role }}
+    <div class="meta-item">
+        <h3>Role</h3>
+        <p>{{ . }}</p>
+    </div>
+    {{ end }}
+
+    {{ with .Params.duration }}
+    <div class="meta-item">
+        <h3>Duration</h3>
+        <p>{{ . }}</p>
+    </div>
+    {{ end }}
+
+    {{ with .Params.tags }}
+    <div class="meta-item">
+        <h3>Technologies</h3>
+        {{ partial "tag-list.html" . }}
+    </div>
+    {{ end }}
+</div>

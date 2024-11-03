@@ -1,0 +1,264 @@
+@use "sass:color";
+
+// mixins css
+
+// In _mixins.scss
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "small" {
+    @media (max-width: 767px) { @content; }
+  } @else if $breakpoint == "medium" {
+    @media (min-width: 768px) and (max-width: 1024px) { @content; }
+  } @else if $breakpoint == "large" {
+    @media (min-width: 1025px) { @content; }
+  }
+}
+
+// Usage in your component files
+.my-component {
+  width: 100%;
+
+  @include respond-to(small) {
+    width: 50%;
+  }
+}
+
+/// Highlighter Effect Mixin
+/// Creates an animated highlighter effect for links or text elements
+///
+/// @param {Color} $color - The color to use for the highlighter effect
+///
+/// @example scss - Basic usage
+///   .my-link {
+///     position: relative;  // Required
+///     display: inline-block;  // Required for inline elements
+///
+///     a {  // If wrapping an anchor tag
+///       color: $text-medium;  // Initial text color
+///       text-decoration: none;
+///       transition: color $transition-duration $transition-easing;
+///     }
+///
+///     @include highlighter-effect($text-accent);
+///   }
+///
+/// @example html - Required HTML structure
+///   <div class="my-link">
+///     <a href="#">Link Text</a>
+///   </div>
+///
+/// @note
+/// - Parent element must have position: relative
+/// - Works best with block or inline-block elements
+/// - If using with an anchor tag, wrap it in a container
+/// - The effect appears behind the text, so ensure proper z-indexing
+/// - Animation uses left property and overflow: hidden, ensure container allows for this
+
+@mixin highlighter-effect($color) {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -15%;
+        left: 0;
+        width: 100%;
+        height: 120%;
+        background-color: rgba($color, 0.1);
+        background-image: repeating-radial-gradient(
+            circle at 0 0,
+            rgba($color, 0.1) 0,
+            rgba($color, 0.1) 1px,
+            transparent 1px,
+            transparent 6px
+        );
+        background-size: 6px 6px;
+        filter: blur(1px) brightness(1.2);
+        z-index: -1;
+
+        transform: translateX(-100%); // Start position
+        transition: transform $transition-duration $transition-easing;
+        will-change: transform;
+
+        -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='100' height='50' viewBox='0 0 100 50' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 12C20 8 80 8 100 12C100 12 100 38 100 38C80 42 20 42 0 38C0 38 0 12 0 12Z' fill='black'/%3E%3C/svg%3E");
+        mask-image: url("data:image/svg+xml,%3Csvg width='100' height='50' viewBox='0 0 100 50' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 12C20 8 80 8 100 12C100 12 100 38 100 38C80 42 20 42 0 38C0 38 0 12 0 12Z' fill='black'/%3E%3C/svg%3E");
+        -webkit-mask-size: 110% 110%;
+        mask-size: 110% 110%;
+    }
+
+    &:hover {
+        &::before {
+            transform: translateX(0); // End position
+        }
+
+        a {
+            color: $color;
+        }
+    }
+
+    &:active::before {
+        background-color: rgba($color, 0.2);
+        background-image: repeating-radial-gradient(
+            circle at 0 0,
+            rgba($color, 0.2) 0,
+            rgba($color, 0.2) 1px,
+            transparent 1px,
+            transparent 6px
+        );
+    }
+
+    a {
+        display: block;
+        width: 100%;
+        padding: 0.75rem 1rem;
+        color: $text-medium;
+        text-decoration: none;
+        transition: color $transition-duration $transition-easing;
+        position: relative;
+        z-index: 2;
+    }
+}
+
+/// Example Usage:
+///
+/// Basic link:
+/// ```scss
+/// .text-link {
+///   position: relative;
+///   display: inline-block;
+///
+///   a {
+///     color: $text-medium;
+///     text-decoration: none;
+///     transition: color $transition-duration $transition-easing;
+///   }
+///
+///   @include highlighter-effect($text-accent);
+/// }
+/// ```
+///
+/// Navigation link:
+/// ```scss
+/// .nav-link {
+///   position: relative;
+///   display: flex;
+///   align-items: center;
+///
+///   a {
+///     display: block;
+///     width: 100%;
+///     padding: 0.75rem 1rem;
+///     color: $text-medium;
+///     text-decoration: none;
+///     transition: color $transition-duration $transition-easing;
+///   }
+///
+///   @include highlighter-effect($text-accent);
+/// }
+/// ```
+
+/// Animated Underline Effect
+/// Creates an animated underline effect for links
+///
+/// @param {Color} $color - The color of the underline and hover text color
+/// @param {Number} $height - Thickness of the underline (default: 2px)
+/// @param {String} $style - Style of animation: 'left-right' or 'center' (default: 'left-right')
+///
+/// @example scss - Basic usage
+///   a {
+///     @include animated-underline($text-accent);
+///   }
+///
+/// @example scss - Custom height
+///   a {
+///     @include animated-underline($text-accent, 3px);
+///   }
+///
+/// @example scss - Center animation
+///   a {
+///     @include animated-underline($text-accent, 2px, 'center');
+///   }
+
+@mixin animated-underline($color, $height: 2px, $style: 'left-right') {
+    position: relative;
+    text-decoration: none;
+    color: $text-medium;
+    transition: color $transition-duration $transition-easing;
+
+    &.active {
+        color: $color;
+
+        &::before {
+            transform: scaleX(1);
+            background-color: rgba($color, 0.3);
+            opacity: 1;
+        }
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: $height;
+        background-color: rgba($color, 0.3);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: all $transition-duration $transition-easing;
+        opacity: 0;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: $height;
+        background-color: $color;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform $transition-duration $transition-easing;
+    }
+
+    &:hover {
+        color: $color;
+
+        &::after {
+            transform: scaleX(1);
+        }
+    }
+
+    &:active {
+        color: darken($color, 15%);
+
+        &::after {
+            background-color: darken($color, 15%);
+        }
+    }
+}
+
+// Basic usage with default settings (2px height, left-to-right animation)
+.regular-link {
+    @include animated-underline($text-accent);
+}
+
+// Custom height example
+.thick-underline {
+    @include animated-underline($text-creative, 3px);
+}
+
+// Different color example
+.personality-link {
+    @include animated-underline($text-personality);
+}
+
+// Logical section link
+.logical-link {
+    @include animated-underline($text-logical);
+}

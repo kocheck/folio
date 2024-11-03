@@ -1,0 +1,260 @@
+// _typography.scss
+// This file manages all typography-related styles including fonts, sizes, and text utilities
+
+// --------------------------------
+// Font Imports
+// --------------------------------
+// Inter - Primary body font with multiple weights
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+// Fira Code - Monospace font for code blocks
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+
+// Font Variables
+$font-mono: 'Fira Code', ui-monospace, 'SF Mono';
+
+// --------------------------------
+// Custom Font Declarations
+// --------------------------------
+// Epicene Display - Primary display/heading typeface
+// Available in Regular, Bold, Light, and Light Italic
+@font-face {
+  font-family: 'Epicene Display';
+  src: url('/assets/fonts/epicene-display-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Epicene Display';
+  src: url('/assets/fonts/epicene-display-bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Epicene Display';
+  src: url('/assets/fonts/epicene-display-light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Epicene Display';
+  src: url('/assets/fonts/epicene-display-light-italic.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+// Epicene Text - Secondary body typeface
+// Available in Regular and Bold
+@font-face {
+  font-family: 'Epicene Text';
+  src: url('../../assets/fonts/epicene-text-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Epicene Text';
+  src: url('../../assets/fonts/epicene-text-bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+// --------------------------------
+// Base Typography Settings
+// --------------------------------
+html {
+  // Responsive base font size calculation
+  // 14px minimum + fluid scaling based on viewport width
+  font-size: calc(14px + 0.390625vw);
+  // Optimize text rendering
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none; // Prevent synthetic bold/italic variants
+  text-size-adjust: 100%; // Prevent mobile browsers from auto-adjusting font-size
+}
+
+body {
+  font-family: $font-body;
+  font-size: 1rem;
+  font-weight: 225;
+  line-height: 1.5;
+  letter-spacing: 0.01em; // Improve readability
+  word-spacing: 0.02em;
+  font-feature-settings: "kern" 1, "liga" 1; // Enable kerning and ligatures
+}
+
+// --------------------------------
+// Heading Styles
+// --------------------------------
+// Define consistent sizing scale for headings
+$heading-sizes: (
+  1: 2.5rem,  // 40px at base size
+  2: 2rem,    // 32px at base size
+  3: 1.75rem, // 28px at base size
+  4: 1.5rem,  // 24px at base size
+  5: 1.25rem, // 20px at base size
+  6: 1rem     // 16px at base size
+);
+
+h1 {
+  letter-spacing: -0.02em; // Tighter tracking for headlines
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-display;
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+// Generate heading sizes
+@each $level, $size in $heading-sizes {
+  h#{$level},
+  .h#{$level} {
+    font-size: $size;
+  }
+}
+
+// --------------------------------
+// Text Elements
+// --------------------------------
+p {
+  max-width: 70ch; // Optimal line length for readability
+  margin-bottom: 1.5rem;
+  hanging-punctuation: first; // Better punctuation handling
+  line-height: 1.6;
+}
+
+blockquote {
+  font-style: italic;
+  font-size: 1.1rem;
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+  border-left: 4px solid $text-default-contrast;
+}
+
+// --------------------------------
+// Lists
+// --------------------------------
+ul, ol {
+  padding-left: 1.5rem;
+  li {
+    margin-bottom: 0.5em; // Spacing between list items
+    padding-left: 0.5rem; // Indent list content
+  }
+}
+
+// --------------------------------
+// Interactive Elements
+// --------------------------------
+a {
+  color: $text-accent;
+  text-decoration: none;
+  transition: color $transition-duration $transition-easing;
+  text-underline-offset: 0.2em; // Space between text and underline
+  text-decoration-thickness: from-font;
+
+  &:hover, &:focus {
+    color: mix(white, $text-accent, 10%);
+    text-decoration: underline;
+    text-decoration-thickness: 0.1em;
+  }
+}
+
+// --------------------------------
+// Text Styling Utilities
+// --------------------------------
+.italic {
+  font-family: $font-display;
+  font-weight: 300;
+  font-style: italic;
+}
+
+// Inline text elements
+strong { font-weight: 700; }
+em { font-style: italic; }
+small { font-size: 0.8rem; }
+
+// --------------------------------
+// Code Elements
+// --------------------------------
+code, pre {
+  font-family: $font-mono;
+  font-size: 0.9rem;
+}
+
+code {
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
+
+// --------------------------------
+// Citations and References
+// --------------------------------
+cite {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: $text-medium;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+// --------------------------------
+// Utility Classes
+// --------------------------------
+// Text size variations
+.text-small { font-size: 0.8rem; }
+.text-large { font-size: 1.2rem; }
+.text-xl { font-size: 1.5rem; }
+
+// Text color variations
+.text-medium { color: $text-medium; }
+.text-muted { color: $text-medium; }
+.text-creative { color: $text-creative; }
+.text-logical { color: $text-logical; }
+.text-personality { color: $text-personality; }
+
+// --------------------------------
+// Selection Styles
+// --------------------------------
+::selection {
+  background: rgba($text-accent, 0.2);
+  color: inherit;
+}
+
+// --------------------------------
+// Content Patterns
+// --------------------------------
+// Special handling for long-form content
+article, .long-form {
+  p + p {
+    text-indent: 1em; // Indent paragraphs after the first one
+  }
+}
+
+// --------------------------------
+// Responsive Adjustments
+// --------------------------------
+// Dark mode optimizations
+@media (prefers-color-scheme: dark) {
+  body {
+    letter-spacing: 0.02em; // Improve readability in dark mode
+  }
+}
+
+// Mobile optimizations
+@media (max-width: 768px) {
+  body {
+    font-size: calc(16px + 0.5vw); // Larger base size for mobile
+    line-height: 1.6;
+  }
+}

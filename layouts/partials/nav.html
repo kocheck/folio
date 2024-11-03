@@ -1,0 +1,24 @@
+<nav>
+    <div class="nav-container">
+        <ul id="nav-menu">
+            <li>
+                <div class="nav-link-wrapper">
+                    <a href="/" class="{{ if .IsHome }}active{{ end }}">Home</a>
+                </div>
+            </li>
+            {{ range .Site.Menus.main }}
+            <li>
+                <div class="nav-link-wrapper">
+                    <a href="{{ .URL }}" class="{{ if $.IsMenuCurrent "main" . }}active{{ end }}">{{ .Name }}</a>
+                </div>
+            </li>
+            {{ end }}
+        </ul>
+
+        <button class="hamburger" aria-label="Menu" type="button">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</nav>

@@ -1,0 +1,35 @@
+baseURL = "/"
+languageCode = "en-us"
+title = "Kyle Kochanek"
+
+[params]
+  description = "Kyle's online space for his portfolio and different musing on design and craft."
+  author = "Kyle Kochanek"
+
+[menu]
+  [[menu.main]]
+    name = "Work"
+    url = "/work/"
+    weight = 1
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 2
+  [[menu.main]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 3
+
+[build]
+  writeStats = true
+
+[module]
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+
+[build.buildStats]
+  enable = true
+
+[markup.goldmark.renderer]
+  unsafe = true

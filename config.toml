@@ -1,0 +1,70 @@
+[build]
+  writeStats = true
+
+[module]
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[params]
+  mainSections = ["work"]
+  description = "Portfolio website showcasing work and thoughts on design and development"
+  author = "Kyle Kochanek"
+
+[imaging]
+  quality = 90
+  resampleFilter = "lanczos"
+  anchor = "smart"
+
+[imaging.exif]
+  disableDate = true
+  disableLatLong = true
+
+[minify]
+  disableCSS = false
+  disableHTML = false
+  disableJS = false
+  disableJSON = false
+  disableSVG = false
+  minifyOutput = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  section = ["HTML", "RSS", "JSON"]
+
+[caches]
+  [caches.getjson]
+    dir = ":cacheDir/:project"
+    maxAge = "10s"
+
+[server]
+  [[server.headers]]
+    for = "/**"
+    [server.headers.values]
+      Cache-Control = "public, max-age=31536000"
+      X-Content-Type-Options = "nosniff"
+      X-Frame-Options = "DENY"
+      X-XSS-Protection = "1; mode=block"
+
+[menu]
+  [[menu.main]]
+    name = "Work"
+    url = "/work/"
+    weight = 1
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 2
+  [[menu.main]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 3
+
+baseURL = "https://kylekochanek.com"
+languageCode = "en-us"
+title = "Kyle Kochanek"

@@ -1,0 +1,42 @@
+{{ define "main" }}
+<article class="work-item">
+    <header class="work-item__header">
+        {{ if .Params.hero_image }}
+            <div class="work-item__hero">
+                {{ if .Resources }}
+                    {{ $hero := .Resources.GetMatch .Params.hero_image }}
+                    {{ with $hero }}
+                        {{ $heroImg := .Resize "1200x webp q90" }}
+                        <img src="{{ $heroImg.RelPermalink }}" alt="{{ $.Title }}">
+                    {{ end }}
+                {{ else }}
+                    <img src="{{ .Params.hero_image }}" alt="{{ .Title }}">
+                {{ end }}
+            </div>
+        {{ end }}
+
+        <h1>{{ .Title }}</h1>
+        <div class="work-item__meta">
+            {{ with .Params.company }}
+            <span class="company">{{ . }}</span>
+            {{ end }}
+
+            <time datetime="{{ .Date.Format "2006-01-02" }}">
+                {{ .Date.Format "January 2, 2006" }}
+            </time>
+
+            {{ with .Params.tags }}
+            <div class="tags">
+                {{ range . }}
+                <span class="tag">{{ . }}</span>
+                {{ end }}
+            </div>
+            {{ end }}
+        </div>
+    </header>
+
+    <div class="work-item__content">
+        {{ .Content }}
+    </div>
+</article>
+{{ end }}
