@@ -1,0 +1,30 @@
+/* Define light theme variables */
+:root[data-theme="light"] {
+    --bg-color: #ffffff;
+    --text-color: #1a1a1a;
+    /* Add other light theme colors as needed */
+}
+
+/* Define dark theme variables (your existing dark theme) */
+:root[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    /* Your existing dark theme colors */
+}
+
+/* Update theme toggle button styles */
+.theme-toggle .sun {
+    display: none;
+}
+
+.theme-toggle .moon {
+    display: block;
+}
+
+[data-theme="light"] .theme-toggle .sun {
+    display: block;
+}
+
+[data-theme="light"] .theme-toggle .moon {
+    display: none;
+}
