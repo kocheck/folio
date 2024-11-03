@@ -1,53 +1,133 @@
 nav {
-    position: relative;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: $surface-default;
+    transition: right $transition-duration $transition-easing;
+    z-index: $z-index-modal;
+
+    &.active {
+        right: 0;
+    }
 
     .nav-container {
-        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        padding: $spacing-lg;
 
         ul {
-            position: relative;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
 
             li {
-                position: relative;
-                display: flex;
-                align-items: center;
-                width: 100%;
+                margin: $spacing-md 0;
 
                 .nav-link-wrapper {
-                    position: relative;
-                    width: 100%;
-                    height: 100%;
-                    display: flex;
-                    align-items: center;
-                    overflow: hidden;
-
-                    &::before {
-                        content: '';
-                        position: absolute;
-                        left: -100%;
-                        top: 0;
-                        width: 100%;
-                        height: 100%;
-                        background: red;
-                        transition: left 0.3s ease-in-out;
-                        z-index: -1;
-                    }
-
-                    &:hover::before {
-                        left: 0;
-                    }
-
                     a {
-                        position: relative;
-                        z-index: 1;
-                        display: block;
-                        width: 100%;
-                        padding: 0.75rem 1rem;
-                        color: $text-medium;
-                        text-decoration: none;
+                        font-size: 2rem;
+                        @include animated-underline($text-accent);
+                    }
+                }
+
+                // About link
+                &:nth-child(2) .nav-link-wrapper a {
+                    @include animated-underline($text-personality);
+                }
+
+                // Work link
+                &:nth-child(3) .nav-link-wrapper a {
+                    @include animated-underline($text-creative);
+                }
+
+                // Resume link
+                &:nth-child(4) .nav-link-wrapper a {
+                    @include animated-underline($text-logical);
+                }
+            }
+        }
+    }
+
+    .hamburger {
+        position: fixed;
+        top: $spacing-md;
+        right: $spacing-md;
+        width: 30px;
+        height: 30px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: $z-index-modal + 1;
+
+        span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: $text-default;
+            margin: 6px 0;
+            transition: transform $transition-duration $transition-easing,
+                      opacity $transition-duration $transition-easing;
+        }
+
+        &.active {
+            span {
+                &:first-child {
+                    transform: translateY(8px) rotate(45deg);
+                }
+
+                &:nth-child(2) {
+                    opacity: 0;
+                }
+
+                &:last-child {
+                    transform: translateY(-8px) rotate(-45deg);
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: $breakpoint-md) {
+    nav {
+        position: static;
+        width: auto;
+        height: auto;
+        background: transparent;
+        padding-top: $spacing-xl;
+
+        .nav-container {
+            padding: 0 $spacing-xl * 2 0 0;
+            align-items: flex-end;
+
+            ul {
+                display: flex;
+                gap: $spacing-md;
+                justify-content: flex-end;
+                width: 100%;
+
+                li {
+                    margin: 0;
+
+                    .nav-link-wrapper {
+                        a {
+                            font-size: 1rem;
+                            padding: $spacing-sm $spacing-md;
+                            text-align: right;
+                        }
                     }
                 }
             }
+        }
+
+        .hamburger {
+            display: none;
         }
     }
 }

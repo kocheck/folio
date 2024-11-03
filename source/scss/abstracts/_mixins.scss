@@ -158,3 +158,105 @@
 ///   @include highlighter-effect($text-accent);
 /// }
 /// ```
+
+/// Animated Underline Effect
+/// Creates an animated underline effect for links
+///
+/// @param {Color} $color - The color of the underline and hover text color
+/// @param {Number} $height - Thickness of the underline (default: 2px)
+/// @param {String} $style - Style of animation: 'left-right' or 'center' (default: 'left-right')
+///
+/// @example scss - Basic usage
+///   a {
+///     @include animated-underline($text-accent);
+///   }
+///
+/// @example scss - Custom height
+///   a {
+///     @include animated-underline($text-accent, 3px);
+///   }
+///
+/// @example scss - Center animation
+///   a {
+///     @include animated-underline($text-accent, 2px, 'center');
+///   }
+
+@mixin animated-underline($color, $height: 2px, $style: 'left-right') {
+    position: relative;
+    text-decoration: none;
+    color: $text-medium;
+    transition: color $transition-duration $transition-easing;
+
+    &.active {
+        color: $color;
+
+        &::before {
+            transform: scaleX(1);
+            background-color: rgba($color, 0.3);
+            opacity: 1;
+        }
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: $height;
+        background-color: rgba($color, 0.3);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: all $transition-duration $transition-easing;
+        opacity: 0;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: $height;
+        background-color: $color;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform $transition-duration $transition-easing;
+    }
+
+    &:hover {
+        color: $color;
+
+        &::after {
+            transform: scaleX(1);
+        }
+    }
+
+    &:active {
+        color: darken($color, 15%);
+
+        &::after {
+            background-color: darken($color, 15%);
+        }
+    }
+}
+
+// Basic usage with default settings (2px height, left-to-right animation)
+.regular-link {
+    @include animated-underline($text-accent);
+}
+
+// Custom height example
+.thick-underline {
+    @include animated-underline($text-creative, 3px);
+}
+
+// Different color example
+.personality-link {
+    @include animated-underline($text-personality);
+}
+
+// Logical section link
+.logical-link {
+    @include animated-underline($text-logical);
+}

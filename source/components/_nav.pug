@@ -3,13 +3,13 @@ nav
         ul#nav-menu
             li
                 .nav-link-wrapper
-                    a(href="/") Home
+                    a(href="/" class=currentPage === 'home' ? 'active' : '') Home
             li
                 .nav-link-wrapper
-                    a(href="/pages/about.html") About
+                    a(href="/pages/about.html" class=currentPage === 'about' ? 'active' : '') About
             li
                 .nav-link-wrapper
-                    a(href="/pages/work.html") Work
+                    a(href="/pages/work.html" class=currentPage === 'work' ? 'active' : '') Work
             li
                 .nav-link-wrapper
                     a(href="#" target="_blank") Resume
