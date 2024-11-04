@@ -1,185 +1,227 @@
 nav {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 100%;
-    height: 100vh;
-    background: $surface-default;
-    transition: right $transition-duration $transition-easing;
-    z-index: $z-index-modal;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100vh;
+  background: $surface-default;
+  transition: right $transition-duration $transition-easing;
+  z-index: $z-index-modal;
 
-    &.active {
-        right: 0;
-    }
+  &.active {
+      right: 0;
+  }
 
-    .nav-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        padding: $spacing-lg;
+  .nav-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: $spacing-lg;
 
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            text-align: center;
+      ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          text-align: center;
 
-            li {
-                margin: $spacing-md 0;
+          li {
+              margin: $spacing-md 0;
 
-                .nav-link-wrapper {
-                    a {
-                        font-size: 2rem;
-                        @include animated-underline($text-accent);
-                    }
-                }
+              .nav-link-wrapper {
+                  a {
+                      font-size: 2rem;
+                      @include animated-underline($text-accent);
+                  }
+              }
 
-                // About link
-                &:nth-child(2) .nav-link-wrapper a {
-                    @include animated-underline($text-personality);
-                }
+              // About link
+              &:nth-child(2) .nav-link-wrapper a {
+                  @include animated-underline($text-personality);
+              }
 
-                // Work link
-                &:nth-child(3) .nav-link-wrapper a {
-                    @include animated-underline($text-creative);
-                }
+              // Work link
+              &:nth-child(3) .nav-link-wrapper a {
+                  @include animated-underline($text-creative);
+              }
 
-                // Resume link
-                &:nth-child(4) .nav-link-wrapper a {
-                    @include animated-underline($text-logical);
-                }
-            }
-        }
+              // Resume link
+              &:nth-child(4) .nav-link-wrapper a {
+                  @include animated-underline($text-logical);
+              }
+          }
+      }
 
-        .nav-logo {
-            a {
-                color: $text-default;
-                text-decoration: none;
+      .nav-logo {
+          a {
+              color: var(--text);
+              text-decoration: none;
 
-                svg {
-                    fill: currentColor;
-                    transition: fill $transition-duration $transition-easing;
-                }
-            }
-        }
-    }
+              svg {
+                  fill: currentColor;
+                  transition: fill $transition-duration $transition-easing;
+              }
+          }
+      }
+  }
 
-    .hamburger {
-        position: fixed;
-        top: $spacing-md;
-        right: $spacing-md;
-        width: 30px;
-        height: 30px;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        padding: 0;
-        z-index: $z-index-modal + 1;
+  .hamburger {
+      position: fixed;
+      top: $spacing-md;
+      right: $spacing-md;
+      width: 30px;
+      height: 30px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: $z-index-modal + 1;
 
-        span {
-            display: block;
-            width: 100%;
-            height: 2px;
-            background: $text-default;
-            margin: 6px 0;
-            transition: transform $transition-duration $transition-easing,
-                      opacity $transition-duration $transition-easing;
-        }
+      span {
+          display: block;
+          width: 100%;
+          height: 2px;
+          background: var(--text);
+          margin: 6px 0;
+          transition: transform $transition-duration $transition-easing,
+                    opacity $transition-duration $transition-easing;
+      }
 
-        &.active {
-            span {
-                &:first-child {
-                    transform: translateY(8px) rotate(45deg);
-                }
+      &.active {
+          span {
+              &:first-child {
+                  transform: translateY(8px) rotate(45deg);
+              }
 
-                &:nth-child(2) {
-                    opacity: 0;
-                }
+              &:nth-child(2) {
+                  opacity: 0;
+              }
 
-                &:last-child {
-                    transform: translateY(-8px) rotate(-45deg);
-                }
-            }
-        }
-    }
+              &:last-child {
+                  transform: translateY(-8px) rotate(-45deg);
+              }
+          }
+      }
+  }
 
-    @media (min-width: $breakpoint-md) {
-        position: static;
-        width: 100%;
-        height: auto;
-        background: transparent;
-        padding-top: $spacing-xl;
+  @media (min-width: $breakpoint-md) {
+      position: static;
+      width: 100%;
+      height: auto;
+      background: transparent;
+      padding-top: $spacing-xl;
 
-        .nav-container {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            max-width: 75rem;
-            margin: 0 auto;
-            padding: 0 clamp(1rem, 5vw, 3rem);
-            height: auto;
-            position: relative;
+      .nav-container {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          max-width: 75rem;
+          margin: 0 auto;
+          padding: 0 clamp(1rem, 5vw, 3rem);
+          height: auto;
+          position: relative;
 
-            .nav-logo {
-                width: 150px;
-                position: absolute;
-                left: clamp(1rem, 5vw, 3rem);
+          .nav-logo {
+              width: 150px;
+              position: absolute;
+              left: clamp(1rem, 5vw, 3rem);
 
-                svg {
-                    width: 100%;
-                    height: auto;
-                    fill: $text-default;
-                    display: block;
-                    transition: fill $transition-duration $transition-easing;
-                }
-            }
+              svg {
+                  width: 100%;
+                  height: auto;
+                  fill: var(--text);
+                  display: block;
+                  transition: fill $transition-duration $transition-easing;
+              }
+          }
 
-            ul {
-                display: flex;
-                gap: $spacing-md;
-                justify-content: center;
-                margin: 0 auto;
-                padding: 0;
+          ul {
+              display: flex;
+              gap: $spacing-md;
+              justify-content: center;
+              margin: 0 auto;
+              padding: 0;
 
-                li {
-                    margin: 0;
-                    .nav-link-wrapper a {
-                        font-size: 1rem;
-                        padding: $spacing-sm $spacing-md;
-                    }
-                }
-            }
+              li {
+                  margin: 0;
+                  .nav-link-wrapper a {
+                      font-size: 1rem;
+                      padding: $spacing-sm $spacing-md;
+                  }
+              }
+          }
 
-            .theme-toggle {
-                position: absolute;
-                right: clamp(1rem, 5vw, 3rem);
-                background: transparent;
-                border: none;
-                cursor: pointer;
-                padding: $spacing-sm;
-                color: $text-default;
+          .theme-toggle {
+              position: absolute;
+              right: clamp(1rem, 5vw, 3rem);
+              background: transparent;
+              border: none;
+              cursor: pointer;
+              padding: $spacing-sm;
+              color: var(--text);
 
-                .moon { display: none; }
+              .moon { display: none; }
 
-                &[data-theme="dark"] {
-                    .sun { display: none; }
-                    .moon { display: inline; }
-                }
-            }
-        }
+              &[data-theme="dark"] {
+                  .sun { display: none; }
+                  .moon { display: inline; }
+              }
 
-        .hamburger {
-            display: none;
-        }
+              svg {
+                  width: 20px;
+                  height: 20px;
+                  stroke-width: 2px;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                  transition: transform 0.3s ease, opacity 0.3s ease;
+              }
 
-        // Use the mixin for section colors
-        @include section-logo-colors;
-    }
+              .sun-icon {
+                  opacity: 1;
+                  transform: scale(1);
+              }
+
+              .moon-icon {
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%) scale(0);
+                  opacity: 0;
+              }
+
+              &[data-theme="dark"] {
+                  .sun-icon {
+                      opacity: 0;
+                      transform: scale(0);
+                  }
+                  .moon-icon {
+                      opacity: 1;
+                      transform: translate(-50%, -50%) scale(1);
+                  }
+              }
+
+              &:hover {
+                  svg {
+                      transform: scale(1.1);
+                  }
+                  &[data-theme="dark"] .moon-icon {
+                      transform: translate(-50%, -50%) scale(1.1);
+                  }
+              }
+          }
+      }
+
+      .hamburger {
+          display: none;
+      }
+
+      // Use the mixin for section colors
+      @include section-logo-colors;
+  }
 }
 
 // Mobile section colors using the same mixin
 nav {
-    @include section-logo-colors;
+  @include section-logo-colors;
 }
