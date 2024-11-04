@@ -11,31 +11,8 @@ nav {
     // ... existing nav styles ...
 }
 
-// Hero section with max-width
-.hero {
-    .content-wrapper {
-        display: flex;
-        gap: 2rem;
-    }
-
-    &__content {
-        flex: 1;
-        max-width: 50%;
-    }
-
-    &__media {
-        flex: 1;
-        // ... existing media styles ...
-    }
-
-    @media (max-width: $breakpoint-md) {
-        .content-wrapper {
-            flex-direction: column;
-        }
-
-        &__content,
-        &__media {
-            max-width: 100%;
-        }
-    }
+main.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 200px);
 }
