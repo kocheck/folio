@@ -2,10 +2,25 @@
 
 .heading-group {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     gap: 24px;
-    svg {
-        margin-top: 0.8571428571rem;
+
+    .avatar-wrapper {
+        flex-shrink: 0;
+        width: 2.5rem;
+        height: 2.5rem;
+        position: relative;
+        transform: translateY(0.2857142857rem);
+
+        svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    }
+
+    h1 {
+        margin: 0;
     }
 }
 
