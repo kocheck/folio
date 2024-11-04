@@ -51,6 +51,34 @@
                 {{ end }}
                 <div class="hero-image-overlay"></div>
             </div>
+            <!-- Add this right after your hero-image-wrapper div -->
+            <svg style="width: 0; height: 0; position: absolute;" aria-hidden="true">
+              <defs>
+                  <filter id="ripple">
+                      <feTurbulence
+                          type="sine"
+                          baseFrequency="0.01 0.015"
+                          numOctaves="1"
+                          seed="1"
+                          result="turbulence">
+                          <animate
+                              attributeName="baseFrequency"
+                              dur="20s"
+                              keyTimes="0;0.5;1"
+                              values="0.01 0.015;0.02 0.015;0.01 0.015"
+                              repeatCount="indefinite"
+                          />
+                      </feTurbulence>
+                      <feDisplacementMap
+                          in="SourceGraphic"
+                          in2="turbulence"
+                          scale="10"
+                          xChannelSelector="A"
+                          yChannelSelector="R"
+                      />
+                  </filter>
+              </defs>
+          </svg>
         </div>
 
         </div>

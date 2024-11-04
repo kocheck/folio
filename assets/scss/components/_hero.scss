@@ -35,20 +35,17 @@
                     object-fit: cover;
                     object-position: right bottom;
                     transition: opacity $transition-duration $transition-easing;
-                }
 
-                // Dark mode image
-                .dark-mode-image {
-                    position: absolute;
-                    opacity: 100;
-                    mix-blend-mode: screen;
-                    filter: contrast(1.1) brightness(0.9);
-                    background-color: var(--background);
-                }
+                    &.dark-mode-image {
+                        position: absolute;
+                        opacity: 100;
+                        mix-blend-mode: screen;
+                        filter: url('#ripple') contrast(1.1) brightness(0.9);
+                    }
 
-                // Light mode image
-                .light-mode-image {
-                    filter: contrast(1.05) brightness(0.95);
+                    &.light-mode-image {
+                        filter: url('#ripple') contrast(1.05) brightness(0.95);
+                    }
                 }
 
                 .hero-image-overlay {
@@ -147,5 +144,20 @@
             mix-blend-mode: multiply;
             opacity: 0.5;
         }
+    }
+}
+
+@keyframes rippleEffect {
+    0% {
+        filter: url('#ripple') brightness(1);
+        transform: translateY(0);
+    }
+    50% {
+        filter: url('#ripple') brightness(1.02);
+        transform: translateY(-6px);
+    }
+    100% {
+        filter: url('#ripple') brightness(1);
+        transform: translateY(0);
     }
 }
