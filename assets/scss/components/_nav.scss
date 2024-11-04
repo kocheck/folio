@@ -55,7 +55,7 @@ nav {
 
         .nav-logo {
             a {
-                color: $text-default;
+                color: var(--text);
                 text-decoration: none;
 
                 svg {
@@ -82,7 +82,7 @@ nav {
             display: block;
             width: 100%;
             height: 2px;
-            background: $text-default;
+            background: var(--text);
             margin: 6px 0;
             transition: transform $transition-duration $transition-easing,
                       opacity $transition-duration $transition-easing;
@@ -130,7 +130,7 @@ nav {
                 svg {
                     width: 100%;
                     height: auto;
-                    fill: $text-default;
+                    fill: var(--text);
                     display: block;
                     transition: fill $transition-duration $transition-easing;
                 }
@@ -159,13 +159,55 @@ nav {
                 border: none;
                 cursor: pointer;
                 padding: $spacing-sm;
-                color: $text-default;
+                color: var(--text);
 
                 .moon { display: none; }
 
                 &[data-theme="dark"] {
                     .sun { display: none; }
                     .moon { display: inline; }
+                }
+
+                svg {
+                    width: 20px;
+                    height: 20px;
+                    stroke-width: 2px;
+                    stroke-linecap: round;
+                    stroke-linejoin: round;
+                    transition: transform 0.3s ease, opacity 0.3s ease;
+                }
+
+                .sun-icon {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+
+                .moon-icon {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%) scale(0);
+                    opacity: 0;
+                }
+
+                &[data-theme="dark"] {
+                    .sun-icon {
+                        opacity: 0;
+                        transform: scale(0);
+                    }
+                    .moon-icon {
+                        opacity: 1;
+                        transform: translate(-50%, -50%) scale(1);
+                    }
+                }
+
+                &:hover {
+                    svg {
+                        transform: scale(1.1);
+                    }
+                    &[data-theme="dark"] .moon-icon {
+                        transform: translate(-50%, -50%) scale(1.1);
+                    }
                 }
             }
         }
