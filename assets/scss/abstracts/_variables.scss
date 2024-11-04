@@ -25,7 +25,7 @@ $text-logical: hsl(140, 100%, 60%);    // Green for contact section
 // Light theme colors
 $light-background: #ECF0EA;
 $light-surface: #f5f5f5;
-$light-text: #1a1a1a;
+$light-text: $text-default-contrast;  // Use text-default-contrast for light mode;
 $light-text-medium: rgba(26, 26, 26, 0.8);
 
 // Dark theme colors (existing)

@@ -6,7 +6,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 96px;
   background: var(--background);
   color: var(--text);
   transition: background-color $transition-duration $transition-easing,
@@ -27,4 +26,5 @@ body::before {
   background-repeat: repeat;
   opacity: 0.4;
   mix-blend-mode: overlay;
+  overflow: hidden;
 }

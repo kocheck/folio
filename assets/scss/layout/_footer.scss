@@ -1,1 +1,12 @@
 // footer css
+
+footer {
+    width: 100%;
+    .footer-container {
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 5vw, 3rem);
+      width: 100%;
+      overflow: hidden;
+    }
+}
+
