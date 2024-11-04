@@ -8,11 +8,32 @@
 // Nav stays full width
 nav {
     width: 100%;
-    // ... existing nav styles ...
 }
 
-main.content-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: calc(100vh - 200px);
+// Hero section with max-width
+.hero {
+    .content-wrapper {
+        display: flex;
+        gap: 2rem;
+    }
+
+    &__content {
+        flex: 1;
+        max-width: 50%;
+    }
+
+    &__media {
+        flex: 1;
+    }
+
+    @media (max-width: $breakpoint-md) {
+        .content-wrapper {
+            flex-direction: column;
+        }
+
+        &__content,
+        &__media {
+            max-width: 100%;
+        }
+    }
 }

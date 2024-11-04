@@ -22,13 +22,58 @@
             border-radius: $border-radius;
             overflow: hidden;
 
-            .masked-image {
-                display: block;
+            @media (max-width: $breakpoint-md) {
+                margin: 0 -5vw;
+                width: calc(100% + 10vw);
+                height: 80vh;
+                border-radius: 0;
+                margin-bottom: 0;
+            }
+
+            @media (max-width: $breakpoint-sm) {
+                height: 45vh;
+            }
+
+            .hero-image-wrapper {
+                position: relative;
                 width: 100%;
-                height: auto;
-                aspect-ratio: 528/417;
-                object-fit: cover;
-                object-position: right bottom;
+                height: 100%;
+
+                .masked-image {
+                    display: block;
+                    width: 110%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center 20%;
+                    transition: opacity $transition-duration $transition-easing;
+                    margin-left: -5%;
+                    filter: url('#ripple');
+
+                    &.dark-mode-image {
+                        position: absolute;
+                        top: 0;
+                        left: -5%;
+                        opacity: 100;
+                        mix-blend-mode: screen;
+                        filter: url('#ripple') contrast(1.1) brightness(0.9);
+                        background-color: var(--background);
+                    }
+
+                    &.light-mode-image {
+                        filter: url('#ripple') contrast(1.05) brightness(0.95);
+                        mix-blend-mode: darken;
+                        background-color: var(--background);
+                    }
+
+                    @media (max-width: $breakpoint-md) {
+                        width: 120%;
+                        margin-left: -10%;
+
+                        &.dark-mode-image {
+                            left: -10%;
+                        }
+                    }
+                }
             }
         }
 
@@ -39,18 +84,18 @@
             &-block {
                 flex: 1;
 
-                h3 {
+                .company-status {
                     font-family: $font-body;
-                    text-align: right;
-                    font-size: 1.25rem;
+                    text-align: left;
+                    font-size: 1rem;
                     font-weight: 479;
                     margin-bottom: 0.75rem;
                 }
 
-                p {
+                .company-name {
                     color: $text-medium;
-                    text-align: right;
-                    font-size: 1rem;
+                    text-align: left;
+                    font-size: .8rem;
                 }
             }
         }
@@ -68,6 +113,92 @@
         &__content,
         &__media {
             width: 100%;
+        }
+    }
+}
+
+// Dark mode styles
+[data-theme="dark"] {
+    .hero-image-wrapper {
+        .dark-mode-image {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .light-mode-image {
+            opacity: 0;
+        }
+
+        .hero-image-overlay {
+            background: linear-gradient(
+                45deg,
+                rgba($text-creative, 0.1),
+                rgba($text-logical, 0.1)
+            );
+            mix-blend-mode: overlay;
+            opacity: 0.7;
+        }
+    }
+}
+
+// Light mode styles
+[data-theme="light"] {
+    .hero-image-wrapper {
+        .dark-mode-image {
+            opacity: 0;
+        }
+
+        .light-mode-image {
+            opacity: 1;
+        }
+
+        .hero-image-overlay {
+            background: linear-gradient(
+                45deg,
+                rgba($text-personality, 0.08),
+                rgba($text-creative, 0.08)
+            );
+            mix-blend-mode: multiply;
+            opacity: 0.5;
+        }
+    }
+}
+
+@keyframes rippleEffect {
+    0% {
+        filter: url('#ripple') brightness(1);
+        transform: translateY(0);
+    }
+    50% {
+        filter: url('#ripple') brightness(1.02);
+        transform: translateY(-6px);
+    }
+    100% {
+        filter: url('#ripple') brightness(1);
+        transform: translateY(0);
+    }
+}
+
+.heading-group {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    .avatar-wrapper {
+        flex-shrink: 0;
+        width: 2.5rem;
+        height: 2.5rem;
+        position: relative;
+
+        svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+
+            image {
+                width: 100%;
+                height: 100%;
+            }
         }
     }
 }
