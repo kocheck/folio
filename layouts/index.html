@@ -14,30 +14,45 @@
                 <span class="text-personality">resolving</span> conflicts.
             </h2>
             <p>Features include pixel-perfect design, clean code commits, vector illustrations, and an unhealthy obsession with design tokens.</p>
+            <div class="hero__media-info">
+              <div class="hero__media-info-block">
+                  <h3 class="company-status">Previously</h3>
+                  <p class="company-name">Roadtrippers, Roadpass</p>
+              </div>
+              <div class="hero__media-info-block">
+                  <h3 class="company-status">@ Now</h3>
+                  <p class="company-name">PokerAtlas</p>
+              </div>
+          </div>
         </div>
 
+
+
         <div class="hero__media">
-            <div class="hero-image-mask">
-                {{ $heroImage := .Resources.GetMatch "hero.jpg" }}
-                {{ with $heroImage }}
+          <div class="hero-image-mask">
+            {{ $heroImageDark := .Resources.GetMatch "hero.jpg" }}
+            {{ $heroImageLight := .Resources.GetMatch "hero_invert.jpg" }}
+            <div class="hero-image-wrapper">
+                {{ with $heroImageDark }}
                     {{ $processed := .Resize "800x webp q90" }}
                     <img
                         src="{{ $processed.RelPermalink }}"
                         alt="Hero image"
-                        class="masked-image"
+                        class="masked-image dark-mode-image"
                     >
                 {{ end }}
+                {{ with $heroImageLight }}
+                    {{ $processed := .Resize "800x webp q90" }}
+                    <img
+                        src="{{ $processed.RelPermalink }}"
+                        alt="Hero image"
+                        class="masked-image light-mode-image"
+                    >
+                {{ end }}
+                <div class="hero-image-overlay"></div>
             </div>
-            <div class="hero__media-info">
-                <div class="hero__media-info-block">
-                    <h3>Previously</h3>
-                    <p>Roadtrippers, Roadpass</p>
-                </div>
-                <div class="hero__media-info-block">
-                    <h3>@ Now</h3>
-                    <p>PokerAtlas</p>
-                </div>
-            </div>
+        </div>
+
         </div>
     </div>
 </header>

@@ -22,13 +22,44 @@
             border-radius: $border-radius;
             overflow: hidden;
 
-            .masked-image {
-                display: block;
+            .hero-image-wrapper {
+                position: relative;
                 width: 100%;
-                height: auto;
-                aspect-ratio: 528/417;
-                object-fit: cover;
-                object-position: right bottom;
+                height: 100%;
+
+                .masked-image {
+                    display: block;
+                    width: 100%;
+                    height: auto;
+                    aspect-ratio: 528/467;
+                    object-fit: contain;
+                    object-position: right bottom;
+                    transition: opacity $transition-duration $transition-easing;
+                }
+
+                // Dark mode image
+                .dark-mode-image {
+                    position: absolute;
+                    opacity: 100;
+                    mix-blend-mode: screen;
+                    filter: contrast(1.1) brightness(0.9);
+                    background-color: var(--background);
+                }
+
+                // Light mode image
+                .light-mode-image {
+                    filter: contrast(1.05) brightness(0.95);
+                }
+
+                .hero-image-overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    pointer-events: none;
+                    transition: opacity $transition-duration $transition-easing;
+                }
             }
         }
 
@@ -39,18 +70,18 @@
             &-block {
                 flex: 1;
 
-                h3 {
+                .company-status {
                     font-family: $font-body;
-                    text-align: right;
-                    font-size: 1.25rem;
+                    text-align: left;
+                    font-size: 1rem;
                     font-weight: 479;
                     margin-bottom: 0.75rem;
                 }
 
-                p {
+                .company-name {
                     color: $text-medium;
-                    text-align: right;
-                    font-size: 1rem;
+                    text-align: left;
+                    font-size: .8rem;
                 }
             }
         }
@@ -68,6 +99,53 @@
         &__content,
         &__media {
             width: 100%;
+        }
+    }
+}
+
+// Dark mode styles
+[data-theme="dark"] {
+    .hero-image-wrapper {
+        .dark-mode-image {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .light-mode-image {
+            opacity: 0;
+        }
+
+        .hero-image-overlay {
+            background: linear-gradient(
+                45deg,
+                rgba($text-creative, 0.1),
+                rgba($text-logical, 0.1)
+            );
+            mix-blend-mode: overlay;
+            opacity: 0.7;
+        }
+    }
+}
+
+// Light mode styles
+[data-theme="light"] {
+    .hero-image-wrapper {
+        .dark-mode-image {
+            opacity: 0;
+        }
+
+        .light-mode-image {
+            opacity: 1;
+        }
+
+        .hero-image-overlay {
+            background: linear-gradient(
+                45deg,
+                rgba($text-personality, 0.08),
+                rgba($text-creative, 0.08)
+            );
+            mix-blend-mode: multiply;
+            opacity: 0.5;
         }
     }
 }
