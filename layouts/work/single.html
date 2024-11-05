@@ -38,5 +38,12 @@
     <div class="work-item__content">
         {{ .Content }}
     </div>
+
+    {{ if (fileExists (printf "content/%simages" .File.Dir)) }}
+        <div class="work-item__gallery">
+            <h2>Project Gallery</h2>
+            {{ partial "image-grid.html" . }}
+        </div>
+    {{ end }}
 </article>
 {{ end }}
