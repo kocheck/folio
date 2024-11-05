@@ -289,3 +289,20 @@ article, .long-form {
     transform: scaleX(1);
   }
 }
+
+.company {
+  font-weight: 500;
+  color: $text-personality;
+  margin-bottom: $spacing-xs;
+  transition: opacity $transition-duration $transition-easing;
+
+  @media (prefers-color-scheme: dark) {
+    opacity: 0.7;
+  }
+}
+
+// Add hover effect for work cards
+.work-card:hover .company,
+.work-hero__meta .company {
+  opacity: 1;
+}
