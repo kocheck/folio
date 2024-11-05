@@ -90,7 +90,7 @@ body {
   font-feature-settings: "kern" 1, "liga" 1;
 
   [data-theme="light"] & {
-    font-weight: 400; // Increased weight for light mode
+    font-weight: 350; // Increased weight for light mode
   }
 }
 
@@ -116,6 +116,10 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
   line-height: 1.2;
   margin-bottom: 1rem;
+
+  [data-theme="light"] & {
+    font-weight: 500;
+  }
 }
 
 // Generate heading sizes
