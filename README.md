@@ -65,7 +65,7 @@ folio/
 
 ### Adding a New Project
 ```bash
-hugo new work/project-name.md
+hugo new work/your-project-name/index.md
 ```
 
 Project front matter template:

@@ -1,0 +1,28 @@
+<div class="image-grid">
+    {{ $path := printf "%s%s" .Page.File.Dir "images/" }}
+    {{ range $index, $file := readDir (printf "content/%s" $path) }}
+        {{ $image := $.Page.Resources.GetMatch (printf "images/%s" .Name) }}
+        {{ with $image }}
+            {{ $thumb := .Resize "800x webp q90" }}
+            <div class="image-grid__item">
+                <img
+                    src="{{ $thumb.RelPermalink }}"
+                    alt="Portfolio image"
+                    loading="lazy"
+                    data-full="{{ .RelPermalink }}"
+                    data-index="{{ $index }}"
+                    class="lightbox-trigger"
+                >
+            </div>
+        {{ end }}
+    {{ end }}
+</div>
+
+<div class="lightbox" id="imageLightbox">
+    <button class="lightbox__close" aria-label="Close">×</button>
+    <button class="lightbox__prev" aria-label="Previous">‹</button>
+    <button class="lightbox__next" aria-label="Next">›</button>
+    <div class="lightbox__content">
+        <img src="" alt="Lightbox image">
+    </div>
+</div>
