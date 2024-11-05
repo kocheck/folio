@@ -226,3 +226,25 @@ nav {
 nav {
   @include section-logo-colors;
 }
+
+.nav-container {
+    ul {
+        li {
+            .nav-link-wrapper {
+                a[href$=".pdf"] {
+                    &::after {
+                        content: "↓";
+                        margin-left: 0.25rem;
+                        font-size: 0.875em;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.nav-link-wrapper a[href$=".pdf"]::after {
+    content: "↓";
+    margin-left: 0.25rem;
+    font-size: 0.875em;
+}
