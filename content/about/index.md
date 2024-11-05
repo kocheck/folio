@@ -22,6 +22,8 @@ I'm a Product Designer with a passion for transforming ideas into successful pro
 
 🔭 I'm exploring the next generation of design tools and mentoring approaches.
 
+🔧 Constantly tinkering with this site. I think the small details make a big difference and find that the devil is in the details.
+
 💬 Let's connect over a Zoom coffee to discuss design, design systems, Figma, or even sci-fi von Neumann probes!
 
 #### Currently Thinking about
