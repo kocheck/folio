@@ -83,11 +83,15 @@ html {
 body {
   font-family: $font-body;
   font-size: 1rem;
-  font-weight: 225;
+  font-weight: 225; // Default weight for dark mode
   line-height: 1.5;
-  letter-spacing: 0.01em; // Improve readability
+  letter-spacing: 0.01em;
   word-spacing: 0.02em;
-  font-feature-settings: "kern" 1, "liga" 1; // Enable kerning and ligatures
+  font-feature-settings: "kern" 1, "liga" 1;
+
+  [data-theme="light"] & {
+    font-weight: 400; // Increased weight for light mode
+  }
 }
 
 // --------------------------------
