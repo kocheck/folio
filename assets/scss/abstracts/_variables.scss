@@ -55,6 +55,7 @@ $surface-accent-medium-light: rgba(58, 35, 128, 0.2);
     --text-logical: #{$text-logical};
     --surface-accent: #{$surface-accent};
     --surface-accent-medium: #{$surface-accent-medium};
+    --texture-opacity: 0.4;
 }
 
 :root[data-theme="light"] {
@@ -68,6 +69,7 @@ $surface-accent-medium-light: rgba(58, 35, 128, 0.2);
     --text-logical: #{$text-logical-light};
     --surface-accent: #{$surface-accent-light};
     --surface-accent-medium: #{$surface-accent-medium-light};
+    --texture-opacity: 0.6;
 }
 
 // Fonts

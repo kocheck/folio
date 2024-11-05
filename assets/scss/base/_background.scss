@@ -24,7 +24,7 @@ body::before {
   pointer-events: none;
   background-image: url('../../assets/images/site-texture.png');
   background-repeat: repeat;
-  opacity: 0.4;
+  opacity: var(--texture-opacity, 0.4);
   mix-blend-mode: overlay;
   overflow: hidden;
 }
