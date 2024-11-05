@@ -1,0 +1,12 @@
+.avatar-figure {
+    margin: 0;
+    max-width: 375px;
+    width: 100%;
+
+    .avatar-image {
+        width: 100%;
+        height: auto;
+        border-radius: $border-radius-sm;
+        display: block;
+    }
+}

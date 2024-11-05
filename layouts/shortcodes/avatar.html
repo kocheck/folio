@@ -1,0 +1,13 @@
+<figure class="avatar-figure">
+    {{ $image := .Page.Resources.GetMatch (.Get "src") }}
+    {{ $alt := .Get "alt" }}
+    {{ with $image }}
+        {{ $processed := .Resize "375x webp q90" }}
+        <img
+            src="{{ $processed.RelPermalink }}"
+            alt="{{ $alt }}"
+            class="avatar-image"
+            loading="lazy"
+        >
+    {{ end }}
+</figure>
