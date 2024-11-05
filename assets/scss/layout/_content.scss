@@ -37,3 +37,55 @@ nav {
         }
     }
 }
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: $spacing-xl;
+    max-width: 800px;
+    margin: 0 auto;
+
+    &__sidebar {
+        position: fixed;
+        width: calc((800px - 2 * $spacing-xl) / 3.5);
+        top: 120px;
+
+        .sidebar-content {
+            h4 {
+                margin-top: $spacing-lg;
+                &:first-child {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+
+    &__main {
+        grid-column: 2;
+        margin-left: calc((800px - 2 * $spacing-xl) / 3.5 + $spacing-xl);
+    }
+
+    @media (max-width: $breakpoint-md) {
+        grid-template-columns: 1fr;
+        gap: $spacing-lg;
+
+        &__sidebar {
+            position: relative;
+            width: 100%;
+            top: 0;
+            order: 2;
+
+            .sidebar-content {
+                margin-top: $spacing-xl;
+                padding-top: $spacing-xl;
+                border-top: 1px solid var(--surface-alt);
+            }
+        }
+
+        &__main {
+            grid-column: 1;
+            margin-left: 0;
+            order: 1;
+        }
+    }
+}
