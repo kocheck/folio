@@ -4,7 +4,7 @@ nav {
   right: -100%;
   width: 100%;
   height: 100vh;
-  background: $surface-default;
+  background: var(--surface);
   transition: right $transition-duration $transition-easing;
   z-index: $z-index-modal;
 
@@ -101,6 +101,52 @@ nav {
               &:last-child {
                   transform: translateY(-8px) rotate(-45deg);
               }
+          }
+      }
+  }
+
+  .theme-toggle {
+      position: fixed;
+      top: $spacing-md;
+      right: calc(#{$spacing-md} + 50px);
+      width: 30px;
+      height: 30px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: $z-index-modal + 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+          width: 24px;
+          height: 24px;
+          stroke-width: 2px;
+          color: var(--text);
+      }
+
+      .sun-icon {
+          opacity: 1;
+          transform: scale(1);
+      }
+
+      .moon-icon {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) scale(0);
+          opacity: 0;
+      }
+
+      &[data-theme="dark"] {
+          .sun-icon {
+              opacity: 0;
+              transform: scale(0);
+          }
+          .moon-icon {
+              opacity: 1;
+              transform: translate(-50%, -50%) scale(1);
           }
       }
   }
