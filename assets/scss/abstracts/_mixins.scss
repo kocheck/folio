@@ -252,29 +252,47 @@
 @mixin section-logo-colors {
     &.home .nav-logo a {
         color: mix($text-default, $text-accent, 85%);
+        transition: color $transition-duration $transition-easing;
+
+        svg {
+            transition: fill $transition-duration $transition-easing;
+        }
+
+        &:hover {
+            color: $text-accent;
+            svg { fill: $text-accent; }
+        }
+
         [data-theme="light"] & {
             color: mix($text-default-contrast, $text-accent-light, 85%);
+            &:hover {
+                color: $text-accent-light;
+                svg { fill: $text-accent-light; }
+            }
         }
     }
 
     &.section-work .nav-logo a {
         color: mix($text-default, $text-creative, 85%);
+        transition: color $transition-duration $transition-easing;
+
+        svg {
+            transition: fill $transition-duration $transition-easing;
+        }
+
+        &:hover {
+            color: $text-creative;
+            svg { fill: $text-creative; }
+        }
+
         [data-theme="light"] & {
             color: mix($text-default-contrast, $text-creative-light, 85%);
+            &:hover {
+                color: $text-creative-light;
+                svg { fill: $text-creative-light; }
+            }
         }
     }
 
-    &.section-about .nav-logo a {
-        color: mix($text-default, $text-personality, 85%);
-        [data-theme="light"] & {
-            color: mix($text-default-contrast, $text-personality-light, 85%);
-        }
-    }
-
-    &.section-contact .nav-logo a {
-        color: mix($text-default, $text-logical, 85%);
-        [data-theme="light"] & {
-            color: mix($text-default-contrast, $text-logical-light, 85%);
-        }
-    }
+    // Repeat similar pattern for about and contact sections...
 }

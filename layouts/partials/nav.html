@@ -1,4 +1,4 @@
-<nav class="{{ if .IsHome }}home{{ else }}section-{{ .Section }}{{ end }}">
+<nav class="{{ if .IsHome }}home{{ else if eq .Type "about" }}section-about{{ else }}section-{{ .Section }}{{ end }}">
   <div class="nav-container">
       <div class="nav-logo">
           <a href="/">
