@@ -5,32 +5,31 @@ type: "about"
 
 {{< avatar src="avatar.png" alt="Kyle Kochanek" >}}
 
-## Hi there 👋, I'm Kyle
+## Welcome to my corner of the internet 👋
 
-I'm a Product Designer with a passion for transforming ideas into successful products, especially for startups. Currently, I'm spearheading B2B and B2C applications at PokerAtlas, where I blend creativity with strategic thinking to deliver exceptional user experiences.
+I'm a Product Designer who turns complex challenges into elegant solutions. Currently, I'm crafting B2B and B2C experiences at PokerAtlas, with systematic thinking and creative problem-solving.
 
-> Check out my [View CV](/assets/files/Kyle_Kochanek_CV.pdf)
+### What drives me
 
-### Expertise & Achievements
+I believe in the power of thoughtful design to transform ideas into successful products. My approach combines strategic thinking with pixel-perfect execution, especially when working with startups and scaling teams.
 
-- **Design Systems:** Pioneered and implemented white label design systems supporting multiple brands
-- **Product Development:** Transformed proof-of-concept demos into releasable products
-- **Team Leadership:** Led cross-functional teams, ensuring on-time delivery and meeting business goals
-- **Mentorship:** Guided junior designers and fostered innovative design cultures
+> Want the formal version? Check out my [CV](/assets/files/Kyle_Kochanek_CV.pdf)
 
-### Current Focus
+### Where I make an impact
 
-🔭 I'm exploring the next generation of design tools and mentoring approaches.
+- **Design Systems Architect:** Creating scalable design languages that amplify team efficiency (I'm really just that one nerd who loves optimizing components in Figma)
+- **Product Vision:** Transforming early concepts into market-ready products people love
+- **Force Multiplier:** Empowering teams to achieve more through systems thinking and strategic tools
+- **Team Catalyst:** Mentoring designers and fostering cultures where innovation thrives
 
-🔧 Constantly tinkering with this site. I think the small details make a big difference and find that the devil is in the details.
 
-💬 Let's connect over a Zoom coffee to discuss design, design systems, Figma, or even sci-fi von Neumann probes!
+### Current adventures
 
-#### Currently Thinking about
 
-> "Are you trying to achieve greatness, or are you trying to avoid disappointment?"
-> – Brendan Lee Mulligan
+- 🔭 Exploring the intersection of design tools and human potential
+- 🔧 Perpetually refining this digital space – because details matter and perfection is a journey
 
-### Let's Connect
 
-I'm always open to discussing new opportunities, collaborations, or just having a chat about design. Feel free to reach out!
+### Let's connect
+
+I'm always up for a thoughtful conversation about design, systems thinking, or even diving into discussions about sci-fi von Neumann probes! [Grab a virtual coffee with me?](mailto:hello+website@kylekochanek.com?subject=Virtual%20Coffee%20Chat&body=Hi%20Kyle!)

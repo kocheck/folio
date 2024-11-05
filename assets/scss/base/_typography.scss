@@ -170,11 +170,16 @@ a {
   transition: color $transition-duration $transition-easing;
   text-underline-offset: 0.2em; // Space between text and underline
   text-decoration-thickness: from-font;
+  cursor: pointer;
 
   &:hover, &:focus {
     color: mix(white, $text-accent, 10%);
     text-decoration: underline;
     text-decoration-thickness: 0.1em;
+  }
+
+  &:hover {
+    cursor: pointer;
   }
 }
 
