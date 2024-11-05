@@ -12,3 +12,21 @@ html, body {
     width: 100%;
     overflow: hidden;
 }
+
+.page-content {
+    padding-top: 5.1428571429rem;
+}
+.easter-egg {
+  position: absolute;
+  opacity: 0;
+  user-select: none;
+  pointer-events: none;
+  font-size: 0.75rem;
+  color: var(--text-medium);
+
+  // Make it visible when text is selected
+  &::selection {
+      opacity: 1;
+      color: var(--text-accent);
+  }
+}

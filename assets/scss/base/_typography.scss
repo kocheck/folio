@@ -72,25 +72,26 @@ $font-mono: 'Fira Code', ui-monospace, 'SF Mono';
 // Base Typography Settings
 // --------------------------------
 html {
-  // Responsive base font size calculation
-  // 14px minimum + fluid scaling based on viewport width
-  font-size: calc(14px + 0.390625vw);
-  // Optimize text rendering
+  font-size: clamp(14px, calc(14px + 0.25vw), 18px);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-synthesis: none; // Prevent synthetic bold/italic variants
-  text-size-adjust: 100%; // Prevent mobile browsers from auto-adjusting font-size
+  font-synthesis: none;
+  text-size-adjust: 100%;
 }
 
 body {
   font-family: $font-body;
   font-size: 1rem;
-  font-weight: 225;
+  font-weight: 225; // Default weight for dark mode
   line-height: 1.5;
-  letter-spacing: 0.01em; // Improve readability
+  letter-spacing: 0.01em;
   word-spacing: 0.02em;
-  font-feature-settings: "kern" 1, "liga" 1; // Enable kerning and ligatures
+  font-feature-settings: "kern" 1, "liga" 1;
+
+  [data-theme="light"] & {
+    font-weight: 350; // Increased weight for light mode
+  }
 }
 
 // --------------------------------
@@ -98,12 +99,12 @@ body {
 // --------------------------------
 // Define consistent sizing scale for headings
 $heading-sizes: (
-  1: 2.5rem,  // 40px at base size
-  2: 2rem,    // 32px at base size
-  3: 1.75rem, // 28px at base size
-  4: 1.5rem,  // 24px at base size
-  5: 1.25rem, // 20px at base size
-  6: 1rem     // 16px at base size
+  1: clamp(2rem, calc(2rem + 2vw), 2.5rem),    // 32-40px
+  2: clamp(1.75rem, calc(1.75rem + 1vw), 2rem), // 28-32px
+  3: clamp(1.5rem, calc(1.5rem + 0.5vw), 1.75rem), // 24-28px
+  4: 1.5rem,  // 24px
+  5: 1.25rem, // 20px
+  6: 1rem     // 16px
 );
 
 h1 {
@@ -115,6 +116,10 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
   line-height: 1.2;
   margin-bottom: 1rem;
+
+  [data-theme="light"] & {
+    font-weight: 500;
+  }
 }
 
 // Generate heading sizes
@@ -165,11 +170,16 @@ a {
   transition: color $transition-duration $transition-easing;
   text-underline-offset: 0.2em; // Space between text and underline
   text-decoration-thickness: from-font;
+  cursor: pointer;
 
   &:hover, &:focus {
     color: mix(white, $text-accent, 10%);
     text-decoration: underline;
     text-decoration-thickness: 0.1em;
+  }
+
+  &:hover {
+    cursor: pointer;
   }
 }
 
@@ -220,11 +230,11 @@ cite {
 .text-xl { font-size: 1.5rem; }
 
 // Text color variations
-.text-medium { color: $text-medium; }
-.text-muted { color: $text-medium; }
-.text-creative { color: $text-creative; }
-.text-logical { color: $text-logical; }
-.text-personality { color: $text-personality; }
+.text-medium { color: var(--text-medium); }
+.text-muted { color: var(--text-medium); }
+.text-creative { color: var(--text-creative); }
+.text-logical { color: var(--text-logical); }
+.text-personality { color: var(--text-personality); }
 
 // --------------------------------
 // Selection Styles
@@ -257,7 +267,7 @@ article, .long-form {
 // Mobile optimizations
 @media (max-width: 768px) {
   body {
-    font-size: calc(16px + 0.5vw); // Larger base size for mobile
+    font-size: clamp(16px, calc(16px + 0.2vw), 18px);
     line-height: 1.6;
   }
 }
@@ -273,7 +283,7 @@ article, .long-form {
     left: 0;
     width: 100%;
     height: 3px;
-    background-color: $text-accent;
+    background-color: var(--text-accent);
     transform: scaleX(0);
     transform-origin: left;
     animation: slideRight 0.5s $transition-easing forwards;
@@ -288,4 +298,21 @@ article, .long-form {
   to {
     transform: scaleX(1);
   }
+}
+
+.company {
+  font-weight: 500;
+  color: var(--text-personality);
+  margin-bottom: $spacing-xs;
+  transition: opacity $transition-duration $transition-easing;
+
+  @media (prefers-color-scheme: dark) {
+    opacity: 0.7;
+  }
+}
+
+// Add hover effect for work cards
+.work-card:hover .company,
+.work-hero__meta .company {
+  opacity: 1;
 }

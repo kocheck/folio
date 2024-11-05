@@ -16,8 +16,8 @@ title = "Kyle Kochanek"
     url = "/about/"
     weight = 2
   [[menu.main]]
-    name = "Contact"
-    url = "/contact/"
+    name = "Resume ↓"
+    url = "/assets/files/Kyle_Kochanek_Resume.pdf"
     weight = 3
 
 [build]

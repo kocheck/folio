@@ -1,6 +1,5 @@
 {{ define "main" }}
-<section class="work-section">
-    <h1>Work</h1>
+<section class="work-section page-content">
 
     {{ $featured := where .Pages "Params.featured" true }}
     {{ with $featured }}

@@ -4,7 +4,7 @@ nav {
   right: -100%;
   width: 100%;
   height: 100vh;
-  background: $surface-default;
+  background: var(--surface);
   transition: right $transition-duration $transition-easing;
   z-index: $z-index-modal;
 
@@ -32,23 +32,23 @@ nav {
               .nav-link-wrapper {
                   a {
                       font-size: 2rem;
-                      @include animated-underline($text-accent);
+                      @include animated-underline(var(--text-accent), 3px);
                   }
               }
 
-              // About link
+              // Target Work link (first in .Site.Menus.main)
               &:nth-child(2) .nav-link-wrapper a {
-                  @include animated-underline($text-personality);
+                  @include animated-underline(var(--text-creative), 3px);
               }
 
-              // Work link
+              // Target About link (second in .Site.Menus.main)
               &:nth-child(3) .nav-link-wrapper a {
-                  @include animated-underline($text-creative);
+                  @include animated-underline(var(--text-personality), 3px);
               }
 
-              // Resume link
+              // Target Contact link (third in .Site.Menus.main)
               &:nth-child(4) .nav-link-wrapper a {
-                  @include animated-underline($text-logical);
+                  @include animated-underline(var(--text-logical), 3px);
               }
           }
       }
@@ -105,6 +105,53 @@ nav {
       }
   }
 
+  .theme-toggle {
+      position: fixed;
+      top: $spacing-md;
+      right: calc(#{$spacing-md} + 50px);
+      width: 30px;
+      height: 30px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: $z-index-modal + 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+          width: 20px;
+          height: 20px;
+          stroke-width: 2px;
+          color: var(--text);
+      }
+
+      .sun-icon {
+          opacity: 1;
+          transform: scale(1);
+      }
+
+      .moon-icon {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) scale(0);
+          opacity: 0;
+      }
+
+      &[data-theme="dark"] {
+          .sun-icon {
+              opacity: 0;
+              transform: scale(0);
+          }
+          .moon-icon {
+              opacity: 1;
+              transform: translate(-50%, -50%) scale(1);
+          }
+      }
+  }
+
   @media (min-width: $breakpoint-md) {
       position: static;
       width: 100%;
@@ -155,60 +202,8 @@ nav {
           .theme-toggle {
               position: absolute;
               right: clamp(1rem, 5vw, 3rem);
-              background: transparent;
-              border: none;
-              cursor: pointer;
-              padding: $spacing-sm;
-              color: var(--text);
-
-              .moon { display: none; }
-
-              &[data-theme="dark"] {
-                  .sun { display: none; }
-                  .moon { display: inline; }
-              }
-
-              svg {
-                  width: 20px;
-                  height: 20px;
-                  stroke-width: 2px;
-                  stroke-linecap: round;
-                  stroke-linejoin: round;
-                  transition: transform 0.3s ease, opacity 0.3s ease;
-              }
-
-              .sun-icon {
-                  opacity: 1;
-                  transform: scale(1);
-              }
-
-              .moon-icon {
-                  position: absolute;
-                  top: 50%;
-                  left: 50%;
-                  transform: translate(-50%, -50%) scale(0);
-                  opacity: 0;
-              }
-
-              &[data-theme="dark"] {
-                  .sun-icon {
-                      opacity: 0;
-                      transform: scale(0);
-                  }
-                  .moon-icon {
-                      opacity: 1;
-                      transform: translate(-50%, -50%) scale(1);
-                  }
-              }
-
-              &:hover {
-                  svg {
-                      transform: scale(1.1);
-                  }
-                  &[data-theme="dark"] .moon-icon {
-                      transform: translate(-50%, -50%) scale(1.1);
-                  }
-              }
+              top: 50%;
+              transform: translateY(-50%);
           }
       }
 
@@ -225,4 +220,26 @@ nav {
 // Mobile section colors using the same mixin
 nav {
   @include section-logo-colors;
+}
+
+.nav-container {
+    ul {
+        li {
+            .nav-link-wrapper {
+                a[href$=".pdf"] {
+                    &::after {
+                        content: "";
+                        margin-left: 0.25rem;
+                        font-size: 0.875em;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.nav-link-wrapper a[href$=".pdf"]::after {
+    content: "↓";
+    margin-left: 0.25rem;
+    font-size: 0.875em;
 }
