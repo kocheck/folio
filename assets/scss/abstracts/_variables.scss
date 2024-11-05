@@ -35,10 +35,10 @@ $dark-text: $text-default;
 $dark-text-medium: $text-medium;
 
 // Accent colors light theme versions
-$text-accent-light: hsl(303, 100%, 45%);      // Darker purple
-$text-creative-light: hsl(180, 100%, 30%);     // Darker cyan
-$text-personality-light: hsl(35, 100%, 45%);   // Darker orange
-$text-logical-light: hsl(140, 100%, 30%);      // Darker green
+$text-accent-light: hsl(303, 85%, 45%);      // Darker, less saturated purple
+$text-creative-light: hsl(180, 85%, 35%);     // Darker, less saturated cyan
+$text-personality-light: hsl(35, 85%, 45%);   // Darker, less saturated orange
+$text-logical-light: hsl(140, 85%, 35%);      // Darker, less saturated green
 
 // Surface colors light theme
 $surface-accent-light: rgba(172, 147, 236, 0.3);

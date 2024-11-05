@@ -1,4 +1,4 @@
-<nav class="{{ if .IsHome }}home{{ else }}section-{{ .Type }}{{ end }}">
+<nav class="{{ if .IsHome }}home{{ else }}section-{{ .Section }}{{ end }}">
   <div class="nav-container">
       <div class="nav-logo">
           <a href="/">
@@ -17,7 +17,7 @@
           {{ range .Site.Menus.main }}
           <li>
               <div class="nav-link-wrapper">
-                  <a href="{{ .URL }}" class="{{ if $.IsMenuCurrent "main" . }}active{{ end }}">{{ .Name }}</a>
+                  <a href="{{ .URL }}" class="{{ if eq $.RelPermalink .URL }}active{{ end }}">{{ .Name }}</a>
               </div>
           </li>
           {{ end }}

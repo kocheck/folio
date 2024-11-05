@@ -32,23 +32,23 @@ nav {
               .nav-link-wrapper {
                   a {
                       font-size: 2rem;
-                      @include animated-underline($text-accent);
+                      @include animated-underline(var(--text-accent), 3px);
                   }
               }
 
-              // About link
+              // Target Work link (first in .Site.Menus.main)
               &:nth-child(2) .nav-link-wrapper a {
-                  @include animated-underline($text-personality);
+                  @include animated-underline(var(--text-creative), 3px);
               }
 
-              // Work link
+              // Target About link (second in .Site.Menus.main)
               &:nth-child(3) .nav-link-wrapper a {
-                  @include animated-underline($text-creative);
+                  @include animated-underline(var(--text-personality), 3px);
               }
 
-              // Resume link
+              // Target Contact link (third in .Site.Menus.main)
               &:nth-child(4) .nav-link-wrapper a {
-                  @include animated-underline($text-logical);
+                  @include animated-underline(var(--text-logical), 3px);
               }
           }
       }

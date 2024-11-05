@@ -217,11 +217,11 @@ cite {
 .text-xl { font-size: 1.5rem; }
 
 // Text color variations
-.text-medium { color: $text-medium; }
-.text-muted { color: $text-medium; }
-.text-creative { color: $text-creative; }
-.text-logical { color: $text-logical; }
-.text-personality { color: $text-personality; }
+.text-medium { color: var(--text-medium); }
+.text-muted { color: var(--text-medium); }
+.text-creative { color: var(--text-creative); }
+.text-logical { color: var(--text-logical); }
+.text-personality { color: var(--text-personality); }
 
 // --------------------------------
 // Selection Styles
@@ -270,7 +270,7 @@ article, .long-form {
     left: 0;
     width: 100%;
     height: 3px;
-    background-color: $text-accent;
+    background-color: var(--text-accent);
     transform: scaleX(0);
     transform-origin: left;
     animation: slideRight 0.5s $transition-easing forwards;
@@ -289,7 +289,7 @@ article, .long-form {
 
 .company {
   font-weight: 500;
-  color: $text-personality;
+  color: var(--text-personality);
   margin-bottom: $spacing-xs;
   transition: opacity $transition-duration $transition-easing;
 

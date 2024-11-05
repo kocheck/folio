@@ -80,7 +80,18 @@
         filter: blur(1px) brightness(1.2);
         z-index: -1;
 
-        transform: translateX(-100%); // Start position
+        [data-theme="light"] & {
+            background-color: rgba($color, 0.15);
+            background-image: repeating-radial-gradient(
+                circle at 0 0,
+                rgba($color, 0.15) 0,
+                rgba($color, 0.15) 1px,
+                transparent 1px,
+                transparent 6px
+            );
+        }
+
+        transform: translateX(-100%);
         transition: transform $transition-duration $transition-easing;
         will-change: transform;
 
@@ -183,7 +194,7 @@
 ///     @include animated-underline($text-accent, 2px, 'center');
 ///   }
 
-@mixin animated-underline($color, $height: 2px, $style: 'left-right') {
+@mixin animated-underline($color, $height: 3px) {
     position: relative;
     text-decoration: none;
     color: $text-medium;
@@ -192,25 +203,9 @@
     &.active {
         color: $color;
 
-        &::before {
+        &::after {
             transform: scaleX(1);
-            background-color: rgba($color, 0.3);
-            opacity: 1;
         }
-    }
-
-    &::before {
-        content: '';
-        position: absolute;
-        bottom: -4px;
-        left: 0;
-        width: 100%;
-        height: $height;
-        background-color: rgba($color, 0.3);
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: all $transition-duration $transition-easing;
-        opacity: 0;
     }
 
     &::after {
@@ -231,14 +226,6 @@
 
         &::after {
             transform: scaleX(1);
-        }
-    }
-
-    &:active {
-        color: darken($color, 15%);
-
-        &::after {
-            background-color: darken($color, 15%);
         }
     }
 }
@@ -263,19 +250,31 @@
     @include animated-underline($text-logical);
 }
 @mixin section-logo-colors {
-  &.home .nav-logo a {
-      color: mix($text-default, $text-accent, 85%);
-  }
+    &.home .nav-logo a {
+        color: mix($text-default, $text-accent, 85%);
+        [data-theme="light"] & {
+            color: mix($text-default-contrast, $text-accent-light, 85%);
+        }
+    }
 
-  &.section-work .nav-logo a {
-      color: mix($text-default, $text-creative, 85%);
-  }
+    &.section-work .nav-logo a {
+        color: mix($text-default, $text-creative, 85%);
+        [data-theme="light"] & {
+            color: mix($text-default-contrast, $text-creative-light, 85%);
+        }
+    }
 
-  &.section-about .nav-logo a {
-      color: mix($text-default, $text-personality, 85%);
-  }
+    &.section-about .nav-logo a {
+        color: mix($text-default, $text-personality, 85%);
+        [data-theme="light"] & {
+            color: mix($text-default-contrast, $text-personality-light, 85%);
+        }
+    }
 
-  &.section-contact .nav-logo a {
-      color: mix($text-default, $text-logical, 85%);
-  }
+    &.section-contact .nav-logo a {
+        color: mix($text-default, $text-logical, 85%);
+        [data-theme="light"] & {
+            color: mix($text-default-contrast, $text-logical-light, 85%);
+        }
+    }
 }
