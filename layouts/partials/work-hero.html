@@ -1,0 +1,42 @@
+<div class="work-hero">
+    <div class="content-wrapper">
+        <div class="work-hero__content">
+            <h1>{{ .Title }}</h1>
+            <div class="work-hero__meta">
+                {{ with .Params.company }}
+                <span class="company">{{ . }}</span>
+                {{ end }}
+
+                {{ with .Params.tags }}
+                <div class="tags">
+                    {{ range . }}
+                    <span class="tag">{{ . }}</span>
+                    {{ end }}
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+
+    <div class="work-hero__media">
+        {{ if .Resources }}
+            {{ $hero := .Resources.GetMatch .Params.hero_image }}
+            {{ with $hero }}
+                {{ $heroXLarge := .Resize "3840x webp q85" }}
+                {{ $heroLarge := .Resize "2880x webp q85" }}
+                {{ $heroMedium := .Resize "1920x webp q85" }}
+                {{ $heroSmall := .Resize "1200x webp q85" }}
+                <img
+                    srcset="{{ $heroSmall.RelPermalink }} 1200w,
+                            {{ $heroMedium.RelPermalink }} 1920w,
+                            {{ $heroLarge.RelPermalink }} 2880w,
+                            {{ $heroXLarge.RelPermalink }} 3840w"
+                    sizes="100vw"
+                    src="{{ $heroMedium.RelPermalink }}"
+                    alt="{{ $.Title }}"
+                    loading="eager"
+                >
+            {{ end }}
+        {{ end }}
+    </div>
+</div>

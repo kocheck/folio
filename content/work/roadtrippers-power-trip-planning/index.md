@@ -4,10 +4,11 @@ date: 2024-11-04T21:00:19-05:00
 company: "Roadtrippers"
 thumbnail: "thumbnail.jpg"
 hero_image: "hero.jpg"
-tags: []
-featured: false
-draft: true
-seo_description: ""
+tags: ["UX", "UI", "Trip Planning", "Accessibility"]
+featured: true
+draft: false
+seo_description: "Led the redesign of Roadtrippers' trip planner to enhance power user experience and improve trip planning tools."
+
 weight: 100
 
 # Project Details

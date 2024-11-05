@@ -92,6 +92,29 @@ hugo new blog/post-name.md
 3. Recommended image formats: WebP, JPEG, PNG
 4. Optimize images before adding them to the repository
 
+### Image Guidelines
+#### Thumbnails
+- Width: 600px
+- Aspect Ratio: 16:9
+- File Format: WebP (with JPEG fallback)
+- Quality: 90%
+- File Size: Aim for under 100KB after optimization
+
+#### Hero Images
+For work/project pages, use these specifications for hero images:
+- Width: 3840px (minimum 2400px)
+- Height: 1920px (minimum 1200px)
+- Aspect Ratio: 2:1 or 16:9
+- File Format: WebP (with JPEG fallback)
+- Quality: 85%
+- File Size: Aim for under 1MB after optimization
+
+The hero images will be automatically resized to:
+- 3840px (4K displays)
+- 2880px (Retina 5K)
+- 1920px (Full HD)
+- 1200px (Mobile/Tablet)
+
 ## Configuration
 
 ### Environment Variables
