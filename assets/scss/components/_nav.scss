@@ -114,14 +114,15 @@ nav {
       background: transparent;
       border: none;
       cursor: pointer;
-      z-index: $z-index-modal + 2;
+      padding: 0;
+      z-index: $z-index-modal + 1;
       display: flex;
       align-items: center;
       justify-content: center;
 
       svg {
-          width: 24px;
-          height: 24px;
+          width: 20px;
+          height: 20px;
           stroke-width: 2px;
           color: var(--text);
       }
@@ -201,60 +202,8 @@ nav {
           .theme-toggle {
               position: absolute;
               right: clamp(1rem, 5vw, 3rem);
-              background: transparent;
-              border: none;
-              cursor: pointer;
-              padding: $spacing-sm;
-              color: var(--text);
-
-              .moon { display: none; }
-
-              &[data-theme="dark"] {
-                  .sun { display: none; }
-                  .moon { display: inline; }
-              }
-
-              svg {
-                  width: 20px;
-                  height: 20px;
-                  stroke-width: 2px;
-                  stroke-linecap: round;
-                  stroke-linejoin: round;
-                  transition: transform 0.3s ease, opacity 0.3s ease;
-              }
-
-              .sun-icon {
-                  opacity: 1;
-                  transform: scale(1);
-              }
-
-              .moon-icon {
-                  position: absolute;
-                  top: 50%;
-                  left: 50%;
-                  transform: translate(-50%, -50%) scale(0);
-                  opacity: 0;
-              }
-
-              &[data-theme="dark"] {
-                  .sun-icon {
-                      opacity: 0;
-                      transform: scale(0);
-                  }
-                  .moon-icon {
-                      opacity: 1;
-                      transform: translate(-50%, -50%) scale(1);
-                  }
-              }
-
-              &:hover {
-                  svg {
-                      transform: scale(1.1);
-                  }
-                  &[data-theme="dark"] .moon-icon {
-                      transform: translate(-50%, -50%) scale(1.1);
-                  }
-              }
+              top: 50%;
+              transform: translateY(-50%);
           }
       }
 
@@ -279,7 +228,7 @@ nav {
             .nav-link-wrapper {
                 a[href$=".pdf"] {
                     &::after {
-                        content: "↓";
+                        content: "";
                         margin-left: 0.25rem;
                         font-size: 0.875em;
                     }
