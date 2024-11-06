@@ -63,6 +63,23 @@ nav {
                   transition: fill $transition-duration $transition-easing;
               }
           }
+
+          // Add these styles for mobile
+          position: fixed;
+          top: $spacing-md;
+          left: $spacing-md;
+          width: 120px;
+          z-index: $z-index-modal + 1;
+          height: 30px;
+          display: flex;
+          align-items: center;
+
+          svg {
+              width: 100%;
+              height: auto;
+              fill: var(--text);
+              display: block;
+          }
       }
   }
 

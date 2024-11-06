@@ -1,5 +1,5 @@
 .hero {
-  padding: clamp(3rem, 8vw, 8rem) 0;
+  padding: clamp(3rem, 8vw, 8rem) 0 clamp(6rem, 12vw, 12rem);
 
     .content-wrapper {
         display: flex;
