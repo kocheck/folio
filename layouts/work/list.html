@@ -1,10 +1,11 @@
 {{ define "main" }}
 <section class="work-section page-content">
+  {{ .Content }}
 
     {{ $featured := where .Pages "Params.featured" true }}
     {{ with $featured }}
     <div class="featured-work">
-        <h2>Featured Work</h2>
+        <!-- <h2>Featured Work</h2> -->
         <div class="work-grid">
             {{ range . }}
                 {{ partial "work-card.html" . }}
