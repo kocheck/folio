@@ -2,11 +2,14 @@
 
 footer {
     width: 100%;
+    background: linear-gradient(to bottom, var(--surface-default-card) 0%, transparent 100%);
+    margin-top: auto;
+
     .footer-container {
-      margin: 0 auto;
-      padding: 0 clamp(1rem, 5vw, 3rem);
-      width: 100%;
-      overflow: hidden;
+        margin: 0 auto;
+        padding: 0 clamp(1rem, 5vw, 3rem);
+        width: 100%;
+        overflow: hidden;
     }
 }
 

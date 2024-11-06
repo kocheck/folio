@@ -8,6 +8,8 @@ $accent-purple: #FF33F5; // Bright purple for headlines
 
 // Colors
 $surface-default: rgba(28, 28, 28, 1);
+$surface-default-card: rgba(28, 28, 28, 0.9);
+$surface-default-card-border: rgba(239, 239, 239, 0.12);
 $surface-default-contrast: rgba(239, 239, 239, 1);
 $surface-accent: rgba(172, 147, 236, 1);
 $surface-accent-medium: rgba(58, 35, 128, 1);
@@ -24,8 +26,10 @@ $text-logical: hsl(140, 100%, 60%);    // Green for contact section
 
 // Light theme colors
 $light-background: #ECF0EA;
+$light-surface-default-card: rgba(209, 207, 207, 0.12);
 $light-surface: #f5f5f5;
 $light-text: $text-default-contrast;  // Use text-default-contrast for light mode;
+$light-surface-default-card-border: rgba(26, 26, 26, 0.08);
 $light-text-medium: rgba(26, 26, 26, 0.8);
 
 // Dark theme colors (existing)
@@ -55,6 +59,8 @@ $surface-accent-medium-light: rgba(58, 35, 128, 0.2);
     --text-logical: #{$text-logical};
     --surface-accent: #{$surface-accent};
     --surface-accent-medium: #{$surface-accent-medium};
+    --surface-default-card: #{$surface-default-card};
+    --surface-default-card-border: #{$surface-default-card-border};
     --texture-opacity: 0.4;
 }
 
@@ -69,6 +75,8 @@ $surface-accent-medium-light: rgba(58, 35, 128, 0.2);
     --text-logical: #{$text-logical-light};
     --surface-accent: #{$surface-accent-light};
     --surface-accent-medium: #{$surface-accent-medium-light};
+    --surface-default-card: #{$light-surface-default-card};
+    --surface-default-card-border: #{$light-surface-default-card-border};
     --texture-opacity: 0.6;
 }
 
