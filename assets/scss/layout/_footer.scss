@@ -4,12 +4,218 @@ footer {
     width: 100%;
     background: linear-gradient(to bottom, var(--surface-default-card) 0%, transparent 100%);
     margin-top: auto;
+    padding: 4rem 0 2rem;
 
     .footer-container {
         margin: 0 auto;
         padding: 0 clamp(1rem, 5vw, 3rem);
         width: 100%;
-        overflow: hidden;
+        max-width: 75rem;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
+        gap: 3rem;
+        margin-bottom: 3rem;
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+    }
+
+    .footer-section {
+        h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1.25rem;
+            color: var(--text);
+            font-weight: 550;
+        }
+    }
+
+    .footer-tagline {
+        color: var(--text-medium);
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        max-width: 90%;
+    }
+
+    .footer-links, .social-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            margin-bottom: 0.75rem;
+        }
+
+        a {
+            color: var(--text-medium);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            &:hover {
+                color: var(--text-accent);
+            }
+        }
+    }
+
+    .social-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+
+        li {
+            margin: 0;
+        }
+
+        a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-medium);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            padding: 0.25rem 0;
+
+            &:hover {
+                color: var(--text-accent);
+
+                svg {
+                    transform: translateY(-1px);
+                }
+            }
+
+            svg {
+                width: 20px;
+                height: 20px;
+                fill: currentColor;
+                transition: transform 0.3s ease;
+            }
+
+            span {
+                font-size: 0.9rem;
+            }
+        }
+    }
+
+    .footer-bottom {
+        padding-top: 2rem;
+        margin-top: 2rem;
+        border-top: 1px solid var(--surface-default-card-border);
+        text-align: left;
+        max-width: var(--content-width);
+        margin-left: auto;
+        margin-right: auto;
+
+        .copyright {
+            color: var(--text-medium);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+
+        }
+
+        .built-with {
+            color: var(--text-medium);
+            font-size: 0.9rem;
+            opacity: 0.8;
+
+        }
+
+        .easter-egg {
+            opacity: 0;
+            font-size: 0.75rem;
+            color: var(--text-medium);
+            margin-top: 1rem;
+            display: block;
+
+            &::selection {
+                opacity: 1;
+                color: var(--text-accent);
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding: 3rem 0 1.5rem;
+
+        .footer-grid {
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+
+        .footer-section {
+            text-align: left;
+
+            &:first-child {
+                // About section
+                border-bottom: 1px solid var(--surface-default-card-border);
+                padding-bottom: 2rem;
+            }
+
+            h4 {
+                font-size: 1rem;
+                margin-bottom: 1rem;
+            }
+        }
+
+        .footer-tagline {
+            max-width: 100%;
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem 1.5rem;
+
+            li {
+                margin-bottom: 0;
+            }
+        }
+
+        .social-links {
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 1rem;
+
+            a {
+                padding: 0.5rem 0;
+
+                span {
+                    display: none; // Hide text, show only icons on mobile
+                }
+
+                svg {
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+        }
+
+        .footer-bottom {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            text-align: center;
+
+            .copyright, .built-with {
+                font-size: 0.85rem;
+            }
+
+            .built-with {
+                margin-top: 0.5rem;
+            }
+        }
     }
 }
 
