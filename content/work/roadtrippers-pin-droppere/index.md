@@ -1,5 +1,6 @@
 ---
-title: "Roadtrippers Pin Droppere"
+title: "Roadtrippers Pin Dropper"
+smTitle: "Pin Dropper"
 date: 2024-11-04T18:34:36-05:00
 company: ""
 thumbnail: "thumbnail.jpg"

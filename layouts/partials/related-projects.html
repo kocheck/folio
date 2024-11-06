@@ -1,0 +1,11 @@
+<div class="related-projects">
+    <h2>More Projects</h2>
+    <div class="related-grid">
+        {{ $currentPage := . }}
+        {{ $pages := where .Site.RegularPages "Section" "work" }}
+        {{ $filtered := where $pages "Permalink" "!=" .Permalink }}
+        {{ range first 3 $filtered.ByDate.Reverse }}
+            {{ partial "related-card.html" . }}
+        {{ end }}
+    </div>
+</div>

@@ -1,5 +1,6 @@
 ---
 title: "Design System Bonfire"
+smTitle: "Bonfire"
 date: 2024-11-04T18:30:49-05:00
 company: "Roadpass"
 thumbnail: "thumbnail.jpg"

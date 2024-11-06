@@ -1,5 +1,6 @@
 ---
 title: "Beta Mapbox Navigation"
+smTitle: "Navigation"
 date: 2024-11-05T22:26:51-05:00
 company: "Roadtrippers"
 thumbnail: "thumbnail.jpg"

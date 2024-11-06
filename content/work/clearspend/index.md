@@ -1,5 +1,6 @@
 ---
 title: "ClearSpend Web App"
+smTitle: "ClearSpend"
 date: 2024-11-04T18:29:45-05:00
 company: "ClearSpend"
 thumbnail: "thumbnail.jpg"
