@@ -41,10 +41,11 @@
         display: block;
         text-decoration: none;
         color: inherit;
-        background: $surface-default;
+        background: var(--surface-default-card);
         border-radius: $border-radius;
         overflow: hidden;
         transition: transform $transition-duration $transition-easing;
+        border: 1px solid var(--surface-default-card-border);
 
         &:hover {
             transform: translateY(-4px);
