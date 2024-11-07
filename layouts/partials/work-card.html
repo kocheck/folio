@@ -4,11 +4,36 @@
             {{ if .Resources }}
                 {{ $thumbnail := .Resources.GetMatch .Params.thumbnail }}
                 {{ with $thumbnail }}
-                    {{ $thumb := .Resize "600x webp q90" }}
-                    <img src="{{ $thumb.RelPermalink }}" alt="{{ $.Title }}">
+                    {{ $thumbWebp := .Resize "600x webp q90" }}
+                    {{ $thumbAvif := .Resize "600x avif q90" }}
+                    {{ $thumbJpg := .Resize "600x jpg q90" }}
+                    <picture>
+                        <source
+                            srcset="{{ $thumbAvif.RelPermalink }}"
+                            type="image/avif"
+                        >
+                        <source
+                            srcset="{{ $thumbWebp.RelPermalink }}"
+                            type="image/webp"
+                        >
+                        <img
+                            src="{{ $thumbJpg.RelPermalink }}"
+                            alt="{{ $.Title }}"
+                            loading="lazy"
+                            decoding="async"
+                            width="{{ $thumbWebp.Width }}"
+                            height="{{ $thumbWebp.Height }}"
+                        >
+                    </picture>
                 {{ end }}
             {{ else }}
-                <img src="{{ .Params.thumbnail }}" alt="{{ $.Title }}">
+                <!-- Fallback for static images -->
+                <img
+                    src="{{ .Params.thumbnail }}"
+                    alt="{{ $.Title }}"
+                    loading="lazy"
+                    decoding="async"
+                >
             {{ end }}
         {{ end }}
     </div>
