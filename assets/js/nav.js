@@ -18,6 +18,15 @@ document.addEventListener("DOMContentLoaded", () => {
         document.documentElement.setAttribute("data-theme", newTheme);
         localStorage.setItem("theme", newTheme);
         themeToggle.setAttribute("data-theme", newTheme);
+        themeToggle.setAttribute(
+            "aria-label",
+            `Switch to ${currentTheme === "dark" ? "light" : "dark"} theme`
+        );
+        themeToggle.setAttribute("role", "switch");
+        themeToggle.setAttribute(
+            "aria-checked",
+            currentTheme === "dark" ? "true" : "false"
+        );
     });
 
     // Check for saved theme preference, otherwise use system preference
