@@ -28,6 +28,11 @@
   &.transitioning {
     filter: blur(10px);
     opacity: 0;
+
+    // Fade out hero image first
+    .hero-image-mask {
+      opacity: 0;
+    }
   }
 }
 

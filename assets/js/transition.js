@@ -8,11 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("click", (e) => {
         const link = e.target.closest("a");
 
-        // Skip transition for navigation menu links and PDF files
-        if (
-            (link && link.closest(".nav-container")) ||
-            (link && link.href.endsWith(".pdf"))
-        ) {
+        // Skip transition for PDF files
+        if (link && link.href.endsWith(".pdf")) {
             return;
         }
 
@@ -23,10 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
             contentWrapper.classList.add("transitioning");
             fixedElements.forEach((el) => el.classList.add("transitioning"));
 
-            // Wait for transition to complete
+            // Wait slightly longer for the transition
             setTimeout(() => {
                 window.location.href = link.href;
-            }, 300); // Match this with your $transition-duration
+            }, 400); // Increased from 300 to allow for the hero image fade
         }
     });
 

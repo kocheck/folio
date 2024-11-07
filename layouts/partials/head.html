@@ -14,3 +14,11 @@
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
 {{ $search := resources.Get "js/search.js" | resources.Minify | resources.Fingerprint }}
 <script src="{{ $search.RelPermalink }}" defer></script>
+
+<script>
+    (function() {
+        const savedTheme = localStorage.getItem('theme');
+        const theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+    })();
+</script>

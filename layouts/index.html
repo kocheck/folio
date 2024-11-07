@@ -74,7 +74,7 @@
               <defs>
                   <filter id="ripple">
                       <feTurbulence
-                          type="sine"
+                          type="turbulence"
                           baseFrequency="0.01 0.015"
                           numOctaves="1"
                           seed="1"
@@ -110,34 +110,7 @@
         <h2>Featured Work</h2>
         <div class="work-grid">
             {{ range . }}
-            <a class="work-card" href="{{ .RelPermalink }}">
-                <div class="work-card__media">
-                    {{ if .Params.thumbnail }}
-                        {{ if .Resources }}
-                            {{ $thumbnail := .Resources.GetMatch .Params.thumbnail }}
-                            {{ with $thumbnail }}
-                                {{ $thumb := .Resize "600x webp q90" }}
-                                <img src="{{ $thumb.RelPermalink }}" alt="{{ $.Title }}">
-                            {{ end }}
-                        {{ else }}
-                            <!-- Fallback for static images -->
-                            <img src="{{ .Params.thumbnail }}" alt="{{ $.Title }}">
-                        {{ end }}
-                    {{ end }}
-                </div>
-                <div class="work-card__content">
-                    <h3>{{ .Title }}</h3>
-                    {{ with .Params.company }}<p class="company">{{ . }}</p>{{ end }}
-                    <p class="date">{{ .Date.Format "January 2, 2006" }}</p>
-                    {{ with .Params.tags }}
-                    <div class="tags">
-                        {{ range . }}
-                        <span class="tag">{{ . }}</span>
-                        {{ end }}
-                    </div>
-                    {{ end }}
-                </div>
-            </a>
+                {{ partial "work-card.html" . }}
             {{ end }}
         </div>
     </div>

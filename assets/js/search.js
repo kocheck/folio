@@ -1,3 +1,15 @@
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
 class ProjectSearch {
     constructor() {
         this.searchInput = document.getElementById("projectSearch");
@@ -111,5 +123,7 @@ class ProjectSearch {
 
 // Initialize on DOM load
 document.addEventListener("DOMContentLoaded", () => {
-    new ProjectSearch();
+    if (document.querySelector(".search-container")) {
+        new ProjectSearch();
+    }
 });
