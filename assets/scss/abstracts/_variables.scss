@@ -61,6 +61,7 @@ $surface-accent-medium-light: rgba(58, 35, 128, 0.2);
     --surface-default-card: #{$surface-default-card};
     --surface-default-card-border: #{$surface-default-card-border};
     --texture-opacity: 0.4;
+    --search-input-bg: #{$surface-default};
 }
 
 :root[data-theme="light"] {
@@ -77,6 +78,7 @@ $surface-accent-medium-light: rgba(58, 35, 128, 0.2);
     --surface-default-card: #{$light-surface-default-card};
     --surface-default-card-border: #{$light-surface-default-card-border};
     --texture-opacity: 0.6;
+    --search-input-bg: #ffffff;
 }
 
 // Fonts
