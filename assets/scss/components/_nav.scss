@@ -190,6 +190,8 @@ nav {
               width: 150px;
               position: absolute;
               left: clamp(1rem, 5vw, 3rem);
+              top: 50%;
+              transform: translateY(-50%);
 
               svg {
                   width: 100%;
@@ -221,6 +223,9 @@ nav {
               right: clamp(1rem, 5vw, 3rem);
               top: 50%;
               transform: translateY(-50%);
+              height: auto;
+              display: flex;
+              align-items: center;
           }
       }
 
