@@ -30,3 +30,39 @@ html, body {
       color: var(--text-accent);
   }
 }
+
+// Global focus styles
+:focus-visible {
+  outline: 3px solid var(--text-creative);
+  outline-offset: 3px;
+  border-radius: 2px;
+  transition: outline-color 0.2s ease;
+
+  // High contrast mode support
+  @media screen and (-ms-high-contrast: active) {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+  }
+}
+
+// Special case for text inputs
+input[type="text"],
+input[type="search"],
+input[type="email"],
+textarea {
+  &:focus-visible {
+    outline: 2px solid var(--text-creative);
+    outline-offset: 0;
+    border-color: var(--text-creative);
+    box-shadow: 0 0 0 2px rgba(var(--text-creative-rgb), 0.1);
+  }
+}
+
+// Special case for buttons and interactive elements
+button,
+.button,
+[role="button"] {
+  &:focus-visible {
+    outline-offset: 4px;
+  }
+}

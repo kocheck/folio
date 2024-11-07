@@ -90,12 +90,6 @@
             color: var(--text-medium);
         }
 
-        &:focus {
-            outline: none;
-            border-color: var(--text-creative);
-            box-shadow: 0 0 0 3px rgba(var(--text-creative-rgb), 0.1);
-        }
-
         &::placeholder {
             color: var(--text-medium);
         }
@@ -144,10 +138,4 @@
             margin-right: $spacing-sm;
         }
     }
-}
-
-// Ensure focus visible for keyboard navigation
-:focus-visible {
-    outline: 2px solid var(--text-creative);
-    outline-offset: 2px;
 }

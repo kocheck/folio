@@ -136,12 +136,6 @@ a {
 
     // 2
 
-    &:focus {
-        outline: thin dotted;
-    }
-
-    // 3
-
     &:hover,
     &:active {
         outline: 0;
