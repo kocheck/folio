@@ -25,6 +25,18 @@ const colorPairs = [
         foreground: { r: 255, g: 255, b: 255 },
         required: 4.5,
     },
+    {
+        name: "Link text",
+        background: { r: 22, g: 16, b: 26 },
+        foreground: { r: 82, g: 156, b: 255 },
+        required: 4.5,
+    },
+    {
+        name: "Button text",
+        background: { r: 82, g: 156, b: 255 },
+        foreground: { r: 255, g: 255, b: 255 },
+        required: 4.5,
+    },
     // Add more color pairs as needed
 ];
 

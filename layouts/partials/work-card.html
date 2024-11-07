@@ -18,7 +18,7 @@
                         >
                         <img
                             src="{{ $thumbJpg.RelPermalink }}"
-                            alt="{{ $.Title }}"
+                            alt="{{ $.Title }} - {{ $.Params.company }} project thumbnail"
                             loading="lazy"
                             decoding="async"
                             width="{{ $thumbWebp.Width }}"
@@ -30,7 +30,7 @@
                 <!-- Fallback for static images -->
                 <img
                     src="{{ .Params.thumbnail }}"
-                    alt="{{ $.Title }}"
+                    alt="{{ $.Title }} - {{ $.Params.company }} project thumbnail"
                     loading="lazy"
                     decoding="async"
                 >

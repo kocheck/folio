@@ -1,0 +1,10 @@
+.image-wrapper {
+    img.lightbox-trigger {
+        cursor: pointer;
+        transition: opacity $transition-duration $transition-easing;
+
+        &:hover {
+            opacity: 0.9;
+        }
+    }
+}

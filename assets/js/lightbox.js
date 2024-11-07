@@ -63,7 +63,7 @@ class Lightbox {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    if (document.querySelector(".image-grid")) {
+    if (document.querySelectorAll(".lightbox-trigger").length > 0) {
         new Lightbox();
     }
 });

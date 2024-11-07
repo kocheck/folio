@@ -33,3 +33,24 @@ title = "Kyle Kochanek"
 
 [markup.goldmark.renderer]
   unsafe = true
+
+[imaging]
+  quality = 90
+  resampleFilter = "lanczos"
+  anchor = "smart"
+  format = "webp"  # Default format for image processing
+
+[imaging.exif]
+  disableDate = true
+  disableLatLong = true
+
+[caches]
+  [caches.images]
+    dir = ":resourceDir/_gen"
+    maxAge = "720h"
+
+[server]
+  [[server.headers]]
+    for = "/*.webp"
+    [server.headers.values]
+      Cache-Control = "public, max-age=31536000"

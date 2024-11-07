@@ -1,0 +1,35 @@
+{{ $image := . }}
+{{ $alt := .Params.alt | default "" }}
+{{ $caption := .Params.caption | default "" }}
+
+{{ with $image }}
+    {{ $tiny := .Resize "20x webp q90" }}
+    {{ $small := .Resize "800x webp q90" }}
+    {{ $medium := .Resize "1200x webp q90" }}
+    {{ $large := .Resize "1800x webp q90" }}
+    {{ $original := .Resize "3840x webp q90" }}
+
+    <picture>
+        <source
+            srcset="{{ $tiny.RelPermalink }} 20w,
+                    {{ $small.RelPermalink }} 800w,
+                    {{ $medium.RelPermalink }} 1200w,
+                    {{ $large.RelPermalink }} 1800w,
+                    {{ $original.RelPermalink }} 3840w"
+            sizes="(max-width: 800px) 100vw,
+                   (max-width: 1200px) 85vw,
+                   1200px"
+            type="image/webp"
+        >
+        <img
+            src="{{ $medium.RelPermalink }}"
+            alt="{{ $alt }}"
+            loading="lazy"
+            decoding="async"
+            width="{{ $medium.Width }}"
+            height="{{ $medium.Height }}"
+            class="lightbox-trigger"
+            data-full="{{ $original.RelPermalink }}"
+        >
+    </picture>
+{{ end }}
