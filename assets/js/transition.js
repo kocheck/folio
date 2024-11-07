@@ -20,10 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
             contentWrapper.classList.add("transitioning");
             fixedElements.forEach((el) => el.classList.add("transitioning"));
 
-            // Wait for transition to complete
+            // Wait slightly longer for the transition
             setTimeout(() => {
                 window.location.href = link.href;
-            }, 300); // Match this with your $transition-duration
+            }, 400); // Increased from 300 to allow for the hero image fade
         }
     });
 

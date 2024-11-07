@@ -45,9 +45,10 @@
                     height: 100%;
                     object-fit: cover;
                     object-position: center 20%;
-                    transition: opacity $transition-duration $transition-easing;
+                    transition: opacity $transition-duration $transition-easing, transform $transition-duration $transition-easing;
                     margin-left: -5%;
                     filter: url('#ripple');
+
 
                     &.dark-mode-image {
                         position: absolute;
@@ -61,8 +62,9 @@
 
                     &.light-mode-image {
                         filter: url('#ripple') contrast(1.05) brightness(0.95);
-                        mix-blend-mode: darken;
+                        mix-blend-mode: darken !important;
                         background-color: var(--background);
+                        will-change: opacity, transform;
                     }
 
                     @media (max-width: $breakpoint-md) {
