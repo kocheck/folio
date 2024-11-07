@@ -3,10 +3,10 @@
 <head>
     {{ partial "head.html" . }}
 </head>
-<body>
+<body class="{{ with .Section }}section-{{ . }}{{ end }}">
     {{ partial "nav.html" . }}
 
-    <main class="content-wrapper transitioning">
+    <main id="main-content" class="content-wrapper">
         {{ block "main" . }}{{ end }}
     </main>
 
@@ -20,6 +20,7 @@
     {{ $lightbox := resources.Get "js/lightbox.js" | resources.Minify }}
     <script src="{{ $lightbox.RelPermalink }}"></script>
     {{ partial "svg-sprites.html" . }}
+    <script src="/assets/js/skip-link.js"></script>
 </body>
 </html>
 
