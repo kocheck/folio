@@ -1,5 +1,7 @@
 # Kyle Kochanek's Portfolio
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/20dddce5-0124-4b16-a83f-976ef6d10b7c/deploy-status)](https://app.netlify.com/sites/kochanek-portfolio/deploys)
+
 A personal portfolio website showcasing work and thoughts on design and development.
 
 ## Features
