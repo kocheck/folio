@@ -2,10 +2,10 @@
 title: "Roadtrippers Pin Dropper"
 smTitle: "Pin Dropper"
 date: 2024-11-04T18:34:36-05:00
-company: ""
+company: "Roadtrippers"
 thumbnail: "thumbnail.jpg"
 hero_image: "hero.jpg"
-tags: []
+tags: ["UX", "UI"]
 featured: true
 draft: false
 seo_description: "Developed a 'Pin Dropper' feature allowing users to manually place custom waypoints on the map, with consistent behavior across platforms and devices."
