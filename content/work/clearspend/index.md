@@ -7,7 +7,7 @@ hero_image: "hero.jpg"
 tags: [ "Product Design", "UX Design", "UI Design", "Design System", "User Experience", "User Interface" ]
 featured: true
 draft: false
-seo_description: "The Design of ClearSpend, a comprehensive spend control and expense management solution for small businesses."
+seo_description: "The Design of ClearSpend, a comprehensive spend control application for small businesses."
 weight: 100
 
 # Project Details

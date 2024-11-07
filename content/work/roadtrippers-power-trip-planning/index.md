@@ -7,7 +7,7 @@ hero_image: "hero.jpg"
 tags: ["UX", "UI", "Trip Planning", "Accessibility"]
 featured: true
 draft: false
-seo_description: "Led the redesign of Roadtrippers' trip planner to enhance power user experience and improve trip planning tools."
+seo_description: "Led the redesign of Roadtrippers' trip planner to improve trip planning tools."
 
 weight: 100
 

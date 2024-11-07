@@ -7,7 +7,7 @@ hero_image: "hero.jpg"
 tags: []
 featured: true
 draft: false
-seo_description: "Developed a 'Pin Dropper' feature allowing users to manually place custom waypoints on the map, with consistent behavior across platforms and devices."
+seo_description: "'Pin Dropper' feature allowing users to manually place custom waypoints on the map."
 weight: 100
 
 # Project Details
