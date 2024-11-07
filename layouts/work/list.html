@@ -1,32 +1,62 @@
 {{ define "main" }}
 <section class="work-section page-content">
-    <div class="search-container">
-        <input
-            type="text"
-            id="projectSearch"
-            placeholder="Search projects..."
-            aria-label="Search projects"
-        >
-    </div>
-
+    <!-- Content (title and description) first -->
     {{ .Content }}
 
-    {{ $featured := where .Pages "Params.featured" true }}
-    {{ with $featured }}
-    <div class="featured-work">
-        <!-- <h2>Featured Work</h2> -->
+    <!-- Search container after content -->
+    <div class="search-container" role="search">
+        <label for="projectSearch" class="search-label">
+            <span class="search-label__text">Search projects</span>
+            <div class="search-input-wrapper">
+                <input
+                    type="search"
+                    id="projectSearch"
+                    class="search-input"
+                    placeholder="Try searching for 'Design System' or 'UX'"
+                    autocomplete="off"
+                    aria-expanded="false"
+                    aria-controls="searchResults"
+                    aria-describedby="searchHint"
+                >
+                <button
+                    type="button"
+                    class="search-clear"
+                    aria-label="Clear search"
+                    hidden
+                >
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        </label>
+
+        <div id="searchHint" class="search-hint">
+            <span class="results-count" aria-live="polite"></span>
+            <span class="search-instructions">Type to search across project titles, tags, and descriptions</span>
+        </div>
+    </div>
+
+    <!-- Results region containing both featured and non-featured work -->
+    <div
+        id="searchResults"
+        role="region"
+        aria-label="Search results"
+    >
+        {{ $featured := where .Pages "Params.featured" true }}
+        {{ with $featured }}
+        <div class="featured-work">
+            <div class="work-grid">
+                {{ range . }}
+                    {{ partial "work-card.html" . }}
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+
         <div class="work-grid">
-            {{ range . }}
+            {{ range where .Pages "Params.featured" "!=" true }}
                 {{ partial "work-card.html" . }}
             {{ end }}
         </div>
-    </div>
-    {{ end }}
-
-    <div class="work-grid">
-        {{ range where .Pages "Params.featured" "!=" true }}
-            {{ partial "work-card.html" . }}
-        {{ end }}
     </div>
 </section>
 {{ end }}

@@ -55,10 +55,26 @@
 .search-container {
     margin-bottom: $spacing-xl;
 
-    input {
-        width: 100%;
+    .search-label {
+        display: block;
+        margin-bottom: $spacing-sm;
+
+        &__text {
+            display: block;
+            margin-bottom: $spacing-xs;
+            font-weight: 500;
+            color: var(--text);
+        }
+    }
+
+    .search-input-wrapper {
+        position: relative;
         max-width: 600px;
-        padding: $spacing-sm $spacing-md;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: $spacing-sm $spacing-xl $spacing-sm $spacing-md;
         font-size: 1rem;
         border: 1px solid var(--surface-alt);
         border-radius: $border-radius;
@@ -75,5 +91,55 @@
         &::placeholder {
             color: var(--text-medium);
         }
+
+        // High contrast focus styles for Windows
+        @media screen and (-ms-high-contrast: active) {
+            border: 2px solid currentColor;
+            &:focus {
+                outline: 2px solid currentColor;
+                outline-offset: 2px;
+            }
+        }
     }
+
+    .search-clear {
+        position: absolute;
+        right: $spacing-sm;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: $spacing-xs;
+        background: none;
+        border: none;
+        color: var(--text-medium);
+        cursor: pointer;
+        border-radius: $border-radius-sm;
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--text-creative);
+        }
+
+        &:hover {
+            color: var(--text);
+            background: var(--surface-alt);
+        }
+    }
+
+    .search-hint {
+        margin-top: $spacing-xs;
+        font-size: 0.875rem;
+        color: var(--text-medium);
+
+        .results-count {
+            font-weight: 500;
+            color: var(--text);
+            margin-right: $spacing-sm;
+        }
+    }
+}
+
+// Ensure focus visible for keyboard navigation
+:focus-visible {
+    outline: 2px solid var(--text-creative);
+    outline-offset: 2px;
 }
