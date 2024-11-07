@@ -15,12 +15,11 @@
     {{ $js := resources.Get "js/nav.js" | resources.Minify }}
     {{ $transition := resources.Get "js/transition.js" | resources.Minify }}
     <script src="{{ $js.RelPermalink }}"></script>
-    <script src="{{ "js/theme.js" | absURL }}"></script>
     <script src="{{ $transition.RelPermalink }}"></script>
     {{ $lightbox := resources.Get "js/lightbox.js" | resources.Minify }}
     <script src="{{ $lightbox.RelPermalink }}"></script>
     {{ partial "svg-sprites.html" . }}
-    <script src="/assets/js/skip-link.js"></script>
+    <!-- <script src="/assets/js/skip-link.js"></script> -->
 </body>
 </html>
 
