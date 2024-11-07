@@ -32,6 +32,7 @@ nav {
               .nav-link-wrapper {
                   a {
                       font-size: 2rem;
+                      color: var(--text);
                       @include animated-underline(var(--text-accent), 3px);
                   }
               }

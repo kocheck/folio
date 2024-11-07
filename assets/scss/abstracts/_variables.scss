@@ -20,9 +20,8 @@ $text-default-contrast:  rgba(28, 28, 28, 1);
 $text-accent: hsl(303, 100%, 60%);
 $text-accent-light: hsl(303, 100%, 45%);
 $text-creative: hsl(180, 100%, 60%);  // Cyan for work section
-$text-personality: hsl(35, 100%, 60%); // Orange for about section
+$text-personality: hsl(45, 100%, 60%); // Orange for about section
 $text-logical: hsl(140, 100%, 60%);    // Green for contact section
-
 
 // Light theme colors
 $light-background: #ECF0EA;
@@ -39,10 +38,10 @@ $dark-text: $text-default;
 $dark-text-medium: $text-medium;
 
 // Accent colors light theme versions
-$text-accent-light: hsl(303, 85%, 45%);      // Darker, less saturated purple
-$text-creative-light: hsl(180, 85%, 35%);     // Darker, less saturated cyan
-$text-personality-light: hsl(35, 85%, 45%);   // Darker, less saturated orange
-$text-logical-light: hsl(140, 85%, 35%);      // Darker, less saturated green
+$text-accent-light: hsl(303, 87%, 42%);      // Darker, less saturated purple
+$text-creative-light: hsl(180, 100%, 19%);     // Darker, less saturated cyan
+$text-personality-light: hsl(30, 93%, 37%);   // Darker orange with better contrast for light theme
+$text-logical-light: hsl(140, 86%, 25%);      // Darker, less saturated green
 
 // Surface colors light theme
 $surface-accent-light: rgba(172, 147, 236, 0.3);

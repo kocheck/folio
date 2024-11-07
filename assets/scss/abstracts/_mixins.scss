@@ -126,7 +126,7 @@
         display: block;
         width: 100%;
         padding: 0.75rem 1rem;
-        color: $text-medium;
+        color: var(--text-medium);
         text-decoration: none;
         transition: color $transition-duration $transition-easing;
         position: relative;
@@ -143,7 +143,7 @@
 ///   display: inline-block;
 ///
 ///   a {
-///     color: $text-medium;
+///     color: var(--text-medium);
 ///     text-decoration: none;
 ///     transition: color $transition-duration $transition-easing;
 ///   }
@@ -163,7 +163,7 @@
 ///     display: block;
 ///     width: 100%;
 ///     padding: 0.75rem 1rem;
-///     color: $text-medium;
+///     color: var(--text-medium);
 ///     text-decoration: none;
 ///     transition: color $transition-duration $transition-easing;
 ///   }
@@ -197,7 +197,7 @@
 @mixin animated-underline($color, $height: 3px) {
     position: relative;
     text-decoration: none;
-    color: $text-medium;
+    color: var(--text-medium);
     transition: color $transition-duration $transition-easing;
 
     &.active {
@@ -237,21 +237,21 @@
 
 // Custom height example
 .thick-underline {
-    @include animated-underline($text-creative, 3px);
+    @include animated-underline(var(--text-creative), 3px);
 }
 
 // Different color example
 .personality-link {
-    @include animated-underline($text-personality);
+    @include animated-underline(var(--text-personality));
 }
 
 // Logical section link
 .logical-link {
-    @include animated-underline($text-logical);
+    @include animated-underline(var(--text-logical));
 }
 @mixin section-logo-colors {
     &.home .nav-logo a {
-        color: mix($text-default, $text-accent, 85%);
+        color: mix(var(--text), var(--text-accent), 85%);
         transition: color $transition-duration $transition-easing;
 
         svg {
@@ -259,21 +259,21 @@
         }
 
         &:hover {
-            color: $text-accent;
-            svg { fill: $text-accent; }
+            color:var(--text-accent);
+            svg { fill: var(--text-accent); }
         }
 
         [data-theme="light"] & {
-            color: mix($text-default-contrast, $text-accent-light, 85%);
+            color: mix(var(--text-default-contrast), var(--text-accent-light), 85%);
             &:hover {
-                color: $text-accent-light;
-                svg { fill: $text-accent-light; }
+                color: var(--text-accent-light);
+                svg { fill: var(--text-accent-light); }
             }
         }
     }
 
     &.section-work .nav-logo a {
-        color: mix($text-default, $text-creative, 85%);
+        color: mix(var(--text), var(--text-creative), 85%);
         transition: color $transition-duration $transition-easing;
 
         svg {
@@ -281,15 +281,15 @@
         }
 
         &:hover {
-            color: $text-creative;
-            svg { fill: $text-creative; }
+            color: var(--text-creative);
+            svg { fill: var(--text-creative); }
         }
 
         [data-theme="light"] & {
-            color: mix($text-default-contrast, $text-creative-light, 85%);
+            color: mix(var(--text-default-contrast), var(--text-creative-light), 85%);
             &:hover {
-                color: $text-creative-light;
-                svg { fill: $text-creative-light; }
+                color: var(--text-creative-light);
+                svg { fill: var(--text-creative-light); }
             }
         }
     }
