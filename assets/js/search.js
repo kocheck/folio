@@ -111,5 +111,7 @@ class ProjectSearch {
 
 // Initialize on DOM load
 document.addEventListener("DOMContentLoaded", () => {
-    new ProjectSearch();
+    if (document.querySelector(".search-container")) {
+        new ProjectSearch();
+    }
 });
