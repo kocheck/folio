@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const hamburger = document.querySelector(".hamburger");
     const nav = document.querySelector("nav");
+    const navGradient = document.querySelector(".nav-gradient");
 
     hamburger.addEventListener("click", () => {
         hamburger.classList.toggle("active");
@@ -45,4 +46,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 themeToggle.setAttribute("data-theme", newTheme);
             }
         });
+
+    // Add scroll handler
+    const handleScroll = () => {
+        if (window.scrollY > 50) {
+            navGradient.classList.add("visible");
+        } else {
+            navGradient.classList.remove("visible");
+        }
+    };
+
+    window.addEventListener("scroll", handleScroll);
 });

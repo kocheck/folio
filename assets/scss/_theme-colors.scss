@@ -117,6 +117,7 @@ $accent-purple: #FF33F5;
     --surface-default-card: #{$surface-default-card};
     --surface-default-card-border: #{$surface-default-card-border};
     --texture-opacity: 0.4;
+    --surface-rgb: 30, 30, 30;
 
     @include test-contrast($dark-background, $text-default, "dark theme text");
     @include test-contrast($dark-background, $text-accent, "dark theme accent");
@@ -139,6 +140,7 @@ $accent-purple: #FF33F5;
         --surface-default-card: #{$light-surface-default-card};
         --surface-default-card-border: #{$light-surface-default-card-border};
         --texture-opacity: 0.6;
+        --surface-rgb: 255, 255, 255;
 
         @include test-contrast($light-background, $light-text, "light theme text");
         @include test-contrast($light-background, $text-accent-light, "light theme accent");
