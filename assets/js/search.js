@@ -22,6 +22,7 @@ class ProjectSearch {
                 description:
                     card.querySelector(".work-card__description")
                         ?.textContent || "",
+                caseStudy: card.getAttribute("data-case-study") || "",
             })
         );
     }
@@ -33,6 +34,7 @@ class ProjectSearch {
                 { name: "tags", weight: 0.3 },
                 { name: "company", weight: 0.2 },
                 { name: "description", weight: 0.1 },
+                { name: "caseStudy", weight: 0.1 },
             ],
             threshold: 0.3,
             distance: 100,

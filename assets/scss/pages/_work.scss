@@ -86,7 +86,8 @@
 
         &:hover {
             border-color: var(--text);
-            background-color: rgba(var(--text), 0.02);
+            background-color: rgba(var(--search-input-bg), 0.8);
+            color: var(--text-medium);
         }
 
         &:focus {
