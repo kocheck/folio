@@ -5,6 +5,9 @@
     [build.processing.css]
       bundle = true
       minify = true
+      method = "sass"
+      includePaths = ["assets/scss"]
+      options = "expanded"
     [build.processing.js]
       bundle = true
       minify = true
