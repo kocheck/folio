@@ -8,11 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("click", (e) => {
         const link = e.target.closest("a");
 
-        // Skip transition for navigation menu links and PDF files
-        if (
-            (link && link.closest(".nav-container")) ||
-            (link && link.href.endsWith(".pdf"))
-        ) {
+        // Skip transition for PDF files
+        if (link && link.href.endsWith(".pdf")) {
             return;
         }
 
