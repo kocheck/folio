@@ -8,7 +8,7 @@ hero_image: "hero.jpg"
 tags: ["Mapbox", "Navigation", "SDK", "UX", "UI"]
 featured: true
 draft: false
-seo_description: "Developed an integrated navigation system that keeps users within the Roadtrippers platform, while working within hardware and SDK constraints."
+seo_description: "Designed and helped implement an integrated navigation system for Roadtrippers using Mapbox SDK."
 weight: 100
 
 # Project Details

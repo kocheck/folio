@@ -8,7 +8,7 @@ hero_image: "hero.jpg"
 tags: [ "Design System", "UX Design", "UI Design", "User Experience", "User Interface" ]
 featured: true
 draft: false
-seo_description: "Discover how Roadpass Digital transformed their design workflow with Bonfire, a unified design system that achieved 80% faster feature delivery, saved $143,000 annually, and dramatically improved accessibility across five distinct platforms. Learn about their journey from fragmented processes to streamlined success."
+seo_description: "Led the creation of Bonfire, a unified design system that streamlined development across 5 platforms."
 weight: 100
 
 # Project Details
