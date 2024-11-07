@@ -1,4 +1,4 @@
-<a href="{{ .RelPermalink }}" class="work-card">
+<a class="work-card" href="{{ .RelPermalink }}" data-case-study="{{ .Content | plainify }}">
     <div class="work-card__media">
         {{ if .Params.thumbnail }}
             {{ if .Resources }}
@@ -8,7 +8,6 @@
                     <img src="{{ $thumb.RelPermalink }}" alt="{{ $.Title }}">
                 {{ end }}
             {{ else }}
-                <!-- Fallback for static images -->
                 <img src="{{ .Params.thumbnail }}" alt="{{ $.Title }}">
             {{ end }}
         {{ end }}
@@ -16,6 +15,7 @@
     <div class="work-card__content">
         <h3>{{ .Title }}</h3>
         {{ with .Params.company }}<p class="company">{{ . }}</p>{{ end }}
+        <p class="work-card__description">{{ .Params.seo_description }}</p>
         {{ with .Params.tags }}
         <div class="tags">
             {{ range . }}

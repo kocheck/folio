@@ -1,5 +1,6 @@
 ---
 title: "Roadtrippers Trip Planner Enhancements"
+smTitle: "Trip Planner"
 date: 2024-11-04T21:00:19-05:00
 company: "Roadtrippers"
 thumbnail: "thumbnail.jpg"

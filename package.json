@@ -6,7 +6,8 @@
     "dev": "hugo server -D",
     "build": "hugo --minify",
     "clean": "rm -rf public resources",
-    "start": "hugo server -D --disableFastRender"
+    "start": "hugo server -D --disableFastRender",
+    "test:contrast": "node scripts/test-contrast.js"
   },
   "author": "Kyle Kochanek",
   "license": "MIT",

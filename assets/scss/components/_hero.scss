@@ -1,5 +1,5 @@
 .hero {
-  padding: clamp(3rem, 8vw, 8rem) 0;
+  padding: clamp(3rem, 8vw, 8rem) 0 clamp(6rem, 12vw, 12rem);
 
     .content-wrapper {
         display: flex;
@@ -95,7 +95,7 @@
                 .company-name {
                     color: $text-medium;
                     text-align: left;
-                    font-size: .8rem;
+                    font-size: 0.9rem;
                 }
             }
         }
@@ -107,7 +107,7 @@
         }
 
         &__content {
-            padding-top: 0;
+            padding-top: 6rem;
         }
 
         &__content,

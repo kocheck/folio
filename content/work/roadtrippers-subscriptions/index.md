@@ -1,5 +1,6 @@
 ---
 title: "Roadtrippers Subscriptions"
+smTitle: "Subscriptions"
 date: 2024-11-04T18:30:49-05:00
 company: ""
 thumbnail: "thumbnail.jpg"

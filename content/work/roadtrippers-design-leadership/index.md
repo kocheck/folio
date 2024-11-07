@@ -1,5 +1,6 @@
 ---
 title: "Roadtrippers Design Leadership"
+smTitle: "Design Leadership"
 date: 2024-11-04T18:31:35-05:00
 company: ""
 thumbnail: "thumbnail.jpg"

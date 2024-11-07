@@ -9,3 +9,8 @@
 <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
 
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+<!-- Add before closing head tag -->
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+{{ $search := resources.Get "js/search.js" | resources.Minify | resources.Fingerprint }}
+<script src="{{ $search.RelPermalink }}" defer></script>

@@ -32,6 +32,7 @@ nav {
               .nav-link-wrapper {
                   a {
                       font-size: 2rem;
+                      color: var(--text);
                       @include animated-underline(var(--text-accent), 3px);
                   }
               }
@@ -62,6 +63,23 @@ nav {
                   fill: currentColor;
                   transition: fill $transition-duration $transition-easing;
               }
+          }
+
+          // Add these styles for mobile
+          position: fixed;
+          top: $spacing-md;
+          left: $spacing-md;
+          width: 120px;
+          z-index: $z-index-modal + 1;
+          height: 30px;
+          display: flex;
+          align-items: center;
+
+          svg {
+              width: 100%;
+              height: auto;
+              fill: var(--text);
+              display: block;
           }
       }
   }
@@ -173,6 +191,8 @@ nav {
               width: 150px;
               position: absolute;
               left: clamp(1rem, 5vw, 3rem);
+              top: 50%;
+              transform: translateY(-50%);
 
               svg {
                   width: 100%;
@@ -204,6 +224,9 @@ nav {
               right: clamp(1rem, 5vw, 3rem);
               top: 50%;
               transform: translateY(-50%);
+              height: auto;
+              display: flex;
+              align-items: center;
           }
       }
 
@@ -242,4 +265,23 @@ nav {
     content: "↓";
     margin-left: 0.25rem;
     font-size: 0.875em;
+}
+
+a:focus-visible {
+    outline: 2px solid var(--text-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    padding: 8px;
+    z-index: 100;
+    background: var(--surface);
+
+    &:focus {
+        top: 0;
+    }
 }

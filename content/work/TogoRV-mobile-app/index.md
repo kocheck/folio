@@ -1,5 +1,6 @@
 ---
 title: "TogoRV Mobile App"
+smTitle: "TogoRV"
 date: 2024-11-04T21:00:44-05:00
 company: ""
 thumbnail: "thumbnail.jpg"

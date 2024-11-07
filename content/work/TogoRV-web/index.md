@@ -1,5 +1,6 @@
 ---
 title: "TogoRV Web"
+smTitle: "TogoRV"
 date: 2024-11-04T18:28:53-05:00
 company: ""
 thumbnail: "thumbnail.jpg"
