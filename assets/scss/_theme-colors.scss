@@ -96,30 +96,54 @@
     }
 }
 
-// Define your base colors
+// Import colors from _variables.scss
 $dark-color-1: #360046;
 $dark-color-2: rgb(22, 16, 26);
 $accent-purple: #FF33F5;
-$text-light: #FFFFFF;
-$text-dark: #1a1a1a;
 
 // Test and define theme colors
 :root {
     // Dark theme
-    --background: #{$dark-color-2};
-    --text: #{$text-light};
-    --text-accent: #{$accent-purple};
+    --background: #{$dark-background};
+    --surface: #{$dark-surface};
+    --text: #{$dark-text};
+    --text-medium: #{$dark-text-medium};
+    --text-accent: #{$text-accent};
+    --text-creative: #{$text-creative};
+    --text-personality: #{$text-personality};
+    --text-logical: #{$text-logical};
+    --surface-accent: #{$surface-accent};
+    --surface-accent-medium: #{$surface-accent-medium};
+    --surface-default-card: #{$surface-default-card};
+    --surface-default-card-border: #{$surface-default-card-border};
+    --texture-opacity: 0.4;
 
-    @include test-contrast($dark-color-2, $text-light, "dark theme text");
-    @include test-contrast($dark-color-2, $accent-purple, "dark theme accent");
+    @include test-contrast($dark-background, $text-default, "dark theme text");
+    @include test-contrast($dark-background, $text-accent, "dark theme accent");
+    @include test-contrast($dark-background, $text-creative, "dark theme creative");
+    @include test-contrast($dark-background, $text-personality, "dark theme personality");
+    @include test-contrast($dark-background, $text-logical, "dark theme logical");
 
     // Light theme
     &[data-theme="light"] {
-        --background: #{$text-light};
-        --text: #{$text-dark};
-        --text-accent: #{darken($accent-purple, 15%)};
+        --background: #{$light-background};
+        --surface: #{$light-surface};
+        --text: #{$light-text};
+        --text-medium: #{$light-text-medium};
+        --text-accent: #{$text-accent-light};
+        --text-creative: #{$text-creative-light};
+        --text-personality: #{$text-personality-light};
+        --text-logical: #{$text-logical-light};
+        --surface-accent: #{$surface-accent-light};
+        --surface-accent-medium: #{$surface-accent-medium-light};
+        --surface-default-card: #{$light-surface-default-card};
+        --surface-default-card-border: #{$light-surface-default-card-border};
+        --texture-opacity: 0.6;
 
-        @include test-contrast($text-light, $text-dark, "light theme text");
-        @include test-contrast($text-light, darken($accent-purple, 15%), "light theme accent");
+        @include test-contrast($light-background, $light-text, "light theme text");
+        @include test-contrast($light-background, $text-accent-light, "light theme accent");
+        @include test-contrast($light-background, $text-creative-light, "light theme creative");
+        @include test-contrast($light-background, $text-personality-light, "light theme personality");
+        @include test-contrast($light-background, $text-logical-light, "light theme logical");
     }
 }
