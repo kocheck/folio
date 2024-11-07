@@ -9,7 +9,7 @@ tags: ["Mapbox", "Navigation", "SDK", "UX", "UI"]
 featured: true
 draft: false
 seo_description: "Designed and helped implement an integrated navigation system for Roadtrippers using Mapbox SDK."
-weight: 100
+weight: 10
 
 # Project Details
 challenge: "Create an in-app navigation system that keeps users within the Roadtrippers platform instead of redirecting them to external mapping applications, while working within hardware and SDK constraints."
@@ -46,6 +46,9 @@ The team implemented a comprehensive approach:
   - Early engineering collaboration
   - Standardized design communication across teams
 
+{{< image src="images/navigation-1.jpg" alt="Navigation Flow" >}}
+{{< image src="images/navigation.jpg" alt="Navigation Flow" >}}
+
 ## Impact
 
 The project delivered several key benefits:
@@ -56,3 +59,12 @@ The project delivered several key benefits:
 - Strengthened cross-functional collaboration between teams
 - Established a robust testing and validation process for future features
 
+## Explorations
+A few explorations that didn't make it to production.
+
+{{< image src="ex/explorations-1.jpg" alt="Explorations 1" >}}
+{{< image src="ex/explorations-2.jpg" alt="Explorations 2" >}}
+{{< image src="ex/explorations-3.jpg" alt="Explorations 3" >}}
+{{< image src="ex/explorations-4.jpg" alt="Explorations 4" >}}
+
+---

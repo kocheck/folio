@@ -9,7 +9,7 @@ tags: [ "Product Design", "UX Design", "UI Design", "Design System", "User Exper
 featured: true
 draft: false
 seo_description: "The Design of ClearSpend, a comprehensive spend control application for small businesses."
-weight: 100
+weight: 10
 
 # Project Details
 challenge: "Build a comprehensive spend control and expense management solution for small businesses from scratch within an aggressive 8-month timeline."
@@ -62,6 +62,8 @@ The solution was implemented through several key components:
 - Implemented layered information architecture
 - Created specialized dashboards for different user types (e.g., accountants vs. business managers)
 
+{{< image src="images/ClearSpend - 01.jpg" alt="ClearSpend 1" >}}
+
 ## Impact
 
 The project delivered several significant outcomes:
@@ -84,4 +86,3 @@ The project delivered several significant outcomes:
 
 - Creation of a flexible framework that supported both immediate needs and future expansion
 
-> The team successfully delivered a user-friendly, scalable solution to met the needs of small businesses while maintaining the flexibility for growth.

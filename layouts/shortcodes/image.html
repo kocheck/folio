@@ -4,8 +4,7 @@
 
 <figure class="image-wrapper">
     {{ with $image }}
-        {{ $resized := .Resize "1200x q90" }}
-        <img src="{{ $resized.RelPermalink }}" alt="{{ $alt }}" loading="lazy">
+        {{ partial "image-processing.html" . }}
     {{ end }}
     {{ with $caption }}
         <figcaption>{{ . }}</figcaption>
