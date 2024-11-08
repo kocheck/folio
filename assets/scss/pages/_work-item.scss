@@ -97,6 +97,44 @@
                 padding: 0;
             }
         }
+
+        // Video shortcode styles
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            margin: $spacing-lg 0;
+            border-radius: $border-radius;
+            overflow: hidden;
+            background: var(--surface-default-card);
+            border: 1px solid var(--surface-default-card-border);
+
+            // Force aspect ratio
+            aspect-ratio: 16/9;
+
+            video {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            // Fallback poster image
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                // Hide when video plays
+                .video-playing & {
+                    display: none;
+                }
+            }
+        }
+
     }
 }
 
