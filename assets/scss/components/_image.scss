@@ -8,3 +8,15 @@
         }
     }
 }
+
+.caption {
+    text-align: center;
+    color: var(--text-medium);
+    font-size: 0.75rem;
+    margin-top: 0.75rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -1,0 +1,32 @@
+<div class="image-grid-2">
+    {{ $image1 := .Page.Resources.GetMatch (.Get "image1") }}
+    {{ $image2 := .Page.Resources.GetMatch (.Get "image2") }}
+    {{ $alt1 := .Get "alt1" }}
+    {{ $alt2 := .Get "alt2" }}
+
+    <div class="image-grid-2__item">
+        {{ with $image1 }}
+            {{ $processed := .Resize "800x webp q90" }}
+            <img
+                src="{{ $processed.RelPermalink }}"
+                alt="{{ $alt1 }}"
+                loading="lazy"
+                class="lightbox-trigger"
+                data-full="{{ .RelPermalink }}"
+            >
+        {{ end }}
+    </div>
+
+    <div class="image-grid-2__item">
+        {{ with $image2 }}
+            {{ $processed := .Resize "800x webp q90" }}
+            <img
+                src="{{ $processed.RelPermalink }}"
+                alt="{{ $alt2 }}"
+                loading="lazy"
+                class="lightbox-trigger"
+                data-full="{{ .RelPermalink }}"
+            >
+        {{ end }}
+    </div>
+</div>
