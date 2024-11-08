@@ -35,6 +35,15 @@ The existing Roadtrippers platform faced several critical issues that needed add
 - The route line needed to remain on the right-hand side as part of brand identity
 - Updates needed to be shipped in phases while maintaining functionality
 
+### Planning
+
+The planning phase involved extensive collaboration with stakeholders to map out user flows and identify modular components. Using FigJam as our virtual whiteboard, we conducted multiple workshops to break down complex trip planning scenarios into discrete, reusable patterns. This modular approach was crucial, as it allowed us to design components that could be recombined to support various use cases—from simple day trips to complex multi-week journeys. We focused particularly on how different UI elements would need to interact, considering states like expanded/collapsed views, drag-and-drop functionality, and how information density could be managed across different screen sizes. This groundwork was essential for ensuring our design could scale while maintaining consistency across platforms.
+
+
+{{< image src="figjam.png" alt="Figjam whiteboard planning the trip planning process" >}}
+{{< image src="figjam2.gif" alt="Figjam whiteboard planning the trip planning process" >}}
+
+
 ## Solution
 
 The solution was implemented through several key initiatives:
