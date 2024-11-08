@@ -1,0 +1,24 @@
+            - name: Hugo Check for broken links
+  # You may pin to the exact commit or the version.
+  # uses: BoundfoxStudios/action-hugo-link-check@e79edefec7522bce30629cd69921c9ee20c3bcce
+  uses: BoundfoxStudios/action-hugo-link-check@v2.0.3
+  with:
+    # The number of required broken links to fail the action. Set to 0 to deactivate. Defaults to 1.
+    fail-on-broken-links: # optional, default is 1
+    # Logs skipped links and sends them to skipped-links output
+    log-skipped-links: # optional, default is false
+    # Automatically retry requests that return HTTP 429 responses and include a 'retry-after' header
+    retry: # optional, default is true
+    # Request timeout in ms. Set to 0 for no timeout. Defaults to 5000
+    timeout: # optional, default is 5000
+    # List of urls in regexy form to not include in the check
+    skip: # optional, default is 
+    # Base path to your hugo project.
+    hugo-root: # default is ./
+    # Base path to your hugo content directory.
+    hugo-content-dir: # default is ./content
+    # Base path to your hugo config.
+    hugo-config: # default is ./config.yaml
+    # Maximum time to wait for hugo to start up and process your project.
+    hugo-startup-wait-time: # default is 20
+          
