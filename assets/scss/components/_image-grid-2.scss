@@ -1,0 +1,25 @@
+.image-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-md;
+    margin: $spacing-xl 0;
+
+    &__item {
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: $border-radius;
+            transition: transform $transition-duration $transition-easing;
+            cursor: pointer;
+
+            &:hover {
+                transform: scale(1.02);
+            }
+        }
+    }
+
+    @media (max-width: $breakpoint-md) {
+        grid-template-columns: 1fr;
+        gap: $spacing-lg;
+    }
+}

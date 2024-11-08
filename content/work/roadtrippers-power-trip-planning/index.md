@@ -44,8 +44,12 @@ The solution was implemented through several key initiatives:
    - Built interface to handle future features like daily trip segmentation
    - Designed robust, modular components for easy developer implementation
 
-{{< image src="teaton-blueprints.jpg" alt="showcasing how the new modular trip planner was built" >}}
-{{< image src="teaton-components.jpg" alt="showing how the trip planningcomponents stack together" >}}
+{{< image-grid-2
+    image1="teaton-blueprints.jpg"
+    image2="teaton-components.jpg"
+    alt1="showcasing how the new modular trip planner was built"
+    alt2="showing how the trip planningcomponents stack together"
+>}}
 
 2. **Color System Overhaul**
    - Conducted comprehensive color audit across all platforms
@@ -62,7 +66,7 @@ The solution was implemented through several key initiatives:
    - Implemented consistent typography while maintaining platform-specific requirements
    - Developed flexible baseline grid system for cross-platform compatibility
 
-
+{{< image src="/images/teaton-05.jpg" alt="grouping of colors, showing the old unorganized Roadtrippers color palette with the new organized color system" >}}
 
 ## Impact
 
