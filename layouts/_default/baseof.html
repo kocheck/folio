@@ -20,6 +20,13 @@
     {{ $lightbox := resources.Get "js/lightbox.js" | resources.Minify }}
     <script src="{{ $lightbox.RelPermalink }}"></script>
     {{ partial "svg-sprites.html" . }}
+    <script>
+        window.hugo = {
+            environment: {{ if hugo.IsServer }}'development'{{ else }}'production'{{ end }}
+        };
+    </script>
+    {{ $analytics := resources.Get "js/analytics.js" | resources.Minify }}
+    <script src="{{ $analytics.RelPermalink }}"></script>
 </body>
 </html>
 
