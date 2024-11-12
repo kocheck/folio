@@ -20,4 +20,4 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' cdn.mxpnl.com cdn.jsdelivr.net; connect-src 'self' api.mixpanel.com"
+    Content-Security-Policy = "default-src 'self'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; script-src 'self' 'unsafe-inline' cdn.mxpnl.com cdn.jsdelivr.net; connect-src 'self' api.mixpanel.com api-js.mixpanel.com; font-src 'self' fonts.gstatic.com"
