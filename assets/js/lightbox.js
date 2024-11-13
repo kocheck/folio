@@ -3,12 +3,14 @@ class Lightbox {
         this.lightbox = document.getElementById("imageLightbox");
         this.images = document.querySelectorAll(".lightbox-trigger");
         this.currentIndex = 0;
+        this.contentWrapper = this.lightbox.querySelector(".lightbox__content");
         this.init();
     }
 
     init() {
         // Open lightbox
-        this.images.forEach((img) => {
+        this.images.forEach((img, index) => {
+            img.dataset.index = index;
             img.addEventListener("click", (e) => {
                 this.currentIndex = parseInt(e.target.dataset.index);
                 this.open(e.target.dataset.full);
@@ -40,7 +42,18 @@ class Lightbox {
 
     open(src) {
         const img = this.lightbox.querySelector(".lightbox__content img");
-        img.src = src;
+
+        // Add loading state
+        this.contentWrapper.classList.add("loading");
+
+        // Create new image to preload
+        const tempImage = new Image();
+        tempImage.onload = () => {
+            img.src = src;
+            this.contentWrapper.classList.remove("loading");
+        };
+        tempImage.src = src;
+
         this.lightbox.classList.add("active");
         document.body.style.overflow = "hidden";
     }
