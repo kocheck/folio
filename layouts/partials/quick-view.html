@@ -1,3 +1,49 @@
-<button class="quick-view-button" aria-label="Quick view all project images">
-    <span class="quick-view-button__text">Skip the reading, show me the goods →</span>
+{{ $labels := slice
+    "TL;DR — Show me the goods →"
+    "Skip the story, let's see the pixels →"
+    "Jump to the eye candy →"
+    "Impatient? Here's the gallery →"
+    "Cut to the visuals →"
+    "Just here for the pretty pictures? →"
+    "Fast-forward to the gallery →"
+    "Skip the reading, dive into designs →"
+    "Time-travel to the good stuff →"
+    "Straight to the visuals, please →"
+    "Design nerd? Skip to the process shots →"
+    "Visual learner? This way to the gallery →"
+    "Enough words, show me what you built →"
+    "TL;DR — Let's see it in action →"
+    "Quick tour of the visuals →"
+    "Skip the backstory, show the work →"
+    "Here for the eye candy? This way →"
+    "Jump straight to the good stuff →"
+    "Speed run to the gallery →"
+    "Visual person? Right this way →"
+    "Show me the pixels →"
+    "Skip the intro, show me the work →"
+    "Design nerd? Skip to the process shots →"
+    "Visual learner? This way to the gallery →"
+    "Enough words, show me what you built →"
+    "TL;DR — Let's see it in action →"
+
+}}
+
+<button class="quick-view-button"
+    aria-label="Quick view all project images"
+    data-labels="
+        TL;DR — Show me the goods →|
+        Skip the story, let's see the pixels →|
+        Jump to the eye candy →|
+        Impatient? Here's the gallery →|
+        Cut to the visuals →|
+        Just here for the pretty pictures? →|
+        Fast-forward to the gallery →|
+        Skip the reading, dive into designs →|
+        Time-travel to the good stuff →|
+        Straight to the visuals, please →|
+        Design nerd? Skip to the process shots →|
+        Visual learner? This way to the gallery →
+    "
+>
+    <span class="quick-view-button__text"></span>
 </button>
