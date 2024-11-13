@@ -27,6 +27,8 @@
     </script>
     {{ $analytics := resources.Get "js/analytics.js" | resources.Minify }}
     <script src="{{ $analytics.RelPermalink }}"></script>
+    {{ $quickView := resources.Get "js/quick-view.js" | resources.Minify }}
+    <script src="{{ $quickView.RelPermalink }}"></script>
 </body>
 </html>
 

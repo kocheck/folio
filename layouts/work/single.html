@@ -4,6 +4,10 @@
 
     <div class="content-wrapper">
         <div class="work-item__content">
+            {{ if (fileExists (printf "content/%simages" .File.Dir)) }}
+                {{ partial "quick-view.html" . }}
+            {{ end }}
+
             {{ .Content }}
         </div>
 

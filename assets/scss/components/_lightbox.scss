@@ -17,11 +17,28 @@
     &__content {
         max-width: 90%;
         max-height: 90vh;
+        position: relative;
+        transition: transform 0.3s ease-out;
 
         img {
             max-width: 100%;
             max-height: 90vh;
             object-fit: contain;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        &.swiping-left {
+            transform: translateX(-10%);
+        }
+
+        &.swiping-right {
+            transform: translateX(10%);
+        }
+
+        &.swiping-dismiss {
+            transform: translateY(10%);
+            opacity: 0.7;
         }
     }
 
