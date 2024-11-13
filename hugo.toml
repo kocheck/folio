@@ -22,6 +22,12 @@ title = "Kyle Kochanek"
 
 [build]
   writeStats = true
+  [build.processing]
+    skip_processing = false
+    [build.processing.css]
+      method = "sass"
+      options = "expanded"
+      includePaths = ["assets/scss"]
 
 [module]
   [[module.mounts]]
