@@ -1,0 +1,23 @@
+.quick-view-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    background: var(--surface-default-card);
+    border: 1px solid var(--surface-default-card-border);
+    border-radius: $border-radius;
+    color: var(--text-medium);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all $transition-duration $transition-easing;
+    margin: $spacing-md 0 $spacing-xl;
+
+    &:hover {
+        transform: translateY(-2px);
+        color: var(--text-creative);
+        border-color: var(--text-creative);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+}
