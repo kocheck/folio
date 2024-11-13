@@ -46,16 +46,28 @@ jobs:
     - name: Run Pa11y
       env:
         PUPPETEER_EXECUTABLE_PATH: /usr/bin/chromium-browser
+        DEBUG: "pa11y*"
       run: |
+        curl -v http://localhost:3000
+
         pa11y http://localhost:3000 \
           --reporter html \
           --wait 1000 \
           --timeout 60000 \
-          > pa11y-report.html
+          --debug \
+          --log-level debug \
+          > pa11y-report.html 2>pa11y-error.log
 
-    - name: Upload Pa11y report
+        if [ $? -ne 0 ]; then
+          echo "Pa11y failed. Error log:"
+          cat pa11y-error.log
+        fi
+
+    - name: Upload Pa11y logs
       if: always()
       uses: actions/upload-artifact@v3
       with:
-        name: pa11y-report
-        path: pa11y-report.html
+        name: pa11y-logs
+        path: |
+          pa11y-report.html
+          pa11y-error.log
