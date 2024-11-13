@@ -32,10 +32,27 @@ jobs:
       run: hugo --verbose
 
     - name: Serve the site
-      run: hugo server --port 3000 &
+      run: hugo server --port 3000 --bind 0.0.0.0 &
+
+    - name: Wait for Hugo server
+      run: |
+        echo "Waiting for Hugo server to be ready..."
+        timeout 30 bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:3000)" != "200" ]]; do sleep 2; done' || false
 
     - name: Install Pa11y
       run: npm install -g pa11y
 
     - name: Run Pa11y
-      run: pa11y http://localhost:3000 --reporter html > pa11y-report.html
+      run: |
+        pa11y http://localhost:3000 \
+          --reporter html \
+          --wait 1000 \
+          --timeout 60000 \
+          > pa11y-report.html
+
+    - name: Upload Pa11y report
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: pa11y-report
+        path: pa11y-report.html
