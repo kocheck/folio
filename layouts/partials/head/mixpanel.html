@@ -1,15 +1,15 @@
 <!-- Mixpanel -->
-<script type="text/javascript">
-{{ $mixpanelScript := `(function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(b){var a="mixpanel";"mixpanel"!==c&&(a+="."+c);b||(a+=" (stub)");return a};a.people.toString=function(){return a.toString(1)+".people (stub)"};g(a,a);b._i.push([e,f,c])}})(document,window.mixpanel||[]);` }}
-{{ $mixpanelScript | safeJS }}
+<script src="https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js"></script>
+<script>
+(function() {
+    var token = {{ .Site.Params.mixpanelToken | jsonify }};
+    var debug = {{ hugo.IsServer }};
 
-// Initialize Mixpanel
-document.addEventListener('DOMContentLoaded', function() {
-    mixpanel.init({{ .Site.Params.mixpanelToken | safeJS }}, {
-        debug: {{ hugo.IsServer }},
+    mixpanel.init(token, {
+        debug: debug,
         track_pageview: false,
         persistence: 'localStorage'
     });
     window.mixpanelLoaded = true;
-});
+})();
 </script>
