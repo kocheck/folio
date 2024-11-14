@@ -75,7 +75,7 @@ The solution was implemented through several key initiatives:
    - Implemented consistent typography while maintaining platform-specific requirements
    - Developed flexible baseline grid system for cross-platform compatibility
 
-{{< image src="/images/teaton-05.jpg" alt="grouping of colors, showing the old unorganized Roadtrippers color palette with the new organized color system" >}}
+{{< image src="teaton-05.jpg" alt="grouping of colors, showing the old unorganized Roadtrippers color palette with the new organized color system" >}}
 
 ## Impact
 
