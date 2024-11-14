@@ -99,8 +99,8 @@ hugo new blog/post-name.md
 - Width: 600px
 - Aspect Ratio: 16:9
 - File Format: WebP (with JPEG fallback)
-- Quality: 90%
-- File Size: Aim for under 100KB after optimization
+- Quality: 80%
+- File Size: Aim for under 50KB after optimization
 
 #### Hero Images
 For work/project pages, use these specifications for hero images:
