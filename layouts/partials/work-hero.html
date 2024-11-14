@@ -26,16 +26,35 @@
                 {{ $heroLarge := .Resize "2880x webp q85" }}
                 {{ $heroMedium := .Resize "1920x webp q85" }}
                 {{ $heroSmall := .Resize "1200x webp q85" }}
-                <img
-                    srcset="{{ $heroSmall.RelPermalink }} 1200w,
-                            {{ $heroMedium.RelPermalink }} 1920w,
-                            {{ $heroLarge.RelPermalink }} 2880w,
-                            {{ $heroXLarge.RelPermalink }} 3840w"
-                    sizes="100vw"
-                    src="{{ $heroMedium.RelPermalink }}"
-                    alt="{{ $.Title }}"
-                    loading="eager"
-                >
+
+                {{ $heroXLarge_fallback := .Resize "3840x jpg q85" }}
+                {{ $heroLarge_fallback := .Resize "2880x jpg q85" }}
+                {{ $heroMedium_fallback := .Resize "1920x jpg q85" }}
+                {{ $heroSmall_fallback := .Resize "1200x jpg q85" }}
+
+                <picture>
+                    <source
+                        srcset="{{ $heroSmall.RelPermalink }} 1200w,
+                                {{ $heroMedium.RelPermalink }} 1920w,
+                                {{ $heroLarge.RelPermalink }} 2880w,
+                                {{ $heroXLarge.RelPermalink }} 3840w"
+                        sizes="100vw"
+                        type="image/webp"
+                    >
+                    <source
+                        srcset="{{ $heroSmall_fallback.RelPermalink }} 1200w,
+                                {{ $heroMedium_fallback.RelPermalink }} 1920w,
+                                {{ $heroLarge_fallback.RelPermalink }} 2880w,
+                                {{ $heroXLarge_fallback.RelPermalink }} 3840w"
+                        sizes="100vw"
+                        type="image/jpeg"
+                    >
+                    <img
+                        src="{{ $heroMedium_fallback.RelPermalink }}"
+                        alt="{{ $.Title }}"
+                        loading="eager"
+                    >
+                </picture>
             {{ end }}
         {{ end }}
     </div>

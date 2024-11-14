@@ -9,6 +9,12 @@
     {{ $large := .Resize "1800x webp q90" }}
     {{ $original := .Resize "3840x webp q90" }}
 
+    {{ $tiny_fallback := .Resize "20x jpg q90" }}
+    {{ $small_fallback := .Resize "800x jpg q90" }}
+    {{ $medium_fallback := .Resize "1200x jpg q90" }}
+    {{ $large_fallback := .Resize "1800x jpg q90" }}
+    {{ $original_fallback := .Resize "3840x jpg q90" }}
+
     <picture>
         <source
             srcset="{{ $tiny.RelPermalink }} 20w,
@@ -21,8 +27,19 @@
                    1200px"
             type="image/webp"
         >
+        <source
+            srcset="{{ $tiny_fallback.RelPermalink }} 20w,
+                    {{ $small_fallback.RelPermalink }} 800w,
+                    {{ $medium_fallback.RelPermalink }} 1200w,
+                    {{ $large_fallback.RelPermalink }} 1800w,
+                    {{ $original_fallback.RelPermalink }} 3840w"
+            sizes="(max-width: 800px) 100vw,
+                   (max-width: 1200px) 85vw,
+                   1200px"
+            type="image/jpeg"
+        >
         <img
-            src="{{ $medium.RelPermalink }}"
+            src="{{ $medium_fallback.RelPermalink }}"
             alt="{{ $alt }}"
             loading="lazy"
             decoding="async"
