@@ -26,7 +26,9 @@ self.addEventListener("install", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
+
     // Don't cache POST requests
+
     if (event.request.method === "POST") {
         return;
     }
@@ -34,7 +36,9 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(
         caches.match(event.request).then((response) => {
             if (response) {
+
                 // Return cached response and update cache in background
+
                 const fetchPromise = fetch(event.request).then(
                     (networkResponse) => {
                         caches.open(CACHE_NAME).then((cache) => {
