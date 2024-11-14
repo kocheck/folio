@@ -14,7 +14,10 @@ self.addEventListener("install", (event) => {
             return Promise.all(
                 CACHED_ASSETS.map((asset) => {
                     return cache.add(
-                        new Request(asset.url, { cache: "reload" })
+                        new Request(asset.url, {
+                            cache: "reload",
+                            credentials: "same-origin",
+                        })
                     );
                 })
             );
@@ -23,15 +26,30 @@ self.addEventListener("install", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
+    if (event.request.method === "POST") {
+        return;
+    }
+
     event.respondWith(
-        caches
-            .match(event.request)
-            .then((response) => response || fetch(event.request))
-            .catch(() => {
+        caches.match(event.request).then((response) => {
+            if (response) {
+                const fetchPromise = fetch(event.request).then(
+                    (networkResponse) => {
+                        caches.open(CACHE_NAME).then((cache) => {
+                            cache.put(event.request, networkResponse.clone());
+                        });
+                        return networkResponse;
+                    }
+                );
+                return response;
+            }
+
+            return fetch(event.request).catch(() => {
                 if (event.request.mode === "navigate") {
                     return caches.match("/offline.html");
                 }
-            })
+            });
+        })
     );
 });
 
