@@ -12,12 +12,11 @@
   background: $surface-default;
   border-radius: $border-radius;
   overflow: hidden;
-  transition: transform $transition-duration $transition-easing;
   will-change: transform;
+  transition: transform $transition-duration $transition-easing !important;
 
   &:hover {
     transform: translateY(-4px);
-    transition: transform $transition-duration $transition-easing;
 
     h3 {
       color: var(--text-creative);

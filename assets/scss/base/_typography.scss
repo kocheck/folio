@@ -164,7 +164,7 @@ a {
   text-decoration: none;
   transition: color $transition-duration $transition-easing;
 
-  &:not(.social-links *):not(.nav-logo *):not(.skip-link) {
+  &:not(.work-card):not(.social-links *):not(.nav-logo *):not(.skip-link) {
     @include animated-underline(var(--text-accent), 2px);
   }
 
