@@ -23,7 +23,8 @@
             flex-wrap: wrap;
 
             .tag {
-                background: var(--surface-alt);
+                background: var(--surface-default-card);
+                border: 1px solid var(--surface-default-card-border);
                 padding: $spacing-xs $spacing-sm;
                 border-radius: $border-radius-sm;
                 font-size: 0.875rem;
