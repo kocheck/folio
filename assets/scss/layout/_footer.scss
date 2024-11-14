@@ -138,6 +138,20 @@ footer {
             }
         }
     }
+
+    .footer-links a,
+    .footer-meta a {
+        color: var(--text-medium);  // Default state color
+        text-decoration: none;
+        position: relative;
+        transition: color $transition-duration $transition-easing;
+
+        &:hover {
+            color: var(--text-accent);  // Hover state color
+        }
+
+        @include animated-underline(var(--text-accent), 2px);
+    }
 }
 
 @media (max-width: 768px) {

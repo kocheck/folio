@@ -158,7 +158,7 @@ ul, ol {
 // --------------------------------
 // Interactive Elements
 // --------------------------------
-a:not(.nav-link-wrapper a):not(.work-card):not(.social-links *):not(.nav-logo *):not(.skip-link) {
+a:not(.nav-link-wrapper a):not(.work-card):not(.social-links *):not(.nav-logo *):not(.skip-link):not(.footer-links a):not(.footer-meta a) {
   position: relative;
   color: var(--text-accent);
   text-decoration: none;
