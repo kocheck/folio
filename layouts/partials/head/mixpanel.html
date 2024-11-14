@@ -1,42 +1,11 @@
 <!-- Mixpanel -->
 <script type="text/javascript">
-(function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(b){var a="mixpanel";"mixpanel"!==c&&(a+="."+c);b||(a+=" (stub)");return a};a.people.toString=function(){return a.toString(1)+".people (stub)"};g(a,a);b._i.push([e,f,c])}}})(document,window.mixpanel||[]);
+(function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(b){var a="mixpanel";"mixpanel"!==c&&(a+="."+c);b||(a+=" (stub)");return a};a.people.toString=function(){return a.toString(1)+".people (stub)"};g(a,a);b._i.push([e,f,c])}})(document,window.mixpanel||[]);
 
-// Initialize Mixpanel only after the script has loaded
-const initMixpanel = function() {
-    const token = {{ .Site.Params.mixpanelToken | jsonify }};
-    const isDev = {{ hugo.IsServer }};
-
-    console.log("Mixpanel token:", token);
-    console.log("Environment:", isDev ? "Development" : "Production");
-
-    if (isDev) {
-        // Development mode - mock implementation
-        window.mixpanel = {
-            track: function(event, props) {
-                console.log('Mock Mixpanel Event:', event, props);
-            },
-            get_config: function() {
-                return { debug: true };
-            }
-        };
-        window.mixpanelLoaded = true;
-    } else if (token) {
-        // Production mode with valid token
-        mixpanel.init(token, {
-            debug: false,
-            track_pageview: false,
-            persistence: "localStorage"  // Recommended in docs for more reliable tracking
-        });
-        window.mixpanelLoaded = true;
-    } else {
-        console.warn('Mixpanel token not found');
-        window.mixpanelLoaded = true;
-    }
-};
-
-// Initialize after all scripts have loaded
-window.onload = function() {
-    setTimeout(initMixpanel, 1000); // Increased delay to 1000ms
-};
+// Initialize Mixpanel with token from Hugo config
+mixpanel.init({{ .Site.Params.mixpanelToken | jsonify }}, {
+    debug: {{ hugo.IsServer }},
+    track_pageview: false,
+    persistence: 'localStorage'
+});
 </script>

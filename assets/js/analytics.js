@@ -1,3 +1,4 @@
+// Track events with consistent properties
 function trackEvent(eventName, properties = {}) {
     if (!window.mixpanel) {
         console.warn("Mixpanel not available");
@@ -8,6 +9,7 @@ function trackEvent(eventName, properties = {}) {
         environment: window.hugo.environment,
         url: window.location.href,
         timestamp: new Date().toISOString(),
+        theme: document.documentElement.getAttribute("data-theme"),
     };
 
     if (window.hugo.environment === "development") {
@@ -15,65 +17,135 @@ function trackEvent(eventName, properties = {}) {
             ...baseProperties,
             ...properties,
         });
-    } else {
-        try {
-            mixpanel.track(eventName, {
-                ...baseProperties,
-                ...properties,
-            });
-        } catch (error) {
-            console.error("Error tracking event:", error);
-        }
+        return;
+    }
+
+    try {
+        mixpanel.track(eventName, {
+            ...baseProperties,
+            ...properties,
+        });
+    } catch (error) {
+        console.error("Error tracking event:", error);
     }
 }
 
-// Initialize analytics after DOM content is loaded
-document.addEventListener("DOMContentLoaded", function () {
-    // Ensure mixpanel is available
-    const initInterval = setInterval(() => {
-        if (window.mixpanelLoaded) {
-            clearInterval(initInterval);
-            initializeAnalytics();
-        }
-    }, 100);
+// Enhanced Analytics object with more tracking functions
+const Analytics = {
+    // Page view tracking
+    trackPageView: () => {
+        const properties = {
+            title: document.title,
+            path: window.location.pathname,
+            referrer: document.referrer,
+        };
 
-    // Timeout after 5 seconds
-    setTimeout(() => {
-        clearInterval(initInterval);
-        console.warn("Mixpanel initialization timed out");
-    }, 5000);
+        // Add section-specific properties
+        if (window.location.pathname.startsWith("/work/")) {
+            properties.content_type = "project";
+            properties.project_title =
+                document.querySelector("h1")?.textContent;
+        }
+
+        trackEvent("page_viewed", properties);
+    },
+
+    // Project interactions
+    trackProjectView: (projectTitle) => {
+        trackEvent("project_viewed", {
+            project_title: projectTitle,
+            section: "work",
+        });
+    },
+
+    // External link tracking
+    trackExternalLink: (url, linkText) => {
+        trackEvent("external_link_clicked", {
+            destination: url,
+            link_text: linkText,
+        });
+    },
+
+    // Theme changes
+    trackThemeChange: (theme) => {
+        trackEvent("theme_changed", {
+            new_theme: theme,
+            previous_theme: document.documentElement.getAttribute("data-theme"),
+        });
+    },
+
+    // Search interactions
+    trackSearch: (query, resultCount) => {
+        trackEvent("search_performed", {
+            query: query,
+            result_count: resultCount,
+            search_section: "projects",
+        });
+    },
+
+    // Resume download
+    trackResumeDownload: () => {
+        trackEvent("resume_downloaded", {
+            source_page: window.location.pathname,
+        });
+    },
+
+    // Contact interactions
+    trackContactClick: (method) => {
+        trackEvent("contact_initiated", {
+            contact_method: method,
+        });
+    },
+
+    // Image interactions
+    trackImageView: (imageUrl, caption) => {
+        trackEvent("image_viewed", {
+            image_url: imageUrl,
+            image_caption: caption,
+        });
+    },
+};
+
+// Initialize analytics after DOM content is loaded
+document.addEventListener("DOMContentLoaded", () => {
+    // Track initial page view
+    Analytics.trackPageView();
+
+    // Track external link clicks
+    document.addEventListener("click", (e) => {
+        const link = e.target.closest("a");
+        if (!link) return;
+
+        // Track resume downloads
+        if (link.href.includes("Resume.pdf")) {
+            Analytics.trackResumeDownload();
+            return;
+        }
+
+        // Track external links
+        if (link.hostname !== window.location.hostname) {
+            Analytics.trackExternalLink(link.href, link.textContent);
+        }
+
+        // Track contact clicks
+        if (link.href.startsWith("mailto:")) {
+            Analytics.trackContactClick("email");
+        }
+    });
+
+    // Track image lightbox views
+    document.querySelectorAll(".lightbox-trigger").forEach((trigger) => {
+        trigger.addEventListener("click", () => {
+            const img = trigger.querySelector("img");
+            const caption = trigger.nextElementSibling?.classList.contains(
+                "caption"
+            )
+                ? trigger.nextElementSibling.textContent
+                : null;
+            Analytics.trackImageView(img.src, caption);
+        });
+    });
 });
 
-function initializeAnalytics() {
-    trackEvent("Page View", {
-        page: window.location.pathname,
-        title: document.title,
-        referrer: document.referrer,
-    });
-
-    // Track work card clicks
-    document.querySelectorAll(".work-card").forEach((card) => {
-        card.addEventListener("click", function () {
-            trackEvent("Work Card Click", {
-                project_title: this.querySelector("h3").textContent,
-                company: this.querySelector(".company")?.textContent || "",
-                tags: Array.from(this.querySelectorAll(".tag")).map(
-                    (tag) => tag.textContent
-                ),
-            });
-        });
-    });
-
-    // Track theme toggle
-    document
-        .querySelector(".theme-toggle")
-        ?.addEventListener("click", function () {
-            const newTheme =
-                document.documentElement.getAttribute("data-theme") === "dark"
-                    ? "light"
-                    : "dark";
-            trackEvent("Theme Toggle", {
-                new_theme: newTheme,
-            });
-        });
-}
+// Export for use in other modules
+window.Analytics = Analytics;
