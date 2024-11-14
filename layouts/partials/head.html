@@ -72,3 +72,18 @@
         object-fit: cover;
     }
 </style>
+
+{{ if .Params.hero_image }}
+    {{ if .Resources }}
+        {{ $hero := .Resources.GetMatch .Params.hero_image }}
+        {{ with $hero }}
+            {{ $heroMedium := .Resize "1920x webp q85" }}
+            <link
+                rel="preload"
+                as="image"
+                href="{{ $heroMedium.RelPermalink }}"
+                imagesrcset="{{ $heroMedium.RelPermalink }} 1920w"
+            >
+        {{ end }}
+    {{ end }}
+{{ end }}
