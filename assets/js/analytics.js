@@ -1,12 +1,50 @@
 function trackEvent(eventName, properties = {}) {
-    mixpanel.track(eventName, {
-        ...properties,
+    if (!window.mixpanel) {
+        console.warn("Mixpanel not available");
+        return;
+    }
+
+    const baseProperties = {
         environment: window.hugo.environment,
-    });
+        url: window.location.href,
+        timestamp: new Date().toISOString(),
+    };
+
+    if (window.hugo.environment === "development") {
+        console.log("Development Mode - Track Event:", eventName, {
+            ...baseProperties,
+            ...properties,
+        });
+    } else {
+        try {
+            mixpanel.track(eventName, {
+                ...baseProperties,
+                ...properties,
+            });
+        } catch (error) {
+            console.error("Error tracking event:", error);
+        }
+    }
 }
 
+// Initialize analytics after DOM content is loaded
 document.addEventListener("DOMContentLoaded", function () {
-    // Track page views with additional data
+    // Ensure mixpanel is available
+    const initInterval = setInterval(() => {
+        if (window.mixpanelLoaded) {
+            clearInterval(initInterval);
+            initializeAnalytics();
+        }
+    }, 100);
+
+    // Timeout after 5 seconds
+    setTimeout(() => {
+        clearInterval(initInterval);
+        console.warn("Mixpanel initialization timed out");
+    }, 5000);
+});
+
+function initializeAnalytics() {
     trackEvent("Page View", {
         page: window.location.pathname,
         title: document.title,
@@ -38,27 +76,4 @@ document.addEventListener("DOMContentLoaded", function () {
                 new_theme: newTheme,
             });
         });
-
-    // Track contact form submissions
-    document
-        .querySelector(".contact-form")
-        ?.addEventListener("submit", function (e) {
-            trackEvent("Contact Form Submit");
-        });
-
-    // Track search usage
-    const searchInput = document.getElementById("projectSearch");
-    if (searchInput) {
-        let searchTimeout;
-        searchInput.addEventListener("input", function () {
-            clearTimeout(searchTimeout);
-            searchTimeout = setTimeout(() => {
-                if (this.value) {
-                    trackEvent("Search Projects", {
-                        search_term: this.value,
-                    });
-                }
-            }, 1000);
-        });
-    }
-});
+}
