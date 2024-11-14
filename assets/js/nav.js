@@ -27,6 +27,10 @@ document.addEventListener("DOMContentLoaded", () => {
             "aria-checked",
             currentTheme === "dark" ? "true" : "false"
         );
+
+        if (window.Analytics) {
+            Analytics.trackThemeChange(newTheme);
+        }
     });
 
     // Check for saved theme preference, otherwise use system preference

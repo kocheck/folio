@@ -67,7 +67,12 @@ class ProjectSearch {
     }
 
     handleSearch() {
-        const searchTerm = this.searchInput.value;
+        const searchTerm = this.searchInput.value.trim();
+
+        // Only track searches with actual input
+        if (searchTerm && window.Analytics) {
+            window.Analytics.trackSearch(searchTerm, results.length);
+        }
 
         // Toggle clear button visibility
         this.clearButton.hidden = !searchTerm;
