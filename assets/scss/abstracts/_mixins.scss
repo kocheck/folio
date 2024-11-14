@@ -196,8 +196,8 @@
 
 @mixin animated-underline($color, $height: 3px) {
     position: relative;
+    display: inline-block;
     text-decoration: none;
-    color: var(--text-medium);
     transition: color $transition-duration $transition-easing;
 
     &.active {
