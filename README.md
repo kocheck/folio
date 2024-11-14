@@ -89,10 +89,10 @@ hugo new blog/post-name.md
 ```
 
 ### Adding Images
-1. Place images in `static/assets/images/`
-2. Reference in markdown: `![Alt text](/assets/images/filename.jpg)`
-3. Recommended image formats: WebP, JPEG, PNG
-4. Optimize images before adding them to the repository
+1. Place images in the page bundle directory alongside your content
+2. Reference in markdown using the image shortcode: `{{< image src="filename.jpg" alt="Alt text" >}}`
+3. Images will be automatically converted to WebP with JPEG fallback
+4. Original images should be high quality (they will be automatically optimized)
 
 ### Image Guidelines
 #### Thumbnails

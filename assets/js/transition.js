@@ -23,27 +23,23 @@ document.addEventListener("DOMContentLoaded", () => {
             // Wait slightly longer for the transition
             setTimeout(() => {
                 window.location.href = link.href;
-            }, 400); // Increased from 300 to allow for the hero image fade
+            }, 400);
         }
     });
 
-    // Handle page load
-    window.addEventListener("pageshow", () => {
+    // Handle page show events (includes bfcache restoration)
+    window.addEventListener("pageshow", (event) => {
+        // Check if the page is being restored from bfcache
+        if (event.persisted) {
+            // Reset any state that might have been preserved
+            contentWrapper.classList.remove("transitioning");
+            fixedElements.forEach((el) => el.classList.remove("transitioning"));
+        }
+
         // Small delay to ensure DOM is ready
         setTimeout(() => {
             contentWrapper.classList.remove("transitioning");
             fixedElements.forEach((el) => el.classList.remove("transitioning"));
         }, 50);
     });
-
-    // Handle initial page load
-    if (document.readyState === "complete") {
-        contentWrapper.classList.remove("transitioning");
-        fixedElements.forEach((el) => el.classList.remove("transitioning"));
-    } else {
-        window.addEventListener("load", () => {
-            contentWrapper.classList.remove("transitioning");
-            fixedElements.forEach((el) => el.classList.remove("transitioning"));
-        });
-    }
 });

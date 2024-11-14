@@ -48,20 +48,15 @@ footer {
         margin: 0;
 
         li {
-            margin-bottom: 0.75rem;
+            margin: 0.5rem 0;
         }
 
         a {
+            position: relative;
+            display: inline-block;
             color: var(--text-medium);
             text-decoration: none;
-            transition: color 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-
-            &:hover {
-                color: var(--text-accent);
-            }
+            @include animated-underline(var(--text-accent), 2px);
         }
     }
 
@@ -78,12 +73,12 @@ footer {
         }
 
         a {
+            position: relative;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
             color: var(--text-medium);
             text-decoration: none;
-            transition: color 0.3s ease;
             padding: 0.25rem 0;
 
             &:hover {
@@ -142,6 +137,20 @@ footer {
                 color: var(--text-accent);
             }
         }
+    }
+
+    .footer-links a,
+    .footer-meta a {
+        color: var(--text-medium);  // Default state color
+        text-decoration: none;
+        position: relative;
+        transition: color $transition-duration $transition-easing;
+
+        &:hover {
+            color: var(--text-accent);  // Hover state color
+        }
+
+        @include animated-underline(var(--text-accent), 2px);
     }
 }
 
