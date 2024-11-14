@@ -1,12 +1,13 @@
-{{ $image := .Page.Resources.GetMatch (.Get "src") }}
+{{ $src := .Get "src" }}
 {{ $alt := .Get "alt" }}
-{{ $caption := .Get "caption" }}
+{{ $priority := .Get "priority" | default false }}
 
-<figure class="image-wrapper">
-    {{ with $image }}
-        {{ partial "image-processing.html" . }}
-    {{ end }}
-    {{ with $caption }}
-        <figcaption>{{ . }}</figcaption>
-    {{ end }}
-</figure>
+{{ $image := .Page.Resources.GetMatch $src }}
+{{ with $image }}
+    {{ partial "image-processing.html" (dict
+        "image" .
+        "alt" $alt
+        "priority" $priority
+        "Context" $.Page
+    ) }}
+{{ end }}

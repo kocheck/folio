@@ -41,9 +41,9 @@ title = "Kyle Kochanek"
   unsafe = true
 
 [imaging]
-  quality = 90
-  resampleFilter = "lanczos"
-  anchor = "smart"
+  quality = 80
+  resampleFilter = "Lanczos"
+  anchor = "Smart"
   format = "webp"  # Default format for image processing
 
 [imaging.exif]
@@ -60,3 +60,6 @@ title = "Kyle Kochanek"
     for = "/*.webp"
     [server.headers.values]
       Cache-Control = "public, max-age=31536000"
+
+[imaging.webp]
+quality = 80
