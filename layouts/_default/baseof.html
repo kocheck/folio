@@ -32,28 +32,6 @@
     <script defer src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
     {{ $search := resources.Get "js/search.js" | resources.Minify | resources.Fingerprint }}
     <script defer src="{{ $search.RelPermalink }}"></script>
-    <script>
-        window.onload = function() {
-            const token = {{ .Site.Params.mixpanelToken | jsonify }};
-            console.log('Mixpanel initialization status:', {
-                mixpanelExists: typeof mixpanel !== 'undefined',
-                mixpanelLoaded: window.mixpanelLoaded,
-                config: window.mixpanel?.get_config?.(),
-                environment: window.hugo.environment,
-                hasToken: !!token
-            });
-
-            if (window.mixpanelLoaded) {
-                mixpanel.init(token, {
-                    debug: false,
-                    track_pageview: false,
-                    persistence: "localStorage"
-                });
-            } else {
-                console.warn('Mixpanel not loaded');
-            }
-        };
-    </script>
 </body>
 </html>
 

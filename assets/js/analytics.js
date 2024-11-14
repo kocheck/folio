@@ -1,18 +1,18 @@
 // Track events with consistent properties
 function trackEvent(eventName, properties = {}) {
-    if (!window.mixpanel) {
+    if (!window.mixpanel || !window.mixpanelLoaded) {
         console.warn("Mixpanel not available");
         return;
     }
 
     const baseProperties = {
-        environment: window.hugo.environment,
+        environment: window.hugo?.environment || "production",
         url: window.location.href,
         timestamp: new Date().toISOString(),
         theme: document.documentElement.getAttribute("data-theme"),
     };
 
-    if (window.hugo.environment === "development") {
+    if (window.hugo?.environment === "development") {
         console.log("Development Mode - Track Event:", eventName, {
             ...baseProperties,
             ...properties,
@@ -108,9 +108,24 @@ const Analytics = {
 
 // Initialize analytics after DOM content is loaded
 document.addEventListener("DOMContentLoaded", () => {
-    // Track initial page view
-    Analytics.trackPageView();
+    // Wait for Mixpanel to be ready
+    const initInterval = setInterval(() => {
+        if (window.mixpanelLoaded) {
+            clearInterval(initInterval);
+            // Initialize tracking
+            Analytics.trackPageView();
+            initializeEventListeners();
+        }
+    }, 100);
 
+    // Timeout after 5 seconds
+    setTimeout(() => {
+        clearInterval(initInterval);
+        console.warn("Mixpanel initialization timed out");
+    }, 5000);
+});
+
+function initializeEventListeners() {
     // Track external link clicks
     document.addEventListener("click", (e) => {
         const link = e.target.closest("a");
@@ -145,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
             Analytics.trackImageView(img.src, caption);
         });
     });
-});
+}
 
 // Export for use in other modules
 window.Analytics = Analytics;
