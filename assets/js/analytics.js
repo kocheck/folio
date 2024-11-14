@@ -6,19 +6,20 @@ function trackEvent(eventName, properties = {}) {
     }
 
     const baseProperties = {
-        environment: window.hugo?.environment || "production",
+        environment: {{ if hugo.IsServer }}"development"{{ else }}"production"{{ end }},
         url: window.location.href,
         timestamp: new Date().toISOString(),
         theme: document.documentElement.getAttribute("data-theme"),
     };
 
-    if (window.hugo?.environment === "development") {
-        console.log("Development Mode - Track Event:", eventName, {
-            ...baseProperties,
-            ...properties,
-        });
-        return;
-    }
+    // In development, log instead of sending
+    {{ if hugo.IsServer }}
+    console.log("Development Mode - Track Event:", eventName, {
+        ...baseProperties,
+        ...properties,
+    });
+    return;
+    {{ end }}
 
     try {
         mixpanel.track(eventName, {
@@ -112,9 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const initInterval = setInterval(() => {
         if (window.mixpanelLoaded) {
             clearInterval(initInterval);
-            // Initialize tracking
             Analytics.trackPageView();
-            initializeEventListeners();
         }
     }, 100);
 
@@ -124,43 +123,6 @@ document.addEventListener("DOMContentLoaded", () => {
         console.warn("Mixpanel initialization timed out");
     }, 5000);
 });
-
-function initializeEventListeners() {
-    // Track external link clicks
-    document.addEventListener("click", (e) => {
-        const link = e.target.closest("a");
-        if (!link) return;
-
-        // Track resume downloads
-        if (link.href.includes("Resume.pdf")) {
-            Analytics.trackResumeDownload();
-            return;
-        }
-
-        // Track external links
-        if (link.hostname !== window.location.hostname) {
-            Analytics.trackExternalLink(link.href, link.textContent);
-        }
-
-        // Track contact clicks
-        if (link.href.startsWith("mailto:")) {
-            Analytics.trackContactClick("email");
-        }
-    });
-
-    // Track image lightbox views
-    document.querySelectorAll(".lightbox-trigger").forEach((trigger) => {
-        trigger.addEventListener("click", () => {
-            const img = trigger.querySelector("img");
-            const caption = trigger.nextElementSibling?.classList.contains(
-                "caption"
-            )
-                ? trigger.nextElementSibling.textContent
-                : null;
-            Analytics.trackImageView(img.src, caption);
-        });
-    });
-}
 
 // Export for use in other modules
 window.Analytics = Analytics;
