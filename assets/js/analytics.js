@@ -6,20 +6,19 @@ function trackEvent(eventName, properties = {}) {
     }
 
     const baseProperties = {
-        environment: {{ if hugo.IsServer }}"development"{{ else }}"production"{{ end }},
+        environment: window.hugo?.environment || "production",
         url: window.location.href,
         timestamp: new Date().toISOString(),
         theme: document.documentElement.getAttribute("data-theme"),
     };
 
-    // In development, log instead of sending
-    {{ if hugo.IsServer }}
-    console.log("Development Mode - Track Event:", eventName, {
-        ...baseProperties,
-        ...properties,
-    });
-    return;
-    {{ end }}
+    if (window.hugo?.environment === "development") {
+        console.log("Development Mode - Track Event:", eventName, {
+            ...baseProperties,
+            ...properties,
+        });
+        return;
+    }
 
     try {
         mixpanel.track(eventName, {
