@@ -33,7 +33,7 @@
     {{ $search := resources.Get "js/search.js" | resources.Minify | resources.Fingerprint }}
     <script defer src="{{ $search.RelPermalink }}"></script>
     <script>
-        window.addEventListener('load', function() {
+        window.onload = function() {
             const token = {{ .Site.Params.mixpanelToken | jsonify }};
             console.log('Mixpanel initialization status:', {
                 mixpanelExists: typeof mixpanel !== 'undefined',
@@ -42,7 +42,17 @@
                 environment: window.hugo.environment,
                 hasToken: !!token
             });
-        });
+
+            if (window.mixpanelLoaded) {
+                mixpanel.init(token, {
+                    debug: false,
+                    track_pageview: false,
+                    persistence: "localStorage"
+                });
+            } else {
+                console.warn('Mixpanel not loaded');
+            }
+        };
     </script>
 </body>
 </html>
