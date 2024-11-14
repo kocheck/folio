@@ -122,21 +122,4 @@
         object-fit: cover;
     }
 {{ end }}
-
-{{ if .IsHome }}
-    /* Critical CSS for homepage */
-    .heading-group {
-        display: flex;
-        align-items: baseline;
-        gap: 24px;
-    }
-    .avatar-wrapper {
-        flex-shrink: 0;
-        width: 2.5rem;
-        height: 2.5rem;
-    }
-    .featured-work {
-        padding: 0 0 clamp(3rem, 8vw, 6rem) 0;
-    }
-{{ end }}
 </style>

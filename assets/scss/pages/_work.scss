@@ -1,77 +1,80 @@
+// Base grid layout
 .work-grid {
-  will-change: transform;
-  transition: transform $transition-duration $transition-easing !important;
-
-  &:hover {
-    transform: translateY(-4px);
-
-    h3 {
-      color: var(--text-creative);
-      text-decoration-color: var(--text-creative);
-    }
-  }
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: $spacing-lg;
+    padding: $spacing-xl 0;
 }
 
+// Base card styles
 .work-card {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  background: var(--surface);
-  border-radius: $border-radius;
-  overflow: hidden;
-  will-change: transform;
-  transition: transform $transition-duration $transition-easing !important;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: var(--surface);
+    border-radius: $border-radius;
+    overflow: hidden;
+    will-change: transform;
+    transition: transform $transition-duration $transition-easing;
+}
 
-  &:hover {
-    transform: translateY(-4px);
-
-    h3 {
-      color: var(--text-creative);
-      text-decoration-color: var(--text-creative);
-    }
-  }
-
-  &__media {
+// Media container
+.work-card__media {
     aspect-ratio: 16/9;
     overflow: hidden;
 
     img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
-  }
+}
 
-  &__content {
+// Content area
+.work-card__content {
     padding: $spacing-md;
 
     h3 {
-      margin: 0 0 $spacing-sm;
-      transition: color $transition-duration $transition-easing,
-                text-decoration-color $transition-duration $transition-easing;
-      text-decoration: underline;
-      text-decoration-color: transparent;
-      text-underline-offset: 4px;
-    }
-
-    .date {
-      font-size: 0.875rem;
-      color: var(--text-medium);
+        margin: 0 0 $spacing-sm;
+        transition: color $transition-duration $transition-easing,
+                    text-decoration-color $transition-duration $transition-easing;
+        text-decoration: underline;
+        text-decoration-color: transparent;
+        text-underline-offset: 4px;
     }
 
     .company {
-      color: var(--text-personality);
+        color: var(--text-personality);
+        margin-bottom: $spacing-sm;
     }
 
-    .work-card__description,
+    .work-card__description {
+        margin-bottom: $spacing-sm;
+    }
+
     .tags {
-      color: inherit;
-      color: var(--text-medium);
+        display: flex;
+        gap: $spacing-xs;
+        flex-wrap: wrap;
+
+        .tag {
+            background: var(--surface-default-card);
+            border: 1px solid var(--surface-default-card-border);
+            padding: $spacing-xs $spacing-sm;
+            border-radius: $border-radius-sm;
+            font-size: 0.875rem;
+        }
     }
-    .work-card__description{
-      display: block;
+}
+
+// Hover effects - using direct child selectors
+.work-card:hover {
+    transform: translateY(-4px);
+
+    .work-card__content h3 {
+        color: var(--text-creative);
+        text-decoration-color: var(--text-creative);
     }
-  }
 }
 
 .search-container {
