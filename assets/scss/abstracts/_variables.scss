@@ -9,6 +9,7 @@ $accent-purple: #FF33F5; // Bright purple for headlines
 // Colors
 $surface-default: rgba(28, 28, 28, 1);
 $surface-default-card: rgba(28, 28, 28, 0.9);
+$surface-card-tag: rgba(149, 156, 157, 0.1);
 $surface-default-card-border: rgba(239, 239, 239, 0.12);
 $surface-default-contrast: rgba(239, 239, 239, 1);
 $surface-accent: rgba(172, 147, 236, 1);
@@ -27,6 +28,7 @@ $text-logical: hsl(140, 100%, 60%);    // Green for contact section
 $light-background: #ECF0EA;
 $light-surface-default-card: rgba(209, 207, 207, 0.12);
 $light-surface: #f5f5f5;
+$light-surface-card-tag: rgba(149, 156, 157, 0.1);
 $light-text: $text-default-contrast;  // Use text-default-contrast for light mode;
 $light-surface-default-card-border: rgba(26, 26, 26, 0.08);
 $light-text-medium: rgba(26, 26, 26, 0.8);
@@ -62,6 +64,7 @@ $surface-accent-medium-light: rgba(58, 35, 128, 0.2);
     --surface-default-card-border: #{$surface-default-card-border};
     --texture-opacity: 0.4;
     --search-input-bg: #{$surface-default};
+    --surface-card-tag: #{$surface-card-tag};
 }
 
 :root[data-theme="light"] {
@@ -79,6 +82,7 @@ $surface-accent-medium-light: rgba(58, 35, 128, 0.2);
     --surface-default-card-border: #{$light-surface-default-card-border};
     --texture-opacity: 0.6;
     --search-input-bg: #ffffff;
+    --surface-card-tag: #{$light-surface-card-tag};
 }
 
 // Fonts
