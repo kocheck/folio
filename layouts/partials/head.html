@@ -5,9 +5,17 @@
 
 <title>{{ if .Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
 
-{{ $options := (dict "targetPath" "css/main.css" "outputStyle" "compressed" "enableSourceMap" true) }}
-{{ $style := resources.Get "scss/main.scss" | resources.ToCSS $options | resources.Fingerprint }}
-<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
+{{ $style := resources.Get "scss/main.scss" | resources.ToCSS (dict
+    "targetPath" "css/main.css"
+    "outputStyle" "expanded"
+    "enableSourceMap" (eq hugo.Environment "development")
+) }}
+
+{{ if eq hugo.Environment "production" }}
+    {{ $style = $style | minify | fingerprint "sha512" }}
+{{ end }}
+
+<link rel="stylesheet" href="{{ $style.RelPermalink }}" {{ if eq hugo.Environment "production" }}integrity="{{ $style.Data.Integrity }}"{{ end }}>
 
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
