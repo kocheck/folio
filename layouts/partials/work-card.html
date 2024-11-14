@@ -1,4 +1,4 @@
-<a class="work-card" href="{{ .RelPermalink }}" data-case-study="{{ .Content | plainify }}">
+<a class="work-card" href="{{ .RelPermalink }}">
     <div class="work-card__media">
         {{ if .Params.thumbnail }}
             {{ if .Resources }}
@@ -42,7 +42,6 @@
                     </picture>
                 {{ end }}
             {{ else }}
-                <!-- Fallback for static images -->
                 <img
                     src="{{ .Params.thumbnail }}"
                     alt="{{ $.Title }} - {{ $.Params.company }} project thumbnail"
