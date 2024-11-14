@@ -25,8 +25,6 @@
             environment: {{ if hugo.IsServer }}'development'{{ else }}'production'{{ end }}
         };
     </script>
-    {{ $analytics := resources.Get "js/analytics.js" | resources.ExecuteAsTemplate "js/analytics.js" . | resources.Minify | resources.Fingerprint }}
-    <script defer src="{{ $analytics.RelPermalink }}" integrity="{{ $analytics.Data.Integrity }}"></script>
     {{ $quickView := resources.Get "js/quick-view.js" | resources.Minify }}
     <script src="{{ $quickView.RelPermalink }}"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
