@@ -120,10 +120,10 @@ $transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
     --search-input-bg: #{$dark-surface};
     --surface-card-tag: #{$surface-card-tag};
     --surface-mobile-nav: #{$surface-mobile-nav};
-    --text-accent-muted: color-mix(in srgb, var(--text-accent) 85%, var(--text));
-    --text-creative-muted: color-mix(in srgb, var(--text-creative) 85%, var(--text));
-    --text-personality-muted: color-mix(in srgb, var(--text-personality) 85%, var(--text));
-    --text-logical-muted: color-mix(in srgb, var(--text-logical) 85%, var(--text));
+    --text-accent-muted: color-mix(in srgb, var(--text-accent) 24%, var(--text));
+    --text-creative-muted: color-mix(in srgb, var(--text-creative) 24%, var(--text));
+    --text-personality-muted: color-mix(in srgb, var(--text-personality) 24%, var(--text));
+    --text-logical-muted: color-mix(in srgb, var(--text-logical) 24%, var(--text));
 
     // Light Theme
     &[data-theme="light"] {
@@ -143,9 +143,9 @@ $transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
         --search-input-bg: #ffffff;
         --surface-card-tag: #{$light-surface-card-tag};
         --surface-mobile-nav: #{$light-surface-mobile-nav};
-        --text-accent-muted: color-mix(in srgb, var(--text-accent) 85%, var(--text));
-        --text-creative-muted: color-mix(in srgb, var(--text-creative) 85%, var(--text));
-        --text-personality-muted: color-mix(in srgb, var(--text-personality) 85%, var(--text));
-        --text-logical-muted: color-mix(in srgb, var(--text-logical) 85%, var(--text));
+        --text-accent-muted: color-mix(in srgb, var(--text-accent) 72%, var(--text));
+        --text-creative-muted: color-mix(in srgb, var(--text-creative) 72%, var(--text));
+        --text-personality-muted: color-mix(in srgb, var(--text-personality) 72%, var(--text));
+        --text-logical-muted: color-mix(in srgb, var(--text-logical) 72%, var(--text));
     }
 }
