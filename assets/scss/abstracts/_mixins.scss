@@ -251,7 +251,7 @@
 }
 @mixin section-logo-colors {
     &.home .nav-logo a {
-        color: mix(var(--text), var(--text-accent), 85%);
+        color: var(--text-accent-muted);
         transition: color $transition-duration $transition-easing;
 
         svg {
@@ -259,21 +259,13 @@
         }
 
         &:hover {
-            color:var(--text-accent);
+            color: var(--text-accent);
             svg { fill: var(--text-accent); }
-        }
-
-        [data-theme="light"] & {
-            color: mix(var(--text-default-contrast), var(--text-accent-light), 85%);
-            &:hover {
-                color: var(--text-accent-light);
-                svg { fill: var(--text-accent-light); }
-            }
         }
     }
 
     &.section-work .nav-logo a {
-        color: mix(var(--text), var(--text-creative), 85%);
+        color: var(--text-creative-muted);
         transition: color $transition-duration $transition-easing;
 
         svg {
@@ -284,15 +276,33 @@
             color: var(--text-creative);
             svg { fill: var(--text-creative); }
         }
+    }
 
-        [data-theme="light"] & {
-            color: mix(var(--text-default-contrast), var(--text-creative-light), 85%);
-            &:hover {
-                color: var(--text-creative-light);
-                svg { fill: var(--text-creative-light); }
-            }
+    &.section-about .nav-logo a {
+        color: var(--text-personality-muted);
+        transition: color $transition-duration $transition-easing;
+
+        svg {
+            transition: fill $transition-duration $transition-easing;
+        }
+
+        &:hover {
+            color: var(--text-personality);
+            svg { fill: var(--text-personality); }
         }
     }
 
-    // Repeat similar pattern for about and contact sections...
+    &.section-contact .nav-logo a {
+        color: var(--text-logical-muted);
+        transition: color $transition-duration $transition-easing;
+
+        svg {
+            transition: fill $transition-duration $transition-easing;
+        }
+
+        &:hover {
+            color: var(--text-logical);
+            svg { fill: var(--text-logical); }
+        }
+    }
 }

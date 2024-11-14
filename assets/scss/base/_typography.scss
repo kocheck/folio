@@ -141,7 +141,7 @@ blockquote {
   font-size: 1.1rem;
   margin: 1.5rem 0;
   padding-left: 1rem;
-  border-left: 4px solid $text-default-contrast;
+  border-left: 4px solid var(--text-medium);
 }
 
 // --------------------------------
@@ -199,7 +199,7 @@ code {
 cite {
   font-style: italic;
   font-size: 0.9rem;
-  color: $text-medium;
+  color: var(--text-medium);
   display: block;
   margin-top: 0.5rem;
 }
