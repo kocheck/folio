@@ -1,8 +1,15 @@
 .work-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: $spacing-lg;
-  padding: $spacing-xl 0;
+  will-change: transform;
+  transition: transform $transition-duration $transition-easing !important;
+
+  &:hover {
+    transform: translateY(-4px);
+
+    h3 {
+      color: var(--text-creative);
+      text-decoration-color: var(--text-creative);
+    }
+  }
 }
 
 .work-card {

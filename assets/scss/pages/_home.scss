@@ -31,12 +31,6 @@
         margin-bottom: $spacing-lg;
     }
 
-    .work-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: $spacing-lg;
-    }
-
     .work-card {
         background: var(--surface-default-card);
         border: 1px solid var(--surface-default-card-border);

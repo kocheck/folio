@@ -45,7 +45,7 @@
 <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 
 <style>
-    /* Critical CSS for above-the-fold content */
+    /* Critical CSS for above-the-fold content - ONLY work grid styles */
     .work-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -85,3 +85,58 @@
         {{ end }}
     {{ end }}
 {{ end }}
+
+<!-- Preconnect to required origins -->
+<link rel="preconnect" href="{{ .Site.BaseURL }}">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Preload critical assets -->
+<link rel="preload" href="/js/main.js" as="script">
+<link rel="preload" href="/css/main.css" as="style">
+
+<style>
+{{ if eq .Layout "work/list" }}
+    /* Critical CSS for work listing page */
+    .work-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 4rem 0;
+    }
+    .work-card {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        background: var(--surface-default);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .work-card__media {
+        aspect-ratio: 16/9;
+        overflow: hidden;
+    }
+    .work-card__media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+{{ end }}
+
+{{ if .IsHome }}
+    /* Critical CSS for homepage */
+    .heading-group {
+        display: flex;
+        align-items: baseline;
+        gap: 24px;
+    }
+    .avatar-wrapper {
+        flex-shrink: 0;
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    .featured-work {
+        padding: 0 0 clamp(3rem, 8vw, 6rem) 0;
+    }
+{{ end }}
+</style>

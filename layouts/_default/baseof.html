@@ -15,20 +15,15 @@
 
     {{ $js := resources.Get "js/nav.js" | resources.Minify }}
     {{ $transition := resources.Get "js/transition.js" | resources.Minify }}
-    <script src="{{ $js.RelPermalink }}"></script>
-    <script src="{{ $transition.RelPermalink }}"></script>
     {{ $lightbox := resources.Get "js/lightbox.js" | resources.Minify }}
-    <script src="{{ $lightbox.RelPermalink }}"></script>
-    {{ partial "svg-sprites.html" . }}
-    <script>
-        window.hugo = {
-            environment: {{ if hugo.IsServer }}'development'{{ else }}'production'{{ end }}
-        };
-    </script>
     {{ $quickView := resources.Get "js/quick-view.js" | resources.Minify }}
-    <script src="{{ $quickView.RelPermalink }}"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
     {{ $search := resources.Get "js/search.js" | resources.Minify | resources.Fingerprint }}
+
+    <script defer src="{{ $js.RelPermalink }}"></script>
+    <script defer src="{{ $transition.RelPermalink }}"></script>
+    <script defer src="{{ $lightbox.RelPermalink }}"></script>
+    <script defer src="{{ $quickView.RelPermalink }}"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
     <script defer src="{{ $search.RelPermalink }}"></script>
 </body>
 </html>
