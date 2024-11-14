@@ -29,6 +29,9 @@
     <script src="{{ $analytics.RelPermalink }}"></script>
     {{ $quickView := resources.Get "js/quick-view.js" | resources.Minify }}
     <script src="{{ $quickView.RelPermalink }}"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+    {{ $search := resources.Get "js/search.js" | resources.Minify | resources.Fingerprint }}
+    <script defer src="{{ $search.RelPermalink }}"></script>
 </body>
 </html>
 

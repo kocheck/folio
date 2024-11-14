@@ -2,15 +2,8 @@
 // This file manages all typography-related styles including fonts, sizes, and text utilities
 
 // --------------------------------
-// Font Imports
-// --------------------------------
-
-// Inter - Primary body font with multiple weights
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-// Fira Code - Monospace font for code blocks
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
-
 // Font Variables
+// --------------------------------
 $font-mono: 'Fira Code', ui-monospace, 'SF Mono';
 
 // --------------------------------
@@ -78,6 +71,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   font-synthesis: none;
   text-size-adjust: 100%;
+  font-display: swap;
 }
 
 body {
