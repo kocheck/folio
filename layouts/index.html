@@ -52,7 +52,7 @@
             {{ $heroImageLight := .Resources.GetMatch "hero_invert.jpg" }}
             <div class="hero-image-wrapper">
                 {{ with $heroImageDark }}
-                    {{ $processed := .Resize "800x800 webp q90" }}
+                    {{ $processed := .Resize "800x webp q90" }}
                     <img
                         src="{{ $processed.RelPermalink }}"
                         alt="Hero image"
@@ -71,6 +71,8 @@
                         class="masked-image light-mode-image"
                         width="800"
                         height="800"
+                        loading="eager"
+                        decoding="async"
                     >
                 {{ end }}
                 <div class="hero-image-overlay"></div>
