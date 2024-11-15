@@ -28,6 +28,8 @@
       connect-src 'self' *.services-prod.nsvcs.net; \
       img-src 'self' data: *.services-prod.nsvcs.net\
     """
+
+[[headers]]
   for = "/*.css"
   [headers.values]
     Content-Type = "text/css"
