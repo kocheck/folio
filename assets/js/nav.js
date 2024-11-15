@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.documentElement.setAttribute("data-theme", newTheme);
         localStorage.setItem("theme", newTheme);
+        updateFavicons(newTheme);
         themeToggle.setAttribute("data-theme", newTheme);
         themeToggle.setAttribute(
             "aria-label",
@@ -48,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const savedTheme = getPreferredTheme();
     document.documentElement.setAttribute("data-theme", savedTheme);
     themeToggle.setAttribute("data-theme", savedTheme);
+    updateFavicons(savedTheme);
 
     // Listen for system theme changes
     window
@@ -57,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const newTheme = e.matches ? "dark" : "light";
                 document.documentElement.setAttribute("data-theme", newTheme);
                 themeToggle.setAttribute("data-theme", newTheme);
+                updateFavicons(newTheme);
             }
         });
 
@@ -71,3 +74,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("scroll", handleScroll);
 });
+
+// Add this function to handle favicon updates
+function updateFavicons(theme) {
+    const sizes = ["16", "32", "48"];
+    sizes.forEach((size) => {
+        const favicon = document.querySelector(`link[sizes="${size}x${size}"]`);
+        if (favicon) {
+            favicon.href = `/favicon/favicon-${size}-${theme}.png`;
+        }
+    });
+
+    // Update ICO favicon
+    const icoFavicon = document.querySelector('link[type="image/x-icon"]');
+    if (icoFavicon) {
+        icoFavicon.href = `/favicon/favicon-${theme}.ico`;
+    }
+}
