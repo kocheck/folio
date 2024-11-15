@@ -250,49 +250,99 @@
     @include animated-underline(var(--text-logical));
 }
 @mixin section-logo-colors {
-    &.home .nav-logo a {
-        color: mix(var(--text), var(--text-accent), 85%);
-        transition: color $transition-duration $transition-easing;
+    &.home .nav-logo {
+        border-radius: 4px;
+        padding: 0.5rem 0.75rem;
+        transition: background-color $transition-duration $transition-easing;
 
-        svg {
-            transition: fill $transition-duration $transition-easing;
+        a {
+            color: var(--text-accent-muted);
+            transition: color $transition-duration $transition-easing;
+
+            svg {
+                transition: fill $transition-duration $transition-easing;
+            }
         }
 
         &:hover {
-            color:var(--text-accent);
-            svg { fill: var(--text-accent); }
-        }
+            background-color: color-mix(in srgb, var(--text-accent-muted) 15%, transparent);
 
-        [data-theme="light"] & {
-            color: mix(var(--text-default-contrast), var(--text-accent-light), 85%);
-            &:hover {
-                color: var(--text-accent-light);
-                svg { fill: var(--text-accent-light); }
+            a {
+                color: var(--text-accent);
+                svg { fill: var(--text-accent); }
             }
         }
     }
 
-    &.section-work .nav-logo a {
-        color: mix(var(--text), var(--text-creative), 85%);
-        transition: color $transition-duration $transition-easing;
+    &.section-work .nav-logo {
+        border-radius: 4px;
+        padding: 0.5rem 0.75rem;
+        transition: background-color $transition-duration $transition-easing;
 
-        svg {
-            transition: fill $transition-duration $transition-easing;
+        a {
+            color: var(--text-creative-muted);
+            transition: color $transition-duration $transition-easing;
+
+            svg {
+                transition: fill $transition-duration $transition-easing;
+            }
         }
 
         &:hover {
-            color: var(--text-creative);
-            svg { fill: var(--text-creative); }
-        }
+            background-color: color-mix(in srgb, var(--text-creative-muted) 15%, transparent);
 
-        [data-theme="light"] & {
-            color: mix(var(--text-default-contrast), var(--text-creative-light), 85%);
-            &:hover {
-                color: var(--text-creative-light);
-                svg { fill: var(--text-creative-light); }
+            a {
+                color: var(--text-creative);
+                svg { fill: var(--text-creative); }
             }
         }
     }
 
-    // Repeat similar pattern for about and contact sections...
+    &.section-about .nav-logo {
+        border-radius: 4px;
+        padding: 0.5rem 0.75rem;
+        transition: background-color $transition-duration $transition-easing;
+
+        a {
+            color: var(--text-personality-muted);
+            transition: color $transition-duration $transition-easing;
+
+            svg {
+                transition: fill $transition-duration $transition-easing;
+            }
+        }
+
+        &:hover {
+            background-color: color-mix(in srgb, var(--text-personality-muted) 15%, transparent);
+
+            a {
+                color: var(--text-personality);
+                svg { fill: var(--text-personality); }
+            }
+        }
+    }
+
+    &.section-contact .nav-logo {
+        border-radius: 4px;
+        padding: 0.5rem 0.75rem;
+        transition: background-color $transition-duration $transition-easing;
+
+        a {
+            color: var(--text-logical-muted);
+            transition: color $transition-duration $transition-easing;
+
+            svg {
+                transition: fill $transition-duration $transition-easing;
+            }
+        }
+
+        &:hover {
+            background-color: color-mix(in srgb, var(--text-logical-muted) 15%, transparent);
+
+            a {
+                color: var(--text-logical);
+                svg { fill: var(--text-logical); }
+            }
+        }
+    }
 }

@@ -1,12 +1,5 @@
 {{ define "main" }}
 <article class="work-item">
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            if (window.Analytics) {
-                window.Analytics.trackProjectView({{ .Title | jsonify }});
-            }
-        });
-    </script>
     {{ partial "work-hero.html" . }}
 
     <div class="content-wrapper">

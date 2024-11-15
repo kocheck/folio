@@ -1,61 +1,39 @@
-const CACHE_VERSION = "v1";
+const CACHE_VERSION = "v2";
 const CACHE_NAME = `portfolio-${CACHE_VERSION}`;
 
+// Add route-based caching strategies
+const CACHE_STRATEGIES = {
+    assets: "cache-first",
+    pages: "stale-while-revalidate",
+    api: "network-first",
+};
+
 const CACHED_ASSETS = [
-    { url: "/", revision: "1" },
-    { url: "/css/main.css", revision: "1" },
-    { url: "/js/main.js", revision: "1" },
-    { url: "/offline.html", revision: "1" },
+    "/",
+    "/css/main.css",
+    "/js/main.js",
+    "/offline.html",
+    "/assets/fonts/epicene-display-regular.woff2",
+    "/assets/fonts/epicene-display-bold.woff2",
+    "/assets/images/logo.svg",
+    "/assets/images/favicon.ico",
+    "/css/critical.css",
 ];
 
 self.addEventListener("install", (event) => {
     event.waitUntil(
-        caches.open(CACHE_NAME).then((cache) => {
-            return Promise.all(
-                CACHED_ASSETS.map((asset) => {
-                    return cache.add(
-                        new Request(asset.url, {
-                            cache: "reload",
-                            credentials: "same-origin",
-                        })
-                    );
-                })
-            );
-        })
+        caches.open(CACHE_NAME).then((cache) => cache.addAll(CACHED_ASSETS))
     );
 });
 
 self.addEventListener("fetch", (event) => {
-
-    // Don't cache POST requests
-
-    if (event.request.method === "POST") {
-        return;
-    }
+    const url = new URL(event.request.url);
+    const strategy = getStrategy(url);
 
     event.respondWith(
-        caches.match(event.request).then((response) => {
-            if (response) {
-
-                // Return cached response and update cache in background
-
-                const fetchPromise = fetch(event.request).then(
-                    (networkResponse) => {
-                        caches.open(CACHE_NAME).then((cache) => {
-                            cache.put(event.request, networkResponse.clone());
-                        });
-                        return networkResponse;
-                    }
-                );
-                return response;
-            }
-
-            return fetch(event.request).catch(() => {
-                if (event.request.mode === "navigate") {
-                    return caches.match("/offline.html");
-                }
-            });
-        })
+        strategy === "cache-first"
+            ? cacheFirst(event.request)
+            : staleWhileRevalidate(event.request)
     );
 });
 

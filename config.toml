@@ -5,12 +5,12 @@
     [build.processing.css]
       bundle = true
       minify = true
-      method = "sass"
+      target = "css/main.css"
       includePaths = ["assets/scss"]
-      options = "expanded"
     [build.processing.js]
       bundle = true
       minify = true
+      target = "js/main.js"
 
 [module]
   [[module.mounts]]
@@ -26,8 +26,6 @@
   mainSections = ["work"]
   description = "Portfolio website showcasing work and thoughts on design and development"
   author = "Kyle Kochanek"
-  mixpanelToken = """{{ getenv "MIXPANEL_TOKEN" }}"""
-  testAnalytics = false
 
 [imaging]
   quality = 90
@@ -45,6 +43,13 @@
   disableJSON = false
   disableSVG = false
   minifyOutput = true
+  [minify.tdewolff]
+    [minify.tdewolff.html]
+      keepWhitespace = false
+    [minify.tdewolff.js]
+      precision = 1
+    [minify.tdewolff.css]
+      precision = 1
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]

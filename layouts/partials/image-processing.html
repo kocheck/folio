@@ -1,52 +1,50 @@
-{{ $image := . }}
-{{ $alt := .Params.alt | default "" }}
-{{ $caption := .Params.caption | default "" }}
+{{ $image := .image }}
+{{ $alt := .alt }}
+{{ $priority := .priority | default false }}
 
-{{ with $image }}
-    {{ $tiny := .Resize "20x webp q90" }}
-    {{ $small := .Resize "800x webp q90" }}
-    {{ $medium := .Resize "1200x webp q90" }}
-    {{ $large := .Resize "1800x webp q90" }}
-    {{ $original := .Resize "3840x webp q90" }}
+{{ $tiny := $image.Resize "20x webp q80" }}
+{{ $small := $image.Resize "800x webp q80" }}
+{{ $medium := $image.Resize "1200x webp q80" }}
+{{ $large := $image.Resize "1800x webp q80" }}
+{{ $original := $image.Resize "3840x webp q80" }}
 
-    {{ $tiny_fallback := .Resize "20x jpg q90" }}
-    {{ $small_fallback := .Resize "800x jpg q90" }}
-    {{ $medium_fallback := .Resize "1200x jpg q90" }}
-    {{ $large_fallback := .Resize "1800x jpg q90" }}
-    {{ $original_fallback := .Resize "3840x jpg q90" }}
+{{ $tiny_fallback := $image.Resize "20x jpg q80" }}
+{{ $small_fallback := $image.Resize "800x jpg q80" }}
+{{ $medium_fallback := $image.Resize "1200x jpg q80" }}
+{{ $large_fallback := $image.Resize "1800x jpg q80" }}
+{{ $original_fallback := $image.Resize "3840x jpg q80" }}
 
-    <picture>
-        <source
-            srcset="{{ $tiny.RelPermalink }} 20w,
-                    {{ $small.RelPermalink }} 800w,
-                    {{ $medium.RelPermalink }} 1200w,
-                    {{ $large.RelPermalink }} 1800w,
-                    {{ $original.RelPermalink }} 3840w"
-            sizes="(max-width: 800px) 100vw,
-                   (max-width: 1200px) 85vw,
-                   1200px"
-            type="image/webp"
-        >
-        <source
-            srcset="{{ $tiny_fallback.RelPermalink }} 20w,
-                    {{ $small_fallback.RelPermalink }} 800w,
-                    {{ $medium_fallback.RelPermalink }} 1200w,
-                    {{ $large_fallback.RelPermalink }} 1800w,
-                    {{ $original_fallback.RelPermalink }} 3840w"
-            sizes="(max-width: 800px) 100vw,
-                   (max-width: 1200px) 85vw,
-                   1200px"
-            type="image/jpeg"
-        >
-        <img
-            src="{{ $medium_fallback.RelPermalink }}"
-            alt="{{ $alt }}"
-            loading="lazy"
-            decoding="async"
-            width="{{ $medium.Width }}"
-            height="{{ $medium.Height }}"
-            class="lightbox-trigger"
-            data-full="{{ $original.RelPermalink }}"
-        >
-    </picture>
-{{ end }}
+<picture>
+    <source
+        srcset="{{ $tiny.RelPermalink }} 20w,
+                {{ $small.RelPermalink }} 800w,
+                {{ $medium.RelPermalink }} 1200w,
+                {{ $large.RelPermalink }} 1800w,
+                {{ $original.RelPermalink }} 3840w"
+        sizes="(max-width: 800px) 100vw,
+               (max-width: 1200px) 85vw,
+               1200px"
+        type="image/webp"
+    >
+    <source
+        srcset="{{ $tiny_fallback.RelPermalink }} 20w,
+                {{ $small_fallback.RelPermalink }} 800w,
+                {{ $medium_fallback.RelPermalink }} 1200w,
+                {{ $large_fallback.RelPermalink }} 1800w,
+                {{ $original_fallback.RelPermalink }} 3840w"
+        sizes="(max-width: 800px) 100vw,
+               (max-width: 1200px) 85vw,
+               1200px"
+        type="image/jpeg"
+    >
+    <img
+        src="{{ $medium_fallback.RelPermalink }}"
+        alt="{{ $alt }}"
+        loading="{{ if $priority }}eager{{ else }}lazy{{ end }}"
+        decoding="async"
+        width="{{ $medium.Width }}"
+        height="{{ $medium.Height }}"
+        class="lightbox-trigger"
+        data-full="{{ $original.RelPermalink }}"
+    >
+</picture>

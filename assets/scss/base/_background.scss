@@ -31,4 +31,8 @@ body::before {
   overflow: hidden;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+
+  @supports (background-image: url('../../assets/images/site-texture.webp')) {
+    background-image: url('../../assets/images/site-texture.webp');
+  }
 }
