@@ -21,10 +21,14 @@
 
     <script defer src="{{ $js.RelPermalink }}"></script>
     <script defer src="{{ $transition.RelPermalink }}"></script>
-    <script defer src="{{ $lightbox.RelPermalink }}"></script>
-    <script defer src="{{ $quickView.RelPermalink }}"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
-    <script defer src="{{ $search.RelPermalink }}"></script>
+    {{ if eq .Section "work" }}
+        <script defer src="{{ $lightbox.RelPermalink }}"></script>
+        <script defer src="{{ $quickView.RelPermalink }}"></script>
+    {{ end }}
+    {{ if and (eq .Section "work") (eq .Kind "section") }}
+        <script defer src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+        <script defer src="{{ $search.RelPermalink }}"></script>
+    {{ end }}
 </body>
 </html>
 
