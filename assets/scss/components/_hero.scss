@@ -9,7 +9,9 @@
     &__content {
         flex: 1;
         padding-right: 1rem;
-        padding-top: clamp(1rem, 3vw, 3rem);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     &__media {
