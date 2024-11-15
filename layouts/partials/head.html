@@ -28,8 +28,9 @@
 </script>
 
 
-<link rel="preload" href="/assets/fonts/epicene-display-regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-<link rel="preload" href="/assets/fonts/epicene-display-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="/assets/fonts/epicene-display-light.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/epicene-display-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/epicene-display-bold.woff2" as="font" type="font/woff2" crossorigin>
 
 <!-- Replace Google Fonts loading with optimized version -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,6 +46,20 @@
 <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 
 <style>
+    @font-face {
+        font-family: 'Epicene Display';
+        font-display: swap;
+        size-adjust: 100%;
+        src: local('Epicene Display'), url('/assets/fonts/epicene-display-regular.woff2') format('woff2');
+    }
+
+    /* Add fallback font metrics to prevent layout shift */
+    body {
+        font-family: system-ui, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
     /* Critical CSS for above-the-fold content - ONLY work grid styles */
     .work-grid {
         display: grid;
@@ -133,3 +148,21 @@
     }
 {{ end }}
 </style>
+
+<!-- Favicon configuration -->
+<link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
+
+<!-- Light theme favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16-light.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32-light.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon/favicon-48-light.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/x-icon" href="/favicon/favicon-light.ico" media="(prefers-color-scheme: light)">
+
+<!-- Dark theme favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16-dark.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32-dark.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon/favicon-48-dark.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/x-icon" href="/favicon/favicon-dark.ico" media="(prefers-color-scheme: dark)">
+
+<!-- Apple Touch Icon -->
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">

@@ -18,6 +18,16 @@ const CACHED_ASSETS = [
     "/assets/images/logo.svg",
     "/assets/images/favicon.ico",
     "/css/critical.css",
+    "/favicon/favicon.ico",
+    "/favicon/favicon-light.ico",
+    "/favicon/favicon-dark.ico",
+    "/favicon/favicon-16-light.png",
+    "/favicon/favicon-32-light.png",
+    "/favicon/favicon-48-light.png",
+    "/favicon/favicon-16-dark.png",
+    "/favicon/favicon-32-dark.png",
+    "/favicon/favicon-48-dark.png",
+    "/favicon/apple-touch-icon.png",
 ];
 
 self.addEventListener("install", (event) => {
