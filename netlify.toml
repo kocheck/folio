@@ -20,7 +20,14 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-src 'self'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; script-src 'self' 'unsafe-inline' cdn.jsdelivr.net; font-src 'self' fonts.gstatic.com"
+    Content-Security-Policy = """
+      default-src 'self'; \
+      style-src 'self' 'unsafe-inline' fonts.googleapis.com; \
+      script-src 'self' 'unsafe-inline' cdn.jsdelivr.net *.services-prod.nsvcs.net; \
+      font-src 'self' fonts.gstatic.com; \
+      connect-src 'self' *.services-prod.nsvcs.net; \
+      img-src 'self' data: *.services-prod.nsvcs.net\
+    """
   for = "/*.css"
   [headers.values]
     Content-Type = "text/css"
