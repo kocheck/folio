@@ -18,7 +18,7 @@
     {{ $lightbox := resources.Get "js/lightbox.js" | resources.Minify }}
     {{ $quickView := resources.Get "js/quick-view.js" | resources.Minify }}
     {{ $search := resources.Get "js/search.js" | resources.Minify | resources.Fingerprint }}
-
+    {{ $error404 := resources.Get "js/404.js" | resources.Minify | resources.Fingerprint }}
     <script defer src="{{ $js.RelPermalink }}"></script>
     <script defer src="{{ $transition.RelPermalink }}"></script>
     {{ if eq .Section "work" }}
@@ -28,6 +28,9 @@
     {{ if and (eq .Section "work") (eq .Kind "section") }}
         <script defer src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
         <script defer src="{{ $search.RelPermalink }}"></script>
+    {{ end }}
+    {{ if eq .Layout "404" }}
+        <script defer src="{{ $error404.RelPermalink }}"></script>
     {{ end }}
 </body>
 </html>
