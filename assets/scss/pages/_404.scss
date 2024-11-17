@@ -1,64 +1,68 @@
 .error-page {
-    min-height: calc(100vh - 200px);
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    overflow: hidden;
+    margin-top: -5.1428571429rem;
     padding: 2rem;
-
-    &__media {
-        position: absolute;
-        width: 140%;
-        height: 140%;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: -1;
-        opacity: 0.5;
-
-        .hero-image-mask {
-            width: 100%;
-            height: 100%;
-        }
-    }
 
     &__content {
         text-align: center;
         z-index: 1;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
 
         h1 {
-            font-size: clamp(8rem, 20vw, 16rem);
+            font-size: clamp(12rem, 30vw, 24rem);
             margin: 0;
             line-height: 1;
             background: linear-gradient(
                 45deg,
-                var(--text-creative),
-                var(--text-logical)
+                var(--text-accent),
+                var(--text-accent)
             );
             -webkit-background-clip: text;
             color: transparent;
         }
 
-        .error-message {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            margin: 2rem 0;
-            color: var(--text-medium);
+        p {
+            font-weight: 500;
         }
 
-        .button {
-            display: inline-block;
-            padding: 0.8rem 1.6rem;
-            background: var(--surface-default-card);
-            border: 1px solid var(--surface-default-card-border);
-            border-radius: $border-radius;
-            color: var(--text);
-            text-decoration: none;
-            transition: all $transition-duration $transition-easing;
+        .error-message {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            margin: 0;
+            color: var(--text-medium);
+        }
+    }
 
-            &:hover {
-                background: var(--surface-alt);
-                transform: translateY(-2px);
+    .quick-view-button--404 {
+        color: var(--text-medium);
+
+        &:hover {
+            color: var(--text-accent);
+        }
+
+        .quick-view-button__text,
+        .quick-view-button__icon {
+            color: inherit;
+        }
+    }
+}
+
+// Theme switching
+[data-theme="light"] {
+    .error-page {
+        .hero-image-wrapper {
+            .dark-mode-image {
+                opacity: 0;
+            }
+            .light-mode-image {
+                opacity: 1;
             }
         }
     }

@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    console.log("404.js loaded");
     const messages = [
         "Looks like you found the dead pixel.",
         "This page is taking a coffee break.",
@@ -18,8 +19,12 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     const messageElement = document.querySelector(".error-message");
+    console.log("Message element:", messageElement);
     if (messageElement) {
         const randomIndex = Math.floor(Math.random() * messages.length);
         messageElement.textContent = messages[randomIndex];
+        console.log("Message set:", messages[randomIndex]);
+    } else {
+        console.error("Error message element not found");
     }
 });

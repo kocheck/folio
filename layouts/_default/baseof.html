@@ -3,7 +3,7 @@
 <head>
     {{ partial "head.html" . }}
 </head>
-<body class="{{ with .Section }}section-{{ . }}{{ end }}">
+<body class="{{ if eq .Layout "404" }}section-404{{ else }}{{ with .Section }}section-{{ . }}{{ end }}{{ end }}">
     {{ partial "nav.html" . }}
 
     <main id="main-content" class="content-wrapper">
@@ -29,8 +29,13 @@
         <script defer src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
         <script defer src="{{ $search.RelPermalink }}"></script>
     {{ end }}
-    {{ if eq .Layout "404" }}
+    <!-- Debug: Layout type is: {{ .Layout }} -->
+    {{ if or (eq .Layout "404") (eq .Kind "404") }}
+        <!-- Debug: 404 condition matched -->
         <script defer src="{{ $error404.RelPermalink }}"></script>
+    {{ else }}
+        <!-- Debug: 404 condition NOT matched -->
+        <!-- Debug values: Layout={{ .Layout }}, Kind={{ .Kind }} -->
     {{ end }}
 </body>
 </html>
