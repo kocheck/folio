@@ -54,14 +54,14 @@ nav {
 
               &:nth-child(3) .nav-link-wrapper a {
                   color: var(--text);
-                  &:hover { color: var(--text-personality); }
-                  @include animated-underline(var(--text-personality), 3px);
+                  &:hover { color: var(--text-logical); }
+                  @include animated-underline(var(--text-logical), 3px);
               }
 
               &:nth-child(4) .nav-link-wrapper a {
                   color: var(--text);
-                  &:hover { color: var(--text-logical); }
-                  @include animated-underline(var(--text-logical), 3px);
+                  &:hover { color: var(--text-personality); }
+                  @include animated-underline(var(--text-personality), 3px);
               }
           }
       }

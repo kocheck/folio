@@ -36,3 +36,41 @@
         border: 1px solid var(--surface-default-card-border);
     }
 }
+
+.status-banner {
+    padding: 2rem 0;
+    border-top: 1px solid var(--surface-default-card-border);
+    border-bottom: 1px solid var(--surface-default-card-border);
+    margin: 2rem 0;
+
+    &__content {
+        text-align: center;
+        max-width: 720px;
+        margin: 0 auto;
+
+        p {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: var(--text-medium);
+        }
+
+        .status-icon {
+            margin-right: 0.5rem;
+        }
+
+        strong {
+            color: var(--text);
+        }
+
+        .status-link {
+            display: inline-block;
+            margin-left: 0.5rem;
+            color: var(--text-creative);
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

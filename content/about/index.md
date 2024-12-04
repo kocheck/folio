@@ -13,7 +13,7 @@ I'm a Product Designer who turns complex challenges into elegant solutions. Curr
 
 I believe in the power of thoughtful design to transform ideas into successful products. My approach combines strategic thinking with pixel-perfect execution, especially when working with startups and scaling teams.
 
-> Want the formal version? Check out my [CV](/assets/files/Kyle_Kochanek_CV.pdf)
+📄 [Download my CV](/assets/files/Kyle_Kochanek_CV.pdf)
 
 ### Where I make an impact
 

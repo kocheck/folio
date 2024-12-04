@@ -1,0 +1,71 @@
+{{ define "main" }}
+<section class="now-section page-content">
+    {{ .Content }}
+
+    <div class="search-container" role="search" aria-label="Search through posts">
+        <label for="postSearch" class="search-label">
+            <span class="search-label__text">Search posts by title, tags, or content</span>
+            <div class="search-input-wrapper">
+                <input
+                    type="search"
+                    id="postSearch"
+                    class="search-input"
+                    placeholder="Try searching for topics or keywords"
+                    autocomplete="off"
+                    aria-expanded="false"
+                    aria-controls="searchResults"
+                    aria-describedby="searchHint"
+                >
+                <button
+                    type="button"
+                    class="search-clear"
+                    aria-label="Clear search"
+                    hidden
+                >
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        </label>
+    </div>
+
+    <div class="post-grid">
+        {{ range .Pages.ByDate.Reverse }}
+            {{ partial "post-card.html" . }}
+        {{ end }}
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('postSearch');
+    const clearButton = document.querySelector('.search-clear');
+    const posts = document.querySelectorAll('.post-card');
+
+    const searchPosts = () => {
+        const query = searchInput.value.toLowerCase();
+
+        posts.forEach(post => {
+            const title = post.querySelector('h3').textContent.toLowerCase();
+            const tags = Array.from(post.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase());
+            const description = post.querySelector('p')?.textContent.toLowerCase() || '';
+
+            const isMatch = title.includes(query) ||
+                           tags.some(tag => tag.includes(query)) ||
+                           description.includes(query);
+
+            post.style.display = isMatch ? 'block' : 'none';
+        });
+
+        clearButton.hidden = !searchInput.value;
+    };
+
+    searchInput.addEventListener('input', searchPosts);
+
+    clearButton.addEventListener('click', () => {
+        searchInput.value = '';
+        searchPosts();
+        searchInput.focus();
+    });
+});
+</script>
+{{ end }}

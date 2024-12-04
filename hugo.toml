@@ -12,12 +12,12 @@ title = "Kyle Kochanek"
     url = "/work/"
     weight = 1
   [[menu.main]]
-    name = "About"
-    url = "/about/"
+    name = "Now"
+    url = "/now/"
     weight = 2
   [[menu.main]]
-    name = "Resume ↓"
-    url = "/assets/files/Kyle_Kochanek_Resume.pdf"
+    name = "About"
+    url = "/about/"
     weight = 3
 
 [build]
