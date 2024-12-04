@@ -1,20 +1,40 @@
 <a class="post-card" href="{{ .RelPermalink }}">
-  <div class="post-card__content">
-      <h3>{{ .Title }}</h3>
-      <div class="post-meta">
-          <time datetime="{{ .Date.Format "2006-01-02" }}">
-              {{ .Date.Format "January 2, 2006" }}
-          </time>
-          {{ with .Params.tags }}
-          <div class="tags">
-              {{ range . }}
-              <span class="tag">{{ . }}</span>
-              {{ end }}
-          </div>
-          {{ end }}
-      </div>
-      {{ with .Description }}
-      <p class="post-card__description">{{ . }}</p>
-      {{ end }}
-  </div>
+    {{ if .Params.thumbnail }}
+        <div class="post-card__media">
+            {{ if .Resources }}
+                {{ $thumbnail := .Resources.GetMatch .Params.thumbnail }}
+                {{ with $thumbnail }}
+                    {{ $tiny := .Resize "20x webp q80" }}
+                    {{ $small := .Resize "400x webp q80" }}
+                    {{ $medium := .Resize "600x webp q80" }}
+                    <img
+                        src="{{ $small.RelPermalink }}"
+                        srcset="{{ $small.RelPermalink }} 400w, {{ $medium.RelPermalink }} 600w"
+                        sizes="(max-width: 400px) 400px, 600px"
+                        alt="{{ $.Title }}"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                {{ end }}
+            {{ end }}
+        </div>
+    {{ end }}
+    <div class="post-card__content">
+        <h3>{{ .Title }}</h3>
+        <div class="post-meta">
+            <time datetime="{{ .Date.Format "2006-01-02" }}">
+                {{ .Date.Format "January 2, 2006" }}
+            </time>
+        </div>
+        {{ with .Description }}
+            <p>{{ . }}</p>
+        {{ end }}
+        {{ with .Params.tags }}
+            <div class="tags">
+                {{ range . }}
+                    <span class="tag">{{ . }}</span>
+                {{ end }}
+            </div>
+        {{ end }}
+    </div>
 </a>
