@@ -34,4 +34,38 @@
         {{ end }}
     </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('postSearch');
+    const clearButton = document.querySelector('.search-clear');
+    const posts = document.querySelectorAll('.post-card');
+
+    const searchPosts = () => {
+        const query = searchInput.value.toLowerCase();
+
+        posts.forEach(post => {
+            const title = post.querySelector('h3').textContent.toLowerCase();
+            const tags = Array.from(post.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase());
+            const description = post.querySelector('p')?.textContent.toLowerCase() || '';
+
+            const isMatch = title.includes(query) ||
+                           tags.some(tag => tag.includes(query)) ||
+                           description.includes(query);
+
+            post.style.display = isMatch ? 'block' : 'none';
+        });
+
+        clearButton.hidden = !searchInput.value;
+    };
+
+    searchInput.addEventListener('input', searchPosts);
+
+    clearButton.addEventListener('click', () => {
+        searchInput.value = '';
+        searchPosts();
+        searchInput.focus();
+    });
+});
+</script>
 {{ end }}
