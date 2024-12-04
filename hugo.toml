@@ -12,13 +12,17 @@ title = "Kyle Kochanek"
     url = "/work/"
     weight = 1
   [[menu.main]]
+    name = "Now"
+    url = "/now/"
+    weight = 2
+  [[menu.main]]
     name = "About"
     url = "/about/"
-    weight = 2
+    weight = 3
   [[menu.main]]
     name = "Resume ↓"
     url = "/assets/files/Kyle_Kochanek_Resume.pdf"
-    weight = 3
+    weight = 4
 
 [build]
   writeStats = true

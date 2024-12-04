@@ -1,0 +1,37 @@
+{{ define "main" }}
+<section class="now-section page-content">
+    {{ .Content }}
+
+    <div class="search-container" role="search" aria-label="Search through posts">
+        <label for="postSearch" class="search-label">
+            <span class="search-label__text">Search posts by title, tags, or content</span>
+            <div class="search-input-wrapper">
+                <input
+                    type="search"
+                    id="postSearch"
+                    class="search-input"
+                    placeholder="Try searching for topics or keywords"
+                    autocomplete="off"
+                    aria-expanded="false"
+                    aria-controls="searchResults"
+                    aria-describedby="searchHint"
+                >
+                <button
+                    type="button"
+                    class="search-clear"
+                    aria-label="Clear search"
+                    hidden
+                >
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        </label>
+    </div>
+
+    <div class="post-grid">
+        {{ range .Pages.ByDate.Reverse }}
+            {{ partial "post-card.html" . }}
+        {{ end }}
+    </div>
+</section>
+{{ end }}
