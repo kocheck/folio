@@ -1,3 +1,93 @@
+class Search {
+    constructor() {
+        this.searchInput = document.getElementById("projectSearch");
+        this.clearButton = document.querySelector(".search-clear");
+        this.resultsCount = document.querySelector(".results-count");
+        this.workCards = document.querySelectorAll(".work-card");
+
+        if (!this.searchInput) return; // Exit if we're not on a page with search
+
+        this.bindEvents();
+    }
+
+    bindEvents() {
+        // Debounced search handler
+        this.searchInput.addEventListener(
+            "input",
+            debounce(() => {
+                const query = this.searchInput.value.toLowerCase().trim();
+
+                // Track search if analytics exists
+                if (query && window.Analytics) {
+                    window.Analytics.trackSearch(query);
+                }
+
+                // Toggle clear button
+                this.clearButton.hidden = !query;
+
+                // Update ARIA
+                this.searchInput.setAttribute(
+                    "aria-expanded",
+                    query ? "true" : "false"
+                );
+
+                let matchCount = 0;
+
+                // Filter cards
+                this.workCards.forEach((card) => {
+                    const title =
+                        card.querySelector("h3")?.textContent.toLowerCase() ||
+                        "";
+                    const company =
+                        card
+                            .querySelector(".company")
+                            ?.textContent.toLowerCase() || "";
+                    const tags = Array.from(card.querySelectorAll(".tag")).map(
+                        (tag) => tag.textContent.toLowerCase()
+                    );
+                    const description =
+                        card
+                            .querySelector(".work-card__description")
+                            ?.textContent.toLowerCase() || "";
+
+                    const isMatch =
+                        !query ||
+                        title.includes(query) ||
+                        company.includes(query) ||
+                        tags.some((tag) => tag.includes(query)) ||
+                        description.includes(query);
+
+                    card.style.display = isMatch ? "block" : "none";
+                    if (isMatch) matchCount++;
+                });
+
+                // Update results count
+                if (this.resultsCount) {
+                    this.resultsCount.textContent = `${matchCount} project${
+                        matchCount !== 1 ? "s" : ""
+                    } found`;
+                }
+            }, 250)
+        );
+
+        // Clear button handler
+        if (this.clearButton) {
+            this.clearButton.addEventListener("click", () => {
+                this.searchInput.value = "";
+                this.searchInput.focus();
+                this.workCards.forEach(
+                    (card) => (card.style.display = "block")
+                );
+                this.clearButton.hidden = true;
+                if (this.resultsCount) {
+                    this.resultsCount.textContent = `${this.workCards.length} projects found`;
+                }
+            });
+        }
+    }
+}
+
+// Debounce utility function
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -10,125 +100,7 @@ function debounce(func, wait) {
     };
 }
 
-class ProjectSearch {
-    constructor() {
-        this.searchInput = document.getElementById("projectSearch");
-        this.clearButton = document.querySelector(".search-clear");
-        this.resultsCount = document.querySelector(".results-count");
-        this.searchResults = document.getElementById("searchResults");
-        this.projects = this.initializeProjects();
-        this.fuse = this.initializeFuse();
-
-        this.bindEvents();
-    }
-
-    initializeProjects() {
-        return Array.from(document.querySelectorAll(".work-card")).map(
-            (card) => ({
-                element: card,
-                title: card.querySelector("h3").textContent,
-                company: card.querySelector(".company")?.textContent || "",
-                tags: Array.from(card.querySelectorAll(".tag")).map(
-                    (tag) => tag.textContent
-                ),
-                description:
-                    card.querySelector(".work-card__description")
-                        ?.textContent || "",
-                caseStudy: card.getAttribute("data-case-study") || "",
-            })
-        );
-    }
-
-    initializeFuse() {
-        const fuseOptions = {
-            keys: [
-                { name: "title", weight: 0.4 },
-                { name: "tags", weight: 0.3 },
-                { name: "company", weight: 0.2 },
-                { name: "description", weight: 0.1 },
-                { name: "caseStudy", weight: 0.1 },
-            ],
-            threshold: 0.3,
-            distance: 100,
-        };
-        return new Fuse(this.projects, fuseOptions);
-    }
-
-    bindEvents() {
-        this.searchInput.addEventListener("input", () => this.handleSearch());
-        this.clearButton.addEventListener("click", () => this.clearSearch());
-
-        // Handle keyboard navigation
-        this.searchInput.addEventListener("keydown", (e) => {
-            if (e.key === "Escape") {
-                this.clearSearch();
-            }
-        });
-    }
-
-    handleSearch() {
-        const searchTerm = this.searchInput.value.trim();
-
-        // Only track searches with actual input
-        if (searchTerm && window.Analytics) {
-            window.Analytics.trackSearch(searchTerm, results.length);
-        }
-
-        // Toggle clear button visibility
-        this.clearButton.hidden = !searchTerm;
-
-        // Update ARIA attributes
-        this.searchInput.setAttribute(
-            "aria-expanded",
-            searchTerm ? "true" : "false"
-        );
-
-        if (!searchTerm) {
-            this.showAllProjects();
-            return;
-        }
-
-        const results = this.fuse.search(searchTerm);
-        this.updateResults(results);
-    }
-
-    updateResults(results) {
-        // Hide all projects first
-        this.projects.forEach((project) => {
-            project.element.style.display = "none";
-        });
-
-        // Show matching projects
-        results.forEach((result) => {
-            result.item.element.style.display = "";
-        });
-
-        // Update results count for screen readers
-        const count = results.length;
-        this.resultsCount.textContent = `${count} project${
-            count !== 1 ? "s" : ""
-        } found`;
-    }
-
-    showAllProjects() {
-        this.projects.forEach((project) => {
-            project.element.style.display = "";
-        });
-        this.resultsCount.textContent = "";
-    }
-
-    clearSearch() {
-        this.searchInput.value = "";
-        this.searchInput.focus();
-        this.clearButton.hidden = true;
-        this.searchInput.setAttribute("aria-expanded", "false");
-        this.showAllProjects();
-    }
-}
-
-// Initialize on DOM load
+// Initialize search when DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
-    if (document.querySelector(".search-container")) {
-        new ProjectSearch();
-    }
+    new Search();
 });

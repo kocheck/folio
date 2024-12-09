@@ -41,9 +41,20 @@ self.addEventListener("fetch", (event) => {
     const strategy = getStrategy(url);
 
     event.respondWith(
-        strategy === "cache-first"
-            ? cacheFirst(event.request)
-            : staleWhileRevalidate(event.request)
+        (async () => {
+            try {
+                switch (strategy) {
+                    case "cache-first":
+                        return await cacheFirst(event.request);
+                    case "network-first":
+                        return await networkFirst(event.request);
+                    default:
+                        return await staleWhileRevalidate(event.request);
+                }
+            } catch (error) {
+                return await handleFetchError(error, event.request);
+            }
+        })()
     );
 });
 

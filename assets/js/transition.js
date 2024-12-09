@@ -3,43 +3,38 @@ document.addEventListener("DOMContentLoaded", () => {
     const fixedElements = document.querySelectorAll(
         ".hamburger, nav, .nav-logo"
     );
+    const transitionDuration = 400; // Match your CSS duration
 
-    // Handle all internal link clicks
-    document.addEventListener("click", (e) => {
+    const handleTransition = (url, isBack = false) => {
+        contentWrapper.classList.add("transitioning");
+        fixedElements.forEach((el) => el.classList.add("transitioning"));
+
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                if (!isBack) {
+                    window.location.href = url;
+                }
+                resolve();
+            }, transitionDuration);
+        });
+    };
+
+    // Handle link clicks
+    document.addEventListener("click", async (e) => {
         const link = e.target.closest("a");
 
-        // Skip transition for PDF files
-        if (link && link.href.endsWith(".pdf")) {
-            return;
-        }
-
-        if (link && link.href && link.href.startsWith(window.location.origin)) {
+        if (
+            link?.href &&
+            link.href.startsWith(window.location.origin) &&
+            !link.href.endsWith(".pdf")
+        ) {
             e.preventDefault();
-
-            // Start transition
-            contentWrapper.classList.add("transitioning");
-            fixedElements.forEach((el) => el.classList.add("transitioning"));
-
-            // Wait slightly longer for the transition
-            setTimeout(() => {
-                window.location.href = link.href;
-            }, 400);
+            await handleTransition(link.href);
         }
     });
 
-    // Handle page show events (includes bfcache restoration)
-    window.addEventListener("pageshow", (event) => {
-        // Check if the page is being restored from bfcache
-        if (event.persisted) {
-            // Reset any state that might have been preserved
-            contentWrapper.classList.remove("transitioning");
-            fixedElements.forEach((el) => el.classList.remove("transitioning"));
-        }
-
-        // Small delay to ensure DOM is ready
-        setTimeout(() => {
-            contentWrapper.classList.remove("transitioning");
-            fixedElements.forEach((el) => el.classList.remove("transitioning"));
-        }, 50);
+    // Handle browser back/forward
+    window.addEventListener("popstate", async () => {
+        await handleTransition(null, true);
     });
 });

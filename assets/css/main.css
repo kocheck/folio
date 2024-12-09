@@ -28,3 +28,17 @@
 [data-theme="light"] .theme-toggle .moon {
     display: none;
 }
+
+:root {
+    --transition-theme: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+    transition: var(--transition-theme);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --transition-theme: none;
+    }
+}
