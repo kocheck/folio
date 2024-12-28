@@ -2,7 +2,7 @@
 title: "Building My Digital Garden"
 date: 2024-03-21
 tags: ["Design", "Development", "Hugo", "Digital Garden"]
-featured: true
+featured: false
 draft: false
 seo_description: "A look into the process of building and maintaining my digital garden using Hugo"
 ---
