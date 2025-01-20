@@ -1,21 +1,44 @@
-// Abstracts
+// Abstracts (Core utilities - should be first)
 @import 'abstracts/variables';
-@import 'abstracts/functions';
 @import 'abstracts/mixins';
-@import 'abstracts/tokens';
+@import 'abstracts/functions';
 
-// Base
-@import 'base/reset';
+// Theme (Move this before components)
+@import 'theme-colors';
+
+// Vendors (Third-party styles)
+@import 'vendors/normalize';
+
+// Base (Global styles)
 @import 'base/typography';
-@import 'base/base';
+@import 'base/background';
+@import 'base/global';
 
-// Components
-@import 'components/hero';
-@import 'components/nav';
-@import 'components/work-card';
-@import 'components/lightbox';
-
-// Layout
+// Layout (Major structural components)
 @import 'layout/header';
 @import 'layout/footer';
-@import 'layout/grid';
+@import 'layout/content';
+
+
+// Components (Reusable UI components)
+@import 'components/buttons';
+@import 'components/art';
+@import 'components/nav';
+@import 'components/hero';
+@import 'components/transitions';
+@import 'components/hamburger';
+@import 'components/image-grid';
+@import 'components/lightbox';
+@import 'components/work-hero';
+@import 'components/avatar';
+@import 'components/image';
+@import 'components/image-grid-2';
+@import 'components/image-grid-4';
+@import 'components/quick-view';
+
+// Pages (Page-specific styles)
+@import 'pages/home';
+@import 'pages/work';
+@import 'pages/work-item';
+@import 'pages/404';
+@import 'pages/now';

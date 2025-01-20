@@ -1,5 +1,6 @@
 <script lang="ts">
     import '../styles/main.css';
+    import '../lib/styles/main.scss';
     import Nav from '$lib/components/Nav.svelte';
   </script>
   
