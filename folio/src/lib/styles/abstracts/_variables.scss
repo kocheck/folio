@@ -1,0 +1,26 @@
+// Typography
+$font-body: 'Inter', system-ui, sans-serif;
+$font-display: 'Epicene Display', serif;
+$font-mono: ui-monospace, monospace;
+
+// Breakpoints
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+
+// Spacing
+$spacing-xs: 0.5rem;
+$spacing-sm: 0.75rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+
+// Border Radius
+$border-radius-sm: 4px;
+$border-radius: 8px;
+$border-radius-lg: 12px;
+
+// Transitions
+$transition-duration: 0.2s;
+$transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
