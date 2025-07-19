@@ -1,9 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /404.html
-
-# Sitemap
-Sitemap: https://kylekochanek.com/sitemap.xml
-
-# Crawl-delay
-Crawl-delay: 10

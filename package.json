@@ -2,18 +2,23 @@
   "name": "folio",
   "version": "1.0.0",
   "description": "A personal portfolio website showcasing my work and thoughts on design and development.",
+  "main": "build/build.js",
   "scripts": {
-    "dev": "hugo server -D",
-    "build": "hugo --minify",
-    "clean": "rm -rf public resources",
-    "start": "hugo server -D --disableFastRender",
-    "test:contrast": "node scripts/test-contrast.js"
+    "build": "tsc && node build/build.js",
+    "start": "npm run build && npx serve dist"
   },
   "author": "Kyle Kochanek",
   "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^11.1.1",
+    "glob": "^10.3.10",
+    "marked": "^9.1.2"
+  },
   "devDependencies": {
-    "autoprefixer": "^10.4.14",
-    "postcss": "^8.4.21",
-    "postcss-cli": "^10.1.0"
+    "@types/fs-extra": "^11.0.1",
+    "@types/glob": "^8.1.0",
+    "@types/marked": "^5.0.1",
+    "@types/node": "^20.8.4",
+    "typescript": "^5.2.2"
   }
 }

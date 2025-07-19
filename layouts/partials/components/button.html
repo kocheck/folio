@@ -1,8 +1,0 @@
-{{ $text := .text }}
-{{ $url := .url }}
-{{ $class := .class | default "btn" }}
-{{ $target := .target | default "_self" }}
-
-<a href="{{ $url }}" class="{{ $class }}" target="{{ $target }}" {{ with .rel }}rel="{{ . }}"{{ end }}>
-    {{ $text }}
-</a>
