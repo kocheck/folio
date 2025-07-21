@@ -1,0 +1,3069 @@
+@charset "UTF-8";
+/**
+ * Main Sass file for the Folio website.
+ * This file serves as the entry point for all SCSS compilation,
+ * importing various partials in a structured order to ensure proper cascade and organization.
+ *
+ * The import order is crucial for maintaining CSS specificity and avoiding conflicts:
+ * 1. Abstracts: Core utilities, variables, mixins, and functions.
+ * 2. Theme: Global theme-related styles and color definitions.
+ * 3. Vendors: Third-party library styles (e.g., normalize.css).
+ * 4. Base: Global HTML element styles (typography, background, general).
+ * 5. Layout: Styles for major structural components (header, footer, content wrappers).
+ * 6. Components: Reusable UI components (buttons, navigation, cards, etc.).
+ * 7. Pages: Page-specific styles that override or extend component styles for unique layouts.
+ */
+:root {
+  --background: #000000;
+  --surface: rgb(28, 28, 28);
+  --text: rgb(239, 239, 239);
+  --text-medium: rgba(239, 239, 239, 0.8);
+  --text-accent: hsl(303, 100%, 60%);
+  --text-creative: hsl(180, 100%, 60%);
+  --text-personality: hsl(45, 100%, 60%);
+  --text-logical: hsl(140, 100%, 60%);
+  --surface-accent: rgb(172, 147, 236);
+  --surface-accent-medium: rgb(58, 35, 128);
+  --surface-default-card: rgba(28, 28, 28, 0.9);
+  --surface-default-card-border: rgba(239, 239, 239, 0.12);
+  --texture-opacity: 0.4;
+  --search-input-bg: rgb(28, 28, 28);
+  --surface-card-tag: rgba(149, 156, 157, 0.1);
+  --surface-mobile-nav: rgba(28, 28, 28, 0.9);
+  --text-accent-muted: color-mix(in srgb, var(--text-accent) 24%, var(--text));
+  --text-creative-muted: color-mix(in srgb, var(--text-creative) 24%, var(--text));
+  --text-personality-muted: color-mix(in srgb, var(--text-personality) 24%, var(--text));
+  --text-logical-muted: color-mix(in srgb, var(--text-logical) 24%, var(--text));
+}
+:root[data-theme=light] {
+  --background: #ECF0EA;
+  --surface: #f5f5f5;
+  --text: rgb(28, 28, 28);
+  --text-medium: rgba(26, 26, 26, 0.8);
+  --text-accent: hsl(303, 90%, 30%);
+  --text-creative: hsl(180, 100%, 19%);
+  --text-personality: hsl(28, 94%, 25%);
+  --text-logical: hsl(140, 86%, 25%);
+  --surface-accent: rgba(172, 147, 236, 0.3);
+  --surface-accent-medium: rgba(58, 35, 128, 0.2);
+  --surface-default-card: rgba(209, 207, 207, 0.12);
+  --surface-default-card-border: rgba(26, 26, 26, 0.08);
+  --texture-opacity: 0.6;
+  --search-input-bg: #ffffff;
+  --surface-card-tag: rgba(149, 156, 157, 0.1);
+  --surface-mobile-nav: hsl(103, 18%, 92%);
+  --text-accent-muted: color-mix(in srgb, var(--text-accent) 72%, var(--text));
+  --text-creative-muted: color-mix(in srgb, var(--text-creative) 72%, var(--text));
+  --text-personality-muted: color-mix(in srgb, var(--text-personality) 72%, var(--text));
+  --text-logical-muted: color-mix(in srgb, var(--text-logical) 72%, var(--text));
+}
+
+/**
+ * Main Sass file for the Folio website.
+ * This file serves as the entry point for all SCSS compilation,
+ * importing various partials in a structured order to ensure proper cascade and organization.
+ *
+ * The import order is crucial for maintaining CSS specificity and avoiding conflicts:
+ * 1. Abstracts: Core utilities, variables, mixins, and functions.
+ * 2. Theme: Global theme-related styles and color definitions.
+ * 3. Vendors: Third-party library styles (e.g., normalize.css).
+ * 4. Base: Global HTML element styles (typography, background, general).
+ * 5. Layout: Styles for major structural components (header, footer, content wrappers).
+ * 6. Components: Reusable UI components (buttons, navigation, cards, etc.).
+ * 7. Pages: Page-specific styles that override or extend component styles for unique layouts.
+ */
+.my-component {
+  width: 100%;
+}
+@media (max-width: 767px) {
+  .my-component {
+    width: 50%;
+  }
+}
+
+.regular-link {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.regular-link.active {
+  color: hsl(303, 100%, 60%);
+}
+.regular-link.active::after {
+  transform: scaleX(1);
+}
+.regular-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: hsl(303, 100%, 60%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.regular-link:hover {
+  color: hsl(303, 100%, 60%);
+}
+.regular-link:hover::after {
+  transform: scaleX(1);
+}
+
+.thick-underline {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.thick-underline.active {
+  color: var(--text-creative);
+}
+.thick-underline.active::after {
+  transform: scaleX(1);
+}
+.thick-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--text-creative);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.thick-underline:hover {
+  color: var(--text-creative);
+}
+.thick-underline:hover::after {
+  transform: scaleX(1);
+}
+
+.personality-link {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.personality-link.active {
+  color: var(--text-personality);
+}
+.personality-link.active::after {
+  transform: scaleX(1);
+}
+.personality-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--text-personality);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.personality-link:hover {
+  color: var(--text-personality);
+}
+.personality-link:hover::after {
+  transform: scaleX(1);
+}
+
+.logical-link {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.logical-link.active {
+  color: var(--text-logical);
+}
+.logical-link.active::after {
+  transform: scaleX(1);
+}
+.logical-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--text-logical);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.logical-link:hover {
+  color: var(--text-logical);
+}
+.logical-link:hover::after {
+  transform: scaleX(1);
+}
+
+/**
+ * Main Sass file for the Folio website.
+ * This file serves as the entry point for all SCSS compilation,
+ * importing various partials in a structured order to ensure proper cascade and organization.
+ *
+ * The import order is crucial for maintaining CSS specificity and avoiding conflicts:
+ * 1. Abstracts: Core utilities, variables, mixins, and functions.
+ * 2. Theme: Global theme-related styles and color definitions.
+ * 3. Vendors: Third-party library styles (e.g., normalize.css).
+ * 4. Base: Global HTML element styles (typography, background, general).
+ * 5. Layout: Styles for major structural components (header, footer, content wrappers).
+ * 6. Components: Reusable UI components (buttons, navigation, cards, etc.).
+ * 7. Pages: Page-specific styles that override or extend component styles for unique layouts.
+ */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+summary {
+  display: block;
+}
+
+audio,
+canvas,
+video {
+  display: inline-block;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+[hidden], template {
+  display: none;
+}
+
+html {
+  background: #fff;
+  color: #000;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+html,
+button,
+input,
+select,
+textarea {
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  background: transparent;
+}
+a:hover, a:active {
+  outline: 0;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin: 0.83em 0;
+}
+
+h3 {
+  font-size: 1.17em;
+  margin: 1em 0;
+}
+
+h4 {
+  font-size: 1em;
+  margin: 1.33em 0;
+}
+
+h5 {
+  font-size: 0.83em;
+  margin: 1.67em 0;
+}
+
+h6 {
+  font-size: 0.75em;
+  margin: 2.33em 0;
+}
+
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+b,
+strong {
+  font-weight: bold;
+}
+
+dfn {
+  font-style: italic;
+}
+
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, serif;
+  font-size: 1em;
+}
+
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+q {
+  quotes: "“" "”" "‘" "’";
+}
+
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+img {
+  border: 0;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+figure {
+  margin: 0;
+}
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+legend {
+  border: 0;
+  padding: 0;
+  white-space: normal;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+}
+
+button, input {
+  line-height: normal;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+html input[type=button],
+input[type=reset],
+input[type=submit] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+button[disabled],
+input[disabled] {
+  cursor: default;
+}
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+textarea {
+  overflow: auto;
+  vertical-align: top;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input[type=search] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+input[type=search]::-webkit-search-cancel-button, input[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+input[type=checkbox], input[type=radio] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+/**
+ * Main Sass file for the Folio website.
+ * This file serves as the entry point for all SCSS compilation,
+ * importing various partials in a structured order to ensure proper cascade and organization.
+ *
+ * The import order is crucial for maintaining CSS specificity and avoiding conflicts:
+ * 1. Abstracts: Core utilities, variables, mixins, and functions.
+ * 2. Theme: Global theme-related styles and color definitions.
+ * 3. Vendors: Third-party library styles (e.g., normalize.css).
+ * 4. Base: Global HTML element styles (typography, background, general).
+ * 5. Layout: Styles for major structural components (header, footer, content wrappers).
+ * 6. Components: Reusable UI components (buttons, navigation, cards, etc.).
+ * 7. Pages: Page-specific styles that override or extend component styles for unique layouts.
+ */
+@font-face {
+  font-family: "Epicene Display";
+  src: url("/assets/fonts/epicene-display-regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Epicene Display";
+  src: url("/assets/fonts/epicene-display-bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Epicene Display";
+  src: url("/assets/fonts/epicene-display-light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Epicene Display";
+  src: url("/assets/fonts/epicene-display-light-italic.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Epicene Text";
+  src: url("../../assets/fonts/epicene-text-regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Epicene Text";
+  src: url("../../assets/fonts/epicene-text-bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+html {
+  font-size: clamp(14px, 14px + 0.25vw, 18px);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+  text-size-adjust: 100%;
+  font-display: swap;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 225;
+  line-height: 1.5;
+  letter-spacing: 0.022em;
+  word-spacing: 0.02em;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+[data-theme=light] body {
+  font-weight: 350;
+  letter-spacing: 0.016em;
+}
+
+h1 {
+  letter-spacing: -0.02em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Epicene Display", Georgia, "Times New Roman", serif;
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  letter-spacing: 0.015em;
+}
+[data-theme=light] h1, [data-theme=light] h2, [data-theme=light] h3, [data-theme=light] h4, [data-theme=light] h5, [data-theme=light] h6 {
+  font-weight: 500;
+  letter-spacing: 0.009em;
+}
+
+h1,
+.h1 {
+  font-size: clamp(2rem, 2rem + 2vw, 2.5rem);
+}
+
+h2,
+.h2 {
+  font-size: clamp(1.75rem, 1.75rem + 1vw, 2rem);
+}
+
+h3,
+.h3 {
+  font-size: clamp(1.5rem, 1.5rem + 0.5vw, 1.75rem);
+}
+
+h4,
+.h4 {
+  font-size: 1.5rem;
+}
+
+h5,
+.h5 {
+  font-size: 1.25rem;
+}
+
+h6,
+.h6 {
+  font-size: 1rem;
+}
+
+p {
+  max-width: 70ch;
+  margin-bottom: 1.5rem;
+  hanging-punctuation: first;
+  line-height: 1.6;
+}
+
+blockquote {
+  font-style: italic;
+  font-size: 1.1rem;
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+  border-left: 4px solid var(--text-medium);
+}
+
+ul, ol {
+  padding-left: 1.5rem;
+}
+ul li, ol li {
+  margin-bottom: 0.5em;
+  padding-left: 0.5rem;
+}
+
+a:not(.nav-link-wrapper a):not(.work-card):not(.social-links *):not(.nav-logo *):not(.skip-link):not(.footer-links a):not(.footer-meta a) {
+  position: relative;
+  color: var(--text-accent);
+  text-decoration: none;
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.italic {
+  font-family: "Epicene Display", Georgia, "Times New Roman", serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+strong {
+  font-weight: 700;
+}
+
+em {
+  font-style: italic;
+}
+
+small {
+  font-size: 0.8rem;
+}
+
+code, pre {
+  font-family: "Fira Code", ui-monospace, "SF Mono";
+  font-size: 0.9rem;
+}
+
+code {
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
+
+cite {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--text-medium);
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.text-small {
+  font-size: 0.8rem;
+}
+
+.text-large {
+  font-size: 1.2rem;
+}
+
+.text-xl {
+  font-size: 1.5rem;
+}
+
+.text-medium {
+  color: var(--text-medium);
+}
+
+.text-muted {
+  color: var(--text-medium);
+}
+
+.text-creative {
+  color: var(--text-creative);
+}
+
+.text-logical {
+  color: var(--text-logical);
+}
+
+.text-personality {
+  color: var(--text-personality);
+}
+
+::selection {
+  background: rgba(255, 51, 244.8, 0.2);
+  color: inherit;
+}
+
+article p + p, .long-form p + p {
+  text-indent: 1em;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    letter-spacing: 0.02em;
+  }
+}
+@media (max-width: 768px) {
+  body {
+    font-size: clamp(16px, 16px + 0.2vw, 18px);
+    line-height: 1.6;
+  }
+}
+.animate-underline {
+  position: relative;
+  display: inline-block;
+}
+.animate-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--text-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: slideRight 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: 500ms;
+}
+
+@keyframes slideRight {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.company {
+  font-weight: 500;
+  color: var(--text-personality);
+  margin-bottom: 0.25rem;
+  transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media (prefers-color-scheme: dark) {
+  .company {
+    opacity: 0.7;
+  }
+}
+
+/**
+ * Main Sass file for the Folio website.
+ * This file serves as the entry point for all SCSS compilation,
+ * importing various partials in a structured order to ensure proper cascade and organization.
+ *
+ * The import order is crucial for maintaining CSS specificity and avoiding conflicts:
+ * 1. Abstracts: Core utilities, variables, mixins, and functions.
+ * 2. Theme: Global theme-related styles and color definitions.
+ * 3. Vendors: Third-party library styles (e.g., normalize.css).
+ * 4. Base: Global HTML element styles (typography, background, general).
+ * 5. Layout: Styles for major structural components (header, footer, content wrappers).
+ * 6. Components: Reusable UI components (buttons, navigation, cards, etc.).
+ * 7. Pages: Page-specific styles that override or extend component styles for unique layouts.
+ */
+html,
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: var(--background);
+  color: var(--text);
+  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 9999;
+  pointer-events: none;
+  background-image: url("../../assets/images/site-texture.png");
+  background-repeat: repeat;
+  opacity: var(--texture-opacity, 0.4);
+  mix-blend-mode: overlay;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+@supports (background-image: url("../../assets/images/site-texture.webp")) {
+  body::before {
+    background-image: url("../../assets/images/site-texture.webp");
+  }
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 90rem;
+  padding: 0 clamp(1rem, 5vw, 3rem);
+  width: 100%;
+  overflow: hidden;
+}
+
+.page-content {
+  padding-top: 5.1428571429rem;
+}
+
+.easter-egg {
+  position: absolute;
+  opacity: 0;
+  user-select: none;
+  pointer-events: none;
+  font-size: 0.75rem;
+  color: var(--text-medium);
+}
+.easter-egg::selection {
+  opacity: 1;
+  color: var(--text-accent);
+}
+
+:focus-visible {
+  outline: 3px solid var(--text-creative);
+  outline-offset: 3px;
+  border-radius: 2px;
+  transition: outline-color 0.2s ease;
+}
+@media screen and (-ms-high-contrast: active) {
+  :focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+  }
+}
+
+input[type=text]:focus-visible,
+input[type=search]:focus-visible,
+input[type=email]:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--text-creative);
+  outline-offset: 0;
+  border-color: var(--text-creative);
+  box-shadow: 0 0 0 2px rgba(var(--text-creative-rgb), 0.1);
+}
+
+button:focus-visible,
+.button:focus-visible,
+[role=button]:focus-visible {
+  outline-offset: 4px;
+}
+
+/**
+ * Main Sass file for the Folio website.
+ * This file serves as the entry point for all SCSS compilation,
+ * importing various partials in a structured order to ensure proper cascade and organization.
+ *
+ * The import order is crucial for maintaining CSS specificity and avoiding conflicts:
+ * 1. Abstracts: Core utilities, variables, mixins, and functions.
+ * 2. Theme: Global theme-related styles and color definitions.
+ * 3. Vendors: Third-party library styles (e.g., normalize.css).
+ * 4. Base: Global HTML element styles (typography, background, general).
+ * 5. Layout: Styles for major structural components (header, footer, content wrappers).
+ * 6. Components: Reusable UI components (buttons, navigation, cards, etc.).
+ * 7. Pages: Page-specific styles that override or extend component styles for unique layouts.
+ */
+/**
+ * Main Sass file for the Folio website.
+ * This file serves as the entry point for all SCSS compilation,
+ * importing various partials in a structured order to ensure proper cascade and organization.
+ *
+ * The import order is crucial for maintaining CSS specificity and avoiding conflicts:
+ * 1. Abstracts: Core utilities, variables, mixins, and functions.
+ * 2. Theme: Global theme-related styles and color definitions.
+ * 3. Vendors: Third-party library styles (e.g., normalize.css).
+ * 4. Base: Global HTML element styles (typography, background, general).
+ * 5. Layout: Styles for major structural components (header, footer, content wrappers).
+ * 6. Components: Reusable UI components (buttons, navigation, cards, etc.).
+ * 7. Pages: Page-specific styles that override or extend component styles for unique layouts.
+ */
+footer {
+  width: 100%;
+  background: linear-gradient(to bottom, var(--surface-default-card) 0%, transparent 100%);
+  margin-top: auto;
+  padding: 4rem 0 2rem;
+}
+footer .footer-container {
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 5vw, 3rem);
+  width: 100%;
+  max-width: 75rem;
+}
+footer .footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+@media (max-width: 768px) {
+  footer .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+footer .footer-section h4 {
+  font-size: 1.1rem;
+  margin-bottom: 1.25rem;
+  color: var(--text);
+  font-weight: 550;
+}
+footer .footer-tagline {
+  color: var(--text-medium);
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  max-width: 90%;
+}
+footer .footer-links, footer .social-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+footer .footer-links li, footer .social-links li {
+  margin: 0.5rem 0;
+}
+footer .footer-links a, footer .social-links a {
+  position: relative;
+  display: inline-block;
+  color: var(--text-medium);
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+footer .footer-links a.active, footer .social-links a.active {
+  color: var(--text-accent);
+}
+footer .footer-links a.active::after, footer .social-links a.active::after {
+  transform: scaleX(1);
+}
+footer .footer-links a::after, footer .social-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--text-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+footer .footer-links a:hover, footer .social-links a:hover {
+  color: var(--text-accent);
+}
+footer .footer-links a:hover::after, footer .social-links a:hover::after {
+  transform: scaleX(1);
+}
+footer .social-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+footer .social-links li {
+  margin: 0;
+}
+footer .social-links a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-medium);
+  text-decoration: none;
+  padding: 0.25rem 0;
+}
+footer .social-links a:hover {
+  color: var(--text-accent);
+}
+footer .social-links a:hover svg {
+  transform: translateY(-1px);
+}
+footer .social-links a svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  transition: transform 0.3s ease;
+}
+footer .social-links a span {
+  font-size: 0.9rem;
+}
+footer .footer-bottom {
+  padding-top: 2rem;
+  margin-top: 2rem;
+  border-top: 1px solid var(--surface-default-card-border);
+  text-align: left;
+  max-width: var(--content-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+footer .footer-bottom .copyright {
+  color: var(--text-medium);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+footer .footer-bottom .built-with {
+  color: var(--text-medium);
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+footer .footer-bottom .easter-egg {
+  opacity: 0;
+  font-size: 0.75rem;
+  color: var(--text-medium);
+  margin-top: 1rem;
+  display: block;
+}
+footer .footer-bottom .easter-egg::selection {
+  opacity: 1;
+  color: var(--text-accent);
+}
+footer .footer-links a,
+footer .footer-meta a {
+  color: var(--text-medium);
+  text-decoration: none;
+  position: relative;
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+footer .footer-links a:hover,
+footer .footer-meta a:hover {
+  color: var(--text-accent);
+}
+footer .footer-links a.active,
+footer .footer-meta a.active {
+  color: var(--text-accent);
+}
+footer .footer-links a.active::after,
+footer .footer-meta a.active::after {
+  transform: scaleX(1);
+}
+footer .footer-links a::after,
+footer .footer-meta a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--text-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+footer .footer-links a:hover,
+footer .footer-meta a:hover {
+  color: var(--text-accent);
+}
+footer .footer-links a:hover::after,
+footer .footer-meta a:hover::after {
+  transform: scaleX(1);
+}
+
+@media (max-width: 768px) {
+  footer {
+    padding: 3rem 0 1.5rem;
+  }
+  footer .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  footer .footer-container {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0 auto;
+    max-width: 80%;
+  }
+  footer .footer-section {
+    text-align: left;
+  }
+  footer .footer-section:first-child {
+    border-bottom: 1px solid var(--surface-default-card-border);
+    padding-bottom: 2rem;
+  }
+  footer .footer-section h4 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  footer .footer-tagline {
+    max-width: 100%;
+    font-size: 0.9rem;
+  }
+  footer .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+  }
+  footer .footer-links li {
+    margin-bottom: 0;
+  }
+  footer .social-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  footer .social-links a {
+    padding: 0.5rem 0;
+  }
+  footer .social-links a span {
+    display: none;
+  }
+  footer .social-links a svg {
+    width: 24px;
+    height: 24px;
+  }
+  footer .footer-bottom {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    text-align: center;
+  }
+  footer .footer-bottom .copyright, footer .footer-bottom .built-with {
+    font-size: 0.85rem;
+  }
+  footer .footer-bottom .built-with {
+    margin-top: 0.5rem;
+  }
+}
+/**
+ * Main Sass file for the Folio website.
+ * This file serves as the entry point for all SCSS compilation,
+ * importing various partials in a structured order to ensure proper cascade and organization.
+ *
+ * The import order is crucial for maintaining CSS specificity and avoiding conflicts:
+ * 1. Abstracts: Core utilities, variables, mixins, and functions.
+ * 2. Theme: Global theme-related styles and color definitions.
+ * 3. Vendors: Third-party library styles (e.g., normalize.css).
+ * 4. Base: Global HTML element styles (typography, background, general).
+ * 5. Layout: Styles for major structural components (header, footer, content wrappers).
+ * 6. Components: Reusable UI components (buttons, navigation, cards, etc.).
+ * 7. Pages: Page-specific styles that override or extend component styles for unique layouts.
+ */
+.content-wrapper {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 5vw, 3rem);
+}
+
+nav {
+  width: 100%;
+}
+
+.hero .content-wrapper {
+  display: flex;
+  gap: 2rem;
+}
+.hero__content {
+  flex: 1;
+  max-width: 50%;
+}
+.hero__media {
+  flex: 1;
+}
+@media (max-width: 768px) {
+  .hero .content-wrapper {
+    flex-direction: column;
+  }
+  .hero__content, .hero__media {
+    max-width: 100%;
+  }
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.about-grid__sidebar {
+  position: fixed;
+  width: calc((800px - 4rem) / 3.5);
+  top: 120px;
+}
+.about-grid__sidebar .sidebar-content h4 {
+  margin-top: 1.5rem;
+}
+.about-grid__sidebar .sidebar-content h4:first-child {
+  margin-top: 0;
+}
+.about-grid__main {
+  grid-column: 2;
+  margin-left: calc((800px - 4rem) / 3.5 + 2rem);
+}
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .about-grid__sidebar {
+    position: relative;
+    width: 100%;
+    top: 0;
+    order: 2;
+  }
+  .about-grid__sidebar .sidebar-content {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--surface-alt);
+  }
+  .about-grid__main {
+    grid-column: 1;
+    margin-left: 0;
+    order: 1;
+  }
+}
+
+main.content-wrapper {
+  min-height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+}
+
+.header-hero-art {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  width: 80%;
+}
+
+.footer-hero-art {
+  display: flex;
+  padding: 384px 10.297px 0px 0px;
+  align-items: center;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+}
+
+/**
+ * Main Sass file for the Folio website.
+ * This file serves as the entry point for all SCSS compilation,
+ * importing various partials in a structured order to ensure proper cascade and organization.
+ *
+ * The import order is crucial for maintaining CSS specificity and avoiding conflicts:
+ * 1. Abstracts: Core utilities, variables, mixins, and functions.
+ * 2. Theme: Global theme-related styles and color definitions.
+ * 3. Vendors: Third-party library styles (e.g., normalize.css).
+ * 4. Base: Global HTML element styles (typography, background, general).
+ * 5. Layout: Styles for major structural components (header, footer, content wrappers).
+ * 6. Components: Reusable UI components (buttons, navigation, cards, etc.).
+ * 7. Pages: Page-specific styles that override or extend component styles for unique layouts.
+ */
+nav {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100vh;
+  background: var(--surface);
+  transition: right 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 100;
+}
+nav.active {
+  right: 0;
+}
+nav .nav-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 1.5rem;
+}
+nav .nav-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+nav .nav-container ul li {
+  margin: 1rem 0;
+}
+nav .nav-container ul li .nav-link-wrapper a {
+  font-size: 2rem;
+  text-decoration: none;
+  position: relative;
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+nav .nav-container ul li:nth-child(1) .nav-link-wrapper a {
+  color: var(--text);
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+nav .nav-container ul li:nth-child(1) .nav-link-wrapper a:hover {
+  color: var(--text-accent);
+}
+nav .nav-container ul li:nth-child(1) .nav-link-wrapper a.active {
+  color: var(--text-accent);
+}
+nav .nav-container ul li:nth-child(1) .nav-link-wrapper a.active::after {
+  transform: scaleX(1);
+}
+nav .nav-container ul li:nth-child(1) .nav-link-wrapper a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--text-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+nav .nav-container ul li:nth-child(1) .nav-link-wrapper a:hover {
+  color: var(--text-accent);
+}
+nav .nav-container ul li:nth-child(1) .nav-link-wrapper a:hover::after {
+  transform: scaleX(1);
+}
+nav .nav-container ul li:nth-child(2) .nav-link-wrapper a {
+  color: var(--text);
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+nav .nav-container ul li:nth-child(2) .nav-link-wrapper a:hover {
+  color: var(--text-creative);
+}
+nav .nav-container ul li:nth-child(2) .nav-link-wrapper a.active {
+  color: var(--text-creative);
+}
+nav .nav-container ul li:nth-child(2) .nav-link-wrapper a.active::after {
+  transform: scaleX(1);
+}
+nav .nav-container ul li:nth-child(2) .nav-link-wrapper a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--text-creative);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+nav .nav-container ul li:nth-child(2) .nav-link-wrapper a:hover {
+  color: var(--text-creative);
+}
+nav .nav-container ul li:nth-child(2) .nav-link-wrapper a:hover::after {
+  transform: scaleX(1);
+}
+nav .nav-container ul li:nth-child(3) .nav-link-wrapper a {
+  color: var(--text);
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+nav .nav-container ul li:nth-child(3) .nav-link-wrapper a:hover {
+  color: var(--text-logical);
+}
+nav .nav-container ul li:nth-child(3) .nav-link-wrapper a.active {
+  color: var(--text-logical);
+}
+nav .nav-container ul li:nth-child(3) .nav-link-wrapper a.active::after {
+  transform: scaleX(1);
+}
+nav .nav-container ul li:nth-child(3) .nav-link-wrapper a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--text-logical);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+nav .nav-container ul li:nth-child(3) .nav-link-wrapper a:hover {
+  color: var(--text-logical);
+}
+nav .nav-container ul li:nth-child(3) .nav-link-wrapper a:hover::after {
+  transform: scaleX(1);
+}
+nav .nav-container ul li:nth-child(4) .nav-link-wrapper a {
+  color: var(--text);
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+nav .nav-container ul li:nth-child(4) .nav-link-wrapper a:hover {
+  color: var(--text-personality);
+}
+nav .nav-container ul li:nth-child(4) .nav-link-wrapper a.active {
+  color: var(--text-personality);
+}
+nav .nav-container ul li:nth-child(4) .nav-link-wrapper a.active::after {
+  transform: scaleX(1);
+}
+nav .nav-container ul li:nth-child(4) .nav-link-wrapper a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--text-personality);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+nav .nav-container ul li:nth-child(4) .nav-link-wrapper a:hover {
+  color: var(--text-personality);
+}
+nav .nav-container ul li:nth-child(4) .nav-link-wrapper a:hover::after {
+  transform: scaleX(1);
+}
+nav .nav-container .nav-logo {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  width: 120px;
+  z-index: 101;
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+nav .nav-container .nav-logo a {
+  color: var(--text);
+  text-decoration: none;
+}
+nav .nav-container .nav-logo a svg {
+  fill: currentColor;
+  transition: fill 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+nav .nav-container .nav-logo svg {
+  width: 100%;
+  height: auto;
+  fill: var(--text);
+  display: block;
+}
+nav .hamburger {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 101;
+}
+nav .hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--text);
+  margin: 6px 0;
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+nav .hamburger.active span:first-child {
+  transform: translateY(8px) rotate(45deg);
+}
+nav .hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+nav .hamburger.active span:last-child {
+  transform: translateY(-8px) rotate(-45deg);
+}
+nav .theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: calc(1rem + 50px);
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 101;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+nav .theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2px;
+  color: var(--text);
+}
+nav .theme-toggle .sun-icon {
+  opacity: 1;
+  transform: scale(1);
+}
+nav .theme-toggle .moon-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+}
+nav .theme-toggle[data-theme=dark] .sun-icon {
+  opacity: 0;
+  transform: scale(0);
+}
+nav .theme-toggle[data-theme=dark] .moon-icon {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+@media (min-width: 768px) {
+  nav {
+    position: static;
+    width: 100%;
+    height: auto;
+    background: transparent;
+    padding-top: 2rem;
+  }
+  nav .nav-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 5vw, 3rem);
+    height: auto;
+    position: relative;
+  }
+  nav .nav-container .nav-logo {
+    width: 150px;
+    position: absolute;
+    left: clamp(1rem, 5vw, 3rem);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  nav .nav-container .nav-logo svg {
+    width: 100%;
+    height: auto;
+    fill: var(--text);
+    display: block;
+    transition: fill 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  nav .nav-container ul {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0;
+  }
+  nav .nav-container ul li {
+    margin: 0;
+  }
+  nav .nav-container ul li .nav-link-wrapper a {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+  nav .nav-container .theme-toggle {
+    position: absolute;
+    right: clamp(1rem, 5vw, 3rem);
+    top: 50%;
+    transform: translateY(-50%);
+    height: auto;
+    display: flex;
+    align-items: center;
+  }
+  nav .hamburger {
+    display: none;
+  }
+  nav.home .nav-logo {
+    border-radius: 4px;
+    padding: 0.5rem 0.75rem;
+    transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  nav.home .nav-logo a {
+    color: var(--text-accent-muted);
+    transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  nav.home .nav-logo a svg {
+    transition: fill 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  nav.home .nav-logo:hover {
+    background-color: color-mix(in srgb, var(--text-accent-muted) 15%, transparent);
+  }
+  nav.home .nav-logo:hover a {
+    color: var(--text-accent);
+  }
+  nav.home .nav-logo:hover a svg {
+    fill: var(--text-accent);
+  }
+  nav.section-work .nav-logo {
+    border-radius: 4px;
+    padding: 0.5rem 0.75rem;
+    transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  nav.section-work .nav-logo a {
+    color: var(--text-creative-muted);
+    transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  nav.section-work .nav-logo a svg {
+    transition: fill 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  nav.section-work .nav-logo:hover {
+    background-color: color-mix(in srgb, var(--text-creative-muted) 15%, transparent);
+  }
+  nav.section-work .nav-logo:hover a {
+    color: var(--text-creative);
+  }
+  nav.section-work .nav-logo:hover a svg {
+    fill: var(--text-creative);
+  }
+  nav.section-about .nav-logo {
+    border-radius: 4px;
+    padding: 0.5rem 0.75rem;
+    transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  nav.section-about .nav-logo a {
+    color: var(--text-personality-muted);
+    transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  nav.section-about .nav-logo a svg {
+    transition: fill 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  nav.section-about .nav-logo:hover {
+    background-color: color-mix(in srgb, var(--text-personality-muted) 15%, transparent);
+  }
+  nav.section-about .nav-logo:hover a {
+    color: var(--text-personality);
+  }
+  nav.section-about .nav-logo:hover a svg {
+    fill: var(--text-personality);
+  }
+  nav.section-contact .nav-logo {
+    border-radius: 4px;
+    padding: 0.5rem 0.75rem;
+    transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  nav.section-contact .nav-logo a {
+    color: var(--text-logical-muted);
+    transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  nav.section-contact .nav-logo a svg {
+    transition: fill 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  nav.section-contact .nav-logo:hover {
+    background-color: color-mix(in srgb, var(--text-logical-muted) 15%, transparent);
+  }
+  nav.section-contact .nav-logo:hover a {
+    color: var(--text-logical);
+  }
+  nav.section-contact .nav-logo:hover a svg {
+    fill: var(--text-logical);
+  }
+}
+
+nav.home .nav-logo {
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+nav.home .nav-logo a {
+  color: var(--text-accent-muted);
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+nav.home .nav-logo a svg {
+  transition: fill 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+nav.home .nav-logo:hover {
+  background-color: color-mix(in srgb, var(--text-accent-muted) 15%, transparent);
+}
+nav.home .nav-logo:hover a {
+  color: var(--text-accent);
+}
+nav.home .nav-logo:hover a svg {
+  fill: var(--text-accent);
+}
+nav.section-work .nav-logo {
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+nav.section-work .nav-logo a {
+  color: var(--text-creative-muted);
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+nav.section-work .nav-logo a svg {
+  transition: fill 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+nav.section-work .nav-logo:hover {
+  background-color: color-mix(in srgb, var(--text-creative-muted) 15%, transparent);
+}
+nav.section-work .nav-logo:hover a {
+  color: var(--text-creative);
+}
+nav.section-work .nav-logo:hover a svg {
+  fill: var(--text-creative);
+}
+nav.section-about .nav-logo {
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+nav.section-about .nav-logo a {
+  color: var(--text-personality-muted);
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+nav.section-about .nav-logo a svg {
+  transition: fill 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+nav.section-about .nav-logo:hover {
+  background-color: color-mix(in srgb, var(--text-personality-muted) 15%, transparent);
+}
+nav.section-about .nav-logo:hover a {
+  color: var(--text-personality);
+}
+nav.section-about .nav-logo:hover a svg {
+  fill: var(--text-personality);
+}
+nav.section-contact .nav-logo {
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+nav.section-contact .nav-logo a {
+  color: var(--text-logical-muted);
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+nav.section-contact .nav-logo a svg {
+  transition: fill 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+nav.section-contact .nav-logo:hover {
+  background-color: color-mix(in srgb, var(--text-logical-muted) 15%, transparent);
+}
+nav.section-contact .nav-logo:hover a {
+  color: var(--text-logical);
+}
+nav.section-contact .nav-logo:hover a svg {
+  fill: var(--text-logical);
+}
+
+.nav-container ul li .nav-link-wrapper a[href$=".pdf"]::after {
+  content: "";
+  margin-left: 0.25rem;
+  font-size: 0.875em;
+}
+
+.nav-link-wrapper a[href$=".pdf"]::after {
+  content: "↓";
+  margin-left: 0.25rem;
+  font-size: 0.875em;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  padding: 8px 16px;
+  background: var(--surface);
+  color: var(--text);
+  z-index: 100;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+.nav-gradient {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  pointer-events: none;
+  z-index: 99;
+  opacity: 0;
+  transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media (min-width: 768px) {
+  .nav-gradient {
+    display: none;
+  }
+}
+.nav-gradient::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--surface-mobile-nav);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, rgba(0, 0, 0, 0.8) 75%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 60%, rgba(0, 0, 0, 0.8) 75%, transparent 100%);
+}
+.nav-gradient.visible {
+  opacity: 1;
+}
+
+/**
+ * Main Sass file for the Folio website.
+ * This file serves as the entry point for all SCSS compilation,
+ * importing various partials in a structured order to ensure proper cascade and organization.
+ *
+ * The import order is crucial for maintaining CSS specificity and avoiding conflicts:
+ * 1. Abstracts: Core utilities, variables, mixins, and functions.
+ * 2. Theme: Global theme-related styles and color definitions.
+ * 3. Vendors: Third-party library styles (e.g., normalize.css).
+ * 4. Base: Global HTML element styles (typography, background, general).
+ * 5. Layout: Styles for major structural components (header, footer, content wrappers).
+ * 6. Components: Reusable UI components (buttons, navigation, cards, etc.).
+ * 7. Pages: Page-specific styles that override or extend component styles for unique layouts.
+ */
+.hero {
+  padding: calc(clamp(3rem, 8vw, 8rem) + 80px) 0 clamp(6rem, 12vw, 12rem);
+}
+.hero .content-wrapper {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+.hero__content {
+  flex: 1;
+  max-width: 50%;
+  padding: 0 clamp(1rem, 3vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero__media {
+  flex: 1;
+  width: 50%;
+  transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hero__media .hero-image-mask {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  border-radius: 8px;
+}
+@media (max-width: 768px) {
+  .hero__media .hero-image-mask {
+    margin: 0 -5vw;
+    width: calc(100% + 10vw);
+    border-radius: 0;
+  }
+}
+.hero__media .hero-image-mask .hero-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.hero__media .hero-image-mask .hero-image-wrapper .masked-image {
+  display: block;
+  width: 110%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1), transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  margin-left: -5%;
+  filter: url("#ripple");
+}
+.hero__media .hero-image-mask .hero-image-wrapper .masked-image.dark-mode-image {
+  position: absolute;
+  top: 0;
+  left: -5%;
+  opacity: 100;
+  mix-blend-mode: screen;
+  filter: url("#ripple") contrast(1.1) brightness(0.9);
+  background-color: var(--background);
+}
+.hero__media .hero-image-mask .hero-image-wrapper .masked-image.light-mode-image {
+  position: absolute;
+  top: 0;
+  left: -5%;
+  filter: url("#ripple") contrast(1.05) brightness(0.95);
+  mix-blend-mode: darken !important;
+  background-color: var(--background);
+  will-change: opacity, transform;
+}
+@media (max-width: 768px) {
+  .hero__media .hero-image-mask .hero-image-wrapper .masked-image {
+    width: 120%;
+    margin-left: -10%;
+  }
+  .hero__media .hero-image-mask .hero-image-wrapper .masked-image.dark-mode-image {
+    left: -10%;
+  }
+}
+.hero__media-info {
+  display: flex;
+  gap: 2rem;
+}
+.hero__media-info-block {
+  flex: 1;
+}
+.hero__media-info-block .company-status {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 479;
+  margin-bottom: 0.75rem;
+}
+.hero__media-info-block .company-name {
+  color: var(--text-medium);
+  text-align: left;
+  font-size: 0.9rem;
+}
+@media (max-width: 768px) {
+  .hero .content-wrapper {
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .hero__content, .hero__media {
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+  }
+  .hero .hero-image-mask {
+    margin: 0 -5vw;
+    width: calc(100% + 10vw);
+    border-radius: 0;
+  }
+}
+@media (min-width: 768px) {
+  .hero {
+    padding: clamp(3rem, 8vw, 8rem) 0 clamp(6rem, 12vw, 12rem);
+  }
+}
+
+[data-theme=dark] .hero-image-wrapper .dark-mode-image {
+  opacity: 1;
+  z-index: 1;
+}
+[data-theme=dark] .hero-image-wrapper .light-mode-image {
+  opacity: 0;
+}
+[data-theme=dark] .hero-image-wrapper .hero-image-overlay {
+  background: linear-gradient(45deg, rgba(51, 255, 255, 0.1), rgba(51, 255, 119, 0.1));
+  mix-blend-mode: overlay;
+  opacity: 0.7;
+}
+
+[data-theme=light] .hero-image-wrapper .dark-mode-image {
+  opacity: 0;
+}
+[data-theme=light] .hero-image-wrapper .light-mode-image {
+  opacity: 1;
+}
+[data-theme=light] .hero-image-wrapper .hero-image-overlay {
+  background: linear-gradient(45deg, rgba(255, 204, 51, 0.08), rgba(51, 255, 255, 0.08));
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+@keyframes rippleEffect {
+  0% {
+    filter: url("#ripple") brightness(1);
+    transform: translateY(0);
+  }
+  50% {
+    filter: url("#ripple") brightness(1.02);
+    transform: translateY(-6px);
+  }
+  100% {
+    filter: url("#ripple") brightness(1);
+    transform: translateY(0);
+  }
+}
+.heading-group {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.heading-group .avatar-wrapper {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  position: relative;
+}
+.heading-group .avatar-wrapper svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.heading-group .avatar-wrapper svg image {
+  width: 100%;
+  height: 100%;
+}
+
+/**
+ * Main Sass file for the Folio website.
+ * This file serves as the entry point for all SCSS compilation,
+ * importing various partials in a structured order to ensure proper cascade and organization.
+ *
+ * The import order is crucial for maintaining CSS specificity and avoiding conflicts:
+ * 1. Abstracts: Core utilities, variables, mixins, and functions.
+ * 2. Theme: Global theme-related styles and color definitions.
+ * 3. Vendors: Third-party library styles (e.g., normalize.css).
+ * 4. Base: Global HTML element styles (typography, background, general).
+ * 5. Layout: Styles for major structural components (header, footer, content wrappers).
+ * 6. Components: Reusable UI components (buttons, navigation, cards, etc.).
+ * 7. Pages: Page-specific styles that override or extend component styles for unique layouts.
+ */
+.page-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9997;
+}
+.page-transition::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--background);
+  opacity: 0;
+  transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.content-wrapper {
+  transition: filter 300ms cubic-bezier(0.4, 0, 0.2, 1), opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.content-wrapper.transitioning {
+  filter: blur(10px);
+  opacity: 0;
+}
+.content-wrapper.transitioning .hero-image-mask {
+  opacity: 0;
+}
+
+.hamburger,
+nav,
+.nav-logo {
+  transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hamburger.transitioning,
+nav.transitioning,
+.nav-logo.transitioning {
+  opacity: 0;
+}
+
+/**
+ * Main Sass file for the Folio website.
+ * This file serves as the entry point for all SCSS compilation,
+ * importing various partials in a structured order to ensure proper cascade and organization.
+ *
+ * The import order is crucial for maintaining CSS specificity and avoiding conflicts:
+ * 1. Abstracts: Core utilities, variables, mixins, and functions.
+ * 2. Theme: Global theme-related styles and color definitions.
+ * 3. Vendors: Third-party library styles (e.g., normalize.css).
+ * 4. Base: Global HTML element styles (typography, background, general).
+ * 5. Layout: Styles for major structural components (header, footer, content wrappers).
+ * 6. Components: Reusable UI components (buttons, navigation, cards, etc.).
+ * 7. Pages: Page-specific styles that override or extend component styles for unique layouts.
+ */
+.hamburger {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 101;
+}
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--text);
+  margin: 6px 0;
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hamburger.active span:first-child {
+  transform: translateY(8px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:last-child {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/**
+ * Main Sass file for the Folio website.
+ * This file serves as the entry point for all SCSS compilation,
+ * importing various partials in a structured order to ensure proper cascade and organization.
+ *
+ * The import order is crucial for maintaining CSS specificity and avoiding conflicts:
+ * 1. Abstracts: Core utilities, variables, mixins, and functions.
+ * 2. Theme: Global theme-related styles and color definitions.
+ * 3. Vendors: Third-party library styles (e.g., normalize.css).
+ * 4. Base: Global HTML element styles (typography, background, general).
+ * 5. Layout: Styles for major structural components (header, footer, content wrappers).
+ * 6. Components: Reusable UI components (buttons, navigation, cards, etc.).
+ * 7. Pages: Page-specific styles that override or extend component styles for unique layouts.
+ */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.image-grid__item {
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  border-radius: 8px;
+}
+.image-grid__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.image-grid__item img:hover {
+  transform: scale(1.05);
+}
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: none;
+  z-index: 1000;
+}
+.lightbox.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox__content {
+  max-width: 90%;
+  max-height: 90vh;
+  position: relative;
+  transition: transform 0.3s ease-out;
+}
+.lightbox__content img {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.lightbox__content.swiping-left {
+  transform: translateX(-10%);
+}
+.lightbox__content.swiping-right {
+  transform: translateX(10%);
+}
+.lightbox__content.swiping-dismiss {
+  transform: translateY(10%);
+  opacity: 0.7;
+}
+.lightbox__close, .lightbox__prev, .lightbox__next {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 1rem 1.5rem;
+  border-radius: 50%;
+  backdrop-filter: blur(4px);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease;
+}
+.lightbox__close:hover, .lightbox__prev:hover, .lightbox__next:hover {
+  background: rgba(0, 0, 0, 0.6);
+  transform: scale(1.1);
+}
+.lightbox__close:active, .lightbox__prev:active, .lightbox__next:active {
+  transform: scale(0.95);
+}
+.lightbox__close {
+  top: 1rem;
+  right: 1rem;
+}
+.lightbox__prev, .lightbox__next {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox__prev {
+  left: 1rem;
+}
+.lightbox__next {
+  right: 1rem;
+}
+.lightbox__content {
+  position: relative;
+}
+.lightbox__content::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+.lightbox__content.loading::before {
+  opacity: 1;
+}
+
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@media (max-width: 768px) {
+  .lightbox__prev, .lightbox__next {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
+  }
+  .lightbox__close {
+    font-size: 1.5rem;
+    padding: 0.75rem 1rem;
+  }
+}
+/**
+ * Main Sass file for the Folio website.
+ * This file serves as the entry point for all SCSS compilation,
+ * importing various partials in a structured order to ensure proper cascade and organization.
+ *
+ * The import order is crucial for maintaining CSS specificity and avoiding conflicts:
+ * 1. Abstracts: Core utilities, variables, mixins, and functions.
+ * 2. Theme: Global theme-related styles and color definitions.
+ * 3. Vendors: Third-party library styles (e.g., normalize.css).
+ * 4. Base: Global HTML element styles (typography, background, general).
+ * 5. Layout: Styles for major structural components (header, footer, content wrappers).
+ * 6. Components: Reusable UI components (buttons, navigation, cards, etc.).
+ * 7. Pages: Page-specific styles that override or extend component styles for unique layouts.
+ */
+.work-hero {
+  margin-bottom: 2rem;
+}
+.work-hero__content {
+  padding: 2rem 0;
+}
+.work-hero__content h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  margin-bottom: 1rem;
+}
+.work-hero__meta {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.work-hero__meta .company {
+  display: inline-block;
+  line-height: 1.2;
+}
+.work-hero__meta .tags {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+.work-hero__meta .tags .tag {
+  background: var(--surface-default-card);
+  border: 1px solid var(--surface-default-card-border);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  line-height: 1.2;
+  display: inline-block;
+}
+.work-hero__media {
+  width: 100%;
+  aspect-ratio: 2/1;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+@media (prefers-color-scheme: dark) {
+  .work-hero__media {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+}
+.work-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+@media (max-width: 768px) {
+  .work-hero__media {
+    aspect-ratio: 16/9;
+  }
+}
+
+.hero-image-mask {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  /* Add explicit dimensions for the wrapper */
+}
+.hero-image-mask .hero-image-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.hero-image-mask img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/**
+ * Main Sass file for the Folio website.
+ * This file serves as the entry point for all SCSS compilation,
+ * importing various partials in a structured order to ensure proper cascade and organization.
+ *
+ * The import order is crucial for maintaining CSS specificity and avoiding conflicts:
+ * 1. Abstracts: Core utilities, variables, mixins, and functions.
+ * 2. Theme: Global theme-related styles and color definitions.
+ * 3. Vendors: Third-party library styles (e.g., normalize.css).
+ * 4. Base: Global HTML element styles (typography, background, general).
+ * 5. Layout: Styles for major structural components (header, footer, content wrappers).
+ * 6. Components: Reusable UI components (buttons, navigation, cards, etc.).
+ * 7. Pages: Page-specific styles that override or extend component styles for unique layouts.
+ */
+.avatar-figure {
+  margin: 0;
+  max-width: 375px;
+  width: 100%;
+}
+.avatar-figure .avatar-image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  display: block;
+}
+
+/**
+ * Main Sass file for the Folio website.
+ * This file serves as the entry point for all SCSS compilation,
+ * importing various partials in a structured order to ensure proper cascade and organization.
+ *
+ * The import order is crucial for maintaining CSS specificity and avoiding conflicts:
+ * 1. Abstracts: Core utilities, variables, mixins, and functions.
+ * 2. Theme: Global theme-related styles and color definitions.
+ * 3. Vendors: Third-party library styles (e.g., normalize.css).
+ * 4. Base: Global HTML element styles (typography, background, general).
+ * 5. Layout: Styles for major structural components (header, footer, content wrappers).
+ * 6. Components: Reusable UI components (buttons, navigation, cards, etc.).
+ * 7. Pages: Page-specific styles that override or extend component styles for unique layouts.
+ */
+.image-wrapper img.lightbox-trigger {
+  cursor: pointer;
+  transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.image-wrapper img.lightbox-trigger:hover {
+  opacity: 0.9;
+}
+
+.caption {
+  text-align: center;
+  color: var(--text-medium);
+  font-size: 0.75rem;
+  margin-top: 0.75rem;
+  margin-bottom: 2rem;
+  font-style: italic;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/**
+ * Main Sass file for the Folio website.
+ * This file serves as the entry point for all SCSS compilation,
+ * importing various partials in a structured order to ensure proper cascade and organization.
+ *
+ * The import order is crucial for maintaining CSS specificity and avoiding conflicts:
+ * 1. Abstracts: Core utilities, variables, mixins, and functions.
+ * 2. Theme: Global theme-related styles and color definitions.
+ * 3. Vendors: Third-party library styles (e.g., normalize.css).
+ * 4. Base: Global HTML element styles (typography, background, general).
+ * 5. Layout: Styles for major structural components (header, footer, content wrappers).
+ * 6. Components: Reusable UI components (buttons, navigation, cards, etc.).
+ * 7. Pages: Page-specific styles that override or extend component styles for unique layouts.
+ */
+.image-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.image-grid-2__item img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+.image-grid-2__item img:hover {
+  transform: scale(1.02);
+}
+@media (max-width: 768px) {
+  .image-grid-2 {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/**
+ * Main Sass file for the Folio website.
+ * This file serves as the entry point for all SCSS compilation,
+ * importing various partials in a structured order to ensure proper cascade and organization.
+ *
+ * The import order is crucial for maintaining CSS specificity and avoiding conflicts:
+ * 1. Abstracts: Core utilities, variables, mixins, and functions.
+ * 2. Theme: Global theme-related styles and color definitions.
+ * 3. Vendors: Third-party library styles (e.g., normalize.css).
+ * 4. Base: Global HTML element styles (typography, background, general).
+ * 5. Layout: Styles for major structural components (header, footer, content wrappers).
+ * 6. Components: Reusable UI components (buttons, navigation, cards, etc.).
+ * 7. Pages: Page-specific styles that override or extend component styles for unique layouts.
+ */
+.image-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.image-grid-4__item img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+.image-grid-4__item img:hover {
+  transform: scale(1.02);
+}
+@media (max-width: 768px) {
+  .image-grid-4 {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/**
+ * Main Sass file for the Folio website.
+ * This file serves as the entry point for all SCSS compilation,
+ * importing various partials in a structured order to ensure proper cascade and organization.
+ *
+ * The import order is crucial for maintaining CSS specificity and avoiding conflicts:
+ * 1. Abstracts: Core utilities, variables, mixins, and functions.
+ * 2. Theme: Global theme-related styles and color definitions.
+ * 3. Vendors: Third-party library styles (e.g., normalize.css).
+ * 4. Base: Global HTML element styles (typography, background, general).
+ * 5. Layout: Styles for major structural components (header, footer, content wrappers).
+ * 6. Components: Reusable UI components (buttons, navigation, cards, etc.).
+ * 7. Pages: Page-specific styles that override or extend component styles for unique layouts.
+ */
+.quick-view-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  background: var(--surface-default-card);
+  border: 1px solid var(--surface-default-card-border);
+  border-radius: 8px;
+  color: var(--text-medium);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  margin: 1rem 0 2rem;
+}
+.quick-view-button:hover {
+  transform: translateY(-2px);
+  color: var(--text-creative);
+  border-color: var(--text-creative);
+}
+.quick-view-button:active {
+  transform: translateY(0);
+}
+
+/**
+ * Main Sass file for the Folio website.
+ * This file serves as the entry point for all SCSS compilation,
+ * importing various partials in a structured order to ensure proper cascade and organization.
+ *
+ * The import order is crucial for maintaining CSS specificity and avoiding conflicts:
+ * 1. Abstracts: Core utilities, variables, mixins, and functions.
+ * 2. Theme: Global theme-related styles and color definitions.
+ * 3. Vendors: Third-party library styles (e.g., normalize.css).
+ * 4. Base: Global HTML element styles (typography, background, general).
+ * 5. Layout: Styles for major structural components (header, footer, content wrappers).
+ * 6. Components: Reusable UI components (buttons, navigation, cards, etc.).
+ * 7. Pages: Page-specific styles that override or extend component styles for unique layouts.
+ */
+.heading-group {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+}
+.heading-group .avatar-wrapper {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  position: relative;
+  transform: translateY(0.2857142857rem);
+}
+.heading-group .avatar-wrapper svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.heading-group h1 {
+  margin: 0;
+}
+
+.featured-work {
+  padding: 0 0 clamp(3rem, 8vw, 6rem) 0;
+}
+.featured-work h2 {
+  margin-bottom: 1.5rem;
+}
+.featured-work .work-card {
+  background: var(--surface-default-card);
+  border: 1px solid var(--surface-default-card-border);
+}
+
+.status-banner {
+  padding: 2rem 0;
+  border-top: 1px solid var(--surface-default-card-border);
+  border-bottom: 1px solid var(--surface-default-card-border);
+  margin: 2rem 0;
+}
+.status-banner__content {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.status-banner__content p {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--text-medium);
+}
+.status-banner__content .status-icon {
+  margin-right: 0.5rem;
+}
+.status-banner__content strong {
+  color: var(--text);
+}
+.status-banner__content .status-link {
+  display: inline-block;
+  margin-left: 0.5rem;
+  color: var(--text-creative);
+  text-decoration: none;
+}
+.status-banner__content .status-link:hover {
+  text-decoration: underline;
+}
+
+/**
+ * Main Sass file for the Folio website.
+ * This file serves as the entry point for all SCSS compilation,
+ * importing various partials in a structured order to ensure proper cascade and organization.
+ *
+ * The import order is crucial for maintaining CSS specificity and avoiding conflicts:
+ * 1. Abstracts: Core utilities, variables, mixins, and functions.
+ * 2. Theme: Global theme-related styles and color definitions.
+ * 3. Vendors: Third-party library styles (e.g., normalize.css).
+ * 4. Base: Global HTML element styles (typography, background, general).
+ * 5. Layout: Styles for major structural components (header, footer, content wrappers).
+ * 6. Components: Reusable UI components (buttons, navigation, cards, etc.).
+ * 7. Pages: Page-specific styles that override or extend component styles for unique layouts.
+ */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem 0;
+}
+
+.work-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: var(--surface);
+  border-radius: 8px;
+  overflow: hidden;
+  will-change: transform;
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.work-card__media {
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+.work-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.work-card__content {
+  padding: 1rem;
+}
+.work-card__content h3 {
+  margin: 0 0 0.5rem;
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1), text-decoration-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+}
+.work-card__content .company {
+  color: var(--text-personality);
+  margin-bottom: 0.5rem;
+}
+.work-card__content .work-card__description {
+  margin-bottom: 0.5rem;
+}
+.work-card__content .tags {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+.work-card__content .tags .tag {
+  background: var(--surface-default-card);
+  border: 1px solid var(--surface-default-card-border);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+.work-card:hover {
+  transform: translateY(-4px);
+}
+.work-card:hover .work-card__content h3 {
+  color: var(--text-creative);
+  text-decoration-color: var(--text-creative);
+}
+
+.search-container {
+  margin-bottom: 2rem;
+}
+.search-container .search-label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.search-container .search-label__text {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+  color: var(--text);
+}
+.search-container .search-input-wrapper {
+  position: relative;
+  max-width: 600px;
+}
+.search-container .search-input {
+  width: 100%;
+  padding: 0.5rem 2rem 0.5rem 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--surface-alt);
+  border-radius: 8px;
+  color: var(--text);
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: var(--search-input-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.search-container .search-input:hover {
+  border-color: var(--text);
+  background-color: rgba(var(--search-input-bg), 0.8);
+  color: var(--text-medium);
+}
+.search-container .search-input::placeholder {
+  color: var(--text-medium);
+}
+@media screen and (-ms-high-contrast: active) {
+  .search-container .search-input {
+    border: 2px solid currentColor;
+  }
+  .search-container .search-input:focus {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+}
+.search-container .search-clear {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.25rem;
+  background: none;
+  border: none;
+  color: var(--text-medium);
+  cursor: pointer;
+  border-radius: 4px;
+}
+.search-container .search-clear:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--text-creative);
+}
+.search-container .search-clear:hover {
+  color: var(--text);
+  background: var(--surface-alt);
+}
+.search-container .search-hint {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--text-medium);
+}
+.search-container .search-hint .results-count {
+  font-weight: 500;
+  color: var(--text);
+  margin-right: 0.5rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+}
+.tags .tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: var(--surface-card-tag);
+  border-radius: 4px;
+  color: var(--text-medium);
+  font-size: 0.875rem;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.tags .tag:hover {
+  color: var(--text-creative);
+  border-color: var(--text-creative);
+  transform: translateY(-1px);
+}
+
+/**
+ * Main Sass file for the Folio website.
+ * This file serves as the entry point for all SCSS compilation,
+ * importing various partials in a structured order to ensure proper cascade and organization.
+ *
+ * The import order is crucial for maintaining CSS specificity and avoiding conflicts:
+ * 1. Abstracts: Core utilities, variables, mixins, and functions.
+ * 2. Theme: Global theme-related styles and color definitions.
+ * 3. Vendors: Third-party library styles (e.g., normalize.css).
+ * 4. Base: Global HTML element styles (typography, background, general).
+ * 5. Layout: Styles for major structural components (header, footer, content wrappers).
+ * 6. Components: Reusable UI components (buttons, navigation, cards, etc.).
+ * 7. Pages: Page-specific styles that override or extend component styles for unique layouts.
+ */
+.work-item {
+  padding: 2rem 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.work-item__header {
+  margin-bottom: 2rem;
+}
+.work-item__header h1 {
+  margin-bottom: 1rem;
+}
+.work-item__header .work-item__meta {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.work-item__header .work-item__meta .date {
+  display: inline-block;
+  line-height: 1.2;
+  color: var(--text-medium);
+}
+.work-item__header .work-item__meta .tags {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+.work-item__header .work-item__meta .tags .tag {
+  background: var(--surface-default-card);
+  border: 1px solid var(--surface-default-card-border);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  line-height: 1.2;
+  display: inline-block;
+}
+.work-item__content h1, .work-item__content h2, .work-item__content h3, .work-item__content h4, .work-item__content h5, .work-item__content h6 {
+  margin: 1.5rem 0 1rem;
+}
+.work-item__content p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+.work-item__content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+.work-item__content ul, .work-item__content ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+.work-item__content ul li, .work-item__content ol li {
+  margin-bottom: 0.5rem;
+}
+.work-item__content blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border-left: 4px solid var(--text-accent);
+  background: color-mix(in srgb, var(--text-medium) 5%, transparent);
+  border-radius: 8px;
+}
+.work-item__content blockquote p:last-child {
+  margin-bottom: 0;
+}
+.work-item__content code {
+  background: color-mix(in srgb, var(--text-medium) 10%, transparent);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-family: monospace;
+}
+.work-item__content pre {
+  background: color-mix(in srgb, var(--text-medium) 10%, transparent);
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+.work-item__content pre code {
+  background: none;
+  padding: 0;
+}
+.work-item__content .video-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surface-default-card);
+  border: 1px solid var(--surface-default-card-border);
+  aspect-ratio: 16/9;
+}
+.work-item__content .video-wrapper video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.work-item__content .video-wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.video-playing .work-item__content .video-wrapper img {
+  display: none;
+}
+
+.related-projects {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--surface-alt);
+}
+.related-projects h2 {
+  margin-bottom: 1.5rem;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+@media (max-width: 768px) {
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.related-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+}
+.related-card:hover .related-card__media {
+  transform: translateY(-2px);
+}
+.related-card:hover .related-card__title {
+  color: var(--text-creative);
+  text-decoration: underline var(--text-creative);
+}
+.related-card__media {
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--surface-default-card-border);
+}
+.related-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.related-card__title {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-medium);
+  margin-top: 0.5rem;
+  display: block;
+  text-align: center;
+}
+
+.error-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: -5.1428571429rem;
+  padding: 2rem;
+}
+.error-page__content {
+  text-align: center;
+  z-index: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+.error-page__content h1 {
+  font-size: clamp(12rem, 30vw, 24rem);
+  margin: 0;
+  line-height: 1;
+  background: linear-gradient(45deg, var(--text-accent), var(--text-accent));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.error-page__content p {
+  font-weight: 500;
+}
+.error-page__content .error-message {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  margin: 0;
+  color: var(--text-medium);
+}
+.error-page .quick-view-button--404 {
+  color: var(--text-medium);
+}
+.error-page .quick-view-button--404:hover {
+  color: var(--text-accent);
+}
+.error-page .quick-view-button--404 .quick-view-button__text,
+.error-page .quick-view-button--404 .quick-view-button__icon {
+  color: inherit;
+}
+
+[data-theme=light] .error-page .hero-image-wrapper .dark-mode-image {
+  opacity: 0;
+}
+[data-theme=light] .error-page .hero-image-wrapper .light-mode-image {
+  opacity: 1;
+}
+
+/**
+ * Main Sass file for the Folio website.
+ * This file serves as the entry point for all SCSS compilation,
+ * importing various partials in a structured order to ensure proper cascade and organization.
+ *
+ * The import order is crucial for maintaining CSS specificity and avoiding conflicts:
+ * 1. Abstracts: Core utilities, variables, mixins, and functions.
+ * 2. Theme: Global theme-related styles and color definitions.
+ * 3. Vendors: Third-party library styles (e.g., normalize.css).
+ * 4. Base: Global HTML element styles (typography, background, general).
+ * 5. Layout: Styles for major structural components (header, footer, content wrappers).
+ * 6. Components: Reusable UI components (buttons, navigation, cards, etc.).
+ * 7. Pages: Page-specific styles that override or extend component styles for unique layouts.
+ */
+.now-section {
+  padding-top: 5.1428571429rem;
+}
+
+.post-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.post-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 8px;
+  padding: 1rem;
+}
+.post-card__content h3 {
+  font-size: 1.5rem;
+  margin: 0 0 0.5rem;
+  color: var(--text-medium);
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1), text-decoration-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+}
+.post-card__content .tags {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+.post-card__content .tags .tag {
+  background: var(--surface-default-card);
+  border: 1px solid var(--surface-default-card-border);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+.post-card__content time {
+  font-size: var(--font-size-sm);
+  color: var(--text-medium);
+}
+.post-card:hover {
+  background: color-mix(in srgb, var(--text-logical) 4%, transparent);
+}
+.post-card:hover h3 {
+  color: var(--text-logical);
+  text-decoration-color: var(--text-logical);
+}

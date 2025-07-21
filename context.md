@@ -45,6 +45,7 @@ This file tracks the game plan, decisions, and progress for refactoring the pers
     *   Thoroughly test the site rendering and functionality.
     *   Documented `src/build.ts` for clarity and maintainability.
     *   Documenting SCSS files for clarity and maintainability.
+    *   Debugged visual discrepancies and ensured full design transfer (fixed `.gitignore` to include `dist/`).
         *   Documented `assets/scss/main.scss`.
 *   **Step 6: Deploy and Iterate**
     *   Update Netlify configuration (`netlify.toml`) for TypeScript build.

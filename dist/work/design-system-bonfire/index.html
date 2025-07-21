@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>"Design System Bonfire"</title>
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+  <main>
+    <h2>Overview</h2>
+<p>Roadpass Digital operated five distinct products, each built on different technological foundations including React, React Native, WordPress, and Ruby on Rails. To address the challenges arising from this diversity, a cross-functional team developed &quot;Bonfire,&quot; a unified design system aimed at supporting all platforms, streamlining processes, and fostering consistency across all products.</p>
+<h2>Challenge</h2>
+<p>The company faced several critical issues:</p>
+<ul>
+<li>Individual product teams were reinventing solutions for identical problems</li>
+<li>Inconsistent user experience across platforms confused users</li>
+<li>Resource strain due to redundant efforts</li>
+<li>Difficult onboarding process for new team members</li>
+<li>Lack of shared design language hindering collaboration</li>
+<li>Multiple tech stacks requiring different implementation approaches</li>
+<li>Absence of engineering leadership support</li>
+<li>Limited resources and tight deadlines</li>
+</ul>
+<h3>Prototyping &amp; Testing</h3>
+<p>A critical phase of developing Bonfire involved extensive prototyping to ensure the system could seamlessly adapt to each brand&#39;s unique requirements. Given that we were integrating brands that evolved independently—each with their own tech stacks, design patterns, and team cultures—we needed to validate that our theming approach could accommodate these differences without creating additional work for product teams.</p>
+<p>{{&lt; video
+    src=&quot;bonfire-test.mp4&quot;
+    type=&quot;video/mp4&quot;
+    poster=&quot;thumbnail.jpg&quot;
+    autoplay=true
+    loop=true
+    muted=true
+    playsinline=true</p>
+<blockquote>
+<p>}}</p>
+</blockquote>
+<p>{{&lt; caption &gt;}}Early version of the theme switcher showing how different brands could maintain their identity while sharing components{{&lt; /caption &gt;}}</p>
+<h3>Process</h3>
+<p>Before diving into development, I established a planning process centered around weekly collaborative workshops. These sessions brought together key stakeholders including:</p>
+<ul>
+<li>Chief Technology Officer</li>
+<li>Head of Design</li>
+<li>Technical Engineering Lead</li>
+<li>Design Systems Lead (myself)</li>
+</ul>
+<p>Using FigJam as our virtual whiteboarding tool, I ran these workshops to:</p>
+<ul>
+<li>Map out dependencies between components and features</li>
+<li>Prioritize work based on immediate team needs</li>
+<li>Identify potential technical challenges early</li>
+<li>Align on implementation approaches across platforms</li>
+<li>Create detailed roadmaps for phased rollout</li>
+</ul>
+<p>{{&lt; image-grid-4
+    image1=&quot;bonfire-figjam-1.png&quot;
+    image2=&quot;bonfire-figjam-2.png&quot;
+    image3=&quot;bonfire-figjam-3.png&quot;
+    image4=&quot;bonfire-figjam-4.png&quot;
+    alt1=&quot;FigJam board showing the planning process for Bonfire&quot;
+    alt2=&quot;FigJam board showing the planning process for Bonfire&quot;
+    alt3=&quot;FigJam board showing the planning process for Bonfire&quot;
+    alt4=&quot;FigJam board showing the planning process for Bonfire&quot;</p>
+<blockquote>
+<p>}}</p>
+</blockquote>
+<p>This collaborative approach ensured we had strong buy-in from leadership while maintaining realistic timelines and technical feasibility for the engineering teams who would be implementing the system.</p>
+<p>The prototyping process focused on several key areas:</p>
+<ol>
+<li><strong>Theme Switching Architecture</strong><ul>
+<li>Built multiple proof-of-concepts to test different theming approaches</li>
+<li>Validated that design tokens could properly cascade across all platforms</li>
+<li>Ensured brand-specific overrides wouldn&#39;t break shared components</li>
+</ul>
+</li>
+</ol>
+<p>{{&lt; image src=&quot;theme-switcher.png&quot; alt=&quot;Figma Tokens theme switcher&quot; &gt;}}</p>
+<ol start="2">
+<li><p><strong>Cross-Platform Compatibility</strong></p>
+<ul>
+<li>Created test implementations across React, React Native, and Rails</li>
+<li>Verified that components maintained visual consistency across platforms</li>
+<li>Developed fallback patterns for platform-specific limitations</li>
+</ul>
+<p>{{&lt; video
+ src=&quot;color-planner.mp4&quot;
+ type=&quot;video/mp4&quot;
+ poster=&quot;thumbnail.jpg&quot;
+ autoplay=true
+ loop=true
+ muted=true
+ playsinline=true</p>
+</li>
+</ol>
+<blockquote>
+<p>}}</p>
+</blockquote>
+<p>{{&lt; caption &gt;}}Early explorations of the color system, making sure it was accessible and consistent across brands and levels.{{&lt; /caption &gt;}}</p>
+<ol start="3">
+<li><strong>Performance Testing</strong><ul>
+<li>Measured bundle size impact of different theming solutions</li>
+<li>Tested theme switching performance on lower-end devices</li>
+<li>Optimized token delivery to minimize runtime overhead</li>
+</ul>
+</li>
+</ol>
+<h3>Hundreds of Iterations &amp; Tests</h3>
+<p>We refined our approach until we had a system that could:</p>
+<ul>
+<li>Preserve each brand&#39;s unique identity while sharing core components</li>
+<li>Support seamless switching between themes without code changes</li>
+<li>Maintain performance standards across all platforms</li>
+<li>Enable gradual adoption without disrupting existing workflows</li>
+</ul>
+<p>This extensive prototyping phase was crucial in building confidence among stakeholders and ensuring that Bonfire could truly serve as a bridge between our diverse product ecosystem.</p>
+<h2>Solution</h2>
+<p>The team developed Bonfire as a comprehensive design system with the following key components:</p>
+<ul>
+<li>Design tokens for centralized control of colors, typography, and spacing</li>
+<li>Bonfire Tailwind Plugin for quick implementation and cross-brand theming</li>
+<li>Library of 14 atomized components in Figma and Storybook</li>
+<li>Support for multiple tech stacks (React, React Native, vanilla HTML/CSS/JS)</li>
+<li>Open contribution model for company-wide participation</li>
+<li>Detailed documentation in Storybook and Figma libraries</li>
+<li>Accessibility-first approach in design implementation</li>
+</ul>
+<h2>Impact</h2>
+<p>The implementation of Bonfire delivered significant measurable results:</p>
+<ol>
+<li><p>Efficiency Improvements:</p>
+<ul>
+<li>80% reduction in feature completion time per platform</li>
+<li>Multi-platform support for 5+ platforms simultaneously</li>
+<li>Reduced QA resource requirements</li>
+</ul>
+</li>
+<li><p>Adoption and Standardization:</p>
+<ul>
+<li>64% increase in design system adoption</li>
+<li>Established as company standard with continued use</li>
+</ul>
+</li>
+<li><p>Accessibility Enhancements:</p>
+<ul>
+<li>Reduced accessibility issues from 500,000+ to just hundreds</li>
+</ul>
+</li>
+<li><p>Financial Benefits:</p>
+<ul>
+<li>Annual savings of $143,000</li>
+<li>Design Team Savings: $54,600</li>
+<li>Engineering Team Savings: $88,400</li>
+</ul>
+</li>
+<li><p>Collaboration Benefits:</p>
+<ul>
+<li>Improved speed and efficiency reported by both design and development teams</li>
+<li>Enhanced cross-team collaboration</li>
+<li>Streamlined design and development processes</li>
+</ul>
+</li>
+</ol>
+
+
+  </main>
+  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/nav.js"></script>
+  <script src="/assets/js/theme.js"></script>
+  <script src="/assets/js/lightbox.js"></script>
+  <script src="/assets/js/quick-view.js"></script>
+  <script src="/assets/js/search.js"></script>
+  <script src="/assets/js/skip-link.js"></script>
+  <script src="/assets/js/sw-register.js"></script>
+  <script src="/assets/js/transition.js"></script>
+  <script src="/assets/js/404.js"></script>
+</body>
+</html>
