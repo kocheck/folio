@@ -47,6 +47,10 @@ This file tracks the game plan, decisions, and progress for refactoring the pers
     *   Documenting SCSS files for clarity and maintainability.
         *   Documented `assets/scss/main.scss`.
 *   **Step 6: Deploy and Iterate**
+    *   Update Netlify configuration (`netlify.toml`) for TypeScript build.
+*   **Step 7: Create Project Documentation**
+*   **Step 7: Create Project Documentation**
+    *   Created a comprehensive `README.md` file.
 
 ## Key Decisions
 

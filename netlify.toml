@@ -1,12 +1,6 @@
 [build]
-  publish = "public"
-  command = "hugo --gc --minify"
-
-[build.environment]
-  HUGO_VERSION = "0.138.0"
-  HUGO_ENV = "production"
-  HUGO_ENABLEGITINFO = "true"
-  HUGO_EXTENDED = "true"
+  publish = "dist"
+  command = "npm run build"
 
 [[redirects]]
   from = "/*"
