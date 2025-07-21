@@ -1,3 +1,5 @@
+@use '../abstracts/variables' as *;
+
 .image-grid-4 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

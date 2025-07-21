@@ -1,3 +1,5 @@
+@use '../abstracts/variables' as *;
+
 // New content wrapper class
 .content-wrapper {
     max-width: 75rem;

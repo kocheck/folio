@@ -40,7 +40,12 @@ This file tracks the game plan, decisions, and progress for refactoring the pers
     *   Create a main index page that lists all posts.
     *   Create a reusable base template (`baseof.html`) to keep the code DRY.
     *   Refine the build script to handle different page types (index vs. post).
+    *   Compiled SCSS to CSS and integrated into the build process.
+    *   Integrated existing JavaScript files for features like theme switching, lightbox, etc.
     *   Thoroughly test the site rendering and functionality.
+    *   Documented `src/build.ts` for clarity and maintainability.
+    *   Documenting SCSS files for clarity and maintainability.
+        *   Documented `assets/scss/main.scss`.
 *   **Step 6: Deploy and Iterate**
 
 ## Key Decisions

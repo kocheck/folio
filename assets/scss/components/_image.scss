@@ -1,3 +1,5 @@
+@use '../abstracts/variables' as *;
+
 .image-wrapper {
     img.lightbox-trigger {
         cursor: pointer;

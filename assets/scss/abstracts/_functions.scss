@@ -1,36 +1,26 @@
+@use "sass:math";
+@use "sass:color";
+
 // Convert color to RGB values
 @function get-rgb($color) {
     @return (
-        red: red($color),
-        green: green($color),
-        blue: blue($color)
+        red: color.red($color),
+        green: color.green($color),
+        blue: color.blue($color)
     );
-}
-
-// Add this new power function
-@function pow($number, $exponent) {
-    $value: 1;
-
-    @if $exponent > 0 {
-        @for $i from 1 through $exponent {
-            $value: $value * $number;
-        }
-    }
-
-    @return $value;
 }
 
 // Calculate relative luminance
 @function get-luminance($color) {
     $rgb: get-rgb($color);
 
-    $red: map-get($rgb, red) / 255;
-    $green: map-get($rgb, green) / 255;
-    $blue: map-get($rgb, blue) / 255;
+    $red: math.div(map-get($rgb, red), 255);
+    $green: math.div(map-get($rgb, green), 255);
+    $blue: math.div(map-get($rgb, blue), 255);
 
-    $red: if($red <= .03928, $red / 12.92, pow(($red + .055) / 1.055, 2.4));
-    $green: if($green <= .03928, $green / 12.92, pow(($green + .055) / 1.055, 2.4));
-    $blue: if($blue <= .03928, $blue / 12.92, pow(($blue + .055) / 1.055, 2.4));
+    $red: if($red <= .03928, math.div($red, 12.92), math.pow(math.div($red + .055, 1.055), 2.4));
+    $green: if($green <= .03928, math.div($green, 12.92), math.pow(math.div($green + .055, 1.055), 2.4));
+    $blue: if($blue <= .03928, math.div($blue, 12.92), math.pow(math.div($blue + .055, 1.055), 2.4));
 
     @return .2126 * $red + .7152 * $green + .0722 * $blue;
 }
@@ -42,8 +32,8 @@
 
     @return if(
         $luminance1 > $luminance2,
-        $luminance1 / $luminance2,
-        $luminance2 / $luminance1
+        math.div($luminance1, $luminance2),
+        math.div($luminance2, $luminance1)
     );
 }
 

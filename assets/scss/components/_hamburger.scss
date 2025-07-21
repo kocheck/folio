@@ -1,3 +1,5 @@
+@use '../abstracts/variables' as *;
+
 .hamburger {
     position: fixed;
     top: $spacing-md;

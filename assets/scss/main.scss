@@ -1,44 +1,59 @@
+/**
+ * Main Sass file for the Folio website.
+ * This file serves as the entry point for all SCSS compilation,
+ * importing various partials in a structured order to ensure proper cascade and organization.
+ *
+ * The import order is crucial for maintaining CSS specificity and avoiding conflicts:
+ * 1. Abstracts: Core utilities, variables, mixins, and functions.
+ * 2. Theme: Global theme-related styles and color definitions.
+ * 3. Vendors: Third-party library styles (e.g., normalize.css).
+ * 4. Base: Global HTML element styles (typography, background, general).
+ * 5. Layout: Styles for major structural components (header, footer, content wrappers).
+ * 6. Components: Reusable UI components (buttons, navigation, cards, etc.).
+ * 7. Pages: Page-specific styles that override or extend component styles for unique layouts.
+ */
+
 // Abstracts (Core utilities - should be first)
-@import 'abstracts/variables';
-@import 'abstracts/mixins';
-@import 'abstracts/functions';
+@use 'abstracts/variables';
+@use 'abstracts/mixins';
+@use 'abstracts/functions';
 
 // Theme (Move this before components)
-@import 'theme-colors';
+@use 'theme-colors';
 
 // Vendors (Third-party styles)
-@import 'vendors/normalize';
+@use 'vendors/normalize';
 
 // Base (Global styles)
-@import 'base/typography';
-@import 'base/background';
-@import 'base/global';
+@use 'base/typography';
+@use 'base/background';
+@use 'base/global';
 
 // Layout (Major structural components)
-@import 'layout/header';
-@import 'layout/footer';
-@import 'layout/content';
+@use 'layout/header';
+@use 'layout/footer';
+@use 'layout/content';
 
 
 // Components (Reusable UI components)
-@import 'components/buttons';
-@import 'components/art';
-@import 'components/nav';
-@import 'components/hero';
-@import 'components/transitions';
-@import 'components/hamburger';
-@import 'components/image-grid';
-@import 'components/lightbox';
-@import 'components/work-hero';
-@import 'components/avatar';
-@import 'components/image';
-@import 'components/image-grid-2';
-@import 'components/image-grid-4';
-@import 'components/quick-view';
+@use 'components/buttons';
+@use 'components/art';
+@use 'components/nav';
+@use 'components/hero';
+@use 'components/transitions';
+@use 'components/hamburger';
+@use 'components/image-grid';
+@use 'components/lightbox';
+@use 'components/work-hero';
+@use 'components/avatar';
+@use 'components/image';
+@use 'components/image-grid-2';
+@use 'components/image-grid-4';
+@use 'components/quick-view';
 
 // Pages (Page-specific styles)
-@import 'pages/home';
-@import 'pages/work';
-@import 'pages/work-item';
-@import 'pages/404';
-@import 'pages/now';
+@use 'pages/home';
+@use 'pages/work';
+@use 'pages/work-item';
+@use 'pages/not-found';
+@use 'pages/now';
