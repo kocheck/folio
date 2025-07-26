@@ -111,17 +111,6 @@
     </div>
 </header>
 
-<section class="status-banner">
-    <div class="content-wrapper">
-        <div class="status-banner__content">
-            <p>
-                <span class="status-icon">💼</span>
-                <strong>Current Status:</strong> Not actively seeking new opportunities, but always excited to connect and discuss all things design.
-            </p>
-        </div>
-    </div>
-</section>
-
 {{ $featured := where .Site.RegularPages "Params.featured" true }}
 {{ with $featured }}
 <section class="featured-work">
@@ -135,4 +124,16 @@
     </div>
 </section>
 {{ end }}
+
+<section class="status-banner">
+    <div class="content-wrapper">
+        <div class="status-banner__content">
+            <p>
+                <span class="status-icon">🧑‍💻</span>
+                <strong>Current Status:</strong> Not actively seeking new opportunities, but always excited to connect and discuss all things design.
+            </p>
+        </div>
+    </div>
+</section>
+
 {{ end }}
