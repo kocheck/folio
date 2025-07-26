@@ -3,7 +3,7 @@ title: "About"
 type: "about"
 ---
 
-{{< avatar src="avatar.png" alt="Kyle Kochanek" >}}
+{{< avatar src="avatar.jpg" alt="Kyle Kochanek" >}}
 
 ## Welcome to my corner of the internet 👋
 

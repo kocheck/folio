@@ -5,7 +5,7 @@
 
 <title>{{ if .Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
 
-{{ $style := resources.Get "scss/main.scss" | resources.ToCSS (dict
+{{ $style := resources.Get "scss/main.scss" | css.Sass (dict
     "targetPath" "css/main.css"
     "outputStyle" "expanded"
     "enableSourceMap" (eq hugo.Environment "development")

@@ -1,12 +1,30 @@
 .avatar-figure {
     margin: 0;
-    max-width: 375px;
     width: 100%;
 
     .avatar-image {
         width: 100%;
+        max-width: 10vw;
         height: auto;
-        border-radius: $border-radius-sm;
+        border-radius: $border-radius-full;
         display: block;
+        margin: auto;
+
+        // Animation with 1 second delay
+        animation: rotateOnLoad 0.3s ease 1s forwards;
+
+        // Performance optimizations (without will-change)
+        transform: translate3d(0, 0, 0); // Force hardware acceleration
+        backface-visibility: hidden;
+        contain: layout style paint;
+    }
+
+    @keyframes rotateOnLoad {
+        from {
+            transform: translate3d(0, 0, 0) rotate(0deg);
+        }
+        to {
+            transform: translate3d(0, 0, 0) rotate(-12deg);
+        }
     }
 }
