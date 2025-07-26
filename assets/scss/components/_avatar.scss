@@ -13,20 +13,18 @@
         // Animation with 1 second delay
         animation: rotateOnLoad 0.3s ease 1s forwards;
 
-        // Performance optimizations
-        will-change: transform;
-        transform: translateZ(0); // Force hardware acceleration
-        backface-visibility: hidden; // Prevent flickering
-        contain: layout style paint; // Isolate element for better performance
+        // Performance optimizations (without will-change)
+        transform: translate3d(0, 0, 0); // Force hardware acceleration
+        backface-visibility: hidden;
+        contain: layout style paint;
     }
 
     @keyframes rotateOnLoad {
         from {
-            transform: translateZ(0) rotate(0deg); // Keep hardware acceleration
+            transform: translate3d(0, 0, 0) rotate(0deg);
         }
         to {
-            transform: translateZ(0) rotate(-12deg);
-            will-change: auto; // Clean up will-change when done
+            transform: translate3d(0, 0, 0) rotate(-12deg);
         }
     }
 }
