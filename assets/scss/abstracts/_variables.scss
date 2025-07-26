@@ -119,7 +119,7 @@ $transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
     --surface-default-card-border: #{$surface-default-card-border};
     --texture-opacity: 0.4;
     --search-input-bg: rgba(116, 116, 116, 0.3);
-    --search-input-bg-active:rgba(28, 28, 28, 0.8);
+    --search-input-bg-active: rgba(28, 28, 28, 0.8);
     --surface-card-tag: #{$surface-card-tag};
     --surface-mobile-nav: #{$surface-mobile-nav};
     --text-accent-muted: color-mix(in srgb, var(--text-accent) 24%, var(--text));
