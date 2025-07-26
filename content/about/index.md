@@ -7,7 +7,7 @@ type: "about"
 
 ## Welcome to my corner of the internet 👋
 
-I'm a Product Designer who turns complex challenges into elegant solutions. Currently, I'm crafting B2B and B2C experiences at PokerAtlas, with systematic thinking and creative problem-solving.
+I'm a Product Designer who turns complex challenges into elegant solutions. Currently, I'm crafting B2B and B2C experiences at <a href="https://www.breakline.org" target="_blank" rel="noopener noreferrer">BreakLine</a>, with systematic thinking and creative problem-solving.
 
 ### What drives me
 
