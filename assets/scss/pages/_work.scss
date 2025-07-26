@@ -103,7 +103,7 @@
         font-size: 1rem;
         border: 1px solid var(--surface-alt);
         border-radius: $border-radius;
-        color: var(--text);
+        color: var(--text-medium);
         transition: all $transition-duration $transition-easing;
         background-color: var(--search-input-bg);
         backdrop-filter: blur(8px);
@@ -111,8 +111,13 @@
 
         &:hover {
             border-color: var(--text);
-            background-color: rgba(var(--search-input-bg), 0.8);
+            background-color: var(--search-input-bg-active);
             color: var(--text-medium);
+        }
+        &:active {
+          border-color: var(--text);
+            background-color: var(--search-input-bg-active);
+            color: var(--text);
         }
 
         &::placeholder {
