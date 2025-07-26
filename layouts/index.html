@@ -4,7 +4,7 @@
         <div class="hero__content">
             <div class="heading-group">
                 <div class="avatar-wrapper">
-                    {{ $avatar := .Resources.GetMatch "avatar.png" }}
+                    {{ $avatar := .Resources.GetMatch "avatar.jpg" }}
                     {{ with $avatar }}
                         {{ $processed := .Resize "200x200 webp q90" }}
                         <svg width="100%" height="100%" viewBox="0 0 40 40">

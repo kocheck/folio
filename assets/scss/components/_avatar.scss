@@ -1,12 +1,32 @@
 .avatar-figure {
     margin: 0;
-    max-width: 375px;
     width: 100%;
 
     .avatar-image {
         width: 100%;
+        max-width: 10vw;
         height: auto;
-        border-radius: $border-radius-sm;
+        border-radius: $border-radius-full;
         display: block;
+        margin: auto;
+
+        // Animation with 1 second delay
+        animation: rotateOnLoad 0.3s ease 1s forwards;
+
+        // Performance optimizations
+        will-change: transform;
+        transform: translateZ(0); // Force hardware acceleration
+        backface-visibility: hidden; // Prevent flickering
+        contain: layout style paint; // Isolate element for better performance
+    }
+
+    @keyframes rotateOnLoad {
+        from {
+            transform: translateZ(0) rotate(0deg); // Keep hardware acceleration
+        }
+        to {
+            transform: translateZ(0) rotate(-12deg);
+            will-change: auto; // Clean up will-change when done
+        }
     }
 }
