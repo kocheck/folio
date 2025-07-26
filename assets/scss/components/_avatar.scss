@@ -19,9 +19,9 @@
         backface-visibility: hidden;
         contain: layout style paint;
 
-            @media (max-width: $breakpoint-md) {
-              max-width: 24vw;
-            }
+        @media (max-width: $breakpoint-md) {
+            max-width: 24vw;
+        }
     }
 
     @keyframes rotateOnLoad {
