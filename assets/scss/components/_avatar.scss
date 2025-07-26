@@ -1,6 +1,7 @@
 .avatar-figure {
     margin: 0;
     width: 100%;
+    padding-bottom: 1.5rem;
 
     .avatar-image {
         width: 100%;
@@ -17,6 +18,10 @@
         transform: translate3d(0, 0, 0); // Force hardware acceleration
         backface-visibility: hidden;
         contain: layout style paint;
+
+        @media (max-width: $breakpoint-md) {
+            max-width: 24vw;
+        }
     }
 
     @keyframes rotateOnLoad {
