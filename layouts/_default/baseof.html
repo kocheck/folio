@@ -4,6 +4,7 @@
     {{ partial "head.html" . }}
 </head>
 <body class="{{ if eq .Layout "404" }}section-404{{ else }}{{ with .Section }}section-{{ . }}{{ end }}{{ end }}">
+    {{ partial "svg-sprites.html" . }}
     {{ partial "nav.html" . }}
 
     <main id="main-content" class="content-wrapper">
