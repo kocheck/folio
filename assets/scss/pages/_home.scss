@@ -38,13 +38,11 @@
 }
 
 .status-banner {
-    padding: 2rem 0;
+    padding: 6rem 0 0 0;
     border-top: 1px solid var(--surface-default-card-border);
-    border-bottom: 1px solid var(--surface-default-card-border);
-    margin: 2rem 0;
 
     &__content {
-        text-align: center;
+        text-align: left;
         max-width: 720px;
         margin: 0 auto;
 
@@ -56,10 +54,11 @@
 
         .status-icon {
             margin-right: 0.5rem;
+            font-size: 1.5rem;
         }
 
         strong {
-            color: var(--text);
+            color: var(--text-personality);
         }
 
         .status-link {
