@@ -1,5 +1,8 @@
 // _variables.scss
 
+// Import Radix color system
+@import 'radix-colors';
+
 // =============================================================================
 // Colors - Dark Theme Base
 // =============================================================================
@@ -101,54 +104,191 @@ $transition-duration: 300ms;
 $transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
 
 // =============================================================================
-// CSS Custom Properties
+// CSS Custom Properties - Radix System with Backward Compatibility
 // =============================================================================
 :root {
-    // Dark Theme (default)
-    --background: #{$dark-background};
-    --surface: #{$dark-surface};
-    --text: #{$dark-text};
-    --text-medium: #{$dark-text-medium};
-    --text-accent: #{$text-accent};
-    --text-creative: #{$text-creative};
-    --text-personality: #{$text-personality};
-    --text-logical: #{$text-logical};
-    --surface-accent: #{$surface-accent};
-    --surface-accent-medium: #{$surface-accent-medium};
-    --surface-default-card: #{$surface-default-card};
-    --surface-default-card-border: #{$surface-default-card-border};
+    // Radix Gray Scale Variables
+    --gray-1: #{$gray-1-dark};
+    --gray-2: #{$gray-2-dark};
+    --gray-3: #{$gray-3-dark};
+    --gray-4: #{$gray-4-dark};
+    --gray-5: #{$gray-5-dark};
+    --gray-6: #{$gray-6-dark};
+    --gray-7: #{$gray-7-dark};
+    --gray-8: #{$gray-8-dark};
+    --gray-9: #{$gray-9-dark};
+    --gray-10: #{$gray-10-dark};
+    --gray-11: #{$gray-11-dark};
+    --gray-12: #{$gray-12-dark};
+
+    // Radix Accent Scale Variables
+    --accent-1: #{$accent-1-dark};
+    --accent-2: #{$accent-2-dark};
+    --accent-3: #{$accent-3-dark};
+    --accent-4: #{$accent-4-dark};
+    --accent-5: #{$accent-5-dark};
+    --accent-6: #{$accent-6-dark};
+    --accent-7: #{$accent-7-dark};
+    --accent-8: #{$accent-8-dark};
+    --accent-9: #{$accent-9-dark};
+    --accent-10: #{$accent-10-dark};
+    --accent-11: #{$accent-11-dark};
+    --accent-12: #{$accent-12-dark};
+
+    // Radix Creative Scale Variables
+    --creative-1: #{$creative-1-dark};
+    --creative-2: #{$creative-2-dark};
+    --creative-3: #{$creative-3-dark};
+    --creative-4: #{$creative-4-dark};
+    --creative-5: #{$creative-5-dark};
+    --creative-6: #{$creative-6-dark};
+    --creative-7: #{$creative-7-dark};
+    --creative-8: #{$creative-8-dark};
+    --creative-9: #{$creative-9-dark};
+    --creative-10: #{$creative-10-dark};
+    --creative-11: #{$creative-11-dark};
+    --creative-12: #{$creative-12-dark};
+
+    // Radix Personality Scale Variables
+    --personality-1: #{$personality-1-dark};
+    --personality-2: #{$personality-2-dark};
+    --personality-3: #{$personality-3-dark};
+    --personality-4: #{$personality-4-dark};
+    --personality-5: #{$personality-5-dark};
+    --personality-6: #{$personality-6-dark};
+    --personality-7: #{$personality-7-dark};
+    --personality-8: #{$personality-8-dark};
+    --personality-9: #{$personality-9-dark};
+    --personality-10: #{$personality-10-dark};
+    --personality-11: #{$personality-11-dark};
+    --personality-12: #{$personality-12-dark};
+
+    // Radix Logical Scale Variables
+    --logical-1: #{$logical-1-dark};
+    --logical-2: #{$logical-2-dark};
+    --logical-3: #{$logical-3-dark};
+    --logical-4: #{$logical-4-dark};
+    --logical-5: #{$logical-5-dark};
+    --logical-6: #{$logical-6-dark};
+    --logical-7: #{$logical-7-dark};
+    --logical-8: #{$logical-8-dark};
+    --logical-9: #{$logical-9-dark};
+    --logical-10: #{$logical-10-dark};
+    --logical-11: #{$logical-11-dark};
+    --logical-12: #{$logical-12-dark};
+
+    // Semantic Mappings (maintaining your existing API)
+    --background: var(--gray-1);            // App background
+    --surface: var(--gray-4);               // Surface elements (cards, panels)
+    --text: var(--gray-12);                 // Primary text
+    --text-medium: var(--gray-11);          // Secondary text
+
+    // Accent colors (your existing naming)
+    --text-accent: var(--accent-9);         // Primary accent
+    --text-creative: var(--creative-9);     // Creative section
+    --text-personality: var(--personality-9); // Personality section
+    --text-logical: var(--logical-9);       // Logical section
+
+    // Surface colors mapped to appropriate Radix steps
+    --surface-accent: var(--accent-8);          // Accent surfaces
+    --surface-accent-medium: var(--accent-6);   // Medium accent surfaces
+    --surface-default-card: var(--gray-3);      // Card backgrounds
+    --surface-default-card-border: var(--gray-6); // Card borders
+    --surface-card-tag: var(--gray-5);          // Tag backgrounds
+    --surface-mobile-nav: var(--gray-3);        // Mobile navigation
+
+    // Additional semantic mappings
     --texture-opacity: 0.4;
-    --search-input-bg: rgba(116, 116, 116, 0.3);
-    --search-input-bg-active: rgba(28, 28, 28, 0.8);
-    --surface-card-tag: #{$surface-card-tag};
-    --surface-mobile-nav: #{$surface-mobile-nav};
-    --text-accent-muted: color-mix(in srgb, var(--text-accent) 24%, var(--text));
-    --text-creative-muted: color-mix(in srgb, var(--text-creative) 24%, var(--text));
-    --text-personality-muted: color-mix(in srgb, var(--text-personality) 24%, var(--text));
-    --text-logical-muted: color-mix(in srgb, var(--text-logical) 24%, var(--text));
+    --search-input-bg: var(--gray-5);
+    --search-input-bg-active: var(--gray-4);
+
+    // Muted text variants using Radix system
+    --text-accent-muted: var(--accent-11);
+    --text-creative-muted: var(--creative-11);
+    --text-personality-muted: var(--personality-11);
+    --text-logical-muted: var(--logical-11);
 
     // Light Theme
     &[data-theme="light"] {
-        --background: #{$light-background};
-        --surface: #{$light-surface};
-        --text: #{$light-text};
-        --text-medium: #{$light-text-medium};
-        --text-accent: #{$text-accent-light};
-        --text-creative: #{$text-creative-light};
-        --text-personality: #{$text-personality-light};
-        --text-logical: #{$text-logical-light};
-        --surface-accent: #{$surface-accent-light};
-        --surface-accent-medium: #{$surface-accent-medium-light};
-        --surface-default-card: #{$light-surface-default-card};
-        --surface-default-card-border: #{$light-surface-default-card-border};
+        // Radix Gray Scale Variables - Light
+        --gray-1: #{$gray-1-light};
+        --gray-2: #{$gray-2-light};
+        --gray-3: #{$gray-3-light};
+        --gray-4: #{$gray-4-light};
+        --gray-5: #{$gray-5-light};
+        --gray-6: #{$gray-6-light};
+        --gray-7: #{$gray-7-light};
+        --gray-8: #{$gray-8-light};
+        --gray-9: #{$gray-9-light};
+        --gray-10: #{$gray-10-light};
+        --gray-11: #{$gray-11-light};
+        --gray-12: #{$gray-12-light};
+
+        // Radix Accent Scale Variables - Light
+        --accent-1: #{$accent-1-light};
+        --accent-2: #{$accent-2-light};
+        --accent-3: #{$accent-3-light};
+        --accent-4: #{$accent-4-light};
+        --accent-5: #{$accent-5-light};
+        --accent-6: #{$accent-6-light};
+        --accent-7: #{$accent-7-light};
+        --accent-8: #{$accent-8-light};
+        --accent-9: #{$accent-9-light};
+        --accent-10: #{$accent-10-light};
+        --accent-11: #{$accent-11-light};
+        --accent-12: #{$accent-12-light};
+
+        // Radix Creative Scale Variables - Light
+        --creative-1: #{$creative-1-light};
+        --creative-2: #{$creative-2-light};
+        --creative-3: #{$creative-3-light};
+        --creative-4: #{$creative-4-light};
+        --creative-5: #{$creative-5-light};
+        --creative-6: #{$creative-6-light};
+        --creative-7: #{$creative-7-light};
+        --creative-8: #{$creative-8-light};
+        --creative-9: #{$creative-9-light};
+        --creative-10: #{$creative-10-light};
+        --creative-11: #{$creative-11-light};
+        --creative-12: #{$creative-12-light};
+
+        // Radix Personality Scale Variables - Light
+        --personality-1: #{$personality-1-light};
+        --personality-2: #{$personality-2-light};
+        --personality-3: #{$personality-3-light};
+        --personality-4: #{$personality-4-light};
+        --personality-5: #{$personality-5-light};
+        --personality-6: #{$personality-6-light};
+        --personality-7: #{$personality-7-light};
+        --personality-8: #{$personality-8-light};
+        --personality-9: #{$personality-9-light};
+        --personality-10: #{$personality-10-light};
+        --personality-11: #{$personality-11-light};
+        --personality-12: #{$personality-12-light};
+
+        // Radix Logical Scale Variables - Light
+        --logical-1: #{$logical-1-light};
+        --logical-2: #{$logical-2-light};
+        --logical-3: #{$logical-3-light};
+        --logical-4: #{$logical-4-light};
+        --logical-5: #{$logical-5-light};
+        --logical-6: #{$logical-6-light};
+        --logical-7: #{$logical-7-light};
+        --logical-8: #{$logical-8-light};
+        --logical-9: #{$logical-9-light};
+        --logical-10: #{$logical-10-light};
+        --logical-11: #{$logical-11-light};
+        --logical-12: #{$logical-12-light};
+
+        // Light theme specific overrides
         --texture-opacity: 0.6;
-        --search-input-bg: rgba(214, 214, 214, 0.6);
-        --search-input-bg-active: rgba(255, 255, 255, 0.8);
-        --surface-card-tag: #{$light-surface-card-tag};
-        --surface-mobile-nav: #{$light-surface-mobile-nav};
-        --text-accent-muted: color-mix(in srgb, var(--text-accent) 72%, var(--text));
-        --text-creative-muted: color-mix(in srgb, var(--text-creative) 72%, var(--text));
-        --text-personality-muted: color-mix(in srgb, var(--text-personality) 72%, var(--text));
-        --text-logical-muted: color-mix(in srgb, var(--text-logical) 72%, var(--text));
+        --search-input-bg: var(--gray-4);
+        --search-input-bg-active: var(--gray-2);
+
+        // Light theme muted variants use different steps for better contrast
+        --text-accent-muted: var(--accent-10);
+        --text-creative-muted: var(--creative-10);
+        --text-personality-muted: var(--personality-10);
+        --text-logical-muted: var(--logical-10);
     }
 }

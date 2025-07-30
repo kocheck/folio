@@ -1,0 +1,199 @@
+// _contact.scss
+// Contact page and form styles using Radix color system
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: $spacing-xl;
+    background: var(--gray-2);  // Radix step 2: subtle background
+    border: 1px solid var(--gray-6);  // Radix step 6: subtle borders
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+    .form-group {
+        margin-bottom: $spacing-lg;
+
+        label {
+            display: block;
+            margin-bottom: $spacing-sm;
+            font-weight: 500;
+            color: var(--gray-12);  // Radix step 12: high contrast text
+            font-size: 0.9rem;
+            letter-spacing: 0.01em;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: $spacing-md;
+            font-size: 1rem;
+            font-family: var(--font-body);
+            background: var(--gray-1);  // Radix step 1: app background
+            border: 1px solid var(--gray-7);  // Radix step 7: UI element border
+            border-radius: var(--border-radius);
+            color: var(--gray-12);  // Radix step 12: high contrast text
+            transition: all $transition-duration $transition-easing;
+
+            &::placeholder {
+                color: var(--gray-11);  // Radix step 11: low contrast text
+            }
+
+            &:hover {
+                border-color: var(--gray-8);  // Radix step 8: hovered border
+                background: var(--gray-2);  // Radix step 2: subtle background
+            }
+
+            &:focus {
+                outline: none;
+                border-color: var(--logical-8);  // Radix step 8: hovered border
+                background: var(--gray-1);  // Radix step 1: app background
+                box-shadow: 0 0 0 3px var(--logical-5);  // Radix step 5: active/selected
+            }
+
+            &:invalid:not(:placeholder-shown) {
+                border-color: var(--personality-8);  // Warning color
+                box-shadow: 0 0 0 3px var(--personality-3);
+            }
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+            font-family: var(--font-body);
+        }
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: $spacing-md $spacing-xl;
+        font-size: 1rem;
+        font-weight: 500;
+        font-family: var(--font-body);
+        text-decoration: none;
+        border: none;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: all $transition-duration $transition-easing;
+        position: relative;
+        overflow: hidden;
+
+        &--primary {
+            background: var(--logical-9);  // Radix step 9: solid background
+            color: var(--gray-1);  // High contrast on colored background
+            border: 1px solid var(--logical-9);
+
+            &:hover {
+                background: var(--logical-10);  // Radix step 10: hovered solid
+                border-color: var(--logical-10);
+                transform: translateY(-1px);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            }
+
+            &:focus {
+                outline: none;
+                box-shadow: 0 0 0 3px var(--logical-5),  // Radix step 5: active/selected
+                           0 4px 12px rgba(0, 0, 0, 0.15);
+            }
+
+            &:active {
+                transform: translateY(0);
+                background: var(--logical-8);  // Radix step 8: pressed state
+            }
+
+            &:disabled {
+                background: var(--gray-8);  // Radix step 8: disabled
+                color: var(--gray-11);  // Radix step 11: low contrast
+                cursor: not-allowed;
+                transform: none;
+                box-shadow: none;
+            }
+        }
+
+        &--secondary {
+            background: transparent;
+            color: var(--gray-12);  // Radix step 12: high contrast text
+            border: 1px solid var(--gray-7);  // Radix step 7: UI element border
+
+            &:hover {
+                background: var(--gray-4);  // Radix step 4: hovered UI element
+                border-color: var(--gray-8);  // Radix step 8: hovered border
+                transform: translateY(-1px);
+            }
+
+            &:focus {
+                outline: none;
+                box-shadow: 0 0 0 3px var(--gray-5);  // Radix step 5: active/selected
+            }
+
+            &:active {
+                transform: translateY(0);
+                background: var(--gray-5);  // Radix step 5: active/selected
+            }
+        }
+    }
+}
+
+// Form validation feedback
+.form-feedback {
+    margin-top: $spacing-xs;
+    font-size: 0.875rem;
+
+    &--success {
+        color: var(--logical-9);  // Success color
+    }
+
+    &--error {
+        color: var(--personality-9);  // Error color
+    }
+
+    &--info {
+        color: var(--creative-9);  // Info color
+    }
+}
+
+// Loading state for form submission
+.contact-form {
+    &.loading {
+        .btn--primary {
+            background: var(--gray-8);
+            color: var(--gray-11);
+            cursor: wait;
+            position: relative;
+
+            &::after {
+                content: '';
+                position: absolute;
+                width: 16px;
+                height: 16px;
+                margin: auto;
+                border: 2px solid transparent;
+                border-top-color: currentColor;
+                border-radius: 50%;
+                animation: spin 1s linear infinite;
+            }
+        }
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+// Responsive adjustments
+@media (max-width: $breakpoint-sm) {
+    .contact-form {
+        padding: $spacing-lg;
+        margin: 0 $spacing-md;
+
+        .form-group {
+            margin-bottom: $spacing-md;
+        }
+
+        .btn {
+            width: 100%;
+        }
+    }
+}

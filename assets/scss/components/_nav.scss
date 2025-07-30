@@ -4,10 +4,9 @@ nav {
   right: -100%;
   width: 100%;
   height: 100vh;
-  background: var(--surface);
+  background: var(--gray-2);  // Radix step 2: subtle background
   transition: right $transition-duration $transition-easing;
   z-index: $z-index-modal;
-
 
   &.active {
       right: 0;
@@ -35,33 +34,30 @@ nav {
                       font-size: 2rem;
                       text-decoration: none;
                       position: relative;
+                      color: var(--gray-12);  // Radix step 12: high contrast text
                       transition: color $transition-duration $transition-easing;
                   }
               }
 
               // Target specific nav links with their proper colors
               &:nth-child(1) .nav-link-wrapper a {
-                  color: var(--text);
-                  &:hover { color: var(--text-accent); }
-                  @include animated-underline(var(--text-accent), 3px);
+                  &:hover { color: var(--accent-9); }  // Use Radix step 9 for solid colors
+                  @include animated-underline(var(--accent-9), 3px);
               }
 
               &:nth-child(2) .nav-link-wrapper a {
-                  color: var(--text);
-                  &:hover { color: var(--text-creative); }
-                  @include animated-underline(var(--text-creative), 3px);
+                  &:hover { color: var(--creative-9); }
+                  @include animated-underline(var(--creative-9), 3px);
               }
 
               &:nth-child(3) .nav-link-wrapper a {
-                  color: var(--text);
-                  &:hover { color: var(--text-logical); }
-                  @include animated-underline(var(--text-logical), 3px);
+                  &:hover { color: var(--logical-9); }
+                  @include animated-underline(var(--logical-9), 3px);
               }
 
               &:nth-child(4) .nav-link-wrapper a {
-                  color: var(--text);
-                  &:hover { color: var(--text-personality); }
-                  @include animated-underline(var(--text-personality), 3px);
+                  &:hover { color: var(--personality-9); }
+                  @include animated-underline(var(--personality-9), 3px);
               }
           }
       }
@@ -112,7 +108,7 @@ nav {
           display: block;
           width: 100%;
           height: 2px;
-          background: var(--text);
+          background: var(--gray-12);  // High contrast for hamburger lines
           margin: 6px 0;
           transition: transform $transition-duration $transition-easing,
                     opacity $transition-duration $transition-easing;
@@ -154,7 +150,13 @@ nav {
           width: 20px;
           height: 20px;
           stroke-width: 2px;
-          color: var(--text);
+          color: var(--gray-12);  // High contrast for icon
+          transition: color $transition-duration $transition-easing;
+      }
+
+      // Add hover effect using Radix colors
+      &:hover svg {
+          color: var(--accent-9);
       }
 
       .sun-icon {
@@ -319,7 +321,7 @@ nav {
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--surface-mobile-nav);
+    background: var(--gray-3);  // Radix step 3: UI element background
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     -webkit-mask-image: linear-gradient(to bottom, black 60%, rgba(0,0,0,0.8) 75%, transparent 100%);

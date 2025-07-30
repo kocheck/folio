@@ -51,10 +51,10 @@ input[type="search"],
 input[type="email"],
 textarea {
   &:focus-visible {
-    outline: 2px solid var(--text-creative);
+    outline: 2px solid var(--creative-8);  // Radix step 8: hovered border
     outline-offset: 0;
-    border-color: var(--text-creative);
-    box-shadow: 0 0 0 2px rgba(var(--text-creative-rgb), 0.1);
+    border-color: var(--creative-8);
+    box-shadow: 0 0 0 2px var(--creative-3);  // Radix step 3: UI element background
   }
 }
 

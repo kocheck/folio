@@ -11,11 +11,26 @@
     display: block;
     text-decoration: none;
     color: inherit;
-    background: var(--surface);
-    border-radius: $border-radius;
+    background: var(--gray-3);  // Radix step 3: UI element background
+    border: 1px solid var(--gray-6);  // Radix step 6: subtle borders
+    border-radius: var(--border-radius);
     overflow: hidden;
     will-change: transform;
-    transition: transform $transition-duration $transition-easing;
+    transition: transform $transition-duration $transition-easing,
+                border-color $transition-duration $transition-easing,
+                background-color $transition-duration $transition-easing;
+
+    // Enhanced hover effects
+    &:hover {
+        transform: translateY(-4px);
+        border-color: var(--gray-7);  // Radix step 7: UI element border
+        background: var(--gray-4);    // Radix step 4: hovered UI element
+
+        .work-card__content h3 {
+            color: var(--creative-9);  // Radix step 9: solid background
+            text-decoration-color: var(--creative-9);
+        }
+    }
 }
 
 // Media container
@@ -36,6 +51,7 @@
 
     h3 {
         margin: 0 0 $spacing-sm;
+        color: var(--gray-12);  // Radix step 12: high contrast text
         transition: color $transition-duration $transition-easing,
                     text-decoration-color $transition-duration $transition-easing;
         text-decoration: underline;
@@ -44,12 +60,14 @@
     }
 
     .company {
-        color: var(--text-personality);
+        color: var(--personality-9);  // Radix step 9: solid background
         margin-bottom: $spacing-sm;
+        font-weight: 500;
     }
 
     .work-card__description {
         margin-bottom: $spacing-sm;
+        color: var(--gray-11);  // Radix step 11: low contrast text
     }
 
     .tags {
@@ -58,24 +76,24 @@
         flex-wrap: wrap;
 
         .tag {
-            background: var(--surface-default-card);
-            border: 1px solid var(--surface-default-card-border);
+            background: var(--gray-5);  // Radix step 5: active/selected
+            border: 1px solid var(--gray-6);  // Radix step 6: subtle borders
+            color: var(--gray-11);  // Radix step 11: low contrast text
             padding: $spacing-xs $spacing-sm;
-            border-radius: $border-radius-sm;
+            border-radius: var(--border-radius-sm);
             font-size: 0.875rem;
+            transition: all $transition-duration $transition-easing;
+
+            &:hover {
+                background: var(--gray-6);  // Radix step 6: subtle borders
+                color: var(--gray-12);  // Radix step 12: high contrast text
+                border-color: var(--gray-7);  // Radix step 7: UI element border
+            }
         }
     }
 }
 
-// Hover effects - using direct child selectors
-.work-card:hover {
-    transform: translateY(-4px);
-
-    .work-card__content h3 {
-        color: var(--text-creative);
-        text-decoration-color: var(--text-creative);
-    }
-}
+// Remove the old hover styles since they're now included in the main .work-card definition
 
 .search-container {
     margin-bottom: $spacing-xl;
@@ -101,27 +119,33 @@
         width: 100%;
         padding: $spacing-sm $spacing-xl $spacing-sm $spacing-md;
         font-size: 1rem;
-        border: 1px solid var(--surface-alt);
-        border-radius: $border-radius;
-        color: var(--text-medium);
+        border: 1px solid var(--gray-7);  // Radix step 7: UI element border
+        border-radius: var(--border-radius);
+        background-color: var(--gray-3);  // Radix step 3: UI element background
+        color: var(--gray-12);  // Radix step 12: high contrast text
         transition: all $transition-duration $transition-easing;
-        background-color: var(--search-input-bg);
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
 
         &:hover {
-            border-color: var(--text);
-            background-color: var(--search-input-bg-active);
-            color: var(--text-medium);
+            border-color: var(--gray-8);  // Radix step 8: hovered border
+            background-color: var(--gray-4);  // Radix step 4: hovered UI element
         }
+
+        &:focus {
+            outline: none;
+            border-color: var(--creative-8);  // Radix step 8: hovered border
+            background-color: var(--gray-4);  // Radix step 4: hovered UI element
+            box-shadow: 0 0 0 2px var(--creative-5);  // Radix step 5: active/selected
+        }
+
         &:active {
-          border-color: var(--text);
-            background-color: var(--search-input-bg-active);
-            color: var(--text);
+            border-color: var(--creative-8);
+            background-color: var(--gray-4);
         }
 
         &::placeholder {
-            color: var(--text-medium);
+            color: var(--gray-11);  // Radix step 11: low contrast text
         }
 
         // High contrast focus styles for Windows
@@ -142,29 +166,30 @@
         padding: $spacing-xs;
         background: none;
         border: none;
-        color: var(--text-medium);
+        color: var(--gray-11);  // Radix step 11: low contrast text
         cursor: pointer;
-        border-radius: $border-radius-sm;
+        border-radius: var(--border-radius-sm);
+        transition: all $transition-duration $transition-easing;
 
         &:focus {
             outline: none;
-            box-shadow: 0 0 0 2px var(--text-creative);
+            box-shadow: 0 0 0 2px var(--creative-8);  // Radix step 8: hovered border
         }
 
         &:hover {
-            color: var(--text);
-            background: var(--surface-alt);
+            color: var(--gray-12);  // Radix step 12: high contrast text
+            background: var(--gray-5);  // Radix step 5: active/selected
         }
     }
 
     .search-hint {
         margin-top: $spacing-xs;
         font-size: 0.875rem;
-        color: var(--text-medium);
+        color: var(--gray-11);  // Radix step 11: low contrast text
 
         .results-count {
             font-weight: 500;
-            color: var(--text);
+            color: var(--gray-12);  // Radix step 12: high contrast text
             margin-right: $spacing-sm;
         }
     }
@@ -179,15 +204,17 @@
     .tag {
         display: inline-block;
         padding: 0.25rem 0.75rem;
-        background: var(--surface-card-tag);
-        border-radius: $border-radius-sm;
-        color: var(--text-medium);
+        background: var(--gray-5);  // Radix step 5: active/selected
+        border: 1px solid var(--gray-6);  // Radix step 6: subtle borders
+        border-radius: var(--border-radius-sm);
+        color: var(--gray-11);  // Radix step 11: low contrast text
         font-size: 0.875rem;
         transition: all $transition-duration $transition-easing;
 
         &:hover {
-            color: var(--text-creative);
-            border-color: var(--text-creative);
+            color: var(--creative-9);  // Radix step 9: solid background
+            background: var(--gray-6);  // Radix step 6: subtle borders
+            border-color: var(--creative-8);  // Radix step 8: hovered border
             transform: translateY(-1px);
         }
     }
