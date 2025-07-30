@@ -6,7 +6,7 @@
         grid-template-columns: 1fr 1fr;
         gap: 2rem;
         align-items: center;
-        min-height: 500px; // Ensures consistent height
+        min-height: clamp(400px, 50vh, 600px); // Ensures consistent height with responsiveness
     }
 
     &__content {
