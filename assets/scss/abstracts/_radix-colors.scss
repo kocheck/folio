@@ -1,0 +1,207 @@
+// _radix-colors.scss
+// Radix-inspired color system with 12-step scales
+
+// =============================================================================
+// Gray Scale (Base colors for backgrounds, surfaces, text)
+// =============================================================================
+
+// Dark Theme Gray Scale
+$gray-1-dark: hsl(0, 0%, 4%);      // App background (darker than your current #000)
+$gray-2-dark: hsl(0, 0%, 6%);      // Subtle background
+$gray-3-dark: hsl(0, 0%, 9%);      // UI element background
+$gray-4-dark: hsl(0, 0%, 11%);     // Hovered UI element (matches your current $dark-surface)
+$gray-5-dark: hsl(0, 0%, 13%);     // Active / Selected
+$gray-6-dark: hsl(0, 0%, 16%);     // Subtle borders
+$gray-7-dark: hsl(0, 0%, 20%);     // UI element border
+$gray-8-dark: hsl(0, 0%, 25%);     // Hovered border
+$gray-9-dark: hsl(0, 0%, 35%);     // Solid background
+$gray-10-dark: hsl(0, 0%, 42%);    // Hovered solid
+$gray-11-dark: hsl(0, 0%, 62%);    // Low contrast text
+$gray-12-dark: hsl(0, 0%, 93%);    // High contrast text (matches your current $dark-text)
+
+// Light Theme Gray Scale
+$gray-1-light: hsl(104, 18%, 97%); // App background (based on your $light-background)
+$gray-2-light: hsl(104, 16%, 95%); // Subtle background
+$gray-3-light: hsl(104, 14%, 93%); // UI element background
+$gray-4-light: hsl(104, 12%, 91%); // Hovered UI element
+$gray-5-light: hsl(104, 10%, 88%); // Active / Selected
+$gray-6-light: hsl(104, 8%, 85%);  // Subtle borders
+$gray-7-light: hsl(104, 6%, 80%);  // UI element border
+$gray-8-light: hsl(104, 4%, 70%);  // Hovered border
+$gray-9-light: hsl(104, 2%, 56%);  // Solid background
+$gray-10-light: hsl(104, 2%, 50%); // Hovered solid
+$gray-11-light: hsl(104, 4%, 35%); // Low contrast text
+$gray-12-light: hsl(104, 6%, 11%); // High contrast text (matches your current $light-text)
+
+// =============================================================================
+// Accent Colors (Purple/Violet - your primary accent)
+// =============================================================================
+
+// Dark Theme Accent Scale
+$accent-1-dark: hsl(303, 25%, 5%);   // App background tint
+$accent-2-dark: hsl(303, 30%, 7%);   // Subtle background
+$accent-3-dark: hsl(303, 35%, 10%);  // UI element background
+$accent-4-dark: hsl(303, 40%, 13%);  // Hovered UI element
+$accent-5-dark: hsl(303, 45%, 16%);  // Active / Selected
+$accent-6-dark: hsl(303, 50%, 20%);  // Subtle borders
+$accent-7-dark: hsl(303, 55%, 26%);  // UI element border
+$accent-8-dark: hsl(303, 65%, 35%);  // Hovered border
+$accent-9-dark: hsl(303, 100%, 60%); // Solid background (your current $text-accent)
+$accent-10-dark: hsl(303, 100%, 65%);// Hovered solid
+$accent-11-dark: hsl(303, 100%, 72%);// Low contrast text
+$accent-12-dark: hsl(303, 100%, 90%);// High contrast text
+
+// Light Theme Accent Scale
+$accent-1-light: hsl(303, 100%, 99%);// App background tint
+$accent-2-light: hsl(303, 90%, 97%); // Subtle background
+$accent-3-light: hsl(303, 80%, 94%); // UI element background
+$accent-4-light: hsl(303, 70%, 90%); // Hovered UI element
+$accent-5-light: hsl(303, 60%, 85%); // Active / Selected
+$accent-6-light: hsl(303, 55%, 78%); // Subtle borders
+$accent-7-light: hsl(303, 50%, 68%); // UI element border
+$accent-8-light: hsl(303, 60%, 55%); // Hovered border
+$accent-9-light: hsl(303, 90%, 30%); // Solid background (your current $text-accent-light)
+$accent-10-light: hsl(303, 85%, 25%);// Hovered solid
+$accent-11-light: hsl(303, 80%, 22%);// Low contrast text
+$accent-12-light: hsl(303, 90%, 15%);// High contrast text
+
+// =============================================================================
+// Creative Colors (Cyan/Teal)
+// =============================================================================
+
+// Dark Theme Creative Scale
+$creative-1-dark: hsl(180, 25%, 5%);   // App background tint
+$creative-2-dark: hsl(180, 30%, 7%);   // Subtle background
+$creative-3-dark: hsl(180, 35%, 10%);  // UI element background
+$creative-4-dark: hsl(180, 40%, 13%);  // Hovered UI element
+$creative-5-dark: hsl(180, 45%, 16%);  // Active / Selected
+$creative-6-dark: hsl(180, 50%, 20%);  // Subtle borders
+$creative-7-dark: hsl(180, 55%, 26%);  // UI element border
+$creative-8-dark: hsl(180, 65%, 35%);  // Hovered border
+$creative-9-dark: hsl(180, 100%, 60%); // Solid background (your current $text-creative)
+$creative-10-dark: hsl(180, 100%, 65%);// Hovered solid
+$creative-11-dark: hsl(180, 100%, 72%);// Low contrast text
+$creative-12-dark: hsl(180, 100%, 90%);// High contrast text
+
+// Light Theme Creative Scale
+$creative-1-light: hsl(180, 100%, 99%);// App background tint
+$creative-2-light: hsl(180, 90%, 97%); // Subtle background
+$creative-3-light: hsl(180, 80%, 94%); // UI element background
+$creative-4-light: hsl(180, 70%, 90%); // Hovered UI element
+$creative-5-light: hsl(180, 60%, 85%); // Active / Selected
+$creative-6-light: hsl(180, 55%, 78%); // Subtle borders
+$creative-7-light: hsl(180, 50%, 68%); // UI element border
+$creative-8-light: hsl(180, 60%, 45%); // Hovered border
+$creative-9-light: hsl(180, 100%, 19%);// Solid background (your current $text-creative-light)
+$creative-10-light: hsl(180, 95%, 16%);// Hovered solid
+$creative-11-light: hsl(180, 90%, 14%);// Low contrast text
+$creative-12-light: hsl(180, 100%, 10%);// High contrast text
+
+// =============================================================================
+// Personality Colors (Amber/Yellow)
+// =============================================================================
+
+// Dark Theme Personality Scale
+$personality-1-dark: hsl(45, 25%, 5%);   // App background tint
+$personality-2-dark: hsl(45, 30%, 7%);   // Subtle background
+$personality-3-dark: hsl(45, 35%, 10%);  // UI element background
+$personality-4-dark: hsl(45, 40%, 13%);  // Hovered UI element
+$personality-5-dark: hsl(45, 45%, 16%);  // Active / Selected
+$personality-6-dark: hsl(45, 50%, 20%);  // Subtle borders
+$personality-7-dark: hsl(45, 55%, 26%);  // UI element border
+$personality-8-dark: hsl(45, 65%, 35%);  // Hovered border
+$personality-9-dark: hsl(45, 100%, 60%); // Solid background (your current $text-personality)
+$personality-10-dark: hsl(45, 100%, 65%);// Hovered solid
+$personality-11-dark: hsl(45, 100%, 72%);// Low contrast text
+$personality-12-dark: hsl(45, 100%, 90%);// High contrast text
+
+// Light Theme Personality Scale
+$personality-1-light: hsl(28, 100%, 99%);// App background tint
+$personality-2-light: hsl(28, 90%, 97%); // Subtle background
+$personality-3-light: hsl(28, 80%, 94%); // UI element background
+$personality-4-light: hsl(28, 70%, 90%); // Hovered UI element
+$personality-5-light: hsl(28, 60%, 85%); // Active / Selected
+$personality-6-light: hsl(28, 55%, 78%); // Subtle borders
+$personality-7-light: hsl(28, 50%, 68%); // UI element border
+$personality-8-light: hsl(28, 80%, 45%); // Hovered border
+$personality-9-light: hsl(28, 94%, 25%); // Solid background (your current $text-personality-light)
+$personality-10-light: hsl(28, 90%, 22%);// Hovered solid
+$personality-11-light: hsl(28, 85%, 20%);// Low contrast text
+$personality-12-light: hsl(28, 95%, 15%);// High contrast text
+
+// =============================================================================
+// Logical Colors (Green)
+// =============================================================================
+
+// Dark Theme Logical Scale
+$logical-1-dark: hsl(140, 25%, 5%);   // App background tint
+$logical-2-dark: hsl(140, 30%, 7%);   // Subtle background
+$logical-3-dark: hsl(140, 35%, 10%);  // UI element background
+$logical-4-dark: hsl(140, 40%, 13%);  // Hovered UI element
+$logical-5-dark: hsl(140, 45%, 16%);  // Active / Selected
+$logical-6-dark: hsl(140, 50%, 20%);  // Subtle borders
+$logical-7-dark: hsl(140, 55%, 26%);  // UI element border
+$logical-8-dark: hsl(140, 65%, 35%);  // Hovered border
+$logical-9-dark: hsl(140, 100%, 60%); // Solid background (your current $text-logical)
+$logical-10-dark: hsl(140, 100%, 65%);// Hovered solid
+$logical-11-dark: hsl(140, 100%, 72%);// Low contrast text
+$logical-12-dark: hsl(140, 100%, 90%);// High contrast text
+
+// Light Theme Logical Scale
+$logical-1-light: hsl(140, 100%, 99%);// App background tint
+$logical-2-light: hsl(140, 90%, 97%); // Subtle background
+$logical-3-light: hsl(140, 80%, 94%); // UI element background
+$logical-4-light: hsl(140, 70%, 90%); // Hovered UI element
+$logical-5-light: hsl(140, 60%, 85%); // Active / Selected
+$logical-6-light: hsl(140, 55%, 78%); // Subtle borders
+$logical-7-light: hsl(140, 50%, 68%); // UI element border
+$logical-8-light: hsl(140, 70%, 45%); // Hovered border
+$logical-9-light: hsl(140, 86%, 25%); // Solid background (your current $text-logical-light)
+$logical-10-light: hsl(140, 82%, 22%);// Hovered solid
+$logical-11-light: hsl(140, 78%, 20%);// Low contrast text
+$logical-12-light: hsl(140, 90%, 15%);// High contrast text
+
+// =============================================================================
+// Semantic Color Mappings
+// =============================================================================
+
+// Helper functions for easier access
+@function radix-gray($step, $theme: 'dark') {
+  @if $theme == 'dark' {
+    @return var(--gray-#{$step});
+  } @else {
+    @return var(--gray-#{$step}-light);
+  }
+}
+
+@function radix-accent($step, $theme: 'dark') {
+  @if $theme == 'dark' {
+    @return var(--accent-#{$step});
+  } @else {
+    @return var(--accent-#{$step}-light);
+  }
+}
+
+@function radix-creative($step, $theme: 'dark') {
+  @if $theme == 'dark' {
+    @return var(--creative-#{$step});
+  } @else {
+    @return var(--creative-#{$step}-light);
+  }
+}
+
+@function radix-personality($step, $theme: 'dark') {
+  @if $theme == 'dark' {
+    @return var(--personality-#{$step});
+  } @else {
+    @return var(--personality-#{$step}-light);
+  }
+}
+
+@function radix-logical($step, $theme: 'dark') {
+  @if $theme == 'dark' {
+    @return var(--logical-#{$step});
+  } @else {
+    @return var(--logical-#{$step}-light);
+  }
+}

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radix Color System Test</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+        body {
+            background: var(--background);
+            color: var(--text);
+            font-family: var(--font-body);
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .color-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .color-group {
+            background: var(--surface-default-card);
+            border: 1px solid var(--surface-default-card-border);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+        }
+
+        .color-group h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .color-scale {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .color-step {
+            aspect-ratio: 1;
+            border-radius: 4px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .color-step:hover::after {
+            content: attr(data-step);
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--text);
+            color: var(--background);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+        }
+
+        .semantic-demo {
+            margin: 2rem 0;
+            padding: 1rem;
+            background: var(--surface-default-card);
+            border: 1px solid var(--surface-default-card-border);
+            border-radius: var(--border-radius);
+        }
+
+        .text-samples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--surface-accent);
+            color: var(--background);
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+
+    <h1>Radix Color System Test</h1>
+    <p>Testing the new Radix-inspired color system with 12-step scales</p>
+
+    <div class="color-showcase">
+        <div class="color-group">
+            <h3>Gray Scale</h3>
+            <div class="color-scale">
+                <div class="color-step" data-step="1" style="background: var(--gray-1);"></div>
+                <div class="color-step" data-step="2" style="background: var(--gray-2);"></div>
+                <div class="color-step" data-step="3" style="background: var(--gray-3);"></div>
+                <div class="color-step" data-step="4" style="background: var(--gray-4);"></div>
+                <div class="color-step" data-step="5" style="background: var(--gray-5);"></div>
+                <div class="color-step" data-step="6" style="background: var(--gray-6);"></div>
+                <div class="color-step" data-step="7" style="background: var(--gray-7);"></div>
+                <div class="color-step" data-step="8" style="background: var(--gray-8);"></div>
+                <div class="color-step" data-step="9" style="background: var(--gray-9);"></div>
+                <div class="color-step" data-step="10" style="background: var(--gray-10);"></div>
+                <div class="color-step" data-step="11" style="background: var(--gray-11);"></div>
+                <div class="color-step" data-step="12" style="background: var(--gray-12);"></div>
+            </div>
+        </div>
+
+        <div class="color-group">
+            <h3>Accent (Purple)</h3>
+            <div class="color-scale">
+                <div class="color-step" data-step="1" style="background: var(--accent-1);"></div>
+                <div class="color-step" data-step="2" style="background: var(--accent-2);"></div>
+                <div class="color-step" data-step="3" style="background: var(--accent-3);"></div>
+                <div class="color-step" data-step="4" style="background: var(--accent-4);"></div>
+                <div class="color-step" data-step="5" style="background: var(--accent-5);"></div>
+                <div class="color-step" data-step="6" style="background: var(--accent-6);"></div>
+                <div class="color-step" data-step="7" style="background: var(--accent-7);"></div>
+                <div class="color-step" data-step="8" style="background: var(--accent-8);"></div>
+                <div class="color-step" data-step="9" style="background: var(--accent-9);"></div>
+                <div class="color-step" data-step="10" style="background: var(--accent-10);"></div>
+                <div class="color-step" data-step="11" style="background: var(--accent-11);"></div>
+                <div class="color-step" data-step="12" style="background: var(--accent-12);"></div>
+            </div>
+        </div>
+
+        <div class="color-group">
+            <h3>Creative (Cyan)</h3>
+            <div class="color-scale">
+                <div class="color-step" data-step="1" style="background: var(--creative-1);"></div>
+                <div class="color-step" data-step="2" style="background: var(--creative-2);"></div>
+                <div class="color-step" data-step="3" style="background: var(--creative-3);"></div>
+                <div class="color-step" data-step="4" style="background: var(--creative-4);"></div>
+                <div class="color-step" data-step="5" style="background: var(--creative-5);"></div>
+                <div class="color-step" data-step="6" style="background: var(--creative-6);"></div>
+                <div class="color-step" data-step="7" style="background: var(--creative-7);"></div>
+                <div class="color-step" data-step="8" style="background: var(--creative-8);"></div>
+                <div class="color-step" data-step="9" style="background: var(--creative-9);"></div>
+                <div class="color-step" data-step="10" style="background: var(--creative-10);"></div>
+                <div class="color-step" data-step="11" style="background: var(--creative-11);"></div>
+                <div class="color-step" data-step="12" style="background: var(--creative-12);"></div>
+            </div>
+        </div>
+
+        <div class="color-group">
+            <h3>Personality (Amber)</h3>
+            <div class="color-scale">
+                <div class="color-step" data-step="1" style="background: var(--personality-1);"></div>
+                <div class="color-step" data-step="2" style="background: var(--personality-2);"></div>
+                <div class="color-step" data-step="3" style="background: var(--personality-3);"></div>
+                <div class="color-step" data-step="4" style="background: var(--personality-4);"></div>
+                <div class="color-step" data-step="5" style="background: var(--personality-5);"></div>
+                <div class="color-step" data-step="6" style="background: var(--personality-6);"></div>
+                <div class="color-step" data-step="7" style="background: var(--personality-7);"></div>
+                <div class="color-step" data-step="8" style="background: var(--personality-8);"></div>
+                <div class="color-step" data-step="9" style="background: var(--personality-9);"></div>
+                <div class="color-step" data-step="10" style="background: var(--personality-10);"></div>
+                <div class="color-step" data-step="11" style="background: var(--personality-11);"></div>
+                <div class="color-step" data-step="12" style="background: var(--personality-12);"></div>
+            </div>
+        </div>
+
+        <div class="color-group">
+            <h3>Logical (Green)</h3>
+            <div class="color-scale">
+                <div class="color-step" data-step="1" style="background: var(--logical-1);"></div>
+                <div class="color-step" data-step="2" style="background: var(--logical-2);"></div>
+                <div class="color-step" data-step="3" style="background: var(--logical-3);"></div>
+                <div class="color-step" data-step="4" style="background: var(--logical-4);"></div>
+                <div class="color-step" data-step="5" style="background: var(--logical-5);"></div>
+                <div class="color-step" data-step="6" style="background: var(--logical-6);"></div>
+                <div class="color-step" data-step="7" style="background: var(--logical-7);"></div>
+                <div class="color-step" data-step="8" style="background: var(--logical-8);"></div>
+                <div class="color-step" data-step="9" style="background: var(--logical-9);"></div>
+                <div class="color-step" data-step="10" style="background: var(--logical-10);"></div>
+                <div class="color-step" data-step="11" style="background: var(--logical-11);"></div>
+                <div class="color-step" data-step="12" style="background: var(--logical-12);"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="semantic-demo">
+        <h2>Semantic Color Usage (Backward Compatible)</h2>
+        <div class="text-samples">
+            <div>
+                <p style="color: var(--text-accent);">Accent Text</p>
+                <p style="color: var(--text-accent-muted);">Accent Muted</p>
+            </div>
+            <div>
+                <p style="color: var(--text-creative);">Creative Text</p>
+                <p style="color: var(--text-creative-muted);">Creative Muted</p>
+            </div>
+            <div>
+                <p style="color: var(--text-personality);">Personality Text</p>
+                <p style="color: var(--text-personality-muted);">Personality Muted</p>
+            </div>
+            <div>
+                <p style="color: var(--text-logical);">Logical Text</p>
+                <p style="color: var(--text-logical-muted);">Logical Muted</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const root = document.documentElement;
+            const currentTheme = root.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? '' : 'light';
+            root.setAttribute('data-theme', newTheme);
+        }
+    </script>
+</body>
+</html>
