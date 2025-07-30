@@ -10,45 +10,21 @@ nav {
     width: 100%;
 }
 
-// Hero section with max-width
-.hero {
-    .content-wrapper {
-        display: flex;
-        gap: 2rem;
-    }
-
-    &__content {
-        flex: 1;
-        max-width: 50%;
-    }
-
-    &__media {
-        flex: 1;
-    }
-
-    @media (max-width: $breakpoint-md) {
-        .content-wrapper {
-            flex-direction: column;
-        }
-
-        &__content,
-        &__media {
-            max-width: 100%;
-        }
-    }
-}
+// Hero section styles are now handled in components/_hero.scss
 
 .about-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: auto 1fr;
     gap: $spacing-xl;
     max-width: 800px;
     margin: 0 auto;
 
     &__sidebar {
-        position: fixed;
+        grid-column: 1;
         width: calc((800px - 2 * $spacing-xl) / 3.5);
+        position: sticky;
         top: 120px;
+        align-self: start;
 
         .sidebar-content {
             h4 {
@@ -62,7 +38,6 @@ nav {
 
     &__main {
         grid-column: 2;
-        margin-left: calc((800px - 2 * $spacing-xl) / 3.5 + $spacing-xl);
     }
 
     @media (max-width: $breakpoint-md) {
@@ -70,6 +45,7 @@ nav {
         gap: $spacing-lg;
 
         &__sidebar {
+            grid-column: 1;
             position: relative;
             width: 100%;
             top: 0;
@@ -84,7 +60,6 @@ nav {
 
         &__main {
             grid-column: 1;
-            margin-left: 0;
             order: 1;
         }
     }
