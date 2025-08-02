@@ -1,0 +1,35 @@
+{{/*
+    Work Card Web Component Partial
+
+    This partial generates a work-card web component with all the necessary attributes.
+    It's designed to replace the traditional work-card.html partial while maintaining
+    the same functionality and data sources.
+
+    Context: Expects a page context with front matter containing:
+    - .Title: Project title
+    - .Summary: Project description (will be truncated)
+    - .Params.thumbnail: Project thumbnail image
+    - .Params.company: Company or client name
+    - .Params.tags: Array of project tags
+    - .RelPermalink: Link to project page
+
+    Usage in templates:
+    {{ partial "work-card-wc.html" . }}
+*/}}
+
+<work-card
+    title="{{ .Title | htmlEscape }}"
+    {{- with .Summary }}
+    description="{{ . | truncate 120 | htmlEscape }}"
+    {{- end }}
+    {{- with .Params.thumbnail }}
+    image="{{ . | absURL }}"
+    {{- end }}
+    url="{{ .RelPermalink }}"
+    {{- with .Params.company }}
+    company="{{ . | htmlEscape }}"
+    {{- end }}
+    {{- with .Params.tags }}
+    tags="{{ delimit . "," | htmlEscape }}"
+    {{- end }}
+></work-card>

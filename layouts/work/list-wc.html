@@ -1,0 +1,226 @@
+{{/*
+    Work List Template with Web Components
+
+    This template demonstrates the new web component integration.
+    It uses the work-card-wc.html partial instead of work-card.html
+    to render work-card web components instead of traditional HTML.
+
+    This can be used for A/B testing or as a replacement for the original.
+*/}}
+
+{{ define "main" }}
+<section class="work-section page-content">
+    <!-- Content (title and description) first -->
+    {{ .Content }}
+
+    <!-- Web Components Demo Notice -->
+    <div class="demo-notice" style="background: #e0f2fe; border: 1px solid #0284c7; border-radius: 8px; padding: 1rem; margin: 2rem 0;">
+        <h3 style="margin: 0 0 0.5rem 0; color: #0284c7;">🚀 Web Components Demo</h3>
+        <p style="margin: 0; color: #0369a1;">
+            This page uses the new web component versions of work cards.
+            Check the browser console to see initialization logs!
+        </p>
+    </div>
+
+    <!-- Search container after content -->
+    <div class="search-container" role="search" aria-label="Search through projects">
+        <label for="projectSearch" class="search-label">
+            <span class="search-label__text">Search projects by title, tags, or description</span>
+            <div class="search-input-wrapper">
+                <input
+                    type="search"
+                    id="projectSearch"
+                    class="search-input"
+                    placeholder="Try searching for 'Design System' or 'UX'"
+                    autocomplete="off"
+                    aria-expanded="false"
+                    aria-controls="searchResults"
+                    aria-describedby="searchHint"
+                >
+                <button
+                    type="button"
+                    class="search-clear"
+                    aria-label="Clear search"
+                    hidden
+                >
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        </label>
+
+        <div id="searchHint" class="search-hint">
+            <span class="results-count" aria-live="polite"></span>
+            <span class="search-instructions">Type to search across project titles, tags, descriptions, and case studies</span>
+        </div>
+    </div>
+
+    <!-- Results region containing both featured and non-featured work -->
+    <div
+        id="searchResults"
+        role="region"
+        aria-label="Search results"
+    >
+        {{ $featured := where .Pages "Params.featured" true }}
+        {{ with $featured }}
+        <div class="featured-work">
+            <h3>Featured Projects</h3>
+            <div class="work-grid">
+                {{ range . }}
+                    {{/* Use the new web component partial */}}
+                    {{ partial "work-card-wc.html" . }}
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+
+        <div class="work-grid">
+            {{ range where .Pages "Params.featured" "!=" true }}
+                {{/* Use the new web component partial */}}
+                {{ partial "work-card-wc.html" . }}
+            {{ end }}
+        </div>
+    </div>
+
+    <!-- Web Components Test Section -->
+    <section class="web-components-test" style="margin-top: 4rem; padding: 2rem; background: #f8fafc; border-radius: 8px;">
+        <h3>🧪 Web Components Test</h3>
+        <p>Here are some manually created web components to test functionality:</p>
+
+        <div class="work-grid" style="margin-top: 2rem;">
+            <!-- Test card 1: Full attributes -->
+            <work-card
+                title="Test Project Alpha"
+                description="This is a test project created directly as a web component with all attributes populated."
+                image="https://via.placeholder.com/400x225/3b82f6/ffffff?text=Test+Alpha"
+                url="#test-alpha"
+                company="Test Company"
+                tags="Web Components,Testing,Vue.js">
+            </work-card>
+
+            <!-- Test card 2: Minimal attributes -->
+            <work-card
+                title="Test Project Beta"
+                description="Minimal test project to verify fallback handling."
+                url="#test-beta"
+                tags="Minimal,Testing">
+            </work-card>
+
+            <!-- Test card 3: With lightbox trigger -->
+            <work-card
+                title="Test Project Gamma"
+                description="This project includes a lightbox-trigger image to test integration."
+                url="#test-gamma"
+                company="Lightbox Tests Inc."
+                tags="Lightbox,Integration">
+            </work-card>
+        </div>
+
+        <!-- Test lightbox triggers -->
+        <div style="margin-top: 2rem;">
+            <h4>Lightbox Test Images</h4>
+            <p>Click these images to test the lightbox component:</p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+                <img src="https://via.placeholder.com/200x150/ef4444/ffffff?text=Image+1"
+                     class="lightbox-trigger"
+                     alt="Test image 1"
+                     style="border-radius: 4px; cursor: pointer;">
+                <img src="https://via.placeholder.com/200x150/10b981/ffffff?text=Image+2"
+                     class="lightbox-trigger"
+                     alt="Test image 2"
+                     style="border-radius: 4px; cursor: pointer;">
+                <img src="https://via.placeholder.com/200x150/f59e0b/ffffff?text=Image+3"
+                     class="lightbox-trigger"
+                     alt="Test image 3"
+                     style="border-radius: 4px; cursor: pointer;">
+            </div>
+        </div>
+
+        <!-- JavaScript test controls -->
+        <div style="margin-top: 2rem; padding: 1rem; background: white; border-radius: 4px;">
+            <h4>JavaScript API Test</h4>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <button onclick="testCreateCard()" style="padding: 0.5rem 1rem; background: #3b82f6; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                    Create Dynamic Card
+                </button>
+                <button onclick="testRefreshLightbox()" style="padding: 0.5rem 1rem; background: #10b981; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                    Refresh Lightbox
+                </button>
+                <button onclick="testUpdateTheme()" style="padding: 0.5rem 1rem; background: #f59e0b; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                    Toggle Dark Theme
+                </button>
+            </div>
+        </div>
+    </section>
+</section>
+
+<script>
+// Test functions for the API
+function testCreateCard() {
+    if (!window.PortfolioComponents) {
+        alert('Web components not loaded yet!');
+        return;
+    }
+
+    const card = window.PortfolioComponents.createWorkCard({
+        title: 'Dynamic Card ' + Date.now(),
+        description: 'This card was created dynamically using JavaScript!',
+        tags: 'Dynamic,JavaScript,API',
+        url: '#dynamic-' + Date.now()
+    });
+
+    document.querySelector('.work-grid').appendChild(card);
+    alert('Dynamic card created! Check the top of the work grid.');
+}
+
+function testRefreshLightbox() {
+    if (!window.PortfolioComponents) {
+        alert('Web components not loaded yet!');
+        return;
+    }
+
+    window.PortfolioComponents.refreshLightbox();
+    alert('Lightbox refreshed!');
+}
+
+let isDark = false;
+function testUpdateTheme() {
+    if (!window.PortfolioComponents) {
+        alert('Web components not loaded yet!');
+        return;
+    }
+
+    if (!isDark) {
+        window.PortfolioComponents.updateTheme({
+            'card-bg': '#1f2937',
+            'card-border': '#374151',
+            'text-primary': '#f9fafb',
+            'text-secondary': '#d1d5db'
+        });
+        isDark = true;
+        alert('Dark theme applied to components!');
+    } else {
+        window.PortfolioComponents.updateTheme({
+            'card-bg': '#ffffff',
+            'card-border': '#e5e7eb',
+            'text-primary': '#1f2937',
+            'text-secondary': '#6b7280'
+        });
+        isDark = false;
+        alert('Light theme restored!');
+    }
+}
+
+// Log component events
+document.addEventListener('work-card:click', (e) => {
+    console.log('Work card clicked:', e.detail);
+});
+
+document.addEventListener('lightbox:open', (e) => {
+    console.log('Lightbox opened:', e.detail);
+});
+
+document.addEventListener('lightbox:close', () => {
+    console.log('Lightbox closed');
+});
+</script>
+{{ end }}

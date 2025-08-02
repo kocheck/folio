@@ -20,8 +20,14 @@
     {{ $quickView := resources.Get "js/quick-view.js" | resources.Minify }}
     {{ $search := resources.Get "js/search.js" | resources.Minify | resources.Fingerprint }}
     {{ $error404 := resources.Get "js/404.js" | resources.Minify | resources.Fingerprint }}
+
+    <!-- Web Components Bundle -->
+    {{ $components := resources.Get "js/components/index.js" | resources.Minify | resources.Fingerprint }}
+
     <script defer src="{{ $js.RelPermalink }}"></script>
     <script defer src="{{ $transition.RelPermalink }}"></script>
+    <!-- Load web components early for progressive enhancement -->
+    <script defer src="{{ $components.RelPermalink }}"></script>
     {{ if eq .Section "work" }}
         <script defer src="{{ $lightbox.RelPermalink }}"></script>
         <script defer src="{{ $quickView.RelPermalink }}"></script>
