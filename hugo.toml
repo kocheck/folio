@@ -41,14 +41,13 @@ title = "Kyle Kochanek"
   unsafe = true
 
 [imaging]
-  quality = 80
+  quality = 64
   resampleFilter = "Lanczos"
   anchor = "Smart"
   format = "webp"  # Default format for image processing
 
 [imaging.exif]
-  disableDate = true
-  disableLatLong = true
+  includeFields = ""
 
 [caches]
   [caches.images]
