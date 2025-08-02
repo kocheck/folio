@@ -1,0 +1,208 @@
+name: Web Components CI/CD
+
+on:
+  push:
+    branches: [ main, develop, kyle/web-components ]
+  pull_request:
+    branches: [ main, develop ]
+
+env:
+  HUGO_VERSION: 0.148.1
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Test Web Components
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+        fetch-depth: 0
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Install Node.js dependencies
+      run: npm ci
+
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: ${{ env.HUGO_VERSION }}
+        extended: true
+
+    - name: Build Hugo site
+      run: hugo --minify --environment production
+
+    - name: Run component tests
+      run: |
+        # Make test scripts executable
+        chmod +x test-components.sh validate-deployment.sh
+
+        # Start Hugo server in background for testing
+        hugo server --port 1314 --bind 0.0.0.0 --disableFastRender &
+        HUGO_PID=$!
+
+        # Wait for server to start
+        sleep 5
+
+        # Run component validation tests
+        HUGO_TEST_PORT=1314 ./validate-deployment.sh
+
+        # Kill Hugo server
+        kill $HUGO_PID
+
+    - name: Run JavaScript syntax validation
+      run: |
+        # Test JavaScript files for syntax errors
+        node -c assets/js/components/portfolio-lightbox.js
+        node -c assets/js/components/work-card.js
+        node -c assets/js/components/index.js
+
+    - name: Run HTML validation
+      run: |
+        # Install HTML validator
+        npm install -g html-validate
+
+        # Validate generated HTML files
+        html-validate public/**/*.html --config .htmlvalidate.json || true
+
+    - name: Run accessibility tests
+      run: |
+        # Install axe-core CLI
+        npm install -g @axe-core/cli
+
+        # Start server for accessibility testing
+        hugo server --port 1315 --bind 0.0.0.0 --disableFastRender &
+        HUGO_PID=$!
+
+        # Wait for server
+        sleep 5
+
+        # Run accessibility tests on key pages
+        axe http://localhost:1315/ --exit || true
+        axe http://localhost:1315/work/ --exit || true
+
+        # Kill server
+        kill $HUGO_PID
+
+    - name: Test web component bundle size
+      run: |
+        # Check that component bundle is under size limit (10KB)
+        BUNDLE_SIZE=$(wc -c < public/js/components/index.*.js)
+        echo "Web components bundle size: $BUNDLE_SIZE bytes"
+
+        if [ $BUNDLE_SIZE -gt 10240 ]; then
+          echo "❌ Bundle size ($BUNDLE_SIZE bytes) exceeds 10KB limit"
+          exit 1
+        else
+          echo "✅ Bundle size is acceptable"
+        fi
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: hugo-build
+        path: public/
+        retention-days: 7
+
+  lighthouse:
+    runs-on: ubuntu-latest
+    name: Lighthouse Performance Tests
+    needs: test
+    if: github.event_name == 'pull_request'
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: ${{ env.HUGO_VERSION }}
+        extended: true
+
+    - name: Build site
+      run: hugo --minify --environment production
+
+    - name: Run Lighthouse tests
+      uses: treosh/lighthouse-ci-action@v10
+      with:
+        configPath: '.lighthouserc.json'
+        uploadArtifacts: true
+        temporaryPublicStorage: true
+
+  deploy-preview:
+    runs-on: ubuntu-latest
+    name: Deploy Preview
+    needs: test
+    if: github.event_name == 'pull_request'
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: ${{ env.HUGO_VERSION }}
+        extended: true
+
+    - name: Build site for preview
+      run: hugo --minify --environment production --baseURL "https://deploy-preview-${{ github.event.number }}--kochanek-portfolio.netlify.app/"
+
+    - name: Deploy to Netlify preview
+      uses: nwtgck/actions-netlify@v3.0
+      with:
+        publish-dir: './public'
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        deploy-message: "Deploy preview for PR #${{ github.event.number }}"
+        enable-pull-request-comment: true
+        enable-commit-comment: false
+        overwrites-pull-request-comment: true
+      env:
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+  security-scan:
+    runs-on: ubuntu-latest
+    name: Security Scan
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Run Snyk security scan
+      uses: snyk/actions/node@master
+      continue-on-error: true
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      with:
+        args: --severity-threshold=high
+
+    - name: Check for vulnerable dependencies
+      run: npm audit --audit-level=moderate

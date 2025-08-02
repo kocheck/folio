@@ -1,0 +1,26 @@
+{
+  "extends": ["html-validate:recommended"],
+  "rules": {
+    "void-style": "off",
+    "no-trailing-whitespace": "off",
+    "doctype-style": "off"
+  },
+  "elements": [
+    "html5",
+    {
+      "work-card": {
+        "attributes": {
+          "title": {"required": true},
+          "description": {"required": false},
+          "image": {"required": false},
+          "url": {"required": false},
+          "company": {"required": false},
+          "tags": {"required": false}
+        }
+      },
+      "portfolio-lightbox": {
+        "void": false
+      }
+    }
+  ]
+}

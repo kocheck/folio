@@ -33,8 +33,8 @@ const colorPairs = [
     },
     {
         name: "Button text",
-        background: { r: 82, g: 156, b: 255 },
-        foreground: { r: 255, g: 255, b: 255 },
+        background: { r: 0, g: 255, b: 153 }, // hsl(140, 100%, 60%) = logical-9
+        foreground: { r: 16, g: 36, b: 26 }, // logical-1 = dark text for contrast
         required: 4.5,
     },
     // Add more color pairs as needed

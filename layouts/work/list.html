@@ -46,7 +46,7 @@
         <div class="featured-work">
             <div class="work-grid">
                 {{ range . }}
-                    {{ partial "work-card.html" . }}
+                    {{ partial "work-card-wc.html" . }}
                 {{ end }}
             </div>
         </div>
@@ -54,7 +54,7 @@
 
         <div class="work-grid">
             {{ range where .Pages "Params.featured" "!=" true }}
-                {{ partial "work-card.html" . }}
+                {{ partial "work-card-wc.html" . }}
             {{ end }}
         </div>
     </div>

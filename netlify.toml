@@ -1,12 +1,22 @@
 [build]
   publish = "public"
-  command = "hugo --gc --minify"
+  command = """
+    npm ci && \
+    hugo --gc --minify && \
+    chmod +x validate-deployment.sh && \
+    hugo server --port 8080 --bind 0.0.0.0 --disableFastRender & \
+    HUGO_PID=$! && \
+    sleep 10 && \
+    HUGO_TEST_PORT=8080 timeout 30s ./validate-deployment.sh && \
+    kill $HUGO_PID || true
+  """
 
 [build.environment]
-  HUGO_VERSION = "0.138.0"
+  HUGO_VERSION = "0.148.1"
   HUGO_ENV = "production"
   HUGO_ENABLEGITINFO = "true"
   HUGO_EXTENDED = "true"
+  NODE_VERSION = "18"
 
 [[redirects]]
   from = "/*"

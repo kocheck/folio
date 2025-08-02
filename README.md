@@ -11,6 +11,7 @@ A personal portfolio website showcasing work and thoughts on design and developm
 - Blog/thoughts section
 - Contact form integration
 - Dark/light mode support
+- **Web Components**: Modern, encapsulated components for enhanced interactivity
 
 ## Development Setup
 
@@ -506,6 +507,128 @@ npm run test:html
 ```bash
 npm run lighthouse
 ```
+
+## Web Components
+
+This site uses vanilla web components for enhanced interactivity while maintaining the performance benefits of static site generation.
+
+### Components Available
+
+#### Portfolio Lightbox (`<portfolio-lightbox>`)
+An enhanced image lightbox with touch gestures and keyboard navigation.
+
+**Features:**
+- Touch gestures (swipe to navigate, swipe up/down to close)
+- Keyboard navigation (arrow keys, escape)
+- Loading states with smooth animations
+- Auto-discovery of images with `lightbox-trigger` class
+- Mobile responsive design
+
+**Usage:**
+```html
+<!-- Images with this class automatically open in lightbox -->
+<img src="thumbnail.jpg"
+     data-full="full-size.jpg"
+     class="lightbox-trigger"
+     alt="Project screenshot">
+```
+
+#### Work Card (`<work-card>`)
+Reusable card component for displaying portfolio projects.
+
+**Attributes:**
+- `title` - Project title (required)
+- `description` - Brief description
+- `image` - Thumbnail image URL
+- `url` - Link to project details
+- `company` - Company or client name
+- `tags` - Comma-separated list of tags
+
+**Usage:**
+```html
+<work-card
+    title="Amazing Project"
+    description="A brief description"
+    image="/images/project.jpg"
+    url="/work/project/"
+    company="Cool Company"
+    tags="React,Design,UX">
+</work-card>
+```
+
+**Hugo Integration:**
+```hugo
+{{/* Use in templates */}}
+{{ partial "work-card-wc.html" . }}
+```
+
+### JavaScript API
+
+Global utilities are available at `window.PortfolioComponents`:
+
+```javascript
+// Create work cards dynamically
+const card = window.PortfolioComponents.createWorkCard({
+    title: 'Dynamic Project',
+    description: 'Created with JavaScript',
+    tags: 'JavaScript,Dynamic'
+});
+
+// Refresh lightbox after adding images
+window.PortfolioComponents.refreshLightbox();
+
+// Add lightbox trigger to existing image
+window.PortfolioComponents.addLightboxTrigger(imageElement, 'full-size.jpg');
+
+// Update theme colors
+window.PortfolioComponents.updateTheme({
+    'text-primary': '#333',
+    'card-bg': '#fff'
+});
+```
+
+### Theming
+
+Components use CSS custom properties for theming:
+
+```css
+:root {
+    /* Work card colors */
+    --card-bg: #ffffff;
+    --card-border: #e5e7eb;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+
+    /* Focus states */
+    --focus-color: #3b82f6;
+}
+```
+
+### Development
+
+Component files are located in `assets/js/components/`:
+- `portfolio-lightbox.js` - Lightbox component
+- `work-card.js` - Work card component
+- `index.js` - Component initialization
+- `README.md` - Detailed component documentation
+
+### Testing
+
+Test the web components:
+```bash
+# Run component tests
+./test-components.sh
+
+# Visit test page
+open http://localhost:1313/work-components-test/
+```
+
+### Performance
+
+- **Bundle Size**: ~8KB minified
+- **Loading**: Components initialize on `DOMContentLoaded`
+- **Compatibility**: All modern browsers (Chrome 54+, Firefox 63+, Safari 10.1+)
+- **Progressive Enhancement**: Graceful fallback for older browsers
 
 ## Browser Support
 - Chrome (last 2 versions)

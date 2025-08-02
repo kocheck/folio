@@ -7,7 +7,13 @@
     "build": "hugo --minify",
     "clean": "rm -rf public resources",
     "start": "hugo server -D --disableFastRender",
-    "test:contrast": "node scripts/test-contrast.js"
+    "test:contrast": "node scripts/test-contrast.js",
+    "test:components": "./test-components.sh",
+    "test:validate": "./validate-deployment.sh",
+    "test:syntax": "node -c assets/js/components/*.js",
+    "test:all": "npm run test:syntax && npm run test:components && npm run test:contrast",
+    "ci:test": "npm run build && npm run test:validate",
+    "lighthouse": "lighthouse http://localhost:1313 --chrome-flags='--headless' --output=html --output-path=./lighthouse-report.html"
   },
   "author": "Kyle Kochanek",
   "license": "MIT",

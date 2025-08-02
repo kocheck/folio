@@ -81,7 +81,7 @@
 
         &--primary {
             background: var(--logical-9);  // Radix step 9: solid background
-            color: var(--gray-1);  // High contrast on colored background
+            color: var(--logical-1);  // Radix step 1: text on solid background
             border: 1px solid var(--logical-9);
 
             &:hover {
