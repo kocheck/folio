@@ -154,73 +154,84 @@
 </section>
 
 <script>
-// Test functions for the API
-function testCreateCard() {
-    if (!window.PortfolioComponents) {
-        alert('Web components not loaded yet!');
-        return;
+document.addEventListener('DOMContentLoaded', function () {
+    // Test functions for the API
+    let isDark = false;
+
+    function testCreateCard() {
+        if (!window.PortfolioComponents) {
+            alert('Web components not loaded yet!');
+            return;
+        }
+
+        const card = window.PortfolioComponents.createWorkCard({
+            title: 'Dynamic Card ' + Date.now(),
+            description: 'This card was created dynamically using JavaScript!',
+            tags: 'Dynamic,JavaScript,API',
+            url: '#dynamic-' + Date.now()
+        });
+
+        document.querySelector('.work-grid').appendChild(card);
+        alert('Dynamic card created! Check the top of the work grid.');
     }
 
-    const card = window.PortfolioComponents.createWorkCard({
-        title: 'Dynamic Card ' + Date.now(),
-        description: 'This card was created dynamically using JavaScript!',
-        tags: 'Dynamic,JavaScript,API',
-        url: '#dynamic-' + Date.now()
+    function testRefreshLightbox() {
+        if (!window.PortfolioComponents) {
+            alert('Web components not loaded yet!');
+            return;
+        }
+
+        window.PortfolioComponents.refreshLightbox();
+        alert('Lightbox refreshed!');
+    }
+
+    function testUpdateTheme() {
+        if (!window.PortfolioComponents) {
+            alert('Web components not loaded yet!');
+            return;
+        }
+
+        if (!isDark) {
+            window.PortfolioComponents.updateTheme({
+                'card-bg': '#1f2937',
+                'card-border': '#374151',
+                'text-primary': '#f9fafb',
+                'text-secondary': '#d1d5db'
+            });
+            isDark = true;
+            alert('Dark theme applied to components!');
+        } else {
+            window.PortfolioComponents.updateTheme({
+                'card-bg': '#ffffff',
+                'card-border': '#e5e7eb',
+                'text-primary': '#1f2937',
+                'text-secondary': '#6b7280'
+            });
+            isDark = false;
+            alert('Light theme restored!');
+        }
+    }
+
+    // Attach event listeners to buttons
+    var createCardBtn = document.getElementById('createCardBtn');
+    var refreshLightboxBtn = document.getElementById('refreshLightboxBtn');
+    var toggleThemeBtn = document.getElementById('toggleThemeBtn');
+    if (createCardBtn) createCardBtn.addEventListener('click', testCreateCard);
+    if (refreshLightboxBtn) refreshLightboxBtn.addEventListener('click', testRefreshLightbox);
+    if (toggleThemeBtn) toggleThemeBtn.addEventListener('click', testUpdateTheme);
+
+    // Log component events
+    document.addEventListener('work-card:click', (e) => {
+        console.log('Work card clicked:', e.detail);
     });
 
-    document.querySelector('.work-grid').appendChild(card);
-    alert('Dynamic card created! Check the top of the work grid.');
-}
+    document.addEventListener('lightbox:open', (e) => {
+        console.log('Lightbox opened:', e.detail);
+    });
 
-function testRefreshLightbox() {
-    if (!window.PortfolioComponents) {
-        alert('Web components not loaded yet!');
-        return;
-    }
-
-    window.PortfolioComponents.refreshLightbox();
-    alert('Lightbox refreshed!');
-}
-
-let isDark = false;
-function testUpdateTheme() {
-    if (!window.PortfolioComponents) {
-        alert('Web components not loaded yet!');
-        return;
-    }
-
-    if (!isDark) {
-        window.PortfolioComponents.updateTheme({
-            'card-bg': '#1f2937',
-            'card-border': '#374151',
-            'text-primary': '#f9fafb',
-            'text-secondary': '#d1d5db'
-        });
-        isDark = true;
-        alert('Dark theme applied to components!');
-    } else {
-        window.PortfolioComponents.updateTheme({
-            'card-bg': '#ffffff',
-            'card-border': '#e5e7eb',
-            'text-primary': '#1f2937',
-            'text-secondary': '#6b7280'
-        });
-        isDark = false;
-        alert('Light theme restored!');
-    }
-}
-
-// Log component events
-document.addEventListener('work-card:click', (e) => {
-    console.log('Work card clicked:', e.detail);
-});
-
-document.addEventListener('lightbox:open', (e) => {
-    console.log('Lightbox opened:', e.detail);
-});
-
-document.addEventListener('lightbox:close', () => {
-    console.log('Lightbox closed');
+    document.addEventListener('lightbox:close', () => {
+        console.log('Lightbox closed');
+    });
 });
 </script>
 {{ end }}
