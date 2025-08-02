@@ -7,7 +7,7 @@
     hugo server --port 8080 --bind 0.0.0.0 --disableFastRender & \
     HUGO_PID=$! && \
     sleep 10 && \
-    HUGO_TEST_PORT=8080 timeout 30s ./validate-deployment.sh && \
+    HUGO_TEST_PORT=8080 sh -c 'if command -v timeout >/dev/null 2>&1; then timeout 30s ./validate-deployment.sh; else echo "Warning: timeout not found, running without timeout"; ./validate-deployment.sh; fi' && \
     kill $HUGO_PID || true
   """
 
