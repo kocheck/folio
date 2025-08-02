@@ -173,7 +173,7 @@ jobs:
         extended: true
 
     - name: Build site for preview
-      run: hugo --minify --environment production --baseURL "https://deploy-preview-${{ github.event.number }}--kochanek-portfolio.netlify.app/"
+      run: hugo --minify --environment production --baseURL "https://deploy-preview-${{ github.event.number }}--${{ env.NETLIFY_SITE_NAME }}.netlify.app/"
 
     - name: Deploy to Netlify preview
       uses: nwtgck/actions-netlify@v3.0
