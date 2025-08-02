@@ -20,7 +20,7 @@ wait_for_server() {
     echo "Waiting for server at $url..."
 
     while [ $attempt -le $max_attempts ]; do
-        if curl -s "$url" > /dev/null 2>&1; then
+        if curl -s --max-time 10 "$url" > /dev/null 2>&1; then
             echo "✅ Server is ready at $url"
             return 0
         fi
