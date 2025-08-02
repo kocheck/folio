@@ -397,9 +397,9 @@ function initializeUtilities() {
     window.PortfolioComponents = {
         createWorkCard: function (data) {
             const card = document.createElement("work-card");
-            Object.keys(data).forEach(function (key) {
-                if (data[key]) {
-                    card.setAttribute(key, String(data[key]));
+            Object.entries(data).forEach(function ([key, value]) {
+                if (value) {
+                    card.setAttribute(key, String(value));
                 }
             });
             return card;
