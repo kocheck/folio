@@ -219,17 +219,22 @@ class WorkCard extends HTMLElement {
             <style>
                 :host {
                     display: block;
-                    font-family: var(--font-body, sans-serif);
+                    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+                    font-weight: 225;
+                    line-height: 1.5;
                 }
                 .work-card {
                     display: block;
                     text-decoration: none;
                     color: inherit;
-                    background: var(--surface-default-card, #1c1c1c);
-                    border: 1px solid var(--surface-default-card-border, rgba(239, 239, 239, 0.12));
-                    border-radius: 8px;
+                    background: var(--gray-3, #1c1c1c);
+                    border: 1px solid var(--gray-6, rgba(239, 239, 239, 0.12));
+                    border-radius: var(--border-radius, 8px);
                     overflow: hidden;
-                    transition: all 0.3s ease;
+                    will-change: transform;
+                    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                                border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                                background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
                     cursor: pointer;
                     height: 100%;
                     display: flex;
@@ -237,12 +242,16 @@ class WorkCard extends HTMLElement {
                 }
                 .work-card:hover {
                     transform: translateY(-4px);
-                    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+                    border-color: var(--gray-7, rgba(239, 239, 239, 0.2));
+                    background: var(--gray-4, #212121);
+                }
+                .work-card:hover .work-card__title {
+                    color: var(--creative-9, #00d9ff);
+                    text-decoration-color: var(--creative-9, #00d9ff);
                 }
                 .work-card__media {
                     aspect-ratio: 16/9;
                     overflow: hidden;
-                    background: var(--surface-card-tag, rgba(149, 156, 157, 0.1));
                 }
                 .work-card__image {
                     width: 100%;
@@ -250,43 +259,56 @@ class WorkCard extends HTMLElement {
                     object-fit: cover;
                 }
                 .work-card__content {
-                    padding: 1.5rem;
+                    padding: 1rem;
                     flex: 1;
                     display: flex;
                     flex-direction: column;
                 }
                 .work-card__title {
-                    font-size: 1.25rem;
-                    font-weight: 600;
-                    margin: 0 0 0.25rem 0;
-                    color: var(--text, #efefef);
+                    margin: 0 0 0.5rem 0;
+                    color: var(--gray-12, #efefef);
+                    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                                text-decoration-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+                    text-decoration: underline;
+                    text-decoration-color: transparent;
+                    text-underline-offset: 4px;
+                    font-family: 'Epicene Display', Georgia, 'Times New Roman', serif;
+                    font-weight: 300;
+                    font-size: clamp(1.5rem, calc(1.5rem + 0.5vw), 1.75rem);
+                    line-height: 1.2;
+                    letter-spacing: 0.015em;
                 }
                 .work-card__company {
-                    font-size: 0.875rem;
-                    color: var(--text-medium, rgba(239, 239, 239, 0.8));
-                    margin: 0 0 0.75rem 0;
+                    color: var(--personality-9, #ff6b6b);
+                    margin-bottom: 0.5rem;
+                    font-weight: 500;
+                    font-size: inherit;
                 }
                 .work-card__description {
-                    color: var(--text-medium, rgba(239, 239, 239, 0.8));
+                    margin-bottom: 0.5rem;
+                    color: var(--gray-11, rgba(239, 239, 239, 0.8));
                     line-height: 1.5;
-                    margin: 0 0 1rem 0;
                     flex: 1;
-                    font-size: 0.9rem;
+                    font-size: inherit;
                 }
                 .work-card__tags {
                     display: flex;
+                    gap: 0.25rem;
                     flex-wrap: wrap;
-                    gap: 0.5rem;
-                    margin-top: auto;
                 }
                 .work-card__tag {
+                    background: var(--gray-5, rgba(149, 156, 157, 0.1));
+                    border: 1px solid var(--gray-6, rgba(239, 239, 239, 0.12));
+                    color: var(--gray-11, rgba(239, 239, 239, 0.8));
                     padding: 0.25rem 0.5rem;
-                    background: var(--surface-card-tag, rgba(149, 156, 157, 0.1));
-                    color: var(--text-medium, rgba(239, 239, 239, 0.8));
-                    border-radius: 4px;
-                    font-size: 0.75rem;
-                    font-weight: 500;
-                    text-transform: uppercase;
+                    border-radius: var(--border-radius-sm, 4px);
+                    font-size: 0.875rem;
+                    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+                .work-card__tag:hover {
+                    background: var(--gray-6, rgba(149, 156, 157, 0.2));
+                    color: var(--gray-12, #efefef);
+                    border-color: var(--gray-7, rgba(239, 239, 239, 0.2));
                 }
             </style>
 

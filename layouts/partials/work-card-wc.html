@@ -20,10 +20,15 @@
 <work-card
     title="{{ .Title | htmlEscape }}"
     {{- with .Summary }}
-    description="{{ . | truncate 120 | htmlEscape }}"
+    description="{{ . | plainify | truncate 120 | htmlEscape }}"
     {{- end }}
     {{- with .Params.thumbnail }}
-    image="{{ . | absURL }}"
+    {{- if $.Resources }}
+    {{- $thumbnail := $.Resources.GetMatch . }}
+    {{- with $thumbnail }}
+    image="{{ .RelPermalink }}"
+    {{- end }}
+    {{- end }}
     {{- end }}
     url="{{ .RelPermalink }}"
     {{- with .Params.company }}
