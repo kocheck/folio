@@ -277,14 +277,14 @@ class WorkCard extends HTMLElement {
         // Add click tracking for analytics
         if (card) {
             // Remove existing listener to prevent duplicates
-            card.removeEventListener("click", this.handleCardClick);
-            card.addEventListener("click", this.handleCardClick.bind(this));
+            card.removeEventListener("click", this._boundHandleCardClick);
+            card.addEventListener("click", this._boundHandleCardClick);
         }
 
         // Handle image loading errors
         if (img) {
-            img.removeEventListener("error", this.handleImageError);
-            img.addEventListener("error", this.handleImageError.bind(this));
+            img.removeEventListener("error", this._boundHandleImageError);
+            img.addEventListener("error", this._boundHandleImageError);
         }
     }
 
