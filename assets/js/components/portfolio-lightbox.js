@@ -271,9 +271,9 @@ class PortfolioLightbox extends HTMLElement {
 
             img.addEventListener("click", (e) => {
                 e.preventDefault();
-                this.currentIndex = parseInt(e.target.dataset.index);
+                this.currentIndex = parseInt(e.currentTarget.dataset.index);
                 // Use data-full attribute for high-res version, fallback to src
-                const imageSrc = e.target.dataset.full || e.target.src;
+                const imageSrc = e.currentTarget.dataset.full || e.currentTarget.src;
                 this.open(imageSrc);
             });
         });
