@@ -2,6 +2,14 @@ baseURL = "/"
 languageCode = "en-us"
 title = "Kyle Kochanek"
 
+# Directory paths
+contentDir = "src/content"
+layoutDir = "src/layouts"
+assetDir = "src/assets"
+staticDir = "src/static"
+dataDir = "src/data"
+archetypeDir = ".hugorc/archetypes"
+
 [params]
   description = "Kyle's online space for his portfolio and different musing on design and craft."
   author = "Kyle Kochanek"
@@ -27,11 +35,11 @@ title = "Kyle Kochanek"
     [build.processing.css]
       method = "sass"
       options = "expanded"
-      includePaths = ["assets/scss"]
+      includePaths = ["src/assets/scss"]
 
 [module]
   [[module.mounts]]
-    source = "assets"
+    source = "src/assets"
     target = "assets"
 
 [build.buildStats]
