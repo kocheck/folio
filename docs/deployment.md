@@ -12,7 +12,7 @@ This site is configured for automatic deployment on Netlify.
 ### Environment Variables
 Set these in your Netlify dashboard:
 - `HUGO_VERSION`: Latest extended version
-- `NODE_VERSION`: 18 or higher
+- `NODE_VERSION`: 16 or higher
 
 ### Build Process
 1. Netlify pulls from the main branch
