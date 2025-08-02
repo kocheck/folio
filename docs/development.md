@@ -3,7 +3,7 @@
 ## Getting Started
 
 ### Prerequisites
-- Node.js (v16 or higher)
+- Node.js (v18 or v20 LTS)
 - Hugo (extended version)
 
 ### Setup
