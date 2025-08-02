@@ -1,13 +1,25 @@
-# Hugo
-/public/
-/resources/_gen/
-/assets/jsconfig.json
+# Hugo build artifacts
+public/
+resources/_gen/
+assets/jsconfig.json
 hugo_stats.json
 
-# Node
+# Node modules
 node_modules/
-.DS_Store
 
 # Environment Variables
 .env
+
+# OS generated files
 .DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.temp
