@@ -212,13 +212,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Attach event listeners to buttons
-    var createCardBtn = document.getElementById('createCardBtn');
-    var refreshLightboxBtn = document.getElementById('refreshLightboxBtn');
-    var toggleThemeBtn = document.getElementById('toggleThemeBtn');
-    if (createCardBtn) createCardBtn.addEventListener('click', testCreateCard);
-    if (refreshLightboxBtn) refreshLightboxBtn.addEventListener('click', testRefreshLightbox);
-    if (toggleThemeBtn) toggleThemeBtn.addEventListener('click', testUpdateTheme);
+    // Attach event listeners to buttons (removed: buttons use onclick attributes directly)
 
     // Log component events
     document.addEventListener('work-card:click', (e) => {
